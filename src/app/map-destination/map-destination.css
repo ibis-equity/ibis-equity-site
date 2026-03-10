@@ -21,26 +21,64 @@
   gap: 1rem;
 }
 
-.destination-header {
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 14px;
+  background: #062a57;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.brand-header--compact {
+  max-width: 100%;
+}
+
+.brand-header__logo {
+  width: clamp(92px, 14vw, 128px);
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.brand-header__text {
   display: grid;
-  gap: 0.2rem;
-  padding: 0.8rem 0.95rem;
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--accent) 10%, #fff);
-  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  gap: 0.15rem;
+  justify-items: center;
+  text-align: center;
 }
 
-.destination-header__eyebrow {
+.brand-header__name {
   margin: 0;
-  font-weight: 700;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: #fff;
+  font-family: "Cormorant Garamond", "Palatino Linotype", Garamond, Georgia, serif;
+}
+
+.brand-header__name-second {
+  margin: 0;
+  font-size: clamp(0.78rem, 1.6vw, 1rem);
+  font-weight: 500;
   letter-spacing: 0.02em;
-  color: var(--ink);
+  line-height: 1.1;
+  color: #fff;
+  font-family: "Cormorant Garamond", "Palatino Linotype", Garamond, Georgia, serif;
 }
 
-.destination-header__tagline {
+.brand-header__subname {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.88rem;
+  font-size: clamp(0.62rem, 1.25vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .eyebrow {
@@ -206,4 +244,15 @@ li {
 .back-link:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
   outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  .brand-header {
+    gap: 0.6rem;
+    padding: 0.5rem 0.65rem;
+  }
+
+  .brand-header__logo {
+    width: 84px;
+  }
 }

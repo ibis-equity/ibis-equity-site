@@ -318,5 +318,31 @@ export const routes: Routes = [
       ]
     }
   },
+  {
+    path: 'home/data-sciences',
+    component: MapDestinationComponent,
+    data: {
+      icon: '📊',
+      iconTone: 'accent',
+      title: 'Data Sciences',
+      description: 'Data science strategy and delivery spanning analytics, experimentation, and productionized AI capabilities.',
+      rag: {
+        knowledgeBaseId: 'kb-data-sciences',
+        modelId: 'anthropic.claude-3-5-sonnet',
+        topK: 5,
+        systemPrompt: 'Answer with data-science guidance focused on measurable outcomes, model quality, and operationalization.'
+      },
+      capabilities: [
+        'Predictive and prescriptive analytics roadmap design',
+        'Feature engineering, model validation, and MLOps enablement',
+        'Experimentation frameworks with KPI and business impact tracking'
+      ],
+      useCases: [
+        'Demand and risk forecasting for strategic planning',
+        'Customer and operations segmentation for targeted decisions',
+        'Model monitoring for drift, performance, and governance'
+      ]
+    }
+  },
   { path: '**', redirectTo: '' }
 ];
