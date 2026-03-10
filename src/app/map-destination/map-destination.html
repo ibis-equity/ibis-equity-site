@@ -42,56 +42,6 @@
       </div>
     }
 
-    @if (ragConfig) {
-      <div class="section-block rag-block">
-        <h2>AWS Bedrock RAG Assistant</h2>
-        <p class="rag-note">Ask a question specific to {{ title }} and retrieve grounded responses from your Bedrock knowledge base.</p>
-
-        <label class="rag-label" for="rag-question">Question</label>
-        <textarea
-          id="rag-question"
-          class="rag-input"
-          rows="4"
-          [(ngModel)]="question"
-          placeholder="Example: What are the highest-impact quick wins for this sector?"
-        ></textarea>
-
-        <button class="btn-primary-inline" type="button" (click)="askRag()" [disabled]="isAsking() || !question.trim()">
-          {{ isAsking() ? 'Querying Bedrock...' : 'Ask Bedrock RAG' }}
-        </button>
-
-        @if (ragError()) {
-          <p class="rag-error">{{ ragError() }}</p>
-        }
-
-        @if (ragAnswer()) {
-          <div class="rag-answer">
-            <h3>Answer</h3>
-            <p>{{ ragAnswer() }}</p>
-          </div>
-        }
-
-        @if (ragSources().length) {
-          <div class="rag-answer">
-            <h3>Sources</h3>
-            <ul>
-              @for (source of ragSources(); track source.uri ?? source.title ?? $index) {
-                <li>
-                  <strong>{{ source.title || 'Reference' }}</strong>
-                  @if (source.excerpt) {
-                    <span> — {{ source.excerpt }}</span>
-                  }
-                  @if (source.uri) {
-                    <div><a [href]="source.uri" target="_blank" rel="noopener noreferrer">{{ source.uri }}</a></div>
-                  }
-                </li>
-              }
-            </ul>
-          </div>
-        }
-      </div>
-    }
-
     <a routerLink="/home" class="back-link">Back to home</a>
   </section>
 </main>
