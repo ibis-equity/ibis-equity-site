@@ -1,0 +1,345 @@
+<main class="page">
+  <header class="brand-header" aria-label="Ibis Equity brand">
+    <img
+      class="brand-header__logo"
+      src="/images/header-logo.jpg"
+      alt="Ibis Equity logo"
+      width="240"
+      height="120"
+    >
+    <div class="brand-header__text">
+      <p class="brand-header__name">Ibis Equity</p>
+      <p class="brand-header__name-second">Consulting, LLC</p>
+      <p class="brand-header__subname">AI/ML, Gen-AI, Data Science &amp; Agentic AI</p>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Ibis Equity</p>
+      <h1>Where Intelligence Meets Equity</h1>
+      <nav class="main-menu" aria-label="Primary">
+        <a class="main-menu__item" href="#">Home</a>
+        <a class="main-menu__item" href="#" (click)="openAboutModal($event)">About</a>
+        <a class="main-menu__item" href="#">Services</a>
+        <a class="main-menu__item" href="#">Sector Expertise</a>
+        <a class="main-menu__item" href="#" (click)="openResponsibleModal($event)">Responsible AI</a>
+        <a class="main-menu__item" href="#">Insights</a>
+        <a class="main-menu__item" href="#">Contact</a>
+      </nav>
+      <div
+        class="about-modal"
+        [class.about-modal--open]="responsibleModalOpen()"
+        [attr.aria-hidden]="responsibleModalOpen() ? 'false' : 'true'"
+      >
+        <div class="about-modal__backdrop" (click)="closeResponsibleModal()"></div>
+        <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="responsible-modal-title">
+          <button class="about-modal__close" type="button" aria-label="Close Responsible AI popup" (click)="closeResponsibleModal()">Close</button>
+          <h2 id="responsible-modal-title">Responsible AI: An In Depth Narrative</h2>
+          <p>Clarity. Stewardship. Systems that honor the people they serve.</p>
+          <p>
+            Responsible AI is not a compliance checkbox or a late stage review. It is an architectural discipline&mdash;a way of designing intelligent systems that remain trustworthy under real world conditions, across shifting contexts, and in the presence of human complexity. At its core, Responsible AI is about building systems that behave predictably, transparently, and ethically, even when the environments around them do not.
+          </p>
+          <p>
+            Modern organizations operate in landscapes defined by uncertainty: heterogeneous data, distributed systems, regulatory pressure, and workflows where decisions carry real consequences. In these environments, AI cannot be treated as a black box or a bolt on feature. It must be engineered with the same rigor, governance, and intentionality as any other critical infrastructure.
+          </p>
+          <p>
+            Responsible AI begins with data foundations&mdash;pipelines that are observable, versioned, and governed. It requires metadata that captures lineage, context, and provenance so that every model output can be traced back to its source. It demands retrieval architectures that ground model reasoning in verified knowledge, reducing hallucination and ensuring that AI systems remain anchored to institutional truth rather than statistical guesswork.
+          </p>
+          <p>
+            It extends into model governance, where transparency, interpretability, and lifecycle management are not optional but essential. Models must be monitored for drift, evaluated for bias, and documented in ways that allow experts&mdash;not just engineers&mdash;to understand how decisions are made. Responsible AI ensures that every model has a clear purpose, a defined boundary, and a human in the loop pathway for oversight.
+          </p>
+          <p>
+            At the workflow level, Responsible AI is about alignment with human judgment. Intelligent systems should amplify expertise, not override it. They should surface context, highlight uncertainty, and support decision makers with clarity rather than speed alone. In high stakes domains&mdash;healthcare, law, energy, education&mdash;Responsible AI ensures that automation never outpaces accountability.
+          </p>
+          <p>
+            But Responsible AI is also cultural. It requires organizations to adopt a mindset of stewardship: to treat data with respect, to design for equity, and to recognize that technology carries social and ethical weight. It means building systems that reflect the values of the communities they touch, and ensuring that those systems remain accountable long after deployment.
+          </p>
+          <p>
+            At Ibis Equity Consulting, Responsible AI is not a separate offering&mdash;it is the foundation of every architecture we design. We build systems that are transparent by default, governed by design, and aligned with the people who rely on them. Systems that make complexity legible without erasing nuance. Systems that strengthen institutional intelligence rather than destabilizing it.
+          </p>
+          <p>Responsible AI is not about slowing innovation. It is about ensuring that innovation endures.</p>
+          <p>It is the discipline that turns AI from a fragile experiment into a trusted organizational capability.</p>
+          <p>It is the difference between faster mistakes and better decisions.</p>
+          <p>It is the path toward intelligent systems that are worthy of the institutions they serve.</p>
+        </section>
+      </div>
+      <div
+        class="about-modal"
+        [class.about-modal--open]="aboutModalOpen()"
+        [attr.aria-hidden]="aboutModalOpen() ? 'false' : 'true'"
+      >
+        <div class="about-modal__backdrop" (click)="closeAboutModal()"></div>
+        <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+          <button class="about-modal__close" type="button" aria-label="Close About popup" (click)="closeAboutModal()">Close</button>
+          <h2 id="about-modal-title">About Ibis Equity Consulting</h2>
+          <p>
+            Ibis Equity Consulting, LLC is an AI architecture and systems engineering firm specializing in the design of transparent, resilient, and enterprise grade intelligence infrastructures. We help organizations move beyond isolated pilots and vendor driven hype by building AI capabilities that are grounded in rigorous data engineering, governed retrieval pipelines, interpretable models, and operationally aligned agentic workflows.
+          </p>
+          <p>Our work spans the full intelligence stack:</p>
+          <ul>
+            <li>Data engineering and data science foundations that ensure reliability, lineage, and drift resistant performance</li>
+            <li>RAG and agentic architectures optimized for retrieval precision, auditability, and domain specific constraints</li>
+            <li>Clinical and legal reference systems engineered for high stakes accuracy and governed knowledge flows</li>
+            <li>Enterprise AI strategy and governance that embed transparency, safety, and lifecycle management into every layer</li>
+          </ul>
+          <p>
+            We design systems that integrate cleanly with existing platforms, scale predictably under real world load, and reinforce&mdash;not replace&mdash;expert judgment. Every architecture we deliver is modular, observable, and aligned with organizational values, ensuring AI becomes a durable capability rather than a fragile experiment.
+          </p>
+          <p>
+            At Ibis Equity, we build AI that strengthens institutional intelligence, reduces operational risk, and supports better decisions across the enterprise
+          </p>
+        </section>
+      </div>
+      <section class="lead">
+        <p>
+          Ibis Equity Consulting partners with organizations to architect AI systems that are technically rigorous, operationally grounded, and aligned with the realities of enterprise scale decision making. We design solutions that respect the complexity of distributed systems, heterogeneous data environments, and high stakes workflows—systems that elevate expert judgment rather than obscure it, and that embed governance, transparency, and auditability into every layer of the stack.
+        </p>
+        <p>
+          We work with leaders who understand that AI is not a feature but an infrastructure capability. It requires intentional design across data pipelines, retrieval architectures, model governance, human in the loop pathways, and long term lifecycle management. It demands interpretability, traceability, and alignment with organizational values—not just accuracy benchmarks or model performance metrics.
+        </p>
+        <p>
+          Our approach transforms artificial intelligence from isolated pilots into durable, enterprise ready systems. We build architectures that advance equity through structured metadata and bias aware evaluation; strengthen transparency through grounded retrieval, lineage, and model documentation; and expand institutional intelligence through resilient pipelines, governed corpora, and responsible agentic workflows.
+        </p>
+        <p>
+          The result is AI that integrates cleanly with existing systems, scales predictably, and operates safely under real world constraints. AI that reduces operational risk instead of amplifying it. AI that supports better decisions, not just faster outputs. AI that becomes a strategic asset—reliable, interpretable, and built to endure.
+        </p>
+      </section>
+      <section class="ai-evolution-section">
+        <div class="container">
+          <header class="ai-evolution-header">
+            <h2 class="ai-evolution-title">The Evolution of AI Across Industries</h2>
+            <p class="ai-evolution-subtitle">
+              A unified arc—from rules to reasoning, from data to agency—expressed differently in every sector.
+            </p>
+          </header>
+
+          <div class="ai-evolution-grid ai-evolution-grid--header">
+            <div class="ai-evolution-cell ai-evolution-cell--corner">Sector</div>
+            <div class="ai-evolution-cell">Rule‑Based</div>
+            <div class="ai-evolution-cell">Data Science</div>
+            <div class="ai-evolution-cell">Machine Learning</div>
+            <div class="ai-evolution-cell">Deep Learning</div>
+            <div class="ai-evolution-cell">Generative AI</div>
+            <div class="ai-evolution-cell">Agentic Systems</div>
+          </div>
+
+          <div class="ai-evolution-grid">
+            <div class="ai-evolution-cell ai-evolution-cell--sector">Healthcare</div>
+            <div class="ai-evolution-cell">
+              CDS alerts, order sets, allergy checks
+            </div>
+            <div class="ai-evolution-cell">
+              Readmission risk, LOS forecasting, quality metrics
+            </div>
+            <div class="ai-evolution-cell">
+              Sepsis prediction, imaging triage, risk stratification
+            </div>
+            <div class="ai-evolution-cell">
+              Radiology (CNNs), pathology slides, clinical NLP
+            </div>
+            <div class="ai-evolution-cell">
+              Chart summarization, ambient documentation, patient education
+            </div>
+            <div class="ai-evolution-cell">
+              Multi‑step chart review, prior auth automation, care coordination agents
+            </div>
+          </div>
+
+          <div class="ai-evolution-grid">
+            <div class="ai-evolution-cell ai-evolution-cell--sector">Legal</div>
+            <div class="ai-evolution-cell">
+              Clause checkers, compliance engines, e‑discovery rules
+            </div>
+            <div class="ai-evolution-cell">
+              Case outcome analytics, judge behavior models, settlement forecasting
+            </div>
+            <div class="ai-evolution-cell">
+              Document classification, relevance ranking, entity extraction
+            </div>
+            <div class="ai-evolution-cell">
+              Contract analysis, semantic search, deposition NLP
+            </div>
+            <div class="ai-evolution-cell">
+              Memo drafting, discovery summarization, research synthesis
+            </div>
+            <div class="ai-evolution-cell">
+              Multi‑jurisdiction research agents, citation‑verified drafting, workflow orchestration
+            </div>
+          </div>
+
+          <div class="ai-evolution-grid">
+            <div class="ai-evolution-cell ai-evolution-cell--sector">Energy &amp; Utilities</div>
+            <div class="ai-evolution-cell">
+              SCADA rules, outage thresholds, equipment logic
+            </div>
+            <div class="ai-evolution-cell">
+              Load forecasting, reliability modeling, demand planning
+            </div>
+            <div class="ai-evolution-cell">
+              Predictive maintenance, anomaly detection, failure prediction
+            </div>
+            <div class="ai-evolution-cell">
+              Sensor fusion, drone inspection, grid optimization
+            </div>
+            <div class="ai-evolution-cell">
+              Procedure summarization, incident reporting, knowledge retrieval
+            </div>
+            <div class="ai-evolution-cell">
+              Field‑tech assistants, autonomous outage triage, diagnostic agents
+            </div>
+          </div>
+
+          <div class="ai-evolution-grid">
+            <div class="ai-evolution-cell ai-evolution-cell--sector">Education</div>
+            <div class="ai-evolution-cell">
+              Adaptive quizzes, LMS logic, rule‑based tutoring
+            </div>
+            <div class="ai-evolution-cell">
+              Retention analytics, enrollment forecasting, course performance
+            </div>
+            <div class="ai-evolution-cell">
+              Personalized learning paths, early‑warning systems, recommendations
+            </div>
+            <div class="ai-evolution-cell">
+              Automated grading, speech accessibility, NLP‑based tutoring
+            </div>
+            <div class="ai-evolution-cell">
+              Lesson planning, content creation, student feedback
+            </div>
+            <div class="ai-evolution-cell">
+              Policy‑aware tutoring agents, admin workflow automation, multi‑step advising
+            </div>
+          </div>
+
+          <div class="ai-evolution-grid">
+            <div class="ai-evolution-cell ai-evolution-cell--sector">Corporate &amp; Enterprise</div>
+            <div class="ai-evolution-cell">
+              Workflow automation, compliance rules, business logic engines
+            </div>
+            <div class="ai-evolution-cell">
+              KPI dashboards, forecasting, customer segmentation
+            </div>
+            <div class="ai-evolution-cell">
+              Churn prediction, fraud detection, recommendation systems
+            </div>
+            <div class="ai-evolution-cell">
+              NLP for support, vision for quality control, speech analytics
+            </div>
+            <div class="ai-evolution-cell">
+              Knowledge management, document summarization, code generation
+            </div>
+            <div class="ai-evolution-cell">
+              Enterprise copilots, cross‑system orchestration, automated reporting
+            </div>
+          </div>
+        </div>
+      </section>
+      <p class="paragraph">
+        
+        <strong>
+        From Rules to Reasoning, From Data to Agency</strong><br>
+        AI is no longer just a technology &mdash; it is an <strong>organizational capability.</strong>
+        The future belongs to institutions that can integrate AI into workflows, govern it responsibly, and combine human expertise with machine intelligence.
+      </p>
+    </div>
+  </header>
+
+  <section class="image-map-center" aria-labelledby="interactive-map-title">
+    <div class="image-map-heading">
+      <p class="eyebrow">Interactive map</p>
+      <h2 id="interactive-map-title">Explore Ibis Equity focus areas</h2>
+      <p class="lead">Hover each region to see the area name, then select it to open its page.</p>
+    </div>
+    <div class="image-map-wrapper">
+      <img
+        src="/images/ibis-image-map.jpg"
+        alt="Ibis Equity service image map"
+        width="3870"
+        height="2160"
+      >
+      <div class="hotspot-layer">
+        <a class="hotspot-chip hotspot--healthcare" href="/home/healthcare" title="Healthcare" data-label="Healthcare" aria-label="Healthcare"></a>
+        <a class="hotspot-chip hotspot--law" href="/home/law-legal-services" title="Law &amp; Legal Services" data-label="Law &amp; Legal Services" aria-label="Law &amp; Legal Services"></a>
+        <a class="hotspot-chip hotspot--insurance" href="/home/insurance" title="Insurance" data-label="Insurance" aria-label="Insurance"></a>
+        <a class="hotspot-chip hotspot--education" href="/home/education" title="Education" data-label="Education" aria-label="Education"></a>
+        <a class="hotspot-chip hotspot--agriculture" href="/home/agriculture" title="Agriculture" data-label="Agriculture" aria-label="Agriculture"></a>
+        <a class="hotspot-chip hotspot--manufacturing" href="/home/manufacturing" title="Manufacturing" data-label="Manufacturing" aria-label="Manufacturing"></a>
+        <a class="hotspot-chip hotspot--energy" href="/home/energy-utilities" title="Energy &amp; Utilities" data-label="Energy &amp; Utilities" aria-label="Energy &amp; Utilities"></a>
+        <a class="hotspot-chip hotspot--transport" href="/home/transportation-logistics" title="Transportation &amp; Logistics" data-label="Transportation &amp; Logistics" aria-label="Transportation &amp; Logistics"></a>
+        <a class="hotspot-chip hotspot--hospitality" href="/home/hospitality-travel" title="Hospitality Travel" data-label="Hospitality Travel" aria-label="Hospitality Travel"></a>
+        <a class="hotspot-chip hotspot--retail" href="/home/retail-ecommerce" title="Retail &amp; E-Commerce" data-label="Retail &amp; E-Commerce" aria-label="Retail &amp; E-Commerce"></a>
+        <a class="hotspot-chip hotspot--government" href="/home/government-public-sector" title="Government &amp; Public Sector" data-label="Government &amp; Public Sector" aria-label="Government &amp; Public Sector"></a>
+        <a class="hotspot-chip hotspot--real-estate" href="/home/real-estate-construction" title="Real Estate &amp; Construction" data-label="Real Estate &amp; Construction" aria-label="Real Estate &amp; Construction"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="founders-statement" aria-labelledby="founders-statement-title">
+    <h2 id="founders-statement-title">A Message From Our Founder</h2>
+    <p>
+      I started Ibis Equity Consulting with a simple conviction: AI should strengthen institutions, not destabilize them. Intelligent systems must honor complexity, elevate expert judgment, and operate with transparency and care.
+    </p>
+    <p>
+      My work focuses on building AI that is resilient, governed, and aligned with real&#8209;world workflows&mdash;not hype cycles. At Ibis Equity, we help organizations create systems that earn trust, reduce risk, and support better decisions across every layer of the enterprise.
+    </p>
+    <p>&mdash; Daryl E. Shackleford</p>
+  </section>
+
+  <footer class="site-footer" aria-labelledby="site-footer-title">
+    <div class="site-footer__top">
+      <div class="site-footer__intro">
+        <h2 id="site-footer-title">Ibis Equity Consulting</h2>
+        <p>Intelligent systems built with integrity, intention, and respect for human complexity.</p>
+      </div>
+
+      <section class="site-footer__col" aria-label="Services">
+        <h3>Services</h3>
+        <ul>
+          <li>AI Architecture &amp; Governance</li>
+          <li>RAG &amp; Agentic System Design</li>
+          <li>Data Engineering</li>
+          <li>Data Science &amp; Predictive Intelligence</li>
+          <li>Clinical &amp; Legal Reference Engineering</li>
+          <li>Enterprise AI Strategy</li>
+          <li>Workflow &amp; Decision Support Design</li>
+        </ul>
+      </section>
+
+      <section class="site-footer__col" aria-label="Company">
+        <h3>Company</h3>
+        <ul>
+          <li>About</li>
+          <li>Founder</li>
+          <li>Philosophy</li>
+          <li>Contact</li>
+        </ul>
+      </section>
+
+      <section class="site-footer__col" aria-label="Sectors">
+        <h3>Sectors</h3>
+        <ul>
+          <li>Healthcare</li>
+          <li>Legal</li>
+          <li>Energy &amp; Utilities</li>
+          <li>Education</li>
+          <li>Enterprise</li>
+        </ul>
+      </section>
+
+      <section class="site-footer__col" aria-label="Connect">
+        <h3>Connect</h3>
+        <ul>
+          <li>LinkedIn</li>
+          <li>Email</li>
+          <li>Newsletter</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>&copy; Ibis Equity Consulting LLC. All rights reserved.</p>
+      <p>AI should make institutions wiser, not just faster.</p>
+    </div>
+  </footer>
+</main>

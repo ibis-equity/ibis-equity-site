@@ -1,0 +1,87 @@
+<main class="destination-page">
+  <section class="destination-card">
+    <header class="destination-header" aria-label="Ibis Equity Consulting">
+      <p class="destination-header__eyebrow">Ibis Equity Consulting</p>
+      <p class="destination-header__tagline">Software Engineering for Artificial Intelligence</p>
+    </header>
+
+    <p class="eyebrow">Image map destination</p>
+    <div [class]="'sector-icon sector-icon--' + iconTone" aria-hidden="true">{{ icon }}</div>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+
+    @if (capabilities.length) {
+      <div class="section-block">
+        <h2>Core Capabilities</h2>
+        <ul>
+          @for (capability of capabilities; track capability) {
+            <li>{{ capability }}</li>
+          }
+        </ul>
+      </div>
+    }
+
+    @if (useCases.length) {
+      <div class="section-block">
+        <h2>Priority Use Cases</h2>
+        <ul>
+          @for (useCase of useCases; track useCase) {
+            <li>{{ useCase }}</li>
+          }
+        </ul>
+      </div>
+    }
+
+    @if (ragConfig) {
+      <div class="section-block rag-block">
+        <h2>AWS Bedrock RAG Assistant</h2>
+        <p class="rag-note">Ask a question specific to {{ title }} and retrieve grounded responses from your Bedrock knowledge base.</p>
+
+        <label class="rag-label" for="rag-question">Question</label>
+        <textarea
+          id="rag-question"
+          class="rag-input"
+          rows="4"
+          [(ngModel)]="question"
+          placeholder="Example: What are the highest-impact quick wins for this sector?"
+        ></textarea>
+
+        <button class="btn-primary-inline" type="button" (click)="askRag()" [disabled]="isAsking() || !question.trim()">
+          {{ isAsking() ? 'Querying Bedrock...' : 'Ask Bedrock RAG' }}
+        </button>
+
+        @if (ragError()) {
+          <p class="rag-error">{{ ragError() }}</p>
+        }
+
+        @if (ragAnswer()) {
+          <div class="rag-answer">
+            <h3>Answer</h3>
+            <p>{{ ragAnswer() }}</p>
+          </div>
+        }
+
+        @if (ragSources().length) {
+          <div class="rag-answer">
+            <h3>Sources</h3>
+            <ul>
+              @for (source of ragSources(); track source.uri ?? source.title ?? $index) {
+                <li>
+                  <strong>{{ source.title || 'Reference' }}</strong>
+                  @if (source.excerpt) {
+                    <span> — {{ source.excerpt }}</span>
+                  }
+                  @if (source.uri) {
+                    <div><a [href]="source.uri" target="_blank" rel="noopener noreferrer">{{ source.uri }}</a></div>
+                  }
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    }
+
+    <a routerLink="/home" class="back-link">Back to home</a>
+  </section>
+</main>

@@ -1,0 +1,16 @@
+<div class="splash-container" [class.exiting]="isExiting">
+  <h1 class="splash-header">Ibis Equity Consulting, LLC</h1>
+  <p class="splash-text">Software Engineering for Artificial Intelligence</p>
+  <p class="splash-text">Machine Learning, Generative AI, Data Science, & Agentic AI</p>
+  <video 
+    #videoPlayer
+    class="splash-gif"
+    [muted]="isMuted"
+    autoplay 
+    loop 
+    playsinline
+    webkit-playsinline>
+    <source src="/animations/new_ibis_gif.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
