@@ -42,6 +42,7 @@ const LANGUAGE_PREFERENCES: Record<string, LanguagePreference> = {
   styleUrl: './home.css'
 })
 export class HomeComponent implements OnDestroy {
+    submitButtonHovered = false;
   private readonly ragService = inject(BedrockRagService);
   private generatedAudioObjectUrl: string | null = null;
 
@@ -116,6 +117,7 @@ export class HomeComponent implements OnDestroy {
     const questionWithLanguageInstruction = `${question}\n\n${languageConfig.instruction}`;
 
     this.isAskingRag.set(true);
+    this.submitButtonHovered = false;
     this.ragError.set('');
 
     this.ragService
@@ -141,6 +143,15 @@ export class HomeComponent implements OnDestroy {
           this.isAskingRag.set(false);
         }
       });
+  }
+
+  onSubmitButtonMouseEnter(): void {
+    if (this.isAskingRag()) {
+      this.submitButtonHovered = true;
+    }
+  }
+  onSubmitButtonMouseLeave(): void {
+    this.submitButtonHovered = false;
   }
 
   protected submitQuestionFromKey(event: Event): void {

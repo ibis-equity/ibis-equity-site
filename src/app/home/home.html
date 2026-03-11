@@ -60,7 +60,12 @@
           (click)="askRagFromHome()"
           [disabled]="isAskingRag() || !ragQuestion.trim()"
         >
-          {{ isAskingRag() ? 'Querying Bedrock...' : 'Submit Question' }}
+          @if (isAskingRag()) {
+            Querying Bedrock...
+            <span class="main-chatbot__busy-indicator">⏳</span>
+          } @else {
+            Submit Question
+          }
         </button>
       </section>
 
