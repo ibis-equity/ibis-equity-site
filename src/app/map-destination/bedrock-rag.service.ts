@@ -7,6 +7,10 @@ export interface BedrockRagConfig {
   modelId: string;
   topK: number;
   systemPrompt: string;
+  speechEnabled?: boolean;
+  voiceId?: string;
+  engine?: string;
+  languageCode?: string;
 }
 
 export interface BedrockRagSource {
@@ -24,6 +28,19 @@ export interface BedrockRagRequest {
 export interface BedrockRagResponse {
   answer: string;
   sources?: BedrockRagSource[];
+  audioUrl?: string;
+  audioBase64?: string;
+  audioMimeType?: string;
+  audio?: {
+    url?: string;
+    base64?: string;
+    mimeType?: string;
+  };
+  speech?: {
+    audioUrl?: string;
+    audioBase64?: string;
+    audioMimeType?: string;
+  };
 }
 
 @Injectable({

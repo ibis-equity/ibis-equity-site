@@ -37,6 +37,13 @@
           }
         }
       }
+    },
+    {
+      "label": "npm: start:full",
+      "type": "npm",
+      "script": "start:full",
+      "isBackground": true,
+      "problemMatcher": []
     }
   ]
 }

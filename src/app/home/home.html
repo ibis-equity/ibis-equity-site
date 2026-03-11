@@ -1,23 +1,99 @@
 <main class="page">
-  <header class="brand-header" aria-label="Ibis Equity brand">
-    <img
-      class="brand-header__logo"
-      src="/images/header-logo.jpg"
-      alt="Ibis Equity logo"
-      width="240"
-      height="120"
-    >
-    <div class="brand-header__text">
-      <p class="brand-header__name">Ibis Equity</p>
-      <p class="brand-header__name-second">Consulting, LLC</p>
-      <p class="brand-header__subname">AI/ML, Gen-AI, Data Science &amp; Agentic AI</p>
+  <div class="page-top-row">
+    <header class="brand-header" aria-label="Ibis Equity brand">
+      <img
+        class="brand-header__logo"
+        src="/images/header-logo.jpg"
+        alt="Ibis Equity logo"
+        width="240"
+        height="120"
+      >
+      <div class="brand-header__text">
+        <p class="brand-header__name">Ibis Equity</p>
+        <p class="brand-header__name-second">Consulting, LLC</p>
+        <p class="brand-header__subname">AI/ML, Gen-AI, Data Science &amp; Agentic AI</p>
+      </div>
+    </header>
+
+    <div class="hero__content hero__content--top">
+      <p class="eyebrow">Ibis Equity</p>
+      <h1>Where Intelligence Meets Equity</h1>
     </div>
-  </header>
+
+    <section class="main-chatbot" aria-label="Ibis Equity Assistant">
+      <header class="main-chatbot__title-block">
+        <h2>Ibis Equity Assistant</h2>
+        <p class="main-chatbot__info">Ask a question below. Answers are grounded by the configured knowledge base.</p>
+      </header>
+
+      <div class="main-chatbot__controls-row">
+        <span class="main-chatbot__control-label">Audio</span>
+        <button class="main-chatbot__sound-toggle" type="button" (click)="toggleSpeech()" [attr.aria-pressed]="speechEnabled()">
+          {{ speechEnabled() ? 'Sound: ON' : 'Sound: OFF' }}
+        </button>
+
+        <span class="main-chatbot__control-label">Language</span>
+        <label class="main-chatbot__label" for="main-rag-language">Language</label>
+        <select id="main-rag-language" class="main-chatbot__select" [(ngModel)]="preferredLanguage">
+          @for (language of languageOptions; track language) {
+            <option [value]="language">{{ language }}</option>
+          }
+        </select>
+      </div>
+
+      <section class="main-chatbot__box main-chatbot__box--question" aria-label="Question box">
+        <div class="main-chatbot__box-header">
+          <h3>Question</h3>
+          <button class="main-chatbot__clear-button" type="button" (click)="clearQuestionBox()">Clear</button>
+        </div>
+        <textarea
+          id="main-rag-question"
+          class="main-chatbot__input"
+          rows="4"
+          [(ngModel)]="ragQuestion"
+          (keydown.enter)="submitQuestionFromKey($event)"
+          placeholder="Type your question. Press Enter to submit, Shift+Enter for a new line."
+        ></textarea>
+        <button
+          class="main-chatbot__submit-button"
+          type="button"
+          (click)="askRagFromHome()"
+          [disabled]="isAskingRag() || !ragQuestion.trim()"
+        >
+          {{ isAskingRag() ? 'Querying Bedrock...' : 'Submit Question' }}
+        </button>
+      </section>
+
+      <section class="main-chatbot__box main-chatbot__box--answer" aria-label="Answer box">
+        <div class="main-chatbot__box-header">
+          <h3>Answer</h3>
+          <button class="main-chatbot__clear-button" type="button" (click)="clearAnswerBox()">Clear</button>
+        </div>
+        <div class="main-chatbot__answer-text">
+          @if (ragError()) {
+            {{ ragError() }}
+          } @else if (ragAnswer()) {
+            <span [innerHTML]="formatAnswerMarkdown(ragAnswer())"></span>
+          } @else if (isAskingRag()) {
+            Querying Bedrock...
+          } @else {
+            Waiting for your question...
+          }
+        </div>
+      </section>
+
+      <section class="main-chatbot__box main-chatbot__box--listen" aria-label="Listen widget">
+        <h3>Listen</h3>
+        <audio class="main-chatbot__audio" controls preload="none" [src]="ragAudioSrc()"></audio>
+        @if (ragAudioError()) {
+          <p class="main-chatbot__error">{{ ragAudioError() }}</p>
+        }
+      </section>
+    </section>
+  </div>
 
   <header class="hero">
     <div class="hero__content">
-      <p class="eyebrow">Ibis Equity</p>
-      <h1>Where Intelligence Meets Equity</h1>
       <nav class="main-menu" aria-label="Primary">
         <a class="main-menu__item" href="#">Home</a>
         <a class="main-menu__item" href="#" (click)="openAboutModal($event)">About</a>
@@ -28,72 +104,6 @@
         <a class="main-menu__item" href="#">Insights</a>
         <a class="main-menu__item" href="#">Contact</a>
       </nav>
-      <section class="main-chatbot" [class.main-chatbot--collapsed]="!chatbotOpen()" aria-labelledby="main-chatbot-title">
-        <header class="main-chatbot__header">
-          <div>
-            <p class="main-chatbot__eyebrow">Ibis Equity Assistant</p>
-            <h2 id="main-chatbot-title">Bedrock Claude RAG</h2>
-          </div>
-          <button
-            class="main-chatbot__toggle"
-            type="button"
-            (click)="toggleChatbot()"
-            [attr.aria-expanded]="chatbotOpen()"
-            aria-controls="main-chatbot-body"
-          >
-            {{ chatbotOpen() ? 'Minimize' : 'Open Chat' }}
-          </button>
-        </header>
-
-        @if (chatbotOpen()) {
-          <div id="main-chatbot-body" class="main-chatbot__body">
-            <p class="main-chatbot__note">Ask a question and retrieve grounded answers from ibis-equity-back-end.</p>
-
-            <label class="main-chatbot__label" for="main-rag-question">Question</label>
-            <textarea
-              id="main-rag-question"
-              class="main-chatbot__input"
-              rows="4"
-              [(ngModel)]="ragQuestion"
-              placeholder="Example: What are the highest-impact AI architecture priorities for enterprise rollout?"
-            ></textarea>
-
-            <button class="main-chatbot__button" type="button" (click)="askRagFromHome()" [disabled]="isAskingRag() || !ragQuestion.trim()">
-              {{ isAskingRag() ? 'Querying Bedrock...' : 'Ask Assistant' }}
-            </button>
-
-            @if (ragError()) {
-              <p class="main-chatbot__error">{{ ragError() }}</p>
-            }
-
-            @if (ragAnswer()) {
-              <div class="main-chatbot__answer">
-                <h3>Answer</h3>
-                <p>{{ ragAnswer() }}</p>
-              </div>
-            }
-
-            @if (ragSources().length) {
-              <div class="main-chatbot__answer">
-                <h3>Sources</h3>
-                <ul>
-                  @for (source of ragSources(); track source.uri ?? source.title ?? $index) {
-                    <li>
-                      <strong>{{ source.title || 'Reference' }}</strong>
-                      @if (source.excerpt) {
-                        <span> - {{ source.excerpt }}</span>
-                      }
-                      @if (source.uri) {
-                        <div><a [href]="source.uri" target="_blank" rel="noopener noreferrer">{{ source.uri }}</a></div>
-                      }
-                    </li>
-                  }
-                </ul>
-              </div>
-            }
-          </div>
-        }
-      </section>
       <div
         class="about-modal"
         [class.about-modal--open]="responsibleModalOpen()"
