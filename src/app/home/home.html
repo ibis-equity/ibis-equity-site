@@ -46,6 +46,16 @@
           <h3>Question</h3>
           <button class="main-chatbot__clear-button" type="button" (click)="clearQuestionBox()">Clear</button>
         </div>
+        <label class="main-chatbot__control-label" for="main-rag-source-dropdown">Source Document</label>
+        <select id="main-rag-source-dropdown" class="main-chatbot__select">
+          @if (ragSources().length === 0) {
+            <option>No Documents Found</option>
+          } @else {
+            @for (source of ragSources(); track source.title) {
+              <option [value]="source.uri || source.title">{{ source.title || source.uri || 'Untitled Document' }}</option>
+            }
+          }
+        </select>
         <textarea
           id="main-rag-question"
           class="main-chatbot__input"
