@@ -20,90 +20,105 @@
       <h1>Where Intelligence Meets Equity</h1>
     </div>
 
-    <section class="main-chatbot" aria-label="Ibis Equity Assistant">
-      <header class="main-chatbot__title-block">
-        <h2>Ibis Equity Assistant</h2>
-        <p class="main-chatbot__info">Ask a question below. Answers are grounded by the configured knowledge base.</p>
-      </header>
-
-      <div class="main-chatbot__controls-row">
-        <span class="main-chatbot__control-label">Audio</span>
-        <button class="main-chatbot__sound-toggle" type="button" (click)="toggleSpeech()" [attr.aria-pressed]="speechEnabled()">
-          {{ speechEnabled() ? 'Sound: ON' : 'Sound: OFF' }}
+    <section class="main-chatbot" [class.main-chatbot--collapsed]="!chatbotOpen()" aria-label="Ibis Equity Assistant">
+      <div class="main-chatbot__header-row">
+        <header class="main-chatbot__title-block">
+          <h2>Ibis Equity Assistant</h2>
+          <p class="main-chatbot__info">Ask a question below. Answers are grounded by the configured knowledge base.</p>
+        </header>
+        <button
+          class="main-chatbot__collapse-toggle"
+          type="button"
+          (click)="toggleChatbot()"
+          [attr.aria-expanded]="chatbotOpen()"
+          aria-controls="main-chatbot-panel"
+        >
+          {{ chatbotOpen() ? 'Collapse' : 'Expand' }}
         </button>
-
-        <span class="main-chatbot__control-label">Language</span>
-        <label class="main-chatbot__label" for="main-rag-language">Language</label>
-        <select id="main-rag-language" class="main-chatbot__select" [(ngModel)]="preferredLanguage">
-          @for (language of languageOptions; track language) {
-            <option [value]="language">{{ language }}</option>
-          }
-        </select>
       </div>
 
-      <section class="main-chatbot__box main-chatbot__box--question" aria-label="Question box">
-        <div class="main-chatbot__box-header">
-          <h3>Question</h3>
-          <button class="main-chatbot__clear-button" type="button" (click)="clearQuestionBox()">Clear</button>
-        </div>
-        <label class="main-chatbot__control-label" for="main-rag-source-dropdown">Source Document</label>
-        <select id="main-rag-source-dropdown" class="main-chatbot__select">
-          @if (ragSources().length === 0) {
-            <option>No Documents Found</option>
-          } @else {
-            @for (source of ragSources(); track source.title) {
-              <option [value]="source.uri || source.title">{{ source.title || source.uri || 'Untitled Document' }}</option>
+      @if (chatbotOpen()) {
+        <div id="main-chatbot-panel" class="main-chatbot__content">
+          <div class="main-chatbot__controls-row">
+            <span class="main-chatbot__control-label">Audio</span>
+            <button class="main-chatbot__sound-toggle" type="button" (click)="toggleSpeech()" [attr.aria-pressed]="speechEnabled()">
+              {{ speechEnabled() ? 'Sound: ON' : 'Sound: OFF' }}
+            </button>
+
+            <span class="main-chatbot__control-label">Language</span>
+            <label class="main-chatbot__label" for="main-rag-language">Language</label>
+            <select id="main-rag-language" class="main-chatbot__select" [(ngModel)]="preferredLanguage">
+              @for (language of languageOptions; track language) {
+                <option [value]="language">{{ language }}</option>
+              }
+            </select>
+          </div>
+
+          <section class="main-chatbot__box main-chatbot__box--question" aria-label="Question box">
+            <div class="main-chatbot__box-header">
+              <h3>Question</h3>
+              <button class="main-chatbot__clear-button" type="button" (click)="clearQuestionBox()">Clear</button>
+            </div>
+            <label class="main-chatbot__control-label" for="main-rag-source-dropdown">Source Document</label>
+            <select id="main-rag-source-dropdown" class="main-chatbot__select">
+              @if (ragSources().length === 0) {
+                <option>No Documents Found</option>
+              } @else {
+                @for (source of ragSources(); track source.title) {
+                  <option [value]="source.uri || source.title">{{ source.title || source.uri || 'Untitled Document' }}</option>
+                }
+              }
+            </select>
+            <textarea
+              id="main-rag-question"
+              class="main-chatbot__input"
+              rows="4"
+              [(ngModel)]="ragQuestion"
+              (keydown.enter)="submitQuestionFromKey($event)"
+              placeholder="Type your question. Press Enter to submit, Shift+Enter for a new line."
+            ></textarea>
+            <button
+              class="main-chatbot__submit-button"
+              type="button"
+              (click)="askRagFromHome()"
+              [disabled]="isAskingRag() || !ragQuestion.trim()"
+            >
+              @if (isAskingRag()) {
+                Querying Bedrock...
+                <span class="main-chatbot__busy-indicator">⏳</span>
+              } @else {
+                Submit Question
+              }
+            </button>
+          </section>
+
+          <section class="main-chatbot__box main-chatbot__box--answer" aria-label="Answer box">
+            <div class="main-chatbot__box-header">
+              <h3>Answer</h3>
+              <button class="main-chatbot__clear-button" type="button" (click)="clearAnswerBox()">Clear</button>
+            </div>
+            <div class="main-chatbot__answer-text">
+              @if (ragError()) {
+                {{ ragError() }}
+              } @else if (ragAnswer()) {
+                <span [innerHTML]="formatAnswerMarkdown(ragAnswer())"></span>
+              } @else if (isAskingRag()) {
+                Querying Bedrock...
+              } @else {
+                Waiting for your question...
+              }
+            </div>
+          </section>
+
+          <section class="main-chatbot__box main-chatbot__box--listen" aria-label="Listen widget">
+            <h3>Listen</h3>
+            <audio class="main-chatbot__audio" controls preload="none" [src]="ragAudioSrc()"></audio>
+            @if (ragAudioError()) {
+              <p class="main-chatbot__error">{{ ragAudioError() }}</p>
             }
-          }
-        </select>
-        <textarea
-          id="main-rag-question"
-          class="main-chatbot__input"
-          rows="4"
-          [(ngModel)]="ragQuestion"
-          (keydown.enter)="submitQuestionFromKey($event)"
-          placeholder="Type your question. Press Enter to submit, Shift+Enter for a new line."
-        ></textarea>
-        <button
-          class="main-chatbot__submit-button"
-          type="button"
-          (click)="askRagFromHome()"
-          [disabled]="isAskingRag() || !ragQuestion.trim()"
-        >
-          @if (isAskingRag()) {
-            Querying Bedrock...
-            <span class="main-chatbot__busy-indicator">⏳</span>
-          } @else {
-            Submit Question
-          }
-        </button>
-      </section>
-
-      <section class="main-chatbot__box main-chatbot__box--answer" aria-label="Answer box">
-        <div class="main-chatbot__box-header">
-          <h3>Answer</h3>
-          <button class="main-chatbot__clear-button" type="button" (click)="clearAnswerBox()">Clear</button>
+          </section>
         </div>
-        <div class="main-chatbot__answer-text">
-          @if (ragError()) {
-            {{ ragError() }}
-          } @else if (ragAnswer()) {
-            <span [innerHTML]="formatAnswerMarkdown(ragAnswer())"></span>
-          } @else if (isAskingRag()) {
-            Querying Bedrock...
-          } @else {
-            Waiting for your question...
-          }
-        </div>
-      </section>
-
-      <section class="main-chatbot__box main-chatbot__box--listen" aria-label="Listen widget">
-        <h3>Listen</h3>
-        <audio class="main-chatbot__audio" controls preload="none" [src]="ragAudioSrc()"></audio>
-        @if (ragAudioError()) {
-          <p class="main-chatbot__error">{{ ragAudioError() }}</p>
-        }
-      </section>
+      }
     </section>
   </div>
 

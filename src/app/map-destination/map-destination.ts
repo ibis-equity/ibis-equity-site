@@ -85,6 +85,7 @@ export class MapDestinationComponent implements OnDestroy {
   }
   protected readonly ragError = signal('');
   protected readonly isAskingRag = signal(false);
+  protected readonly chatbotOpen = signal(true);
   protected readonly speechEnabled = signal(true);
   protected readonly ragAudioSrc = signal('');
   protected readonly ragAudioError = signal('');
@@ -147,6 +148,10 @@ export class MapDestinationComponent implements OnDestroy {
     this.releaseGeneratedAudioUrl();
     this.ragAudioSrc.set('');
     this.ragAudioError.set('');
+  }
+
+  protected toggleChatbot(): void {
+    this.chatbotOpen.update((isOpen) => !isOpen);
   }
 
   protected toggleSpeech(): void {
