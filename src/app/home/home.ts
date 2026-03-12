@@ -2,7 +2,7 @@ import { Component, OnDestroy, inject, signal } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { BedrockRagConfig, BedrockRagResponse, BedrockRagService } from '../map-destination/bedrock-rag.service';
+import { BedrockRagConfig, BedrockRagResponse, BedrockRagService, BedrockRagSource } from '../map-destination/bedrock-rag.service';
 
 interface LanguagePreference {
   instruction: string;
@@ -80,7 +80,7 @@ export class HomeComponent implements OnDestroy {
     return html;
   }
   protected readonly ragError = signal('');
-  protected readonly ragSources = signal<Array<{ title?: string; uri?: string; excerpt?: string }>>([]);
+  protected readonly ragSources = signal<BedrockRagSource[]>([]);
   protected readonly isAskingRag = signal(false);
   protected readonly chatbotOpen = signal(true);
   protected readonly speechEnabled = signal(true);
@@ -88,6 +88,7 @@ export class HomeComponent implements OnDestroy {
   protected readonly ragAudioError = signal('');
   protected readonly languageOptions = Object.keys(LANGUAGE_PREFERENCES);
   protected preferredLanguage = 'English';
+  protected selectedSource = '';
 
   protected openAboutModal(event: Event): void {
     event.preventDefault();
@@ -119,6 +120,8 @@ export class HomeComponent implements OnDestroy {
     this.isAskingRag.set(true);
     this.submitButtonHovered = false;
     this.ragError.set('');
+    this.ragSources.set([]);
+    this.selectedSource = '';
 
     this.ragService
       .query({
@@ -134,12 +137,16 @@ export class HomeComponent implements OnDestroy {
       .subscribe({
         next: (response: BedrockRagResponse) => {
           this.ragAnswer.set(response.answer || 'No response returned from the Bedrock backend.');
-          this.ragSources.set(response.sources || []);
+          const matchedSources = this.getMatchedSources(response.answer, response.sources);
+          this.ragSources.set(matchedSources);
+          this.selectedSource = matchedSources[0]?.uri || matchedSources[0]?.title || '';
           this.applyPollyAudio(response);
           this.isAskingRag.set(false);
         },
         error: (error: unknown) => {
           this.ragError.set(this.formatRagErrorMessage(error));
+          this.ragSources.set([]);
+          this.selectedSource = '';
           this.isAskingRag.set(false);
         }
       });
@@ -166,6 +173,8 @@ export class HomeComponent implements OnDestroy {
 
   protected clearQuestionBox(): void {
     this.ragQuestion = '';
+    this.ragSources.set([]);
+    this.selectedSource = '';
   }
 
   protected clearAnswerBox(): void {
@@ -250,6 +259,56 @@ export class HomeComponent implements OnDestroy {
 
   private getLanguageConfig(): LanguagePreference {
     return LANGUAGE_PREFERENCES[this.preferredLanguage] || LANGUAGE_PREFERENCES['English'];
+  }
+
+  private getMatchedSources(answer: string | undefined, sources: BedrockRagSource[] | undefined): BedrockRagSource[] {
+    if (!answer || !sources?.length) {
+      return [];
+    }
+
+    const normalizedAnswer = this.normalizeSearchText(answer);
+    const successfulAnswer = normalizedAnswer && normalizedAnswer !== 'dont know';
+    if (!successfulAnswer) {
+      return [];
+    }
+
+    const rankedSources = sources
+      .map((source) => ({ source, score: this.scoreSourceMatch(normalizedAnswer, source) }))
+      .sort((left, right) => right.score - left.score);
+
+    const bestSource = rankedSources[0]?.source;
+    return bestSource ? [bestSource] : [];
+  }
+
+  private scoreSourceMatch(normalizedAnswer: string, source: BedrockRagSource): number {
+    const normalizedTitle = this.normalizeSearchText(source.title || '');
+    const normalizedUri = this.normalizeSearchText(source.uri || '');
+    const normalizedExcerpt = this.normalizeSearchText(source.excerpt || '');
+
+    let score = 0;
+
+    if (normalizedExcerpt) {
+      const excerptWords = normalizedExcerpt.split(' ').filter((word) => word.length > 3);
+      score += excerptWords.reduce((total, word) => total + (normalizedAnswer.includes(word) ? 1 : 0), 0);
+    }
+
+    if (normalizedTitle && normalizedAnswer.includes(normalizedTitle)) {
+      score += 10;
+    }
+
+    if (normalizedUri && normalizedAnswer.includes(normalizedUri)) {
+      score += 10;
+    }
+
+    return score;
+  }
+
+  private normalizeSearchText(value: string): string {
+    return value
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   private formatRagErrorMessage(error: unknown): string {

@@ -60,10 +60,9 @@
               <button class="main-chatbot__clear-button" type="button" (click)="clearQuestionBox()">Clear</button>
             </div>
             <label class="main-chatbot__control-label" for="main-rag-source-dropdown">Source Document</label>
-            <select id="main-rag-source-dropdown" class="main-chatbot__select">
-              @if (ragSources().length === 0) {
-                <option>No Documents Found</option>
-              } @else {
+            <select id="main-rag-source-dropdown" class="main-chatbot__select" [(ngModel)]="selectedSource">
+              <option value="">Select a document</option>
+              @if (ragSources().length > 0) {
                 @for (source of ragSources(); track source.title) {
                   <option [value]="source.uri || source.title">{{ source.title || source.uri || 'Untitled Document' }}</option>
                 }
