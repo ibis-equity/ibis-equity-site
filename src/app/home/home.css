@@ -46,6 +46,12 @@
 	position: relative;
 }
 
+.hero__content--top {
+	text-align: center;
+	justify-self: center;
+	width: 100%;
+}
+
 .page-top-row {
 	--top-row-height: clamp(230px, 25vw, 300px);
 	--assistant-height: clamp(360px, 38vw, 500px);

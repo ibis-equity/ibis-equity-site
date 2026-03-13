@@ -101,31 +101,180 @@
       }
     </section>
 
-    <p class="eyebrow">Image map destination</p>
-    <div [class]="'sector-icon sector-icon--' + iconTone" aria-hidden="true">{{ icon }}</div>
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
-
-    @if (capabilities.length) {
-      <div class="section-block">
-        <h2>Core Capabilities</h2>
-        <ul>
-          @for (capability of capabilities; track capability) {
-            <li>{{ capability }}</li>
+    @if (featureContent) {
+      <section class="feature-story" aria-label="Destination details">
+        <header class="feature-story__header">
+          @if (headerImageSrc) {
+            <div class="destination-hero destination-hero--feature">
+              <img
+                class="destination-hero__image"
+                [src]="headerImageSrc"
+                [alt]="headerImageAlt"
+                width="320"
+                height="220"
+              >
+              <div class="destination-hero__copy">
+                <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
+                <h1 class="feature-story__title">{{ featureContent.title }}</h1>
+                @if (featureContent.subtitle) {
+                  <p class="feature-story__subtitle">{{ featureContent.subtitle }}</p>
+                }
+              </div>
+            </div>
+          } @else {
+            <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
+            <h1 class="feature-story__title">{{ featureContent.title }}</h1>
+            @if (featureContent.subtitle) {
+              <p class="feature-story__subtitle">{{ featureContent.subtitle }}</p>
+            }
           }
-        </ul>
-      </div>
+        </header>
+
+        @if (featureContent.intro?.length) {
+          <div class="feature-story__intro">
+            @for (paragraph of featureContent.intro; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </div>
+        }
+
+        <div class="feature-story__sections">
+          @for (section of featureContent.sections; track section.title) {
+            <article class="feature-story__panel" [class.feature-story__panel--with-image]="!!section.imageSrc">
+              <h2>{{ section.title }}</h2>
+
+              @if (section.subtitle) {
+                <p class="feature-story__section-subtitle">{{ section.subtitle }}</p>
+              }
+
+              @if (section.imageSrc) {
+                <img
+                  class="feature-story__section-image"
+                  [src]="section.imageSrc"
+                  [alt]="section.imageAlt || section.title"
+                  [style.width.%]="section.imageWidthPercent || 100"
+                  width="900"
+                  height="420"
+                >
+              }
+
+              @if (section.paragraphs?.length) {
+                <div class="feature-story__copy">
+                  @for (paragraph of section.paragraphs; track paragraph) {
+                    <p>{{ paragraph }}</p>
+                  }
+                </div>
+              }
+
+              @if (section.bullets?.length) {
+                <ul class="feature-story__list">
+                  @for (bullet of section.bullets; track bullet) {
+                    <li>{{ bullet }}</li>
+                  }
+                </ul>
+              }
+
+              @if (section.steps?.length) {
+                <ol class="feature-story__steps">
+                  @for (step of section.steps; track step.title) {
+                    <li>
+                      <strong>{{ step.title }}</strong>
+                      <p>{{ step.description }}</p>
+                    </li>
+                  }
+                </ol>
+              }
+
+              @if (section.cards?.length) {
+                <section class="feature-story__libraries" aria-label="Core libraries">
+                  <h3 class="feature-story__libraries-title">{{ section.cardGridTitle || 'Core Libraries We Deploy' }}</h3>
+                  @if (section.cardGridSubtitle) {
+                    <p class="feature-story__libraries-subtitle">{{ section.cardGridSubtitle }}</p>
+                  }
+
+                  <div class="feature-story__libraries-grid">
+                    @for (card of section.cards; track card.name) {
+                      <article class="feature-story__library-card">
+                        <h4 class="feature-story__library-name">{{ card.name }}</h4>
+                        <p class="feature-story__library-role">{{ card.role }}</p>
+                        <ul class="feature-story__library-highlights">
+                          @for (highlight of card.highlights; track highlight) {
+                            <li>{{ highlight }}</li>
+                          }
+                        </ul>
+                      </article>
+                    }
+                  </div>
+                </section>
+              }
+            </article>
+          }
+        </div>
+
+        @if (featureContent.closingTitle || featureContent.closingParagraphs?.length || featureContent.closingHighlight) {
+          <section class="feature-story__closing">
+            @if (featureContent.closingTitle) {
+              <h2>{{ featureContent.closingTitle }}</h2>
+            }
+            @if (featureContent.closingParagraphs?.length) {
+              <div class="feature-story__copy">
+                @for (paragraph of featureContent.closingParagraphs; track paragraph) {
+                  <p>{{ paragraph }}</p>
+                }
+              </div>
+            }
+            @if (featureContent.closingHighlight) {
+              <p class="feature-story__highlight">{{ featureContent.closingHighlight }}</p>
+            }
+          </section>
+        }
+      </section>
     }
 
-    @if (useCases.length) {
-      <div class="section-block">
-        <h2>Priority Use Cases</h2>
-        <ul>
-          @for (useCase of useCases; track useCase) {
-            <li>{{ useCase }}</li>
-          }
-        </ul>
-      </div>
+    @if (!featureContent) {
+      @if (headerImageSrc) {
+        <section class="destination-hero">
+          <img
+            class="destination-hero__image"
+            [src]="headerImageSrc"
+            [alt]="headerImageAlt"
+            width="320"
+            height="220"
+          >
+          <div class="destination-hero__copy">
+            <p class="eyebrow">Image map destination</p>
+            <h1>{{ title }}</h1>
+            <p>{{ description }}</p>
+          </div>
+        </section>
+      } @else {
+        <p class="eyebrow">Image map destination</p>
+        <div [class]="'sector-icon sector-icon--' + iconTone" aria-hidden="true">{{ icon }}</div>
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+      }
+
+      @if (capabilities.length) {
+        <div class="section-block">
+          <h2>Core Capabilities</h2>
+          <ul>
+            @for (capability of capabilities; track capability) {
+              <li>{{ capability }}</li>
+            }
+          </ul>
+        </div>
+      }
+
+      @if (useCases.length) {
+        <div class="section-block">
+          <h2>Priority Use Cases</h2>
+          <ul>
+            @for (useCase of useCases; track useCase) {
+              <li>{{ useCase }}</li>
+            }
+          </ul>
+        </div>
+      }
     }
 
     <a routerLink="/home" class="back-link">Back to home</a>

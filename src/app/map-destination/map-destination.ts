@@ -11,6 +11,41 @@ interface LanguagePreference {
   languageCode: string;
 }
 
+interface DestinationFeatureStep {
+  title: string;
+  description: string;
+}
+
+interface DestinationFeatureCard {
+  name: string;
+  role: string;
+  highlights: string[];
+}
+
+interface DestinationFeatureSection {
+  title: string;
+  subtitle?: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  steps?: DestinationFeatureStep[];
+  imageSrc?: string;
+  imageAlt?: string;
+  imageWidthPercent?: number;
+  cardGridTitle?: string;
+  cardGridSubtitle?: string;
+  cards?: DestinationFeatureCard[];
+}
+
+interface DestinationFeatureContent {
+  title: string;
+  subtitle?: string;
+  intro?: string[];
+  sections: DestinationFeatureSection[];
+  closingTitle?: string;
+  closingParagraphs?: string[];
+  closingHighlight?: string;
+}
+
 const BEDROCK_CLAUDE_PROMPT = `Human: This is a friendly conversation between a human and an AI.
 The AI is talkative and provides specific details from its context but limits it to 240 tokens.
 If the AI does not know the answer to a question, it truthfully says it does not know.
@@ -52,8 +87,13 @@ export class MapDestinationComponent implements OnDestroy {
   protected readonly title = (this.route.snapshot.data['title'] as string) || 'Ibis Equity';
   protected readonly description = (this.route.snapshot.data['description'] as string) ||
     'This page provides additional details for the selected image map area.';
+  protected readonly headerImageSrc = (this.route.snapshot.data['headerImageSrc'] as string | undefined) || '';
+  protected readonly headerImageAlt =
+    (this.route.snapshot.data['headerImageAlt'] as string | undefined) ||
+    `${this.title} service image`;
   protected readonly capabilities = (this.route.snapshot.data['capabilities'] as string[]) || [];
   protected readonly useCases = (this.route.snapshot.data['useCases'] as string[]) || [];
+  protected readonly featureContent = (this.route.snapshot.data['featureContent'] as DestinationFeatureContent | undefined) || null;
   protected readonly ragConfig: BedrockRagConfig = {
     knowledgeBaseId: (this.route.snapshot.data['knowledgeBaseId'] as string) || 'kb-data-sciences',
     modelId: 'amazon.nova-micro-v1:0',
@@ -85,7 +125,7 @@ export class MapDestinationComponent implements OnDestroy {
   }
   protected readonly ragError = signal('');
   protected readonly isAskingRag = signal(false);
-  protected readonly chatbotOpen = signal(true);
+  protected readonly chatbotOpen = signal(false);
   protected readonly speechEnabled = signal(true);
   protected readonly ragAudioSrc = signal('');
   protected readonly ragAudioError = signal('');

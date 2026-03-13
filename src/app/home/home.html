@@ -126,9 +126,9 @@
       <nav class="main-menu" aria-label="Primary">
         <a class="main-menu__item" href="#">Home</a>
         <a class="main-menu__item" href="#" (click)="openAboutModal($event)">About</a>
-        <a class="main-menu__item" href="#">Services</a>
+        <a class="main-menu__item" [routerLink]="'/home/machine-learning'">Machine Learning</a>
         <a class="main-menu__item" [routerLink]="'/home/data-sciences'">Data Sciences</a>
-        <a class="main-menu__item" href="#">Sector Expertise</a>
+        <a class="main-menu__item" [routerLink]="'/home/generative-ai'">Generative AI</a>
         <a class="main-menu__item" href="#" (click)="openResponsibleModal($event)">Responsible AI</a>
         <a class="main-menu__item" href="#">Insights</a>
         <a class="main-menu__item" href="#">Contact</a>
