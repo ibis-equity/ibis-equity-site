@@ -16,6 +16,11 @@ interface DestinationFeatureStep {
   description: string;
 }
 
+interface BulletItem {
+  title: string;
+  description?: string;
+}
+
 interface DestinationFeatureCard {
   name: string;
   role: string;
@@ -34,7 +39,7 @@ interface DestinationFeatureSection {
   title: string;
   subtitle?: string;
   paragraphs?: string[];
-  bullets?: string[];
+  bullets?: (string | BulletItem)[];
   steps?: DestinationFeatureStep[];
   imageSrc?: string;
   imageAlt?: string;

@@ -170,8 +170,17 @@
 
               @if (section.bullets?.length) {
                 <ul class="feature-story__list">
-                  @for (bullet of section.bullets; track bullet) {
-                    <li>{{ bullet }}</li>
+                  @for (bullet of section.bullets; track typeof bullet === 'string' ? bullet : bullet.title) {
+                    @if (typeof bullet === 'string') {
+                      <li>{{ bullet }}</li>
+                    } @else {
+                      <li>
+                        <strong>{{ bullet.title }}</strong>
+                        @if (bullet.description) {
+                          <p>{{ bullet.description }}</p>
+                        }
+                      </li>
+                    }
                   }
                 </ul>
               }

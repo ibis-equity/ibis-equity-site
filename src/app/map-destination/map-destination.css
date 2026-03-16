@@ -463,6 +463,17 @@
   line-height: 1.55;
 }
 
+.feature-story__list li strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--ink);
+}
+
+.feature-story__list li p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .feature-story__steps li {
   padding-left: 0.15rem;
 }

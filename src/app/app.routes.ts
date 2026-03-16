@@ -1042,6 +1042,195 @@ export const routes: Routes = [
       iconTone: 'ink',
       title: 'Law & Legal Services',
       description: 'Legal and advisory solutions to support case workflows, contract analysis, and compliance operations.',
+      featureContent: {
+        title: 'ML + RAG + Data Science in Law & Legal Services',
+        intro: [
+          'Law is built on text, precedent, and interpretation. Every matter, contract, filing, and advisory opinion sits on top of a dense web of statutes, regulations, case law, internal memos, and client specific constraints. Traditional data science and machine learning have begun to reshape e discovery, matter prediction, and contract analytics—but, on their own, they don\'t fully match how lawyers actually reason.',
+          'Machine Learning (ML) in legal services excels at pattern recognition and prediction. It can estimate litigation outcomes, classify documents, flag anomalous clauses, and forecast matter cost or duration based on historical data. These models provide foresight—who is likely to win, which documents are likely responsive, which clauses are likely risky—but they still require a human lawyer to interpret the signal, connect it to doctrine, and translate it into strategy.',
+          'Legal work, however, is not just about prediction; it is about argument, justification, and traceable reasoning.',
+          'This is where Retrieval Augmented Generation (RAG) becomes pivotal. RAG systems ground large language models in the actual legal corpus: statutes, regulations, case law, treatises, internal templates, negotiation playbooks, and client specific policies. Instead of generating free floating answers, a RAG system retrieves the most relevant authorities and documents, constrains the model to those sources, and produces citation anchored summaries, arguments, and drafting suggestions.'
+        ],
+        sections: [
+          {
+            title: 'The ML + RAG + Data Science Ecosystem',
+            paragraphs: [
+              'In this ecosystem:',
+              '• ML provides the signal—document classifications, risk scores, outcome predictions, clustering of similar matters.',
+              '• RAG provides the reasoning—structured summaries of precedent, side by side clause comparisons, argument scaffolds, and drafting suggestions grounded in retrieved authorities.',
+              '• Data Science provides the foundation—data pipelines, corpus curation, feature engineering, evaluation frameworks, and governance.',
+              'Together, they form a legal intelligence layer that can:',
+              '• Prioritize documents in e discovery while surfacing the key passages that matter.',
+              '• Suggest contract edits that align with firm standards and client risk appetite, with citations to prior deals.',
+              '• Summarize regulatory changes and map them to impacted clients, matters, and obligations.',
+              '• Support knowledge management by turning past work product into a searchable, reusable asset base.'
+            ]
+          },
+          {
+            title: 'Governance and Accountability',
+            paragraphs: [
+              'Crucially, this stack is governed and constrained. Every model is validated; every retrieved authority is version controlled; every generated suggestion is traceable back to sources. The system augments legal judgment rather than replacing it, preserving professional responsibility, confidentiality, and ethical boundaries.'
+            ]
+          },
+          {
+            title: 'The Strategic Opportunity',
+            paragraphs: [
+              'In a landscape defined by precedent, nuance, and risk, ML + RAG + Data Science offer a new paradigm: a legal services environment where firms and in house teams can see patterns in their history, ground every recommendation in authority, and move from reactive research to proactive, data driven strategy—without sacrificing rigor or accountability.'
+            ]
+          },
+          {
+            title: 'Law & Legal Services — ML vs RAG vs Data Science Comparison Grid',
+            cardLayout: 'ml-rag-ds-comparison',
+            comparisonRows: [
+              {
+                dimension: 'Core Function',
+                ml: 'Predicts outcomes, risks, and patterns from historical legal and matter data.',
+                rag: 'Generates grounded, contextual text using retrieved legal authorities and documents.',
+                dataScience: 'Transforms raw legal, operational, and client data into structured insight.'
+              },
+              {
+                dimension: 'Primary Strength',
+                ml: 'Forecasting (case outcomes, settlement ranges, matter cost/duration, clause risk).',
+                rag: 'Authority anchored reasoning across statutes, cases, contracts, policies, and prior work product.',
+                dataScience: 'Framing questions, integrating data sources, and evaluating models and workflows.'
+              },
+              {
+                dimension: 'Data Focus',
+                ml: 'Structured and semi structured: matter metadata, billing, outcomes, clause labels, document tags.',
+                rag: 'Unstructured: contracts, pleadings, briefs, memos, statutes, regulations, case law, policies.',
+                dataScience: 'All types: structured, semi structured, unstructured, external legal and regulatory feeds.'
+              },
+              {
+                dimension: 'How It Works',
+                ml: 'Trains models on labeled historical matters and documents; outputs scores, classes, clusters.',
+                rag: 'Retrieves relevant authorities and documents, then constrains generation to those sources.',
+                dataScience: 'Builds pipelines, features, corpora, and evaluation frameworks that underpin ML and RAG.'
+              },
+              {
+                dimension: 'Typical Outputs',
+                ml: 'Outcome predictions, risk scores, document classifications, clause similarity clusters.',
+                rag: 'Summaries, drafting suggestions, argument outlines, comparison tables with citations.',
+                dataScience: 'Dashboards, cohort analyses, KPIs, model performance reports, decision frameworks.'
+              },
+              {
+                dimension: 'Ideal Use Cases',
+                ml: 'Litigation outcome prediction, e discovery prioritization, clause risk scoring, matter pricing.',
+                rag: 'Research memos, contract redlines, playbook aligned drafting, regulatory change summaries.',
+                dataScience: 'Practice analytics, rate and pricing analysis, portfolio risk, corpus curation, governance.'
+              },
+              {
+                dimension: 'Time Horizon',
+                ml: 'Future oriented (predictive and prescriptive for matters and portfolios).',
+                rag: 'Present oriented (contextual and interpretive for current questions and documents).',
+                dataScience: 'Past and present oriented (descriptive, diagnostic, and design for future models and tools).'
+              },
+              {
+                dimension: 'Governance Focus',
+                ml: 'Model validation, bias and fairness, drift, retraining, explainability for legal stakeholders.',
+                rag: 'Corpus quality, authority coverage, retrieval performance, hallucination monitoring, access control.',
+                dataScience: 'Metric design, study design, risk registers, compliance with ethical and regulatory standards.'
+              },
+              {
+                dimension: 'Strategic Role',
+                ml: 'Predictive backbone for litigation strategy, pricing, and portfolio risk management.',
+                rag: 'Knowledge anchored reasoning layer for research, drafting, and advisory work.',
+                dataScience: 'Analytical foundation that makes ML and RAG reliable, auditable, and aligned with firm strategy.'
+              }
+            ]
+          },
+          {
+            title: '🔍 Machine Learning (ML) — Predictive & Pattern Recognition Use Cases',
+            bullets: [
+              {
+                title: 'Litigation Outcome Prediction',
+                description: 'Predicts likelihood of winning/losing based on judge history, venue, opposing counsel, claim type, and prior rulings. Helps firms shape strategy, settlement posture, and resource allocation.'
+              },
+              {
+                title: 'E Discovery Document Prioritization',
+                description: 'Classifies documents as responsive, privileged, or high risk. Reduces review time by surfacing the most relevant materials first.'
+              },
+              {
+                title: 'Clause Risk Scoring in Contracts',
+                description: 'Flags indemnity, limitation of liability, termination, and confidentiality clauses that deviate from firm or client norms. Predicts negotiation friction points.'
+              },
+              {
+                title: 'Matter Cost & Duration Forecasting',
+                description: 'Predicts total hours, staffing needs, and likely timeline based on historical matters. Supports pricing, AFAs, and resource planning.'
+              },
+              {
+                title: 'Fraud & Anomaly Detection',
+                description: 'Identifies unusual billing patterns, suspicious transactions, or irregular filings. Useful for compliance, investigations, and internal audits.'
+              }
+            ]
+          },
+          {
+            title: '📚 Retrieval Augmented Generation (RAG) — Grounded Legal Reasoning Use Cases',
+            bullets: [
+              {
+                title: 'Rapid Research Memos with Citations',
+                description: 'Retrieves statutes, regulations, and case law. Generates a structured memo with citations to retrieved authorities.'
+              },
+              {
+                title: 'Contract Redlining with Precedent Alignment',
+                description: 'Retrieves prior deal language, negotiation playbooks, and client policies. Suggests edits grounded in actual firm or client history.'
+              },
+              {
+                title: 'Regulatory Change Summaries',
+                description: 'Pulls new rules, agency guidance, and enforcement actions. Generates summaries and maps them to impacted clients or obligations.'
+              },
+              {
+                title: 'Brief & Argument Drafting Support',
+                description: 'Retrieves relevant cases and prior filings. Produces argument scaffolds with citations to retrieved authorities.'
+              },
+              {
+                title: 'Knowledge Management & Precedent Retrieval',
+                description: 'Surfaces similar matters, filings, or templates from the firm\'s internal corpus. Helps attorneys avoid reinventing the wheel.'
+              }
+            ]
+          },
+          {
+            title: '📊 Data Science — Analytical, Operational, and Governance Use Cases',
+            bullets: [
+              {
+                title: 'Practice Area Performance Analytics',
+                description: 'Identifies trends in win rates, settlement ranges, cycle times, and staffing efficiency. Helps leadership optimize practice strategy.'
+              },
+              {
+                title: 'Client Portfolio Risk Analysis',
+                description: 'Aggregates litigation exposure, contract risk, regulatory obligations, and historical outcomes. Supports client advisory and proactive risk mitigation.'
+              },
+              {
+                title: 'Rate, Pricing, and Profitability Modeling',
+                description: 'Analyzes historical billing, realization, and margin patterns. Supports AFAs, blended rates, and staffing models.'
+              },
+              {
+                title: 'Corpus Engineering for RAG',
+                description: 'Cleans, chunks, tags, and versions statutes, case law, templates, and internal memos. Ensures retrieval quality and reduces hallucination risk.'
+              },
+              {
+                title: 'Compliance & Ethical Risk Monitoring',
+                description: 'Tracks conflicts, confidentiality breaches, and deviations from firm policy. Supports internal audits and regulatory reporting.'
+              }
+            ]
+          },
+          {
+            title: 'Unified Examples — How ML, RAG, and Data Science Work Together',
+            bullets: [
+              {
+                title: 'Contract Lifecycle Intelligence',
+                description: 'ML: Scores clause risk and predicts negotiation bottlenecks. RAG: Suggests redlines grounded in prior deals and client playbooks. Data Science: Analyzes negotiation timelines and outcomes to refine playbooks.'
+              },
+              {
+                title: 'Litigation Strategy Optimization',
+                description: 'ML: Predicts outcome likelihood and judge tendencies. RAG: Generates argument outlines with citations to relevant cases. Data Science: Analyzes historical matter performance to guide staffing and pricing.'
+              },
+              {
+                title: 'Regulatory Change Management',
+                description: 'ML: Classifies new rules by risk level and affected domains. RAG: Summarizes changes and maps them to client obligations with citations. Data Science: Builds dashboards showing exposure across industries and clients.'
+              }
+            ]
+          }
+        ]
+      },
       rag: {
         knowledgeBaseId: 'kb-law-legal',
         modelId: 'anthropic.claude-3-5-sonnet',
