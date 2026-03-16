@@ -1228,6 +1228,164 @@ export const routes: Routes = [
                 description: 'ML: Classifies new rules by risk level and affected domains. RAG: Summarizes changes and maps them to client obligations with citations. Data Science: Builds dashboards showing exposure across industries and clients.'
               }
             ]
+          },
+          {
+            title: 'LAW & LEGAL SERVICES — ML / RAG / Data Science Reference Manual',
+            paragraphs: [
+              'Core Edition — Retrieval Optimized, Consulting Grade'
+            ]
+          },
+          {
+            title: '1. Purpose & Scope',
+            paragraphs: [
+              'This manual defines how Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Science operate within the Law & Legal Services sector.'
+            ],
+            bullets: [
+              { title: 'Conceptual foundations' },
+              { title: 'Architecture patterns' },
+              { title: 'Domain specific use cases' },
+              { title: 'Governance and risk frameworks' },
+              { title: 'Implementation guidance' },
+              { title: 'Evaluation metrics' },
+              { title: 'Prompting and corpus design' }
+            ]
+          },
+          {
+            title: '2. Core Concepts — Machine Learning (ML)',
+            paragraphs: [
+              'ML identifies patterns in historical legal data and predicts future outcomes.',
+              'Key characteristics: works best with structured/semi structured data; produces scores, classifications, clusters; requires labeled training data; supports forecasting and prioritization.'
+            ],
+            bullets: [
+              { title: 'Litigation outcome prediction' },
+              { title: 'Clause risk scoring' },
+              { title: 'E discovery classification' },
+              { title: 'Matter cost/duration forecasting' }
+            ]
+          },
+          {
+            title: '2. Core Concepts — Retrieval Augmented Generation (RAG)',
+            paragraphs: [
+              'RAG grounds LLM outputs in retrieved legal authorities and documents.',
+              'Key characteristics: works best with unstructured text; produces summaries, arguments, redlines, memos; requires curated corpora and high quality retrieval; ensures traceability and reduces hallucination.'
+            ],
+            bullets: [
+              { title: 'Research memos with citations' },
+              { title: 'Contract redlining aligned to precedent' },
+              { title: 'Regulatory change summaries' },
+              { title: 'Argument scaffolds' }
+            ]
+          },
+          {
+            title: '2. Core Concepts — Data Science',
+            paragraphs: [
+              'Data Science provides the analytical and engineering foundation for ML and RAG.',
+              'Key characteristics: integrates structured and unstructured data; builds pipelines, features, corpora, and metrics; supports governance, evaluation, and operationalization.'
+            ],
+            bullets: [
+              { title: 'Practice analytics' },
+              { title: 'Rate and pricing modeling' },
+              { title: 'Corpus engineering' },
+              { title: 'Risk dashboards' }
+            ]
+          },
+          {
+            title: '3. Unified Architecture — Layered Model',
+            bullets: [
+              { title: 'Experience Layer', description: 'Attorneys, legal ops, compliance, KM teams, and clients via portals.' },
+              { title: 'Application Layer', description: 'Research assistant, contract assistant, litigation strategy assistant, regulatory intelligence assistant, pricing and profitability assistant.' },
+              { title: 'Intelligence Layer (ML + RAG)', description: 'ML models for classification, prediction, clustering. RAG pipelines for retrieval, grounding, generation. Hybrid search combining semantic, keyword, and filters.' },
+              { title: 'Knowledge & Data Layer', description: 'Statutes, regulations, case law, contracts, templates, playbooks, briefs, memos, filings, matter metadata, billing, outcomes, regulatory feeds, and client policies.' },
+              { title: 'Governance Layer', description: 'Model validation, corpus versioning, access control, audit trails, and bias and fairness checks.' }
+            ]
+          },
+          {
+            title: '4. Domain Use Cases — Litigation',
+            bullets: [
+              { title: 'ML: Outcome Prediction', description: 'Outcome prediction, judge/court behavior modeling, settlement range forecasting, and matter duration prediction.' },
+              { title: 'RAG: Legal Reasoning', description: 'Argument scaffolds with citations, case law retrieval and summarization, brief drafting support, and prior filings comparison.' },
+              { title: 'Data Science: Analytics', description: 'Win/loss analytics, opposing counsel patterns, and cost-to-outcome modeling.' }
+            ]
+          },
+          {
+            title: '4. Domain Use Cases — Contracts & Transactions',
+            bullets: [
+              { title: 'ML: Risk & Similarity', description: 'Clause risk scoring, similarity clustering, and negotiation friction prediction.' },
+              { title: 'RAG: Drafting & Redlining', description: 'Redline suggestions grounded in precedent, playbook aligned drafting, side by side clause comparison, and deal summary generation.' },
+              { title: 'Data Science: Optimization', description: 'Clause frequency analysis, negotiation cycle time analytics, and playbook optimization.' }
+            ]
+          },
+          {
+            title: '4. Domain Use Cases — Regulatory & Compliance',
+            bullets: [
+              { title: 'ML: Classification & Alerts', description: 'Classification of new rules by risk domain, predictive compliance alerts, and anomaly detection in filings.' },
+              { title: 'RAG: Summaries & Mapping', description: 'Regulatory change summaries, obligation mapping, and policy interpretation with citations.' },
+              { title: 'Data Science: Dashboards', description: 'Exposure dashboards, compliance trend analysis, and regulatory corpus management.' }
+            ]
+          },
+          {
+            title: '4. Domain Use Cases — E Discovery & Investigations',
+            bullets: [
+              { title: 'ML: Classification & Detection', description: 'Responsive/non-responsive classification, privilege prediction, topic clustering, and fraud/anomaly detection.' },
+              { title: 'RAG: Summaries & Extraction', description: 'Document summaries, key passage extraction, and deposition prep briefs.' },
+              { title: 'Data Science: Analytics', description: 'Review efficiency analytics, reviewer performance metrics, and corpus deduplication.' }
+            ]
+          },
+          {
+            title: '4. Domain Use Cases — Legal Operations & Pricing',
+            bullets: [
+              { title: 'ML: Prediction & Optimization', description: 'Matter cost prediction, staffing optimization, and realization/collection risk.' },
+              { title: 'RAG: Documentation', description: 'Engagement letter drafting, AFA scenario explanation, and policy aligned documentation.' },
+              { title: 'Data Science: Modeling', description: 'Profitability modeling, rate benchmarking, and portfolio risk analysis.' }
+            ]
+          },
+          {
+            title: '5. Corpus Engineering for Legal RAG',
+            bullets: [
+              { title: 'Corpus Types', description: 'Statutes, regulations, case law, contracts, templates, internal memos, briefs, client policies, regulatory feeds, playbooks, and matter summaries.' },
+              { title: 'Chunking Strategy', description: 'Chunk by section, clause, or holding. Preserve citations and context. Include metadata: jurisdiction, date, topic, client, and sensitivity.' },
+              { title: 'Retrieval Strategy', description: 'Hybrid search (keyword and semantic), filters by jurisdiction and practice area, and role based access control.' }
+            ]
+          },
+          {
+            title: '6. ML Engineering for Legal',
+            bullets: [
+              { title: 'Data Types', description: 'Matter metadata, billing/time entries, clause labels, document tags, and outcome data.' },
+              { title: 'Model Types', description: 'Classification (privilege, responsiveness), regression (cost, duration), clustering (similar matters, clauses), and ranking (document prioritization).' },
+              { title: 'Evaluation Metrics', description: 'Precision/recall, F1 for classification, MAE/RMSE for cost/duration, and fairness across practice areas.' }
+            ]
+          },
+          {
+            title: '7. Governance, Risk & Ethics',
+            bullets: [
+              { title: 'RAG Governance', description: 'Authority versioning, retrieval quality monitoring, hallucination audits, and sensitive content controls.' },
+              { title: 'ML Governance', description: 'Drift detection, bias audits, explainability requirements, and model approval workflows.' },
+              { title: 'Ethical Considerations', description: 'Confidentiality, privilege, unauthorized practice of law, and transparency to clients.' }
+            ]
+          },
+          {
+            title: '8. Implementation Roadmap',
+            bullets: [
+              { title: 'Phase 1: Foundation', description: 'Data inventory, corpus ingestion, metadata standards, initial ML models (classification), and RAG MVP (research assistant).' },
+              { title: 'Phase 2: Expansion', description: 'Contract intelligence, litigation strategy assistant, regulatory monitoring, and pricing analytics.' },
+              { title: 'Phase 3: Enterprise Scale', description: 'Cross practice knowledge graph, client facing intelligence portals, full ML and RAG orchestration, and continuous governance loops.' }
+            ]
+          },
+          {
+            title: '9. Evaluation & KPIs',
+            bullets: [
+              { title: 'ML KPIs', description: 'Prediction accuracy, reduction in review hours, and improved pricing accuracy.' },
+              { title: 'RAG KPIs', description: 'Citation accuracy, retrieval precision, and drafting time reduction.' },
+              { title: 'Data Science KPIs', description: 'Data quality scores, corpus coverage, and practice performance insights.' }
+            ]
+          },
+          {
+            title: '10. Appendices',
+            bullets: [
+              { title: 'A. Prompt Templates', description: 'Research memo, contract redline, regulatory summary, and argument scaffold.' },
+              { title: 'B. Metadata Schema', description: 'Jurisdiction, practice area, document type, and sensitivity flags.' },
+              { title: 'C. Risk Register', description: 'Hallucination, outdated authority, model drift, and confidentiality breaches.' }
+            ]
           }
         ]
       },
