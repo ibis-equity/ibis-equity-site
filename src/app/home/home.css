@@ -458,6 +458,138 @@
 	color: var(--muted);
 }
 
+.main-chatbot__header-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	position: relative;
+	flex: 0 0 auto;
+}
+
+.main-chatbot__assistant-info {
+	position: relative;
+	display: inline-flex;
+}
+
+.main-chatbot__assistant-info-button {
+	width: 1.55rem;
+	height: 1.55rem;
+	border-radius: 999px;
+	border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+	background: #fff;
+	color: var(--accent);
+	font-size: 0.86rem;
+	font-weight: 800;
+	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: help;
+	padding: 0;
+}
+
+.main-chatbot__assistant-info-button:focus-visible {
+	outline: 3px solid color-mix(in srgb, var(--accent) 38%, transparent);
+	outline-offset: 1px;
+}
+
+.main-chatbot__info-popover {
+	position: absolute;
+	top: calc(100% + 0.4rem);
+	right: 0;
+	width: min(46rem, 92vw);
+	max-height: min(70vh, 38rem);
+	overflow: auto;
+	padding: 0.75rem 0.82rem;
+	border-radius: 12px;
+	border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+	background: rgba(255, 255, 255, 0.99);
+	box-shadow: 0 14px 30px rgba(14, 32, 58, 0.24);
+	color: var(--ink);
+	font-size: 0.73rem;
+	line-height: 1.45;
+	z-index: 20;
+	display: none;
+}
+
+.main-chatbot__assistant-info:hover .main-chatbot__info-popover,
+.main-chatbot__assistant-info:focus-within .main-chatbot__info-popover {
+	display: block;
+}
+
+.main-chatbot__info-popover-text {
+	white-space: pre-line;
+}
+
+.platform-narrative {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	padding: 0.1rem;
+}
+
+.narrative-container {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.narrative-header h1 {
+	font-size: 1.1rem;
+	margin: 0 0 0.35rem;
+	line-height: 1.25;
+}
+
+.narrative-subtitle {
+	font-size: 0.88rem;
+	color: #4b5563;
+	margin: 0 0 0.95rem;
+	line-height: 1.35;
+}
+
+.narrative-body p {
+	line-height: 1.55;
+	margin: 0 0 0.7rem;
+	color: #111827;
+}
+
+.narrative-section {
+	margin-top: 1.05rem;
+}
+
+.narrative-section h3 {
+	font-size: 0.96rem;
+	margin: 0 0 0.38rem;
+	line-height: 1.35;
+}
+
+.narrative-section h4 {
+	font-size: 0.86rem;
+	margin: 0.72rem 0 0.3rem;
+	line-height: 1.35;
+}
+
+.narrative-section ul {
+	padding-left: 1.1rem;
+	margin: 0 0 0.65rem;
+}
+
+.narrative-section li {
+	margin-bottom: 0.2rem;
+	line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+	.platform-narrative {
+		padding: 0;
+	}
+
+	.narrative-header h1 {
+		font-size: 1rem;
+	}
+
+	.narrative-subtitle {
+		font-size: 0.82rem;
+	}
+}
+
 .main-chatbot__collapse-toggle {
 	border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 	background: #fff;
