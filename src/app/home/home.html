@@ -3,7 +3,7 @@
     <header class="brand-header" aria-label="Ibis Equity brand">
       <img
         class="brand-header__logo"
-        src="/images/header-logo.jpg"
+        src="/images/header_logo.jpg"
         alt="Ibis Equity logo"
         width="240"
         height="120"
@@ -127,12 +127,75 @@
         <a class="main-menu__item" href="#">Home</a>
         <a class="main-menu__item" href="#" (click)="openAboutModal($event)">About</a>
         <a class="main-menu__item" [routerLink]="'/home/machine-learning'">Machine Learning</a>
+        <a class="main-menu__item" [routerLink]="'/home/deep-learning'">Deep Learning</a>
         <a class="main-menu__item" [routerLink]="'/home/data-sciences'">Data Sciences</a>
         <a class="main-menu__item" [routerLink]="'/home/generative-ai'">Generative AI</a>
         <a class="main-menu__item" href="#" (click)="openResponsibleModal($event)">Responsible AI</a>
         <a class="main-menu__item" href="#">Insights</a>
-        <a class="main-menu__item" href="#">Contact</a>
+        <a class="main-menu__item" href="#" (click)="openContactModal($event)">Contact Us</a>
       </nav>
+      <div
+        class="about-modal"
+        [class.about-modal--open]="contactModalOpen()"
+        [attr.aria-hidden]="contactModalOpen() ? 'false' : 'true'"
+      >
+        <div class="about-modal__backdrop" (click)="closeContactModal()"></div>
+        <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+          <button class="about-modal__close" type="button" aria-label="Close Contact Us popup" (click)="closeContactModal()">Close</button>
+          <header class="brand-header brand-header--modal" aria-label="Ibis Equity brand">
+            <img
+              class="brand-header__logo brand-header__logo--modal"
+              src="/images/header_logo.jpg"
+              alt="Ibis Equity logo"
+              width="240"
+              height="120"
+            >
+            <div class="brand-header__text">
+              <p class="brand-header__name">Ibis Equity</p>
+              <p class="brand-header__name-second">Consulting, LLC</p>
+              <p class="brand-header__subname">AI/ML, Gen-AI, Data Science &amp; Agentic AI</p>
+            </div>
+          </header>
+          <h2 id="contact-modal-title">Contact Us</h2>
+          <form class="contact-form" (ngSubmit)="submitContactForm()">
+            <div class="contact-form__grid">
+              <label class="contact-form__field">
+                <span>First Name</span>
+                <input type="text" name="contactFirstName" [(ngModel)]="contactFirstName" required />
+              </label>
+              <label class="contact-form__field">
+                <span>Last Name</span>
+                <input type="text" name="contactLastName" [(ngModel)]="contactLastName" required />
+              </label>
+              <label class="contact-form__field">
+                <span>Email Address</span>
+                <input type="email" name="contactEmailAddress" [(ngModel)]="contactEmailAddress" required />
+              </label>
+              <label class="contact-form__field">
+                <span>Phone Number</span>
+                <input type="tel" name="contactPhoneNumber" [(ngModel)]="contactPhoneNumber" required />
+              </label>
+              <label class="contact-form__field contact-form__field--full">
+                <span>Organization</span>
+                <input type="text" name="contactOrganization" [(ngModel)]="contactOrganization" required />
+              </label>
+              <label class="contact-form__field contact-form__field--full">
+                <span>Request</span>
+                <textarea name="contactRequest" [(ngModel)]="contactRequest" rows="5" required></textarea>
+              </label>
+            </div>
+            <button class="contact-form__submit" type="submit" [disabled]="contactSubmitting()">
+              {{ contactSubmitting() ? 'Processing...' : 'Submit' }}
+            </button>
+            @if (contactSubmitError()) {
+              <p class="contact-form__error">{{ contactSubmitError() }}</p>
+            }
+            @if (contactSubmitted()) {
+              <p class="contact-form__success">Thanks for reaching out. We will follow up shortly.</p>
+            }
+          </form>
+        </section>
+      </div>
       <div
         class="about-modal"
         [class.about-modal--open]="responsibleModalOpen()"
@@ -141,6 +204,20 @@
         <div class="about-modal__backdrop" (click)="closeResponsibleModal()"></div>
         <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="responsible-modal-title">
           <button class="about-modal__close" type="button" aria-label="Close Responsible AI popup" (click)="closeResponsibleModal()">Close</button>
+          <header class="brand-header brand-header--modal" aria-label="Ibis Equity brand">
+            <img
+              class="brand-header__logo brand-header__logo--modal"
+              src="/images/header_logo.jpg"
+              alt="Ibis Equity logo"
+              width="240"
+              height="120"
+            >
+            <div class="brand-header__text">
+              <p class="brand-header__name">Ibis Equity</p>
+              <p class="brand-header__name-second">Consulting, LLC</p>
+              <p class="brand-header__subname">AI/ML, Gen-AI, Data Science &amp; Agentic AI</p>
+            </div>
+          </header>
           <h2 id="responsible-modal-title">Responsible AI: An In Depth Narrative</h2>
           <p>Clarity. Stewardship. Systems that honor the people they serve.</p>
           <p>
@@ -178,6 +255,20 @@
         <div class="about-modal__backdrop" (click)="closeAboutModal()"></div>
         <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
           <button class="about-modal__close" type="button" aria-label="Close About popup" (click)="closeAboutModal()">Close</button>
+          <header class="brand-header brand-header--modal" aria-label="Ibis Equity brand">
+            <img
+              class="brand-header__logo brand-header__logo--modal"
+              src="/images/header_logo.jpg"
+              alt="Ibis Equity logo"
+              width="240"
+              height="120"
+            >
+            <div class="brand-header__text">
+              <p class="brand-header__name">Ibis Equity</p>
+              <p class="brand-header__name-second">Consulting, LLC</p>
+              <p class="brand-header__subname">AI/ML, Gen-AI, Data Science &amp; Agentic AI</p>
+            </div>
+          </header>
           <h2 id="about-modal-title">About Ibis Equity Consulting</h2>
           <p>
             Ibis Equity Consulting, LLC is an AI architecture and systems engineering firm specializing in the design of transparent, resilient, and enterprise grade intelligence infrastructures. We help organizations move beyond isolated pilots and vendor driven hype by building AI capabilities that are grounded in rigorous data engineering, governed retrieval pipelines, interpretable models, and operationally aligned agentic workflows.

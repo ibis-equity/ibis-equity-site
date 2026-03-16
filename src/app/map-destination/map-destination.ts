@@ -19,7 +19,15 @@ interface DestinationFeatureStep {
 interface DestinationFeatureCard {
   name: string;
   role: string;
+  description?: string;
   highlights: string[];
+}
+
+interface DestinationFeatureComparisonRow {
+  dimension: string;
+  ml: string;
+  rag: string;
+  dataScience: string;
 }
 
 interface DestinationFeatureSection {
@@ -33,7 +41,9 @@ interface DestinationFeatureSection {
   imageWidthPercent?: number;
   cardGridTitle?: string;
   cardGridSubtitle?: string;
+  cardLayout?: 'default' | 'ai-stack' | 'ai-compare' | 'healthcare-pillars' | 'ml-rag-ds-comparison';
   cards?: DestinationFeatureCard[];
+  comparisonRows?: DestinationFeatureComparisonRow[];
 }
 
 interface DestinationFeatureContent {

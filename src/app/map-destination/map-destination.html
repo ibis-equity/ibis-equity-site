@@ -3,7 +3,7 @@
     <header class="brand-header brand-header--compact" aria-label="Ibis Equity brand">
       <img
         class="brand-header__logo"
-        src="/images/header-logo.jpg"
+        src="/images/header_logo.jpg"
         alt="Ibis Equity logo"
         width="240"
         height="120"
@@ -141,10 +141,12 @@
         <div class="feature-story__sections">
           @for (section of featureContent.sections; track section.title) {
             <article class="feature-story__panel" [class.feature-story__panel--with-image]="!!section.imageSrc">
-              <h2>{{ section.title }}</h2>
+              @if (section.cardLayout !== 'ai-stack') {
+                <h2>{{ section.title }}</h2>
 
-              @if (section.subtitle) {
-                <p class="feature-story__section-subtitle">{{ section.subtitle }}</p>
+                @if (section.subtitle) {
+                  <p class="feature-story__section-subtitle">{{ section.subtitle }}</p>
+                }
               }
 
               @if (section.imageSrc) {
@@ -185,27 +187,126 @@
                 </ol>
               }
 
-              @if (section.cards?.length) {
-                <section class="feature-story__libraries" aria-label="Core libraries">
-                  <h3 class="feature-story__libraries-title">{{ section.cardGridTitle || 'Core Libraries We Deploy' }}</h3>
-                  @if (section.cardGridSubtitle) {
-                    <p class="feature-story__libraries-subtitle">{{ section.cardGridSubtitle }}</p>
-                  }
-
-                  <div class="feature-story__libraries-grid">
-                    @for (card of section.cards; track card.name) {
-                      <article class="feature-story__library-card">
-                        <h4 class="feature-story__library-name">{{ card.name }}</h4>
-                        <p class="feature-story__library-role">{{ card.role }}</p>
-                        <ul class="feature-story__library-highlights">
-                          @for (highlight of card.highlights; track highlight) {
-                            <li>{{ highlight }}</li>
-                          }
-                        </ul>
-                      </article>
-                    }
+              @if (section.cardLayout === 'ml-rag-ds-comparison' && section.comparisonRows?.length) {
+                <section class="ml-rag-ds-comparison" aria-label="Healthcare ML RAG Data Science comparison">
+                  <div class="table-wrapper">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Dimension</th>
+                          <th>Machine Learning (ML)</th>
+                          <th>Retrieval-Augmented Generation (RAG)</th>
+                          <th>Data Science</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for (row of section.comparisonRows; track row.dimension) {
+                          <tr>
+                            <td>{{ row.dimension }}</td>
+                            <td>{{ row.ml }}</td>
+                            <td>{{ row.rag }}</td>
+                            <td>{{ row.dataScience }}</td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
                   </div>
                 </section>
+              }
+
+              @if (section.cards?.length) {
+                @if (section.cardLayout === 'ai-stack') {
+                  <section class="ai-stack section" aria-label="AI stack">
+                    <h2 class="section-title">{{ section.title }}</h2>
+                    @if (section.subtitle) {
+                      <p class="section-subtitle" [innerHTML]="section.subtitle"></p>
+                    }
+                    @if (section.paragraphs?.length) {
+                      <div class="feature-story__copy">
+                        @for (paragraph of section.paragraphs; track paragraph) {
+                          <p>{{ paragraph }}</p>
+                        }
+                      </div>
+                    }
+
+                    <div class="ai-stack-grid">
+                      @for (card of section.cards; track card.name) {
+                        <article class="ai-card">
+                          <h3 class="ai-title">{{ card.name }}</h3>
+                          <p class="ai-body">{{ card.description || card.role }}</p>
+                          <ul class="ai-points">
+                            @for (highlight of card.highlights; track highlight) {
+                              <li>{{ highlight }}</li>
+                            }
+                          </ul>
+                        </article>
+                      }
+                    </div>
+                  </section>
+                } @else if (section.cardLayout === 'ai-compare') {
+                  <section class="ai-compare section" aria-label="AI comparison grid">
+                    <h2 class="section-title">{{ section.title }}</h2>
+                    @if (section.subtitle) {
+                      <p class="section-subtitle">{{ section.subtitle }}</p>
+                    }
+
+                    <div class="ai-compare-grid">
+                      @for (card of section.cards; track card.name) {
+                        <article class="compare-card">
+                          <h3 class="compare-title">{{ card.name }}</h3>
+                          <p class="compare-tagline">{{ card.role }}</p>
+                          <ul class="compare-points">
+                            @for (highlight of card.highlights; track highlight) {
+                              <li [innerHTML]="highlight"></li>
+                            }
+                          </ul>
+                        </article>
+                      }
+                    </div>
+                  </section>
+                } @else if (section.cardLayout === 'healthcare-pillars') {
+                  <section class="healthcare-pillars section" aria-label="Healthcare data science pillars">
+                    <h2 class="section-title">{{ section.title }}</h2>
+                    @if (section.subtitle) {
+                      <p class="section-subtitle">{{ section.subtitle }}</p>
+                    }
+
+                    <div class="healthcare-pillars-grid">
+                      @for (card of section.cards; track card.name) {
+                        <article class="healthcare-pillar-card">
+                          <h3 class="healthcare-pillar-title">{{ card.name }}</h3>
+                          <p class="healthcare-pillar-tagline">{{ card.role }}</p>
+                          <ul class="healthcare-pillar-points">
+                            @for (highlight of card.highlights; track highlight) {
+                              <li>{{ highlight }}</li>
+                            }
+                          </ul>
+                        </article>
+                      }
+                    </div>
+                  </section>
+                } @else {
+                  <section class="feature-story__libraries" aria-label="Core libraries">
+                    <h3 class="feature-story__libraries-title">{{ section.cardGridTitle || 'Core Libraries We Deploy' }}</h3>
+                    @if (section.cardGridSubtitle) {
+                      <p class="feature-story__libraries-subtitle">{{ section.cardGridSubtitle }}</p>
+                    }
+
+                    <div class="feature-story__libraries-grid">
+                      @for (card of section.cards; track card.name) {
+                        <article class="feature-story__library-card">
+                          <h4 class="feature-story__library-name">{{ card.name }}</h4>
+                          <p class="feature-story__library-role">{{ card.role }}</p>
+                          <ul class="feature-story__library-highlights">
+                            @for (highlight of card.highlights; track highlight) {
+                              <li>{{ highlight }}</li>
+                            }
+                          </ul>
+                        </article>
+                      }
+                    </div>
+                  </section>
+                }
               }
             </article>
           }

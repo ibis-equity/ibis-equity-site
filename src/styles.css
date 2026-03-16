@@ -355,10 +355,15 @@ button {
 	border: 1px solid rgba(16, 40, 68, 0.18);
 	box-shadow: 0 30px 60px rgba(6, 18, 32, 0.35);
 	line-height: 1.6;
+	display: flex;
+	flex-direction: column;
 }
 
 .page .about-modal__close {
-	float: right;
+	float: none;
+	order: 99;
+	align-self: flex-end;
+	margin-top: 0.6rem;
 	border: 0;
 	border-radius: 999px;
 	padding: 0.42rem 0.82rem;
@@ -400,11 +405,105 @@ button {
 	color: #1d63b1;
 }
 
+.page .contact-form {
+	display: grid;
+	gap: 0.95rem;
+}
+
+.page .contact-form__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.8rem;
+}
+
+.page .contact-form__field {
+	display: grid;
+	gap: 0.35rem;
+	font-size: 0.92rem;
+	font-weight: 600;
+	color: #173454;
+}
+
+.page .contact-form__field--full {
+	grid-column: 1 / -1;
+}
+
+.page .contact-form__field input,
+.page .contact-form__field textarea {
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid rgba(15, 53, 90, 0.28);
+	padding: 0.62rem 0.7rem;
+	font: inherit;
+	font-weight: 500;
+	background: #fff;
+	color: #122a44;
+}
+
+.page .contact-form__field textarea {
+	resize: vertical;
+	min-height: 130px;
+}
+
+.page .contact-form__field input:focus-visible,
+.page .contact-form__field textarea:focus-visible {
+	outline: 3px solid rgba(27, 96, 171, 0.28);
+	outline-offset: 1px;
+}
+
+.page .contact-form__submit {
+	justify-self: start;
+	border: 0;
+	border-radius: 999px;
+	padding: 0.55rem 1.15rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: #fff;
+	background: #103f7f;
+	cursor: pointer;
+	transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.page .contact-form__submit:hover {
+	transform: translateY(-1px);
+	background: #0a2f61;
+}
+
+.page .contact-form__submit:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	transform: none;
+	background: #4f6c8f;
+}
+
+.page .contact-form__submit:focus-visible {
+	outline: 3px solid rgba(27, 96, 171, 0.28);
+	outline-offset: 1px;
+}
+
+.page .contact-form__success {
+	margin: 0;
+	font-size: 0.92rem;
+	font-weight: 600;
+	color: #114d1f;
+}
+
+.page .contact-form__error {
+	margin: 0;
+	font-size: 0.92rem;
+	font-weight: 600;
+	color: #9f172a;
+}
+
 @media (max-width: 640px) {
 	.page .about-modal__panel {
 		margin: 1rem auto;
 		max-height: calc(100vh - 2rem);
 		padding: 1rem;
 		border-radius: 14px;
+	}
+
+	.page .contact-form__grid {
+		grid-template-columns: 1fr;
 	}
 }

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, inject, signal } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { BedrockRagConfig, BedrockRagResponse, BedrockRagService, BedrockRagSource } from '../map-destination/bedrock-rag.service';
@@ -8,6 +8,22 @@ interface LanguagePreference {
   instruction: string;
   voiceId: string;
   languageCode: string;
+}
+
+interface ContactSubmissionRequest {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  phoneNumber: string;
+  organization: string;
+  request: string;
+}
+
+interface ContactSubmissionResponse {
+  status: string;
+  submissionId: string;
+  emailSent: boolean;
+  smsSent: boolean;
 }
 
 const BEDROCK_CLAUDE_PROMPT = `Human: This is a friendly conversation between a human and an AI.
@@ -43,12 +59,23 @@ const LANGUAGE_PREFERENCES: Record<string, LanguagePreference> = {
 })
 export class HomeComponent implements OnDestroy {
     submitButtonHovered = false;
+  private readonly http = inject(HttpClient);
   private readonly ragService = inject(BedrockRagService);
   private generatedAudioObjectUrl: string | null = null;
 
   protected readonly title = signal('ibis-equity-site');
   protected readonly aboutModalOpen = signal(false);
   protected readonly responsibleModalOpen = signal(false);
+  protected readonly contactModalOpen = signal(false);
+  protected readonly contactSubmitted = signal(false);
+  protected readonly contactSubmitting = signal(false);
+  protected readonly contactSubmitError = signal('');
+  protected contactFirstName = '';
+  protected contactLastName = '';
+  protected contactEmailAddress = '';
+  protected contactPhoneNumber = '';
+  protected contactOrganization = '';
+  protected contactRequest = '';
   protected readonly ragConfig: BedrockRagConfig = {
     knowledgeBaseId: 'kb-data-sciences',
     modelId: 'amazon.nova-micro-v1:0',
@@ -106,6 +133,47 @@ export class HomeComponent implements OnDestroy {
 
   protected closeResponsibleModal(): void {
     this.responsibleModalOpen.set(false);
+  }
+
+  protected openContactModal(event: Event): void {
+    event.preventDefault();
+    this.contactSubmitted.set(false);
+    this.contactSubmitError.set('');
+    this.contactModalOpen.set(true);
+  }
+
+  protected closeContactModal(): void {
+    this.contactModalOpen.set(false);
+  }
+
+  protected submitContactForm(): void {
+    if (this.contactSubmitting()) {
+      return;
+    }
+
+    this.contactSubmitting.set(true);
+    this.contactSubmitted.set(false);
+    this.contactSubmitError.set('');
+
+    const payload: ContactSubmissionRequest = {
+      firstName: this.contactFirstName.trim(),
+      lastName: this.contactLastName.trim(),
+      emailAddress: this.contactEmailAddress.trim(),
+      phoneNumber: this.contactPhoneNumber.trim(),
+      organization: this.contactOrganization.trim(),
+      request: this.contactRequest.trim(),
+    };
+
+    this.http.post<ContactSubmissionResponse>('/api/contact/submit', payload).subscribe({
+      next: () => {
+        this.contactSubmitted.set(true);
+        this.contactSubmitting.set(false);
+      },
+      error: (error: unknown) => {
+        this.contactSubmitError.set(this.formatContactErrorMessage(error));
+        this.contactSubmitting.set(false);
+      }
+    });
   }
 
   protected askRagFromHome(): void {
@@ -351,5 +419,26 @@ export class HomeComponent implements OnDestroy {
     }
 
     return detail;
+  }
+
+  private formatContactErrorMessage(error: unknown): string {
+    const fallbackMessage = 'Unable to submit your request right now. Please try again.';
+
+    if (!(error instanceof HttpErrorResponse)) {
+      return fallbackMessage;
+    }
+
+    if (error.status === 0) {
+      return 'Contact submission could not reach the backend. Verify the backend is running on http://localhost:8010.';
+    }
+
+    const detail =
+      (typeof error.error === 'object' && error.error && 'detail' in error.error && typeof error.error.detail === 'string'
+        ? error.error.detail
+        : undefined) ||
+      (typeof error.error === 'string' ? error.error : undefined) ||
+      error.message;
+
+    return detail?.trim() || fallbackMessage;
   }
 }

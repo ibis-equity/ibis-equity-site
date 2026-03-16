@@ -1,10 +1,12 @@
 import base64
 import logging
 import os
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
+from uuid import uuid4
 
-from dotenv import load_dotenv
+from dotenv import dotenv_values, load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -14,6 +16,7 @@ LOGGER = logging.getLogger(__name__)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(PROJECT_ROOT / "backend" / ".env", override=True)
 load_dotenv(PROJECT_ROOT / ".env", override=True)
+CONTACT_ENV_FILE = PROJECT_ROOT / "backend" / ".env"
 
 AOSS_SVC_NAME = "aoss"
 BEDROCK_EMBEDDING_MODEL_ID = "amazon.titan-embed-text-v2:0"
@@ -24,6 +27,7 @@ DEFAULT_POLLY_VOICE_ID = os.environ.get("POLLY_VOICE_ID", "Joanna")
 DEFAULT_POLLY_ENGINE = os.environ.get("POLLY_ENGINE", "standard")
 DEFAULT_POLLY_LANGUAGE_CODE = os.environ.get("POLLY_LANGUAGE_CODE", "en-US")
 REQUIRED_RAG_ENV_VARS = ["AOSS_ID", "AOSS_AWS_REGION", "AOSS_INDEX_NAME"]
+REQUIRED_CONTACT_ENV_VARS = ["CONTACT_DDB_TABLE", "CONTACT_EMAIL_FROM", "CONTACT_EMAIL_TO", "CONTACT_SMS_TO"]
 
 
 class RagConfig(BaseModel):
@@ -62,6 +66,23 @@ class RagResponse(BaseModel):
     answer: str
     sources: List[RagSource]
     speech: RagSpeech
+
+
+class ContactSubmissionRequest(BaseModel):
+    firstName: str = Field(min_length=1)
+    lastName: str = Field(min_length=1)
+    emailAddress: str = Field(min_length=1)
+    phoneNumber: str = Field(min_length=1)
+    organization: str = Field(min_length=1)
+    request: str = Field(min_length=1)
+
+
+class ContactSubmissionResponse(BaseModel):
+    status: str
+    submissionId: str
+    emailSent: bool
+    smsSent: bool
+    errors: List[str] = Field(default_factory=list)
 
 
 app = FastAPI(title="Ibis Equity RAG Backend", version="1.0.0")
@@ -108,6 +129,125 @@ def _aws_session():
 
 def _missing_required_rag_env_vars() -> List[str]:
     return [name for name in REQUIRED_RAG_ENV_VARS if not os.environ.get(name)]
+
+
+def _contact_env_value(name: str, default: str = "") -> str:
+    process_value = (os.environ.get(name) or "").strip()
+    if process_value:
+        return process_value
+
+    file_values = dotenv_values(CONTACT_ENV_FILE)
+    file_value = str(file_values.get(name) or "").strip()
+    if file_value:
+        return file_value
+
+    return default
+
+
+def _required_contact_env(name: str) -> str:
+    value = _contact_env_value(name)
+    if not value:
+        raise RuntimeError(f"{name} environment variable is required")
+    return value
+
+
+def _missing_required_contact_env_vars() -> List[str]:
+    return [name for name in REQUIRED_CONTACT_ENV_VARS if not _contact_env_value(name)]
+
+
+def _resolve_aws_region() -> str:
+    region_candidates = [
+        os.environ.get("AWS_REGION"),
+        os.environ.get("AWS_DEFAULT_REGION"),
+        os.environ.get("AOSS_AWS_REGION"),
+    ]
+    for region in region_candidates:
+        candidate = (region or "").strip()
+        if candidate:
+            return candidate
+
+    raise RuntimeError("AWS region is required. Set AWS_REGION or AWS_DEFAULT_REGION.")
+
+
+def _store_contact_submission(submission_id: str, created_at: str, payload: ContactSubmissionRequest) -> None:
+    import boto3
+
+    session = _aws_session()
+    region = _resolve_aws_region()
+    table_name = _required_contact_env("CONTACT_DDB_TABLE")
+    partition_key_name = _contact_env_value("CONTACT_DDB_PK_NAME", "submissionId")
+    sort_key_name = _contact_env_value("CONTACT_DDB_SK_NAME")
+
+    ddb = session.resource("dynamodb", region_name=region)
+    table = ddb.Table(table_name)
+
+    item: Dict[str, str] = {
+        partition_key_name: submission_id,
+        "createdAt": created_at,
+        "firstName": payload.firstName.strip(),
+        "lastName": payload.lastName.strip(),
+        "emailAddress": payload.emailAddress.strip(),
+        "phoneNumber": payload.phoneNumber.strip(),
+        "organization": payload.organization.strip(),
+        "request": payload.request.strip(),
+        "source": "ibis-equity-site",
+    }
+    if sort_key_name:
+        item[sort_key_name] = created_at
+
+    table.put_item(Item=item)
+
+
+def _send_contact_email(submission_id: str, created_at: str, payload: ContactSubmissionRequest) -> bool:
+    import boto3
+
+    session = _aws_session()
+    region = _resolve_aws_region()
+    email_from = _required_contact_env("CONTACT_EMAIL_FROM")
+    email_to = _required_contact_env("CONTACT_EMAIL_TO")
+
+    ses = session.client("ses", region_name=region)
+
+    subject = f"New Contact Request: {payload.firstName.strip()} {payload.lastName.strip()}"
+    body = (
+        "A new Contact Us request was submitted.\n\n"
+        f"Submission ID: {submission_id}\n"
+        f"Created At (UTC): {created_at}\n"
+        f"First Name: {payload.firstName.strip()}\n"
+        f"Last Name: {payload.lastName.strip()}\n"
+        f"Email Address: {payload.emailAddress.strip()}\n"
+        f"Phone Number: {payload.phoneNumber.strip()}\n"
+        f"Organization: {payload.organization.strip()}\n"
+        f"Request: {payload.request.strip()}\n"
+    )
+
+    ses.send_email(
+        Source=email_from,
+        Destination={"ToAddresses": [email_to]},
+        Message={
+            "Subject": {"Data": subject},
+            "Body": {"Text": {"Data": body}},
+        },
+    )
+    return True
+
+
+def _send_contact_sms(submission_id: str, payload: ContactSubmissionRequest) -> bool:
+    import boto3
+
+    session = _aws_session()
+    region = _resolve_aws_region()
+    sms_to = _required_contact_env("CONTACT_SMS_TO")
+
+    sns = session.client("sns", region_name=region)
+    message = (
+        "Ibis Equity Contact processed. "
+        f"ID: {submission_id}. "
+        f"From: {payload.firstName.strip()} {payload.lastName.strip()} ({payload.organization.strip()})."
+    )
+
+    sns.publish(PhoneNumber=sms_to, Message=message)
+    return True
 
 
 def _resolve_knowledge_base_id(requested_id: str) -> str:
@@ -404,6 +544,49 @@ def health_kb(knowledgeBaseId: Optional[str] = None) -> Dict[str, Any]:
         "configuredAliasMappings": _configured_kb_alias_mappings(),
         "hint": "Provide ?knowledgeBaseId=kb-data-sciences (or AWS KB ID) to validate runtime resolution.",
     }
+
+
+@app.post("/api/contact/submit", response_model=ContactSubmissionResponse)
+def submit_contact(request: ContactSubmissionRequest) -> ContactSubmissionResponse:
+    try:
+        if not _contact_env_value("CONTACT_DDB_TABLE"):
+            raise RuntimeError("Missing contact environment variable: CONTACT_DDB_TABLE")
+
+        submission_id = str(uuid4())
+        created_at = datetime.now(timezone.utc).isoformat()
+
+        _store_contact_submission(submission_id, created_at, request)
+        email_sent = False
+        sms_sent = False
+        errors: List[str] = []
+
+        try:
+            email_sent = _send_contact_email(submission_id, created_at, request)
+        except Exception as exc:
+            LOGGER.exception("Contact email notification failed")
+            errors.append(f"email: {str(exc).strip() or 'failed to send'}")
+
+        try:
+            sms_sent = _send_contact_sms(submission_id, request)
+        except Exception as exc:
+            LOGGER.exception("Contact SMS notification failed")
+            errors.append(f"sms: {str(exc).strip() or 'failed to send'}")
+
+        status = "processed" if not errors else "processed_with_warnings"
+
+        return ContactSubmissionResponse(
+            status=status,
+            submissionId=submission_id,
+            emailSent=email_sent,
+            smsSent=sms_sent,
+            errors=errors,
+        )
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    except Exception as exc:
+        LOGGER.exception("Unhandled error in submit_contact")
+        detail = str(exc).strip() or "Internal server error"
+        raise HTTPException(status_code=500, detail=detail) from exc
 
 
 @app.post("/api/bedrock/rag/query", response_model=RagResponse)
