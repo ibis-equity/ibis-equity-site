@@ -1415,6 +1415,149 @@ export const routes: Routes = [
       iconTone: 'accent',
       title: 'Insurance',
       description: 'Insurance-focused capabilities for underwriting, claims efficiency, fraud detection, and risk assessment.',
+      featureContent: {
+        title: 'ML + RAG + Data Science in the Insurance Sector',
+        subtitle: 'A Unified Intelligence Architecture for Underwriting, Claims, Risk, and Customer Experience',
+        intro: [
+          'Insurance is fundamentally a business of risk, information, and trust. Every underwriting decision, every claim, every policy, and every customer interaction depends on the ability to interpret complex data, apply rules consistently, and make decisions that balance risk exposure with customer value.',
+          'But the modern insurance landscape is overwhelmed by data-loss histories, actuarial tables, policy documents, adjuster notes, medical records, regulatory filings, fraud signals, telematics, IoT streams, and customer communications.',
+          'Traditional analytics and actuarial models have carried the industry for decades, but they were built for a world where data was structured, stable, and slow moving. Today\'s insurers need systems that can predict, retrieve, reason, and explain in real time. This is where Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Science converge to form a unified intelligence layer that transforms how insurers operate.'
+        ],
+        sections: [
+          {
+            title: '1. Machine Learning: Predictive Intelligence for Risk, Pricing, and Claims',
+            paragraphs: [
+              'Machine Learning is the predictive engine of the insurance enterprise. It identifies patterns in historical data and forecasts future outcomes with speed and precision.'
+            ],
+            bullets: [
+              {
+                title: '1.1 Underwriting & Pricing',
+                description: 'ML models analyze loss histories, demographic and behavioral data, telematics and IoT signals, property characteristics, and environmental/geospatial risk to support automated risk scoring, dynamic pricing, tier assignment, appetite alignment, and real-time underwriting recommendations.'
+              },
+              {
+                title: '1.2 Claims',
+                description: 'ML accelerates claims operations by predicting claim severity, likelihood of litigation, subrogation potential, repair vs. replace decisions, and total loss probability.'
+              },
+              {
+                title: '1.3 Fraud Detection',
+                description: 'ML excels at anomaly detection across billing patterns, claim narratives, provider behavior, network relationships, and historical fraud cases.'
+              },
+              {
+                title: '1.4 Customer Experience',
+                description: 'ML powers churn prediction, lifetime value modeling, next-best-action recommendations, and personalized product offerings.'
+              }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG): Policy-Aligned Reasoning and Explainability',
+            paragraphs: [
+              'Insurance is governed by policies, regulations, guidelines, and contractual obligations. RAG brings these documents into the intelligence loop, ensuring that every decision is grounded in authoritative sources.'
+            ],
+            bullets: [
+              {
+                title: '2.1 Policy Interpretation',
+                description: 'RAG retrieves policy language, endorsements, exclusions, underwriting guidelines, and claims handling manuals, then generates coverage determinations, clause-specific explanations, eligibility summaries, and policy comparisons.'
+              },
+              {
+                title: '2.2 Claims Reasoning',
+                description: 'RAG supports adjusters by summarizing claim files, extracting key facts from notes, mapping events to policy language, generating rationale for decisions, and producing customer-friendly explanations.'
+              },
+              {
+                title: '2.3 Regulatory Compliance',
+                description: 'RAG retrieves state regulations, DOI bulletins, compliance manuals, and filing requirements; then produces compliance summaries, impact assessments, filing checklists, and regulatory change alerts.'
+              },
+              {
+                title: '2.4 Customer Communications',
+                description: 'RAG generates clear policy-aligned explanations, personalized coverage summaries, renewal notices, and claims status updates.'
+              }
+            ]
+          },
+          {
+            title: '3. Data Science: The Integration, Governance, and Operational Backbone',
+            paragraphs: [
+              'Data Science is the foundation that makes ML and RAG reliable, safe, and operationally meaningful.'
+            ],
+            bullets: [
+              {
+                title: '3.1 Data Engineering',
+                description: 'Insurance data is fragmented across policy admin systems, claims systems, CRM platforms, telematics feeds, third-party data providers, and regulatory databases. Data Science unifies these through ETL pipelines, feature engineering, data quality scoring, master data management, and metadata/lineage tracking.'
+              },
+              {
+                title: '3.2 Corpus Engineering for RAG',
+                description: 'Insurance corpora include policies, endorsements, claims manuals, underwriting guidelines, regulatory filings, and customer communications. Data Science ensures chunking by clause/guideline, embedding generation, version control, sensitivity tagging, and retrieval evaluation.'
+              },
+              {
+                title: '3.3 Operational Analytics',
+                description: 'Data Science powers loss ratio analysis, reserve adequacy modeling, portfolio risk segmentation, agent performance analytics, and operational efficiency dashboards.'
+              },
+              {
+                title: '3.4 Governance',
+                description: 'Data Science defines model validation, drift detection, fairness audits, retrieval precision/recall, and compliance monitoring.'
+              }
+            ]
+          },
+          {
+            title: '4. Unified Insurance Intelligence Architecture',
+            paragraphs: [
+              'The integration of ML, RAG, and Data Science forms a multi-layered architecture:'
+            ],
+            bullets: [
+              {
+                title: '4.1 Data & Knowledge Layer',
+                description: 'Policy documents, claims files, regulatory texts, underwriting guidelines, telematics and IoT data, and customer interactions.'
+              },
+              {
+                title: '4.2 Ingestion & Normalization Layer',
+                description: 'Document parsing, clause segmentation, feature extraction, entity recognition, and metadata tagging.'
+              },
+              {
+                title: '4.3 Intelligence Layer (ML + RAG)',
+                description: 'Predictive models for risk, fraud, and severity; retrieval engines for policy and regulatory content; grounded generation for explanations and decisions.'
+              },
+              {
+                title: '4.4 Application Layer',
+                description: 'Underwriting assistant, claims reasoning assistant, fraud investigation assistant, regulatory compliance assistant, and customer experience assistant.'
+              },
+              {
+                title: '4.5 Governance Layer',
+                description: 'Access control, audit trails, model/retrieval monitoring, policy versioning, and regulatory compliance.'
+              }
+            ]
+          },
+          {
+            title: '5. Sector-Specific Impact Across the Insurance Value Chain',
+            bullets: [
+              {
+                title: '5.1 Underwriting',
+                description: 'Faster risk assessment, consistent guideline application, automated appetite checks, and explainable pricing decisions.'
+              },
+              {
+                title: '5.2 Claims',
+                description: 'Faster triage, better severity prediction, policy-aligned reasoning, reduced leakage, and improved customer communication.'
+              },
+              {
+                title: '5.3 Fraud',
+                description: 'Network-based anomaly detection, narrative analysis, cross-claim pattern recognition, and investigator-ready summaries.'
+              },
+              {
+                title: '5.4 Customer Experience',
+                description: 'Personalized recommendations, clear coverage explanations, proactive retention strategies, and intelligent self-service.'
+              },
+              {
+                title: '5.5 Compliance',
+                description: 'Automated regulatory mapping, filing readiness checks, policy language alignment, and audit-ready documentation.'
+              }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'Organizations that integrate ML, RAG, and Data Science gain higher underwriting accuracy, faster and more consistent claims decisions, reduced fraud losses, improved customer satisfaction, lower operational cost, better regulatory alignment, and a governed, explainable AI layer.',
+              'This architecture does not replace human expertise-it amplifies it by turning complex insurance data into actionable, transparent, and defensible intelligence.'
+            ]
+          }
+        ]
+      },
       rag: {
         knowledgeBaseId: 'kb-insurance',
         modelId: 'anthropic.claude-3-5-sonnet',
