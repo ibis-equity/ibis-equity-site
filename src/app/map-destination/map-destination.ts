@@ -46,7 +46,7 @@ interface DestinationFeatureSection {
   imageWidthPercent?: number;
   cardGridTitle?: string;
   cardGridSubtitle?: string;
-  cardLayout?: 'default' | 'ai-stack' | 'ai-compare' | 'healthcare-pillars' | 'ml-rag-ds-comparison' | 'insurance-architecture' | 'education-architecture' | 'education-sector-architecture' | 'realestate-sector-architecture' | 'government-sector-architecture' | 'retail-sector-architecture' | 'manufacturing-sector-architecture' | 'hospitality-sector-architecture';
+  cardLayout?: 'default' | 'ai-stack' | 'ai-compare' | 'healthcare-pillars' | 'ml-rag-ds-comparison' | 'insurance-architecture' | 'education-architecture' | 'education-sector-architecture' | 'realestate-sector-architecture' | 'government-sector-architecture' | 'retail-sector-architecture' | 'manufacturing-sector-architecture' | 'hospitality-sector-architecture' | 'transportation-sector-architecture';
   cards?: DestinationFeatureCard[];
   comparisonRows?: DestinationFeatureComparisonRow[];
 }

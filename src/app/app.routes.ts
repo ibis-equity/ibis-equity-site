@@ -2088,6 +2088,129 @@ export const routes: Routes = [
         topK: 5,
         systemPrompt: 'Answer with transportation and logistics guidance for routing, fleet productivity, and SLA reliability.'
       },
+      featureContent: {
+        title: 'ML + RAG + Data Sciences for Transportation & Logistics',
+        subtitle: 'A Unified Intelligence Architecture for Fleet, Freight, Routing, Warehousing, Safety, and Network Optimization',
+        intro: [
+          'Transportation & Logistics is a sector defined by movement, timing, cost, and coordination. Every shipment, route, scan, delay, exception, fuel purchase, maintenance event, and customer interaction generates signals that shape operational performance and service quality. Yet despite the volume of data, most logistics networks still operate with fragmented systems, manual decision cycles, and limited visibility across carriers, warehouses, fleets, and partners.',
+          'Fleet data lives in telematics and ELD systems. Shipment data lives in TMS platforms. Inventory data lives in WMS and ERP systems. Routing data lives in dispatch tools. Maintenance data lives in CMMS and OEM systems. Customer data lives in CRM and support platforms. Regulatory data lives in compliance portals and manuals. This fragmentation creates inefficiencies, delays, cost overruns, safety risks, and inconsistent customer experiences.',
+          'Modern logistics requires an intelligence layer that can predict, retrieve, reason, and explain across the entire movement lifecycle - from planning to pickup, from transit to delivery, from warehouse to customer. This is where Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Sciences converge to form a unified transportation intelligence stack.'
+        ],
+        sections: [
+          {
+            title: 'Transportation & Logistics Architecture',
+            cardLayout: 'transportation-sector-architecture'
+          },
+          {
+            title: 'Transportation & Logistics Overview',
+            paragraphs: [
+              'Transportation & Logistics organizations manage the movement of goods, vehicles, and people across complex networks involving fleets, warehouses, carriers, and customers. These operations generate large volumes of data from telematics, sensors, routing systems, shipment events, warehouse automation, and customer interactions. Despite this, most logistics networks still operate with disconnected systems, manual workflows, and limited visibility across partners and nodes.',
+              'Machine Learning (ML), Retrieval-Augmented Generation (RAG), and Data Sciences provide the foundation for more predictable, efficient, and consistent logistics operations. ML supports routing optimization, ETA prediction, demand forecasting, and predictive maintenance. RAG retrieves regulations, shipment details, SOPs, and maintenance documentation to generate grounded, consistent responses. Data Sciences integrate data across TMS, WMS, ERP, telematics, and maintenance systems, enabling analytics, governance, and operational insight.',
+              'Together, these capabilities form a unified intelligence layer that improves routing accuracy, reduces downtime, enhances warehouse productivity, and strengthens customer communication across the Transportation & Logistics value chain.'
+            ]
+          },
+          {
+            title: '1. Machine Learning: Predictive Intelligence for Routing, Fleet, Warehousing, and Network Operations',
+            paragraphs: [
+              'Machine Learning is the predictive engine of modern logistics. It transforms telematics, sensor data, shipment histories, and operational logs into forward looking signals that drive efficiency, reliability, and cost reduction.'
+            ],
+            bullets: [
+              { title: 'Routing & Network Optimization', description: 'ML models analyze traffic patterns, weather conditions, historical transit times, driver behavior, road restrictions, and real time congestion. These models support dynamic route optimization, ETA prediction, multi stop sequencing, and network wide load balancing.' },
+              { title: 'Fleet Management & Predictive Maintenance', description: 'ML forecasts component failures, tire wear, battery degradation (EV fleets), fuel inefficiency, and unsafe driving patterns. This enables condition based maintenance, reduced downtime, lower fuel and repair costs, and improved safety.' },
+              { title: 'Warehouse & Fulfillment Optimization', description: 'ML powers slotting optimization, labor forecasting, pick path optimization, inventory placement, and dock scheduling.' },
+              { title: 'Demand, Capacity & Load Forecasting', description: 'ML supports shipment volume prediction, lane level demand forecasting, capacity planning, and carrier selection optimization.' },
+              { title: 'Risk, Safety & Compliance', description: 'ML detects unsafe driving behavior, hours of service (HOS) violations, cargo theft risk, fraudulent claims, and hazardous conditions.' }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG): Grounded Reasoning for SOPs, Regulations, Manuals, and Shipment Context',
+            paragraphs: [
+              'Transportation & Logistics is a documentation heavy domain. RAG brings operational knowledge, regulatory requirements, and shipment specific context into the reasoning loop.'
+            ],
+            bullets: [
+              { title: 'Regulatory & Compliance Retrieval', description: 'RAG retrieves DOT, FMCSA, IATA, IMO, OSHA regulations, hours of service rules, hazardous materials guidelines, and cross border documentation. It generates compliance checklists, policy aligned explanations, and driver friendly summaries.' },
+              { title: 'Shipment, Routing & Customer Information', description: 'RAG retrieves shipment details, routing constraints, customer instructions, delivery requirements, and exception histories. It produces shipment summaries, exception explanations, and customer aligned updates.' },
+              { title: 'Fleet & Maintenance Documentation', description: 'RAG retrieves OEM manuals, maintenance logs, diagnostic codes, and repair procedures. It generates troubleshooting steps, repair instructions, and part replacement guidance.' },
+              { title: 'Warehouse & Operational SOPs', description: 'RAG retrieves picking/packing procedures, safety guidelines, equipment manuals, and inventory rules. It produces step by step operational guidance, safety reminders, and SOP aligned instructions.' }
+            ]
+          },
+          {
+            title: '3. Data Sciences: Integration, Governance, and Logistics Analytics',
+            paragraphs: [
+              'Data Sciences provide the integration, analytics, and governance backbone that ensures ML and RAG operate on clean, connected, and trustworthy data.'
+            ],
+            bullets: [
+              { title: 'Data Engineering', description: 'Logistics data is fragmented across TMS, WMS, ERP, telematics/ELD, CMMS, carrier APIs, and warehouse automation systems. Data Sciences unify these sources through ETL/ELT pipelines, real time event streaming, sensor data normalization, master data management (MDM), and metadata & lineage tracking.' },
+              { title: 'Corpus Engineering for RAG', description: 'Transportation corpora include regulations, SOPs, manuals, shipment documents, customer instructions, and maintenance logs. Data Sciences ensure chunking by section/rule/procedure, embedding generation, version control, sensitivity tagging, and retrieval evaluation.' },
+              { title: 'Logistics Analytics', description: 'Data Sciences power on time performance dashboards, cost per mile analytics, warehouse productivity metrics, carrier scorecards, and fuel & energy consumption analytics.' },
+              { title: 'Governance', description: 'Data Sciences define data quality scoring, access control, audit trails, model drift detection, and compliance monitoring. Transportation requires traceability, safety, and regulatory alignment at every step.' }
+            ]
+          },
+          {
+            title: '4. Unified Transportation & Logistics Intelligence Architecture',
+            bullets: [
+              { title: 'Data & Knowledge Layer', description: 'Telematics & IoT data, TMS/WMS/ERP data, shipment & routing data, OEM manuals & maintenance logs, regulations & compliance documents, and customer instructions.' },
+              { title: 'Ingestion & Normalization Layer', description: 'Sensor ingestion, document parsing, entity recognition (vehicle, lane, shipment, SKU), metadata tagging, and version control.' },
+              { title: 'Intelligence Layer (ML + RAG)', description: 'ML: routing optimization, ETA prediction, predictive maintenance, warehouse optimization, and demand & capacity forecasting. RAG: regulatory reasoning, shipment/routing interpretation, SOP guidance, and troubleshooting assistance.' },
+              { title: 'Application Layer', description: 'Driver assistant, dispatcher assistant, warehouse operations assistant, fleet maintenance assistant, and customer service assistant.' },
+              { title: 'Governance Layer', description: 'Safety & compliance, access control, audit trails, model monitoring, and document versioning.' }
+            ]
+          },
+          {
+            title: 'Technical Architecture Diagram',
+            paragraphs: [
+              'Layer flow: Experience Layer -> Application Layer -> Intelligence Layer (ML + RAG) -> Data Science, Analytics & Governance Layer -> Data & Knowledge Layer.'
+            ],
+            bullets: [
+              {
+                title: 'Experience Layer',
+                description: 'Drivers, dispatchers, warehouse staff, operations teams, and customers consume insights and actions.'
+              },
+              {
+                title: 'Application Layer',
+                description: 'Driver Assistant, Dispatcher & Routing Assistant, Warehouse Operations Assistant, Fleet Maintenance Assistant, and Customer Service Assistant.'
+              },
+              {
+                title: 'Intelligence Layer (ML + RAG)',
+                description: 'ML services: routing optimization, ETA prediction, predictive maintenance, and demand/capacity models. RAG services: regulatory retrieval, shipment and routing documents, SOP/manual retrieval, and grounded explanations.'
+              },
+              {
+                title: 'Data Science, Analytics & Governance Layer',
+                description: 'TMS/WMS/ERP/Telematics pipelines, corpus engineering for regulations/SOPs/manuals/shipment docs, ML & RAG evaluation, network/cost/performance analytics, and governance/compliance.'
+              },
+              {
+                title: 'Data & Knowledge Layer',
+                description: 'Telematics & IoT data, shipment & routing data, warehouse & inventory data, regulations & compliance documents, and OEM manuals & maintenance logs.'
+              }
+            ]
+          },
+          {
+            title: '5. Sector Specific Impact Across the Logistics Value Chain',
+            bullets: [
+              { title: 'Fleet & Drivers', description: 'Reduced downtime, better safety, and faster troubleshooting.' },
+              { title: 'Dispatch & Routing', description: 'More accurate ETAs, lower fuel cost, and better route planning.' },
+              { title: 'Warehousing', description: 'Faster picking, better labor planning, and higher throughput.' },
+              { title: 'Customer Experience', description: 'More accurate updates, faster issue resolution, and better transparency.' },
+              { title: 'Leadership', description: 'Better cost control, improved network visibility, and more resilient operations.' }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'This architecture does not replace logistics expertise - it amplifies it by turning fragmented transportation data into actionable, transparent, and operationally aligned intelligence.'
+            ],
+            bullets: [
+              'Lower transportation and warehousing costs',
+              'Higher on time performance',
+              'Reduced downtime and maintenance cost',
+              'Improved safety and compliance',
+              'Better customer communication',
+              'More resilient supply chains',
+              'A governed, explainable AI layer'
+            ]
+          }
+        ]
+      },
       capabilities: [
         'Route optimization with real-time network conditions',
         'Fleet utilization and maintenance cycle intelligence',

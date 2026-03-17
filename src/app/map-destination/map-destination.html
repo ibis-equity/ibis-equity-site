@@ -322,7 +322,7 @@
         <div class="feature-story__sections">
           @for (section of featureContent.sections; track section.title) {
             <article class="feature-story__panel" [class.feature-story__panel--with-image]="!!section.imageSrc">
-              @if (section.cardLayout !== 'ai-stack' && section.cardLayout !== 'insurance-architecture' && section.cardLayout !== 'education-architecture' && section.cardLayout !== 'education-sector-architecture' && section.cardLayout !== 'realestate-sector-architecture' && section.cardLayout !== 'government-sector-architecture' && section.cardLayout !== 'retail-sector-architecture' && section.cardLayout !== 'manufacturing-sector-architecture' && section.cardLayout !== 'hospitality-sector-architecture') {
+              @if (section.cardLayout !== 'ai-stack' && section.cardLayout !== 'insurance-architecture' && section.cardLayout !== 'education-architecture' && section.cardLayout !== 'education-sector-architecture' && section.cardLayout !== 'realestate-sector-architecture' && section.cardLayout !== 'government-sector-architecture' && section.cardLayout !== 'retail-sector-architecture' && section.cardLayout !== 'manufacturing-sector-architecture' && section.cardLayout !== 'hospitality-sector-architecture' && section.cardLayout !== 'transportation-sector-architecture') {
                 <h2>{{ section.title }}</h2>
 
                 @if (section.subtitle) {
@@ -1374,6 +1374,116 @@
                       <div class="rag-step">
                         <h3>5. Application Response</h3>
                         <p>Output returned to guest support, booking tools, or staff systems.</p>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'transportation-sector-architecture') {
+                <section class="sector-architecture" aria-labelledby="tl-arch-title">
+                  <header class="sector-header">
+                    <h1 id="tl-arch-title">Transportation &amp; Logistics ML + RAG + Data Sciences</h1>
+                    <p class="sector-subtitle">
+                      Intelligence for routing, fleet, warehousing, safety, and network operations.
+                    </p>
+                  </header>
+
+                  <section class="sector-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="sector-layer">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Drivers</li>
+                        <li>Dispatchers</li>
+                        <li>Warehouse &amp; Fulfillment Staff</li>
+                        <li>Fleet &amp; Operations Teams</li>
+                        <li>Customers &amp; Partners</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Driver Assistant</li>
+                        <li>Dispatcher &amp; Routing Assistant</li>
+                        <li>Warehouse Operations Assistant</li>
+                        <li>Fleet Maintenance Assistant</li>
+                        <li>Customer Service Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer sector-layer--highlight">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="sector-two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Routing optimization &amp; ETA prediction</li>
+                            <li>Predictive maintenance</li>
+                            <li>Warehouse &amp; labor optimization</li>
+                            <li>Demand &amp; capacity forecasting</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Regulation &amp; compliance retrieval</li>
+                            <li>Shipment &amp; routing document retrieval</li>
+                            <li>SOP &amp; warehouse procedure retrieval</li>
+                            <li>OEM manuals &amp; troubleshooting retrieval</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data Sciences &amp; Governance</h3>
+                      <ul>
+                        <li>TMS/WMS/ERP/Telematics pipelines</li>
+                        <li>Corpus engineering (regs, SOPs, manuals, shipment docs)</li>
+                        <li>ML &amp; RAG evaluation</li>
+                        <li>Network, cost, and performance analytics</li>
+                        <li>Governance &amp; compliance frameworks</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>Telematics &amp; IoT data</li>
+                        <li>Shipment &amp; routing data</li>
+                        <li>Warehouse &amp; inventory data</li>
+                        <li>Regulations &amp; compliance documents</li>
+                        <li>OEM manuals &amp; maintenance logs</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>RAG Flow for Transportation &amp; Logistics</h2>
+
+                    <div class="rag-grid">
+                      <div class="rag-step">
+                        <h3>1. User Question / Event</h3>
+                        <p>Driver, dispatcher, or warehouse question about a shipment, route, regulation, or procedure.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>2. Orchestration &amp; ML Signals</h3>
+                        <p>ML adds context such as ETA risk, maintenance status, load constraints, or network conditions.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>3. Retrieval</h3>
+                        <p>Hybrid search over regulations, shipment docs, SOPs, manuals, and routing constraints.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>4. Grounded Generation</h3>
+                        <p>LLM generates explanations, instructions, or summaries anchored to retrieved documents.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>5. Application Response</h3>
+                        <p>Output returned to driver apps, dispatch consoles, warehouse tools, or customer systems.</p>
                       </div>
                     </div>
                   </section>
