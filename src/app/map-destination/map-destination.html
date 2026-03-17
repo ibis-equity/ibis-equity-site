@@ -322,7 +322,7 @@
         <div class="feature-story__sections">
           @for (section of featureContent.sections; track section.title) {
             <article class="feature-story__panel" [class.feature-story__panel--with-image]="!!section.imageSrc">
-              @if (section.cardLayout !== 'ai-stack' && section.cardLayout !== 'insurance-architecture' && section.cardLayout !== 'education-architecture' && section.cardLayout !== 'education-sector-architecture') {
+              @if (section.cardLayout !== 'ai-stack' && section.cardLayout !== 'insurance-architecture' && section.cardLayout !== 'education-architecture' && section.cardLayout !== 'education-sector-architecture' && section.cardLayout !== 'realestate-sector-architecture' && section.cardLayout !== 'government-sector-architecture' && section.cardLayout !== 'retail-sector-architecture' && section.cardLayout !== 'manufacturing-sector-architecture' && section.cardLayout !== 'hospitality-sector-architecture') {
                 <h2>{{ section.title }}</h2>
 
                 @if (section.subtitle) {
@@ -739,6 +739,642 @@
                         <li>Advising notes</li>
                         <li>Institutional policies</li>
                       </ul>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'realestate-sector-architecture') {
+                <section class="sector-architecture" aria-labelledby="rec-arch-title">
+                  <header class="sector-header">
+                    <h1 id="rec-arch-title">Real Estate &amp; Construction ML + RAG + Data Science</h1>
+                    <p class="sector-subtitle">
+                      Unified intelligence for markets, projects, compliance, and asset operations.
+                    </p>
+                  </header>
+
+                  <section class="sector-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="sector-layer">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Developers &amp; Investors</li>
+                        <li>Architects &amp; Engineers</li>
+                        <li>Contractors &amp; Subcontractors</li>
+                        <li>Owners &amp; Operators</li>
+                        <li>Regulators &amp; Inspectors</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Investment &amp; Site Selection Assistant</li>
+                        <li>Construction Project Intelligence Assistant</li>
+                        <li>Safety &amp; Compliance Assistant</li>
+                        <li>Facilities &amp; O&amp;M Assistant</li>
+                        <li>Portfolio Strategy Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer sector-layer--highlight">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="sector-two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Market &amp; rent forecasting</li>
+                            <li>Delay &amp; cost overrun prediction</li>
+                            <li>Safety risk modeling</li>
+                            <li>Asset failure &amp; energy prediction</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Contract &amp; change order retrieval</li>
+                            <li>Building code &amp; zoning retrieval</li>
+                            <li>RFIs, submittals, and inspection retrieval</li>
+                            <li>O&amp;M and warranty document retrieval</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data Science, Analytics &amp; Governance</h3>
+                      <ul>
+                        <li>ERP/PM/BIM/IoT pipelines</li>
+                        <li>Corpus engineering (contracts, codes, RFIs, O&amp;M)</li>
+                        <li>ML &amp; RAG evaluation</li>
+                        <li>Risk, safety, and ESG analytics</li>
+                        <li>Governance &amp; compliance frameworks</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>Market &amp; transaction data</li>
+                        <li>BIM models &amp; drawings</li>
+                        <li>Contracts, RFIs, submittals, change orders</li>
+                        <li>Building codes, zoning, permits</li>
+                        <li>IoT &amp; BMS/CMMS data</li>
+                        <li>Financial &amp; operational data</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>RAG Flow for Real Estate &amp; Construction Decisions</h2>
+
+                    <div class="rag-grid">
+                      <div class="rag-step">
+                        <h3>1. User Question / Event</h3>
+                        <p>Contract, code, schedule, safety, or O&amp;M question from project or asset context.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>2. Orchestration &amp; ML Signals</h3>
+                        <p>ML models provide risk, delay, cost, or failure scores to enrich the request.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>3. Retrieval</h3>
+                        <p>Hybrid search over contracts, codes, RFIs, BIM metadata, and O&amp;M documents.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>4. Grounded Generation</h3>
+                        <p>LLM generates explanations, summaries, or recommendations anchored to retrieved text.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>5. Application Response</h3>
+                        <p>Structured output returned to investment, project, safety, or facilities application.</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>Data Science &amp; Governance Swimlane</h2>
+
+                    <div class="gov-row">
+                      <div class="gov-card">
+                        <h3>Data Engineering</h3>
+                        <ul>
+                          <li>Integrate ERP, PM, BIM, IoT, and market feeds</li>
+                          <li>Normalize projects, assets, locations, and trades</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Corpus Engineering</h3>
+                        <ul>
+                          <li>Chunk contracts, codes, RFIs, and O&amp;M docs</li>
+                          <li>Tag by asset, system, trade, jurisdiction</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Evaluation &amp; Monitoring</h3>
+                        <ul>
+                          <li>ML: delay/cost prediction accuracy, safety model performance</li>
+                          <li>RAG: retrieval precision, citation correctness, hallucination rate</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Governance</h3>
+                        <ul>
+                          <li>Access control by role and project</li>
+                          <li>Code and contract versioning</li>
+                          <li>Regulatory and ESG compliance tracking</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'government-sector-architecture') {
+                <section class="sector-architecture" aria-labelledby="gov-arch-title">
+                  <header class="sector-header">
+                    <h1 id="gov-arch-title">Government &amp; Public Sector ML + RAG + Data Science</h1>
+                    <p class="sector-subtitle">
+                      Unified intelligence for policy, services, public safety, and civic operations.
+                    </p>
+                  </header>
+
+                  <section class="sector-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="sector-layer">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Caseworkers &amp; Program Staff</li>
+                        <li>Policy Analysts &amp; Legislators</li>
+                        <li>Public Safety &amp; Emergency Services</li>
+                        <li>Operations &amp; Finance</li>
+                        <li>Residents &amp; Communities</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Caseworker Assistant</li>
+                        <li>Policy Interpretation Assistant</li>
+                        <li>Public Safety Intelligence Assistant</li>
+                        <li>Infrastructure &amp; Planning Assistant</li>
+                        <li>Budget &amp; Procurement Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer sector-layer--highlight">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="sector-two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Risk &amp; need prediction (social services)</li>
+                            <li>Incident &amp; demand forecasting (public safety)</li>
+                            <li>Fraud &amp; anomaly detection</li>
+                            <li>Resource &amp; budget optimization</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Statute &amp; regulation retrieval</li>
+                            <li>Policy &amp; guidance retrieval</li>
+                            <li>Case file &amp; precedent retrieval</li>
+                            <li>Plain&#8209;language, grounded explanations</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data Science, Analytics &amp; Governance</h3>
+                      <ul>
+                        <li>Case, ERP, GIS, and records pipelines</li>
+                        <li>Corpus engineering (laws, policies, case files)</li>
+                        <li>ML &amp; RAG evaluation and monitoring</li>
+                        <li>Equity, fairness, and privacy analytics</li>
+                        <li>Regulatory &amp; institutional governance</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>Statutes &amp; regulations</li>
+                        <li>Case files &amp; program records</li>
+                        <li>Budget &amp; procurement data</li>
+                        <li>GIS &amp; infrastructure data</li>
+                        <li>Public records &amp; audit reports</li>
+                        <li>Community feedback &amp; survey data</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>RAG Flow for Government &amp; Public Sector Decisions</h2>
+
+                    <div class="rag-grid">
+                      <div class="rag-step">
+                        <h3>1. User Question / Event</h3>
+                        <p>Case, policy, compliance, or service question from staff or constituent.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>2. Orchestration &amp; ML Signals</h3>
+                        <p>ML models provide risk, priority, demand, or fraud scores to enrich context.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>3. Retrieval</h3>
+                        <p>Hybrid search over laws, policies, case files, records, and guidance documents.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>4. Grounded Generation</h3>
+                        <p>LLM generates explanations, summaries, or recommendations anchored to retrieved text.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>5. Application Response</h3>
+                        <p>Structured output returned to casework, policy, safety, or operations application.</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>Data Science &amp; Governance Swimlane</h2>
+
+                    <div class="gov-row">
+                      <div class="gov-card">
+                        <h3>Data Engineering</h3>
+                        <ul>
+                          <li>Integrate case, ERP, GIS, records, and legislative systems</li>
+                          <li>Normalize people, programs, locations, and agencies</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Corpus Engineering</h3>
+                        <ul>
+                          <li>Chunk statutes, regulations, policies, and case files</li>
+                          <li>Tag by jurisdiction, program, topic, and sensitivity</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Evaluation &amp; Monitoring</h3>
+                        <ul>
+                          <li>ML: risk, demand, and fraud model performance</li>
+                          <li>RAG: retrieval precision, citation accuracy, hallucination rate</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Governance</h3>
+                        <ul>
+                          <li>Role&#8209;based access &amp; audit trails</li>
+                          <li>Policy and statute versioning</li>
+                          <li>Equity, fairness, and privacy oversight</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'retail-sector-architecture') {
+                <section class="sector-architecture" aria-labelledby="retail-arch-title">
+                  <header class="sector-header">
+                    <h1 id="retail-arch-title">Retail &amp; E-Commerce ML + RAG + Data Science</h1>
+                    <p class="sector-subtitle">
+                      Unified intelligence for discovery, personalization, merchandising, fulfillment, and customer experience.
+                    </p>
+                  </header>
+
+                  <section class="sector-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="sector-layer">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Shoppers</li>
+                        <li>Customer Support Agents</li>
+                        <li>Merchandisers &amp; Marketers</li>
+                        <li>Operations &amp; Supply Chain</li>
+                        <li>Leadership &amp; Strategy</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Product Discovery &amp; Search Assistant</li>
+                        <li>Merchandising &amp; Pricing Assistant</li>
+                        <li>Customer Support Assistant</li>
+                        <li>Supply Chain &amp; Fulfillment Assistant</li>
+                        <li>Store &amp; Ops Intelligence Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer sector-layer--highlight">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="sector-two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Personalized recommendations</li>
+                            <li>Demand &amp; inventory forecasting</li>
+                            <li>Dynamic pricing &amp; promotion models</li>
+                            <li>Fraud &amp; risk detection</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Product content &amp; spec retrieval</li>
+                            <li>Policy, FAQ, and SOP retrieval</li>
+                            <li>Support knowledge base retrieval</li>
+                            <li>Grounded, brand-aligned responses</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data Science, Analytics &amp; Governance</h3>
+                      <ul>
+                        <li>E-com, POS, CRM, OMS, WMS, ERP pipelines</li>
+                        <li>Corpus engineering (catalog, policies, KB, manuals)</li>
+                        <li>ML &amp; RAG evaluation and experimentation</li>
+                        <li>Funnel, cohort, and supply chain analytics</li>
+                        <li>Governance, privacy, and brand controls</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>Product catalog &amp; attributes</li>
+                        <li>Customer &amp; transaction data</li>
+                        <li>Inventory &amp; logistics data</li>
+                        <li>Policies, FAQs, and SOPs</li>
+                        <li>Support knowledge base</li>
+                        <li>Reviews &amp; user-generated content</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>RAG Flow for Retail &amp; E-Commerce</h2>
+
+                    <div class="rag-grid">
+                      <div class="rag-step">
+                        <h3>1. User Question / Event</h3>
+                        <p>Product, order, policy, or support question from shopper or agent.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>2. Orchestration &amp; ML Signals</h3>
+                        <p>ML adds personalization, risk, or value signals (e.g., segment, intent, fraud score).</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>3. Retrieval</h3>
+                        <p>Hybrid search over catalog, policies, FAQs, manuals, and support KB.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>4. Grounded Generation</h3>
+                        <p>LLM generates explanations, recommendations, or responses anchored to retrieved content.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>5. Application Response</h3>
+                        <p>Structured output returned to storefront, support console, or internal tool.</p>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'manufacturing-sector-architecture') {
+                <section class="sector-architecture" aria-labelledby="mfg-arch-title">
+                  <header class="sector-header">
+                    <h1 id="mfg-arch-title">Manufacturing ML + RAG + Data Services</h1>
+                    <p class="sector-subtitle">
+                      Unified intelligence for production, quality, maintenance, supply chain, and workforce operations.
+                    </p>
+                  </header>
+
+                  <section class="sector-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="sector-layer">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Operators &amp; Technicians</li>
+                        <li>Production &amp; Line Supervisors</li>
+                        <li>Quality &amp; Compliance Teams</li>
+                        <li>Maintenance &amp; Reliability Engineers</li>
+                        <li>Supply Chain &amp; Leadership</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Operator &amp; Work Instruction Assistant</li>
+                        <li>Production Optimization Assistant</li>
+                        <li>Quality &amp; Compliance Assistant</li>
+                        <li>Maintenance &amp; Troubleshooting Assistant</li>
+                        <li>Supply Chain &amp; Planning Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer sector-layer--highlight">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="sector-two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Predictive maintenance &amp; RUL estimation</li>
+                            <li>Throughput, yield, and scrap prediction</li>
+                            <li>Quality anomaly &amp; defect detection</li>
+                            <li>Demand &amp; supply chain forecasting</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>SOPs &amp; work instruction retrieval</li>
+                            <li>Engineering docs &amp; ECO retrieval</li>
+                            <li>Quality &amp; regulatory standard retrieval</li>
+                            <li>O&amp;M manuals &amp; troubleshooting retrieval</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data Services, Analytics &amp; Governance</h3>
+                      <ul>
+                        <li>MES/SCADA, ERP, PLM, CMMS, IoT, LIMS pipelines</li>
+                        <li>Corpus engineering (SOPs, manuals, engineering, quality, compliance)</li>
+                        <li>ML &amp; RAG evaluation and monitoring</li>
+                        <li>OEE, yield, energy, and supplier analytics</li>
+                        <li>Governance, safety, and regulatory controls</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>Sensor &amp; IoT data</li>
+                        <li>MES/SCADA &amp; production logs</li>
+                        <li>ERP &amp; supply chain data</li>
+                        <li>PLM/CAD &amp; engineering data</li>
+                        <li>SOPs, manuals, and work instructions</li>
+                        <li>Quality &amp; compliance documentation</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>RAG Flow for Manufacturing</h2>
+
+                    <div class="rag-grid">
+                      <div class="rag-step">
+                        <h3>1. User Question / Event</h3>
+                        <p>
+                          Operator, engineer, or quality/safety question about a process, machine, defect, or requirement.
+                        </p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>2. Orchestration &amp; ML Signals</h3>
+                        <p>
+                          ML adds context: machine state, RUL, defect risk, production status, or supply constraints.
+                        </p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>3. Retrieval</h3>
+                        <p>
+                          Hybrid search over SOPs, manuals, engineering docs, quality records, and compliance standards.
+                        </p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>4. Grounded Generation</h3>
+                        <p>
+                          LLM generates step-by-step guidance, explanations, or summaries anchored to retrieved content.
+                        </p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>5. Application Response</h3>
+                        <p>
+                          Structured output returned to operator consoles, maintenance tools, quality dashboards, or planning systems.
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'hospitality-sector-architecture') {
+                <section class="sector-architecture" aria-labelledby="hosp-arch-title">
+                  <header class="sector-header">
+                    <h1 id="hosp-arch-title">Hospitality &amp; Travel ML + RAG + Data Sciences</h1>
+                    <p class="sector-subtitle">
+                      Basic intelligence for bookings, guest support, operations, and service delivery.
+                    </p>
+                  </header>
+
+                  <section class="sector-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="sector-layer">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Guests</li>
+                        <li>Customer Support Agents</li>
+                        <li>Front Desk &amp; Service Staff</li>
+                        <li>Operations &amp; Facilities</li>
+                        <li>Leadership &amp; Management</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Guest Support Assistant</li>
+                        <li>Booking &amp; Itinerary Assistant</li>
+                        <li>Operations &amp; Staffing Assistant</li>
+                        <li>Revenue Management Assistant</li>
+                        <li>Property &amp; Service Information Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer sector-layer--highlight">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="sector-two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Demand forecasting</li>
+                            <li>Dynamic pricing</li>
+                            <li>Guest segmentation</li>
+                            <li>Operational prediction</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Policy retrieval</li>
+                            <li>Property &amp; service info retrieval</li>
+                            <li>SOP &amp; manual retrieval</li>
+                            <li>Grounded guest responses</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data Sciences &amp; Governance</h3>
+                      <ul>
+                        <li>PMS/CRS/POS/CRM pipelines</li>
+                        <li>Corpus engineering (policies, SOPs, property info)</li>
+                        <li>ML &amp; RAG evaluation</li>
+                        <li>Operational &amp; satisfaction analytics</li>
+                        <li>Governance &amp; compliance</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>Booking &amp; guest data</li>
+                        <li>Property &amp; service data</li>
+                        <li>Policies &amp; SOPs</li>
+                        <li>Reviews &amp; feedback</li>
+                        <li>Operational logs</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="sector-section">
+                    <h2>RAG Flow for Hospitality &amp; Travel</h2>
+
+                    <div class="rag-grid">
+                      <div class="rag-step">
+                        <h3>1. User Question / Event</h3>
+                        <p>Guest or staff question about a booking, policy, service, or procedure.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>2. Orchestration &amp; ML Signals</h3>
+                        <p>ML adds context such as guest profile, demand level, or operational status.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>3. Retrieval</h3>
+                        <p>Hybrid search over policies, property info, SOPs, and manuals.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>4. Grounded Generation</h3>
+                        <p>LLM generates a response based on retrieved documents.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>5. Application Response</h3>
+                        <p>Output returned to guest support, booking tools, or staff systems.</p>
+                      </div>
                     </div>
                   </section>
                 </section>

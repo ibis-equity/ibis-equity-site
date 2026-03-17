@@ -1909,6 +1909,133 @@ export const routes: Routes = [
         topK: 5,
         systemPrompt: 'Answer with manufacturing guidance for throughput, quality, reliability, and plant operations.'
       },
+      featureContent: {
+        title: 'ML + RAG + Data Services for the Manufacturing Sector',
+        subtitle: 'A Unified Intelligence Architecture for Production, Quality, Supply Chain, Maintenance, and Workforce Operations',
+        intro: [
+          'Manufacturing is one of the most operationally complex and data intensive sectors in the world. Every machine cycle, sensor reading, operator action, quality check, material movement, and supplier transaction generates signals that shape throughput, cost, safety, and product quality. Yet despite this abundance of data, most manufacturers still operate with fragmented systems, manual workflows, and tribal knowledge that limit visibility and slow decision making.',
+          'Production data lives in MES and SCADA systems. Supply chain data lives in ERP and procurement platforms. Quality data lives in LIMS and inspection logs. Maintenance data lives in CMMS and IoT platforms. Engineering data lives in PLM and CAD systems. Workforce knowledge lives in SOPs, manuals, and operator experience. This fragmentation creates bottlenecks, unplanned downtime, quality escapes, and inefficiencies across the entire manufacturing value chain.',
+          'Modern manufacturing requires an intelligence layer that can predict, retrieve, reason, and explain across the full production lifecycle - from design to delivery, from raw materials to finished goods, from the shop floor to the boardroom. This is where Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Services converge to form a unified manufacturing intelligence stack.'
+        ],
+        sections: [
+          {
+            title: 'Manufacturing Architecture',
+            cardLayout: 'manufacturing-sector-architecture'
+          },
+          {
+            title: 'Manufacturing RAG Flow: Question to Shop-Floor Action',
+            paragraphs: [
+              'This is the detailed execution path from user question to grounded operational response across manufacturing systems.'
+            ],
+            bullets: [
+              {
+                title: 'User Question / Event',
+                description: 'Operator asks: Why is this defect happening? Engineer asks: What changed in this ECO? Maintenance asks: How do I fix this alarm?'
+              },
+              {
+                title: 'Orchestration / Context Layer',
+                description: 'Context is assembled for machine, line, product, batch, and shift, then enriched with ML signals such as RUL, defect risk, and OEE.'
+              },
+              {
+                title: 'RAG Pipeline (1): Embed and Route Query',
+                description: 'The request is embedded and routed to the correct retrieval strategy based on problem type, asset, and workflow context.'
+              },
+              {
+                title: 'Retriever',
+                description: 'Top sources include SOPs and work instructions, O&M manuals and maintenance logs, engineering docs/ECOs/BOMs, plus quality records and compliance standards.'
+              },
+              {
+                title: 'RAG Pipeline (2): Top-k Grounded Docs',
+                description: 'The most relevant evidence set is selected to ground generation and reduce hallucination risk.'
+              },
+              {
+                title: 'LLM (Grounded Generation)',
+                description: 'The model produces step-by-step guidance, root-cause and impact explanations, and compliance-aware recommendations grounded in retrieved content.'
+              },
+              {
+                title: 'RAG Pipeline (3): Structured Response',
+                description: 'Outputs are packaged as structured responses suitable for operations, maintenance, quality, and engineering workflows.'
+              },
+              {
+                title: 'Applications / Shop-Floor Tools',
+                description: 'Responses are delivered to operator HMI/console, maintenance and CMMS UI, quality dashboards, and engineering/planning tools.'
+              }
+            ]
+          },
+          {
+            title: '1. Machine Learning: Predictive Intelligence for Production, Quality, and Maintenance',
+            paragraphs: [
+              'Machine Learning is the foresight engine of modern manufacturing. It transforms sensor data, operational logs, and historical performance into predictive signals that drive efficiency, reliability, and quality.'
+            ],
+            bullets: [
+              { title: 'Predictive Maintenance & Asset Reliability', description: 'ML models analyze IoT sensor streams, vibration/temperature/pressure/acoustic data, maintenance logs, failure histories, and operator notes. These models support remaining useful life prediction, failure mode detection, condition based maintenance, spare parts optimization, and downtime reduction.' },
+              { title: 'Production Optimization', description: 'ML forecasts cycle time variability, throughput bottlenecks, scrap and rework risk, line balancing opportunities, and operator performance patterns. This enables real time optimization, automated root cause detection, dynamic scheduling, and yield improvement.' },
+              { title: 'Quality Intelligence', description: 'ML powers defect detection using vision systems, statistical process control, anomaly detection, supplier quality prediction, and in line inspection automation.' },
+              { title: 'Supply Chain & Inventory', description: 'ML supports demand forecasting, inventory optimization, supplier risk modeling, lead time prediction, and logistics optimization.' },
+              { title: 'Workforce & Safety', description: 'ML enhances ergonomic risk detection, safety incident prediction, workforce scheduling, and skill based task assignment.' }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG): Grounded Reasoning for SOPs, Manuals, Engineering Docs, and Compliance',
+            paragraphs: [
+              'Manufacturing is a documentation heavy domain. RAG brings engineering knowledge, operational procedures, and compliance requirements into the reasoning loop.'
+            ],
+            bullets: [
+              { title: 'SOPs, Work Instructions, and Training', description: 'RAG retrieves standard operating procedures, work instructions, safety guidelines, training materials, and operator manuals. It generates step by step guidance, troubleshooting instructions, safety reminders, and skill aligned training summaries.' },
+              { title: 'Engineering & Product Documentation', description: 'RAG retrieves CAD/PLM metadata, engineering change orders (ECOs), bill of materials (BOMs), specifications, tolerances, and design notes. It produces design summaries, change impact assessments, and part compatibility explanations.' },
+              { title: 'Quality & Compliance', description: 'RAG retrieves ISO standards, FDA/EMA regulations, industry certifications, audit reports, and quality manuals. It generates compliance checklists, audit ready documentation, and root cause analysis summaries.' },
+              { title: 'Maintenance & Troubleshooting', description: 'RAG retrieves O&M manuals, maintenance logs, failure mode documentation, and spare parts catalogs. It produces troubleshooting steps, repair instructions, and part replacement guidance.' }
+            ]
+          },
+          {
+            title: '3. Data Services: Integration, Governance, and Manufacturing Analytics',
+            paragraphs: [
+              'Data Services provide the integration, governance, and analytics backbone that ensures ML and RAG operate on clean, connected, and trustworthy data.'
+            ],
+            bullets: [
+              { title: 'Data Engineering', description: 'Manufacturing data is fragmented across MES/SCADA, ERP, PLM/CAD, CMMS, IoT platforms, LIMS/QMS, and warehouse/logistics systems. Data Services unify these sources through ETL/ELT pipelines, real time streaming, sensor data normalization, master data management (MDM), and metadata & lineage tracking.' },
+              { title: 'Corpus Engineering for RAG', description: 'Manufacturing corpora include SOPs, manuals, engineering documents, quality records, compliance standards, and maintenance logs. Data Services ensure chunking by step/component/section, embedding generation, version control, sensitivity tagging, and retrieval evaluation.' },
+              { title: 'Manufacturing Analytics', description: 'Data Services power OEE dashboards, yield and scrap analytics, energy consumption analytics, supplier performance dashboards, and workforce productivity insights.' },
+              { title: 'Governance', description: 'Data Services define data quality scoring, access control, audit trails, model drift detection, and compliance monitoring. Manufacturing requires traceability, safety, and regulatory alignment at every step.' }
+            ]
+          },
+          {
+            title: '4. Unified Manufacturing Intelligence Architecture',
+            bullets: [
+              { title: 'Data & Knowledge Layer', description: 'Sensor and IoT data, MES/SCADA data, ERP and supply chain data, PLM/CAD engineering data, SOPs/manuals/work instructions, and quality & compliance documents.' },
+              { title: 'Ingestion & Normalization Layer', description: 'Sensor ingestion, document parsing, entity recognition (machines, parts, processes), metadata tagging, and version control.' },
+              { title: 'Intelligence Layer (ML + RAG)', description: 'ML: predictive maintenance, quality prediction, production optimization, and supply chain forecasting. RAG: SOP reasoning, engineering document interpretation, compliance guidance, and troubleshooting assistance.' },
+              { title: 'Application Layer', description: 'Operator assistant, maintenance assistant, quality intelligence assistant, production optimization assistant, and supply chain intelligence assistant.' },
+              { title: 'Governance Layer', description: 'Safety & compliance, access control, audit trails, model monitoring, and document versioning.' }
+            ]
+          },
+          {
+            title: '5. Sector Specific Impact Across the Manufacturing Value Chain',
+            bullets: [
+              { title: 'Engineering & Design', description: 'Faster design reviews, better change management, and improved cross team communication.' },
+              { title: 'Production & Operations', description: 'Higher throughput, lower scrap and rework, and real time optimization.' },
+              { title: 'Quality & Compliance', description: 'Fewer defects, faster audits, and better traceability.' },
+              { title: 'Maintenance & Reliability', description: 'Reduced downtime, longer asset life, and better spare parts planning.' },
+              { title: 'Supply Chain & Logistics', description: 'Lower inventory cost, more resilient supply chains, and better supplier performance.' }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'Manufacturers that integrate ML, RAG, and Data Services gain a governed, explainable AI layer that amplifies human expertise by turning fragmented manufacturing data into actionable, transparent, and operationally aligned intelligence.'
+            ],
+            bullets: [
+              'Higher OEE and throughput',
+              'Reduced downtime and maintenance cost',
+              'Improved quality and compliance',
+              'More resilient supply chains',
+              'Faster onboarding and training',
+              'Better decision making at every level',
+              'A governed, explainable AI layer'
+            ]
+          }
+        ]
+      },
       capabilities: [
         'Production line bottleneck and OEE analytics',
         'Quality variance detection with root-cause tracing',
@@ -1987,6 +2114,155 @@ export const routes: Routes = [
         topK: 5,
         systemPrompt: 'Answer with hospitality and travel recommendations that improve guest experience and operational quality.'
       },
+      featureContent: {
+        title: 'ML, RAG, and Data Sciences for Hospitality & Travel',
+        subtitle: 'A deliberately dull, straightforward sector narrative',
+        intro: [
+          'The Hospitality & Travel sector consists of hotels, resorts, airlines, cruise lines, rental services, restaurants, and related service providers. These organizations manage bookings, guest interactions, itineraries, loyalty programs, operations, and service delivery. The sector generates large amounts of structured and unstructured data from reservations, transactions, guest profiles, reviews, operational systems, and third party travel platforms. Despite this, many organizations still rely on manual processes, disconnected systems, and outdated decision frameworks.',
+          'Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Sciences provide a set of capabilities that can be applied to improve forecasting, automate information retrieval, and support operational decision making. These technologies do not replace core hospitality functions but offer incremental improvements in efficiency, accuracy, and consistency.'
+        ],
+        sections: [
+          {
+            title: 'Hospitality & Travel Architecture',
+            cardLayout: 'hospitality-sector-architecture'
+          },
+          {
+            title: '1. Machine Learning in Hospitality & Travel',
+            paragraphs: [
+              'Machine Learning is used to analyze historical and real time data to produce predictions and classifications. These outputs support operational planning, pricing, and service delivery.'
+            ],
+            bullets: [
+              { title: 'Demand Forecasting', description: 'ML models use booking patterns, seasonality, events, and historical occupancy to estimate future demand. This helps organizations plan staffing, inventory, and pricing.' },
+              { title: 'Dynamic Pricing', description: 'ML evaluates demand signals, competitor pricing, and inventory levels to adjust room rates, fares, or package prices. This is intended to optimize revenue.' },
+              { title: 'Guest Segmentation', description: 'ML clusters guests based on behavior, spending patterns, and preferences. This supports targeted marketing and loyalty program management.' },
+              { title: 'Operational Optimization', description: 'ML identifies patterns in housekeeping times, maintenance cycles, and service requests. This can improve scheduling and reduce downtime.' },
+              { title: 'Fraud Detection', description: 'ML models detect unusual booking activity, payment anomalies, and loyalty program misuse.' }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG) in Hospitality & Travel',
+            paragraphs: [
+              'RAG systems retrieve relevant documents and content before generating responses. This ensures that outputs are based on existing information rather than model assumptions.'
+            ],
+            bullets: [
+              { title: 'Policy Retrieval', description: 'RAG retrieves cancellation policies, loyalty rules, baggage guidelines, and check in procedures. It generates consistent explanations for staff or guests.' },
+              { title: 'Property and Service Information', description: 'RAG retrieves room descriptions, amenity lists, restaurant menus, and facility details. It provides standardized responses to common inquiries.' },
+              { title: 'Operational Documentation', description: 'RAG retrieves SOPs, training manuals, safety procedures, and maintenance instructions. This supports staff training and issue resolution.' },
+              { title: 'Travel Itinerary Support', description: 'RAG retrieves flight schedules, hotel bookings, transportation options, and local regulations. It produces itinerary summaries and instructions.' }
+            ]
+          },
+          {
+            title: '3. Data Sciences in Hospitality & Travel',
+            paragraphs: [
+              'Data Sciences provide the infrastructure for collecting, processing, and analyzing data across systems. This includes data engineering, analytics, and governance.'
+            ],
+            bullets: [
+              { title: 'Data Integration', description: 'Data Sciences unify data from PMS, CRS, POS, CRM, loyalty systems, booking engines, and third party travel platforms. This creates a consistent data foundation.' },
+              { title: 'Analytics and Reporting', description: 'Data Sciences support dashboards and reports for occupancy, revenue, guest satisfaction, operational efficiency, and cost management.' },
+              { title: 'Corpus Engineering for RAG', description: 'Data Sciences prepare documents such as policies, SOPs, menus, property descriptions, and regulatory guidelines for retrieval and grounding.' },
+              { title: 'Governance', description: 'Data Sciences establish data quality standards, access controls, privacy compliance, and auditability. This ensures consistent and secure data usage.' }
+            ]
+          },
+          {
+            title: '4. Unified Hospitality & Travel Intelligence Architecture',
+            bullets: [
+              { title: 'Data & Knowledge Layer', description: 'Includes booking data, guest profiles, operational logs, policies, SOPs, property information, and travel documentation.' },
+              { title: 'Ingestion & Normalization Layer', description: 'Handles data extraction, transformation, document parsing, metadata tagging, and normalization across systems.' },
+              { title: 'Intelligence Layer (ML + RAG)', description: 'ML provides predictions for demand, pricing, segmentation, and operations. RAG provides grounded responses based on policies, property information, and operational documents.' },
+              { title: 'Application Layer', description: 'Includes assistants for guest support, staff training, itinerary management, revenue management, and operations.' },
+              { title: 'Governance Layer', description: 'Covers privacy, compliance, data quality, and audit controls.' }
+            ]
+          },
+          {
+            title: 'Technical Architecture Diagram',
+            paragraphs: [
+              'Layer flow: Experience Layer -> Application Layer -> Intelligence Layer (ML + RAG) -> Data Science, Analytics & Governance Layer -> Data & Knowledge Layer.'
+            ],
+            bullets: [
+              {
+                title: 'Experience Layer',
+                description: 'Guests, agents, front desk, operations, and leadership users consume insights and actions.'
+              },
+              {
+                title: 'Application Layer',
+                description: 'Guest Support Assistant, Booking & Itinerary Assistant, Operations & Staffing Assistant, Revenue Management Assistant, and Property & Service Information Assistant.'
+              },
+              {
+                title: 'Intelligence Layer (ML + RAG)',
+                description: 'ML services include demand forecasting, dynamic pricing, segmentation, and operational prediction. RAG services include policy retrieval, property information retrieval, SOP/manual retrieval, and grounded responses.'
+              },
+              {
+                title: 'Data Science, Analytics & Governance Layer',
+                description: 'PMS/CRS/POS/CRM pipelines, corpus engineering for policies/SOPs/property information, ML & RAG evaluation, operational and satisfaction analytics, plus governance and compliance controls.'
+              },
+              {
+                title: 'Data & Knowledge Layer',
+                description: 'Booking and guest data, property and service data, policies and SOPs, reviews and feedback, and operational logs.'
+              }
+            ]
+          },
+          {
+            title: 'Hospitality RAG Flow: Question to Structured Response',
+            bullets: [
+              {
+                title: 'User Question / Event',
+                description: 'Guest asks about a booking, policy, or service; or staff asks about a procedure or guideline.'
+              },
+              {
+                title: 'Orchestration / Context Layer',
+                description: 'Context combines guest profile and booking details with ML signals such as demand, pricing, and segment.'
+              },
+              {
+                title: 'RAG Pipeline (1): Embed and Route Query',
+                description: 'The request is embedded and routed to the most relevant retrieval strategy.'
+              },
+              {
+                title: 'Retriever',
+                description: 'Retrieves policies, property and service information, SOPs and manuals, and booking/operational documents.'
+              },
+              {
+                title: 'RAG Pipeline (2): Top-k Grounded Docs',
+                description: 'Selects top-k grounded documents for evidence-based generation.'
+              },
+              {
+                title: 'LLM (Grounded Generation)',
+                description: 'Generates policy-aligned responses, property information summaries, and procedure explanations.'
+              },
+              {
+                title: 'RAG Pipeline (3): Structured Response',
+                description: 'Packages the answer into structured output for downstream systems.'
+              },
+              {
+                title: 'Guest Support / Staff Applications',
+                description: 'Delivers final output to guest support and staff-facing applications.'
+              }
+            ]
+          },
+          {
+            title: '5. Sector Specific Impact',
+            bullets: [
+              { title: 'Guest Experience', description: 'More consistent responses, improved personalization, and reduced wait times.' },
+              { title: 'Operations', description: 'Better scheduling, reduced manual effort, and improved resource allocation.' },
+              { title: 'Revenue Management', description: 'More accurate pricing and demand forecasting.' },
+              { title: 'Staff Support', description: 'Faster access to policies, procedures, and training materials.' },
+              { title: 'Leadership', description: 'Improved visibility into performance metrics and operational trends.' }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'These technologies do not fundamentally change hospitality or travel operations but provide structured, data driven improvements across the value chain.'
+            ],
+            bullets: [
+              'More predictable demand and revenue',
+              'More consistent guest communication',
+              'Reduced operational inefficiencies',
+              'Better use of existing data assets',
+              'Improved compliance and documentation accuracy'
+            ]
+          }
+        ]
+      },
       capabilities: [
         'Guest segmentation and personalization strategies',
         'Revenue management and occupancy forecasting',
@@ -2012,6 +2288,93 @@ export const routes: Routes = [
         modelId: 'anthropic.claude-3-5-sonnet',
         topK: 5,
         systemPrompt: 'Answer in retail and e-commerce context with practical actions for merchandising and conversion growth.'
+      },
+      featureContent: {
+        title: 'ML + RAG + Data Science for the Retail & E Commerce',
+        subtitle: 'A Unified Intelligence Architecture for Discovery, Merchandising, Fulfillment, and Customer Support',
+        intro: [
+          'Retail & E Commerce operate in one of the most competitive, fast moving, and data rich environments in the world. Every digital and physical interaction - every click, search query, product view, cart event, return, shipment, review, chat message, and in store scan - creates a continuous stream of behavioral and operational signals. These signals reveal intent, friction, preference, demand, and risk, forming the raw material for modern commerce intelligence.',
+          'Yet despite this abundance of data, most retailers still struggle to convert it into consistent, real time decisioning. Data is fragmented across e commerce platforms, POS systems, CRMs, OMS/WMS/ERP stacks, product information systems, and third party logistics networks. Product content is scattered across catalogs, vendor feeds, manuals, and marketing systems. Policies and support knowledge bases evolve faster than they can be synchronized. Merchandisers, operators, and support teams rely on manual workflows, tribal knowledge, and disconnected dashboards to make decisions that should be automated, orchestrated, or at least intelligence assisted.',
+          'Modern retail requires an intelligence layer that can predict, retrieve, reason, and explain across the entire commerce lifecycle - from discovery to delivery, from merchandising to support, from supply chain to loyalty. This is where Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Science converge to form a unified retail intelligence stack that transforms retail from reactive and fragmented to predictive, contextual, and orchestrated.'
+        ],
+        sections: [
+          {
+            title: 'Retail & E-Commerce Architecture',
+            cardLayout: 'retail-sector-architecture'
+          },
+          {
+            title: '1. Machine Learning: Predictive Intelligence for Retail Operations',
+            paragraphs: [
+              'Machine Learning is the predictive backbone of modern retail. It transforms behavioral, transactional, and operational data into forward looking signals that drive personalization, merchandising, logistics, and fraud prevention.'
+            ],
+            bullets: [
+              { title: 'Product Discovery & Personalization', description: 'ML models analyze clickstream behavior, search queries, purchase histories, session patterns, customer segments, and real time context. These models power personalized recommendations, dynamic ranking, semantic search relevance, next best action suggestions, and cross sell and upsell optimization.' },
+              { title: 'Merchandising & Inventory', description: 'ML forecasts SKU level demand, seasonal trends, price elasticity, markdown optimization, stockout risk, and supplier performance. This enables smarter assortment planning, automated replenishment, dynamic pricing, and margin optimization.' },
+              { title: 'Fulfillment & Supply Chain', description: 'ML predicts delivery times, warehouse workload, route optimization, inventory placement, and return likelihood.' },
+              { title: 'Fraud & Risk', description: 'ML detects payment fraud, account takeover, return abuse, promotion misuse, and bot activity.' },
+              { title: 'Customer Lifetime Value', description: 'ML supports churn prediction, LTV modeling, retention strategy, and loyalty optimization.' }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG): Grounded Reasoning for Catalog, Policy, and Support',
+            paragraphs: [
+              'Retail is a content heavy domain. RAG brings product data, policies, manuals, and support knowledge into the reasoning loop, enabling grounded, accurate, and brand aligned responses.'
+            ],
+            bullets: [
+              { title: 'Product Knowledge & Catalog Intelligence', description: 'RAG retrieves product descriptions, specifications, reviews, variants, compatibility information, and safety/compliance data. It generates product comparisons, buying guides, feature explanations, compatibility checks, and attribute aligned recommendations.' },
+              { title: 'Customer Support & Policy Interpretation', description: 'RAG retrieves return policies, warranty terms, shipping rules, payment guidelines, and loyalty program details. It produces policy aligned explanations, personalized support responses, step by step troubleshooting, and refund/return eligibility summaries.' },
+              { title: 'Merchandising & Operations', description: 'RAG retrieves SOPs, vendor agreements, inventory rules, and pricing guidelines. It generates operational summaries, compliance checks, and vendor communication drafts.' },
+              { title: 'Internal Knowledge & Training', description: 'RAG supports agent training, store associate guidance, operational Q&A, and brand voice consistency.' }
+            ]
+          },
+          {
+            title: '3. Data Science: Integration, Governance, and Retail Analytics',
+            paragraphs: [
+              'Data Science is the integration and governance layer that ensures ML and RAG operate on clean, connected, and trustworthy data.'
+            ],
+            bullets: [
+              { title: 'Data Engineering', description: 'Retail data is fragmented across e commerce platforms, POS systems, CRM, OMS/WMS, ERP, product information management (PIM), and customer support systems. Data Science unifies these sources through ETL pipelines, feature engineering, real time event streaming, master data management, and metadata & lineage tracking.' },
+              { title: 'Corpus Engineering for RAG', description: 'Retail corpora include product catalogs, policies, manuals, SOPs, support knowledge bases, and vendor documentation. Data Science ensures chunking by attribute, policy section, or SKU; embedding generation; version control; sensitivity tagging; and retrieval evaluation.' },
+              { title: 'Retail Analytics', description: 'Data Science powers cohort analysis, funnel analytics, attribution modeling, promotion performance, inventory and supply chain dashboards, and customer segmentation.' },
+              { title: 'Governance', description: 'Data Science defines data quality scoring, bias & fairness audits, model drift detection, retrieval precision/recall, and compliance monitoring.' }
+            ]
+          },
+          {
+            title: '4. Unified Retail & E Commerce Intelligence Architecture',
+            bullets: [
+              { title: 'Data & Knowledge Layer', description: 'Product catalog, customer data, transactional data, inventory & supply chain data, policies & SOPs, support knowledge base, and reviews & UGC.' },
+              { title: 'Ingestion & Normalization Layer', description: 'Product attribute extraction, entity recognition (SKU, category, brand), metadata tagging, policy parsing, and real time event ingestion.' },
+              { title: 'Intelligence Layer (ML + RAG)', description: 'ML: personalization, demand forecasting, fraud detection, pricing optimization. RAG: product reasoning, policy interpretation, support automation, and operational guidance.' },
+              { title: 'Application Layer', description: 'Product discovery assistant, merchandising assistant, customer support assistant, supply chain intelligence assistant, and store operations assistant.' },
+              { title: 'Governance Layer', description: 'Access control, audit trails, model monitoring, policy versioning, and brand voice consistency.' }
+            ]
+          },
+          {
+            title: '5. Sector Specific Impact Across the Retail Value Chain',
+            bullets: [
+              { title: 'Customers', description: 'Better product discovery, clearer explanations, faster support, and personalized experiences.' },
+              { title: 'Merchandisers', description: 'Smarter assortment decisions, automated content generation, and real time insights.' },
+              { title: 'Supply Chain & Operations', description: 'Reduced stockouts, faster fulfillment, and lower logistics cost.' },
+              { title: 'Customer Support', description: 'Faster resolution, consistent policy interpretation, and lower agent workload.' },
+              { title: 'Leadership', description: 'Better forecasting, improved profitability, and stronger customer loyalty.' }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'Retailers that integrate ML, RAG, and Data Science gain a governed, explainable AI layer that amplifies retail expertise by turning fragmented retail data into actionable, transparent, and customer centric intelligence.'
+            ],
+            bullets: [
+              'Higher conversion and AOV',
+              'Lower operational cost',
+              'Reduced returns and fraud',
+              'Better customer satisfaction',
+              'More efficient merchandising',
+              'Faster support resolution',
+              'A governed, explainable AI layer'
+            ]
+          }
+        ]
       },
       capabilities: [
         'Merchandising analytics and assortment optimization',
@@ -2039,6 +2402,93 @@ export const routes: Routes = [
         topK: 5,
         systemPrompt: 'Answer for public sector scenarios with clear, accountable, mission-focused recommendations.'
       },
+      featureContent: {
+        title: 'ML + RAG + Data Science for the Government & Public Sector',
+        subtitle: 'A Unified Intelligence Architecture for Policy, Service Delivery, Public Safety, and Civic Operations',
+        intro: [
+          'Government and the broader public sector operate under conditions unlike any other domain: high accountability, complex regulation, diverse constituents, and mission critical stakes. Agencies must interpret vast volumes of statutes, regulations, case files, public records, budget documents, operational logs, and community feedback — while delivering equitable, transparent, and efficient services.',
+          'Yet most public sector systems remain fragmented, document heavy, and operationally constrained. Policy lives in legislative databases. Casework lives in agency systems. Regulations live in PDF repositories. Public records live in archives. Budget and procurement data live in ERP systems. Community needs live in surveys, hearings, and social data.',
+          'This fragmentation slows service delivery, increases administrative burden, and limits the government\'s ability to respond to emerging needs. A modern public sector ecosystem requires an intelligence layer that can predict, retrieve, reason, and explain — while upholding transparency, fairness, and public trust. This is where Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Science converge.'
+        ],
+        sections: [
+          {
+            title: 'Government & Public Sector Architecture',
+            cardLayout: 'government-sector-architecture'
+          },
+          {
+            title: '1. Machine Learning: Predictive Intelligence for Public Services, Operations, and Policy',
+            paragraphs: [
+              'Machine Learning is the foresight engine of the public sector. It transforms historical and real time data into predictive signals that help agencies allocate resources, anticipate needs, and improve outcomes.'
+            ],
+            bullets: [
+              { title: 'Social Services & Human Welfare', description: 'ML models analyze case histories, benefit utilization, demographic and socioeconomic indicators, and risk factors for homelessness, food insecurity, or crisis events — supporting early intervention alerts, eligibility prediction, case prioritization, and resource allocation.' },
+              { title: 'Public Safety & Emergency Response', description: 'ML predicts incident hotspots, seasonal risk patterns, emergency response demand, and infrastructure vulnerabilities — enabling proactive deployment, faster response times, and risk informed planning.' },
+              { title: 'Infrastructure & Urban Planning', description: 'ML powers traffic forecasting, transit optimization, utility load prediction, asset failure prediction, and environmental risk modeling.' },
+              { title: 'Economic & Workforce Development', description: 'ML supports labor market forecasting, business growth modeling, economic impact analysis, and grant and program performance prediction.' },
+              { title: 'Administrative Efficiency', description: 'ML improves fraud detection, procurement optimization, budget forecasting, document classification, and case routing.' }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG): Grounded Reasoning for Policy, Regulation, and Casework',
+            paragraphs: [
+              'Government is fundamentally a rules driven domain. RAG brings statutes, regulations, policies, and case files into the reasoning loop.'
+            ],
+            bullets: [
+              { title: 'Policy & Regulatory Interpretation', description: 'RAG retrieves federal, state, and local statutes, agency regulations, policy manuals, guidance documents, and legislative histories. It generates policy summaries, compliance checklists, impact assessments, and plain language explanations for constituents.' },
+              { title: 'Casework & Public Services', description: 'RAG retrieves case notes, eligibility rules, program guidelines, and prior determinations — producing case summaries, eligibility explanations, recommended next steps, and documentation for audits.' },
+              { title: 'Public Records & Transparency', description: 'RAG supports FOIA request summarization, public meeting minutes, budget documents, and audit reports — generating public friendly summaries, cross document insights, and historical comparisons.' },
+              { title: 'Civic Engagement & Communication', description: 'RAG retrieves community feedback, public comments, survey data, and outreach materials — producing constituent aligned messaging, issue summaries, and engagement recommendations.' }
+            ]
+          },
+          {
+            title: '3. Data Science: Integration, Governance, and Public Sector Analytics',
+            paragraphs: [
+              'Data Science is the infrastructure and governance backbone that ensures ML and RAG are reliable, ethical, and aligned with public values.'
+            ],
+            bullets: [
+              { title: 'Data Engineering', description: 'Public sector data is fragmented across case management systems, ERP & financial systems, public safety systems, GIS platforms, legislative databases, and public records archives. Data Science unifies these through ETL pipelines, master data management, geospatial integration, and metadata & lineage tracking.' },
+              { title: 'Corpus Engineering for RAG', description: 'Corpora include statutes & regulations, policy manuals, case files, public records, budget documents, and procurement contracts. Data Science ensures chunking by section, clause, or program; embedding generation; version control; sensitivity tagging (PII, PHI, confidential data); and retrieval evaluation.' },
+              { title: 'Public Sector Analytics', description: 'Data Science powers program performance dashboards, equity impact analysis, budget & procurement analytics, workforce analytics, and community needs assessments.' },
+              { title: 'Governance', description: 'Data Science defines fairness & bias audits, privacy controls, transparency frameworks, model validation, and retrieval quality scoring. Government requires the highest standard of explainability and accountability.' }
+            ]
+          },
+          {
+            title: '4. Unified Public Sector Intelligence Architecture',
+            bullets: [
+              { title: 'Data & Knowledge Layer', description: 'Statutes & regulations, case files, public records, budget & procurement data, GIS & infrastructure data, program guidelines, and community feedback.' },
+              { title: 'Ingestion & Normalization Layer', description: 'Document parsing, entity recognition (people, programs, agencies), geospatial normalization, metadata tagging, and privacy filtering.' },
+              { title: 'Intelligence Layer (ML + RAG)', description: 'ML: risk prediction, demand forecasting, fraud detection, resource optimization. RAG: policy interpretation, case reasoning, compliance guidance, public friendly explanations.' },
+              { title: 'Application Layer', description: 'Caseworker assistant, policy interpretation assistant, public safety intelligence assistant, infrastructure planning assistant, and budget & procurement assistant.' },
+              { title: 'Governance Layer', description: 'Access control, audit trails, model monitoring, policy versioning, and equity & fairness oversight.' }
+            ]
+          },
+          {
+            title: '5. Sector Specific Impact Across Government Functions',
+            bullets: [
+              { title: 'Social Services', description: 'Faster eligibility decisions, better case prioritization, and more equitable outcomes.' },
+              { title: 'Public Safety', description: 'Proactive risk mitigation, faster response, and better resource deployment.' },
+              { title: 'Infrastructure & Planning', description: 'Smarter capital planning, predictive maintenance, and better zoning & land use decisions.' },
+              { title: 'Administration & Operations', description: 'Reduced fraud, faster procurement, and improved budget accuracy.' },
+              { title: 'Civic Engagement & Transparency', description: 'Clearer public communication, better access to information, and stronger community trust.' }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'Public sector organizations that integrate ML, RAG, and Data Science gain a governed, explainable AI layer that amplifies public servants by turning fragmented government data into actionable, transparent, and mission aligned intelligence.'
+            ],
+            bullets: [
+              'Faster, more consistent service delivery',
+              'Better resource allocation',
+              'Higher transparency and trust',
+              'Reduced administrative burden',
+              'Improved equity and fairness',
+              'Better policy outcomes',
+              'A governed, explainable AI layer'
+            ]
+          }
+        ]
+      },
       capabilities: [
         'Program performance monitoring and KPI governance',
         'Citizen service workflow optimization',
@@ -2064,6 +2514,93 @@ export const routes: Routes = [
         modelId: 'anthropic.claude-3-5-sonnet',
         topK: 5,
         systemPrompt: 'Answer for real estate and construction with guidance on delivery risk, cost control, and asset performance.'
+      },
+      featureContent: {
+        title: 'ML + RAG + Data Science for Real Estate & Construction',
+        subtitle: 'A Unified Intelligence Architecture for Property Markets, Capital Projects, and Built Environment Operations',
+        intro: [
+          'Real Estate and Construction operate at the intersection of capital, risk, regulation, and physical assets. Every decision — from site selection to permitting, from design to procurement, from construction sequencing to asset management — depends on the ability to interpret complex data, forecast outcomes, and coordinate across fragmented stakeholders.',
+          'Yet the sector is historically data poor, document heavy, and operationally siloed. Market data lives in brokerage systems. Construction data lives in PM tools. Compliance data lives in permitting portals. Asset data lives in CMMS/BMS systems. Financial data lives in ERP platforms. Design data lives in BIM models. Contracts, RFIs, submittals, and change orders live everywhere.',
+          'This fragmentation creates delays, cost overruns, risk exposure, and inconsistent decision making. A modern built environment ecosystem requires an intelligence layer that can predict, retrieve, reason, and explain across the entire asset lifecycle. This is where Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Science converge.'
+        ],
+        sections: [
+          {
+            title: 'Real Estate & Construction Architecture',
+            cardLayout: 'realestate-sector-architecture'
+          },
+          {
+            title: '1. Machine Learning: Predictive Intelligence for Markets, Projects, and Assets',
+            paragraphs: [
+              'ML is the foresight engine of Real Estate & Construction. It transforms historical and real time data into predictive signals that guide investment, planning, and operations.'
+            ],
+            bullets: [
+              { title: 'Real Estate Market Intelligence', description: 'ML models analyze transaction histories, demographic shifts, economic indicators, rent rolls, occupancy, comparable sales, geospatial features, and environmental risk to support property valuation, rent forecasting, market cycle prediction, site selection, and portfolio optimization.' },
+              { title: 'Construction Project Intelligence', description: 'ML predicts schedule delays, cost overruns, safety incidents, subcontractor performance, material lead times, weather impacts, and equipment utilization — enabling proactive mitigation, dynamic scheduling, risk adjusted budgeting, and workforce planning.' },
+              { title: 'Asset & Facilities Intelligence', description: 'ML powers predictive maintenance, energy optimization, occupancy forecasting, lifecycle cost modeling, and failure prediction for HVAC, electrical, and plumbing systems.' },
+              { title: 'Financial & Operational Intelligence', description: 'ML supports loan risk modeling, cap rate forecasting, cash flow prediction, insurance risk scoring, and ESG performance modeling.' }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG): Grounded Reasoning for Contracts, Codes, and Compliance',
+            paragraphs: [
+              'Real Estate & Construction are governed by contracts, building codes, zoning laws, safety regulations, design documents, and operational manuals. RAG brings these documents into the reasoning loop.'
+            ],
+            bullets: [
+              { title: 'Contract Intelligence', description: 'RAG retrieves AIA contracts, subcontractor agreements, change orders, RFIs, SOWs, and procurement documents. It generates clause level risk summaries, change order justification, contract comparisons, and negotiation insights.' },
+              { title: 'Building Codes & Regulatory Compliance', description: 'RAG retrieves local building codes, zoning ordinances, fire & life safety codes, environmental regulations, ADA requirements, and permitting guidelines — producing compliance checklists, code interpretations, permit readiness summaries, and impact assessments.' },
+              { title: 'Construction Documentation', description: 'RAG retrieves BIM model metadata, submittals, RFIs, daily logs, inspection reports, and safety manuals. It generates issue summaries, coordination notes, safety briefings, and punchlist explanations.' },
+              { title: 'Asset Operations', description: 'RAG retrieves O&M manuals, warranty documents, maintenance logs, and BMS/CMMS data — producing troubleshooting guides, maintenance instructions, and warranty coverage summaries.' }
+            ]
+          },
+          {
+            title: '3. Data Science: Integration, Governance, and Built Environment Analytics',
+            paragraphs: [
+              'Data Science is the infrastructure and governance backbone that makes ML and RAG reliable, safe, and operationally aligned with the built environment.'
+            ],
+            bullets: [
+              { title: 'Data Engineering', description: 'Real Estate & Construction data is fragmented across ERP, PM tools (Procore, Autodesk, Primavera), BIM models, GIS systems, IoT sensors, BMS/CMMS, market data providers, and permitting portals. Data Science unifies these through ETL pipelines, feature engineering, geospatial integration, BIM to analytics mapping, and metadata & lineage tracking.' },
+              { title: 'Corpus Engineering for RAG', description: 'Corpora include contracts, codes & regulations, zoning maps, BIM metadata, safety manuals, O&M documentation, and RFIs, submittals, and change orders. Data Science ensures chunking by clause, code section, or system; embedding generation; version control; sensitivity tagging; and retrieval evaluation.' },
+              { title: 'Built Environment Analytics', description: 'Data Science powers portfolio performance dashboards, construction KPI analytics, safety analytics, energy & sustainability dashboards, and asset lifecycle modeling.' },
+              { title: 'Governance', description: 'Data Science defines model validation, drift detection, fairness audits, retrieval precision/recall, and compliance monitoring.' }
+            ]
+          },
+          {
+            title: '4. Unified Real Estate & Construction Intelligence Architecture',
+            bullets: [
+              { title: 'Data & Knowledge Layer', description: 'Market data, BIM models, contracts & RFIs, codes & regulations, IoT & sensor data, financial & operational data, and O&M manuals.' },
+              { title: 'Ingestion & Normalization Layer', description: 'Document parsing, BIM metadata extraction, geospatial normalization, entity recognition (assets, trades, systems), and metadata tagging.' },
+              { title: 'Intelligence Layer (ML + RAG)', description: 'ML: market forecasting, delay & cost prediction, safety risk modeling, asset failure prediction. RAG: contract reasoning, code compliance, BIM linked explanations, O&M troubleshooting.' },
+              { title: 'Application Layer', description: 'Developer investment assistant, construction project intelligence assistant, safety & compliance assistant, facilities operations assistant, and portfolio strategy assistant.' },
+              { title: 'Governance Layer', description: 'Access control, audit trails, model monitoring, code versioning, and regulatory compliance.' }
+            ]
+          },
+          {
+            title: '5. Sector Specific Impact Across the Built Environment Value Chain',
+            bullets: [
+              { title: 'Developers & Investors', description: 'Better site selection, more accurate underwriting, faster due diligence, and risk adjusted investment decisions.' },
+              { title: 'Architects & Engineers', description: 'Code aligned design guidance, BIM linked reasoning, and faster coordination.' },
+              { title: 'Contractors & Construction Managers', description: 'Delay & cost prediction, safety risk alerts, contract intelligence, and RFI/submittal summarization.' },
+              { title: 'Owners & Operators', description: 'Predictive maintenance, energy optimization, warranty & O&M intelligence, and lifecycle cost modeling.' },
+              { title: 'Municipalities & Regulators', description: 'Automated compliance checks, permit readiness scoring, and zoning interpretation.' }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'Organizations that integrate ML, RAG, and Data Science gain a governed, explainable AI layer that amplifies human expertise by turning fragmented built environment data into actionable, transparent, and defensible intelligence.'
+            ],
+            bullets: [
+              'Reduced delays and cost overruns',
+              'Faster permitting and compliance',
+              'Improved safety outcomes',
+              'Higher asset performance',
+              'More accurate valuations and forecasts',
+              'Better portfolio decisions',
+              'Lower operational cost',
+              'A governed, explainable AI layer'
+            ]
+          }
+        ]
       },
       capabilities: [
         'Project controls and schedule risk intelligence',
