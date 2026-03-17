@@ -912,6 +912,249 @@
   background: #f5f7fb;
 }
 
+.grid-architecture {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding: 2rem 1.5rem;
+  background: #f9fafb;
+  display: grid;
+  gap: 1.75rem;
+  border-radius: 14px;
+}
+
+.grid-architecture__header h1 {
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.grid-architecture__subtitle {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.grid-section {
+  padding: 1.25rem 1rem;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+
+.grid-section > h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.grid-layer {
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  margin-bottom: 0.75rem;
+}
+
+.grid-layer h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+}
+
+.grid-layer ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.intelligence {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.intel-grid__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.intel-card {
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+}
+
+.intel-card h3 {
+  margin-bottom: 0.35rem;
+}
+
+.rag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.rag-step {
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px dashed #9ca3af;
+  background: #ffffff;
+}
+
+.rag-step h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.25rem;
+}
+
+.gov-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.gov-card {
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.gov-card h3 {
+  margin-bottom: 0.3rem;
+  font-size: 0.98rem;
+}
+
+.grid-architecture ul {
+  list-style: disc;
+}
+
+.grid-architecture li {
+  font-size: 0.9rem;
+  margin-bottom: 0.15rem;
+}
+
+.edu-architecture {
+  font-family: system-ui, sans-serif;
+  padding: 2rem 1.5rem;
+  background: #f9fafb;
+  display: grid;
+  gap: 1.75rem;
+  border-radius: 14px;
+}
+
+.edu-header h1 {
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.edu-subtitle {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.edu-section {
+  padding: 1.25rem 1rem;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+
+.edu-layer {
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  margin-bottom: 0.75rem;
+}
+
+.sector-architecture {
+  font-family: system-ui, sans-serif;
+  padding: 2rem 1.5rem;
+  background: #f9fafb;
+  display: grid;
+  gap: 1.75rem;
+  border-radius: 14px;
+}
+
+.sector-header h1 {
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.sector-subtitle {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.sector-section {
+  padding: 1.25rem 1rem;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+
+.sector-layer {
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  margin-bottom: 0.75rem;
+}
+
+.sector-layer--highlight {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.sector-two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .sector-architecture {
+    padding: 1.5rem 1rem;
+  }
+
+  .sector-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .sector-section {
+    padding: 1rem 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .edu-architecture {
+    padding: 1.5rem 1rem;
+  }
+
+  .edu-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .edu-section {
+    padding: 1rem 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-architecture {
+    padding: 1.5rem 1rem;
+  }
+
+  .grid-architecture__header h1 {
+    font-size: 1.6rem;
+  }
+
+  .grid-section {
+    padding: 1rem 0.85rem;
+  }
+}
+
 .ml-rag-ds-comparison tbody tr:nth-child(even) td:first-child {
   background: #fafbff;
 }

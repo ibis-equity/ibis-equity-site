@@ -1425,6 +1425,10 @@ export const routes: Routes = [
         ],
         sections: [
           {
+            title: 'Insurance ML + RAG + Data Science Architecture',
+            cardLayout: 'insurance-architecture'
+          },
+          {
             title: '1. Machine Learning: Predictive Intelligence for Risk, Pricing, and Claims',
             paragraphs: [
               'Machine Learning is the predictive engine of the insurance enterprise. It identifies patterns in historical data and forecasts future outcomes with speed and precision.'
@@ -1584,6 +1588,269 @@ export const routes: Routes = [
       iconTone: 'accent',
       title: 'Education',
       description: 'Education services that improve learner engagement, institutional planning, and instructional effectiveness.',
+      featureContent: {
+        title: 'ML + RAG + Data Science in the Education System',
+        subtitle: 'A Unified Intelligence Architecture for Student Success, Institutional Strategy, and Academic Integrity',
+        intro: [
+          'Education is one of the most information dense sectors in society. Every learner interaction, assessment, advising note, course enrollment, policy update, and institutional decision generates data. Yet most educational systems-K-12, higher education, and workforce learning-still operate with fragmented information, manual workflows, and reactive decision making. The result is predictable: inequitable outcomes, inconsistent support, and limited visibility into what students need and how institutions should respond.',
+          'A modern education system requires an intelligence layer that can predict, retrieve, reason, and explain-all while honoring the sector\'s commitments to equity, transparency, and human centered learning. This is where Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Science converge to form a unified architecture that supports students, teachers, advisors, administrators, and families.'
+        ],
+        sections: [
+          {
+            title: 'Education ML + RAG + Data Science Architecture',
+            cardLayout: 'education-architecture'
+          },
+          {
+            title: 'Education ML + RAG + Data Science Architecture (Sector View)',
+            cardLayout: 'education-sector-architecture'
+          },
+          {
+            title: '1. Machine Learning: Predictive Intelligence for Student Success and Institutional Planning',
+            paragraphs: [
+              'Machine Learning is the foresight engine of the education ecosystem. It identifies patterns in historical and real-time data to forecast outcomes, risks, and opportunities.'
+            ],
+            bullets: [
+              {
+                title: '1.1 Student Success & Intervention',
+                description: 'ML models analyze attendance patterns, LMS engagement, assessment performance, course progression, behavioral indicators, and socioeconomic/contextual factors. These models support early warning systems, dropout and persistence prediction, mastery estimation, personalized learning recommendations, and intervention prioritization.'
+              },
+              {
+                title: '1.2 Academic Planning & Enrollment',
+                description: 'ML forecasts course demand, program enrollment, instructor workload, resource utilization, and graduation likelihood. This enables institutions to plan proactively rather than reactively.'
+              },
+              {
+                title: '1.3 Financial Aid & Equity',
+                description: 'ML supports aid eligibility modeling, risk of financial hardship, equity gap detection, and predictive analytics for underserved populations.'
+              },
+              {
+                title: '1.4 Operational Efficiency',
+                description: 'ML optimizes scheduling, staffing, classroom utilization, and budget allocation. ML provides predictive clarity, but it does not provide curriculum-aligned reasoning or policy-grounded explanations.'
+              }
+            ]
+          },
+          {
+            title: '2. Retrieval Augmented Generation (RAG): Curriculum-Aligned Reasoning and Transparent Academic Support',
+            paragraphs: [
+              'Education is governed by curriculum standards, syllabi, rubrics, policies, and instructional materials. RAG brings these documents into the reasoning loop, ensuring that every explanation, recommendation, or summary is grounded in authoritative academic sources.'
+            ],
+            bullets: [
+              {
+                title: '2.1 Curriculum & Standards Alignment',
+                description: 'RAG retrieves state standards, course syllabi, learning objectives, instructional materials, and assessment rubrics, then generates standards-aligned explanations, learning objective summaries, curriculum maps, and personalized study plans.'
+              },
+              {
+                title: '2.2 Instructional Support',
+                description: 'RAG assists teachers by summarizing student performance, generating rubric-aligned feedback, producing lesson scaffolds, suggesting differentiated instruction strategies, and creating formative assessment items.'
+              },
+              {
+                title: '2.3 Advising & Student Services',
+                description: 'RAG retrieves program requirements, degree pathways, transfer policies, advising notes, and institutional policies. It produces degree progress summaries, course recommendations, policy-aligned advising guidance, and student-friendly explanations.'
+              },
+              {
+                title: '2.4 Administrative & Policy Interpretation',
+                description: 'RAG supports administrators by summarizing regulatory changes, mapping policies to institutional obligations, generating compliance checklists, and producing accreditation-ready documentation. RAG provides contextual reasoning, traceability, and academic fidelity.'
+              }
+            ]
+          },
+          {
+            title: '3. Data Science: The Integration, Governance, and Equity Backbone',
+            paragraphs: [
+              'Data Science is the infrastructure layer that ensures ML and RAG are reliable, ethical, and aligned with educational values.'
+            ],
+            bullets: [
+              {
+                title: '3.1 Data Engineering',
+                description: 'Education data is fragmented across SIS, LMS, assessment platforms, advising systems, financial aid systems, and institutional research databases. Data Science unifies these sources through ETL pipelines, feature engineering, data quality scoring, master data management, and metadata/lineage tracking.'
+              },
+              {
+                title: '3.2 Corpus Engineering for RAG',
+                description: 'Education corpora include standards, syllabi, textbooks, rubrics, policies, advising notes, and institutional handbooks. Data Science ensures chunking by learning objective or policy section, embedding generation, version control, sensitivity tagging (FERPA/student privacy), and retrieval evaluation.'
+              },
+              {
+                title: '3.3 Learning Analytics',
+                description: 'Data Science powers cohort performance dashboards, equity gap analysis, program evaluation, instructor effectiveness metrics, and course redesign insights.'
+              },
+              {
+                title: '3.4 Governance & Ethics',
+                description: 'Data Science defines bias audits, drift detection, fairness metrics, privacy controls, and transparency frameworks. Education requires a higher bar for governance because decisions directly affect student futures.'
+              }
+            ]
+          },
+          {
+            title: '4. Unified Education Intelligence Architecture',
+            paragraphs: [
+              'ML, RAG, and Data Science combine into a multi-layered architecture:'
+            ],
+            bullets: [
+              {
+                title: '4.1 Data & Knowledge Layer',
+                description: 'SIS, LMS, CRM, assessments and rubrics, curriculum standards, syllabi and instructional materials, advising notes, institutional policies, and accreditation requirements.'
+              },
+              {
+                title: '4.2 Ingestion & Normalization Layer',
+                description: 'Document parsing, learning objective extraction, entity recognition (students/courses/competencies), metadata tagging, and privacy filtering.'
+              },
+              {
+                title: '4.3 Intelligence Layer (ML + RAG)',
+                description: 'Predictive models for risk, mastery, and progression; retrieval engines for curriculum and policy; grounded generation for explanations and recommendations.'
+              },
+              {
+                title: '4.4 Application Layer',
+                description: 'Student success assistant, teacher instructional assistant, advisor guidance assistant, curriculum alignment assistant, and institutional planning assistant.'
+              },
+              {
+                title: '4.5 Governance Layer',
+                description: 'Access control, audit trails, model/retrieval monitoring, policy versioning, and equity/fairness oversight.'
+              }
+            ]
+          },
+          {
+            title: '5. Sector-Specific Impact Across the Education Value Chain',
+            bullets: [
+              {
+                title: '5.1 Students',
+                description: 'Personalized learning pathways, transparent explanations tied to curriculum, early support before failure occurs, and clear progress indicators.'
+              },
+              {
+                title: '5.2 Teachers & Faculty',
+                description: 'Rubric-aligned feedback, lesson scaffolds, cohort insights, and standards-aligned content generation.'
+              },
+              {
+                title: '5.3 Advisors & Support Staff',
+                description: 'Degree progress summaries, course recommendations, policy-aligned guidance, and risk-based outreach lists.'
+              },
+              {
+                title: '5.4 Administrators & Leadership',
+                description: 'Enrollment forecasting, program evaluation, equity dashboards, and accreditation support.'
+              },
+              {
+                title: '5.5 Families & Communities',
+                description: 'Clear accessible explanations, progress updates, and resource recommendations.'
+              }
+            ]
+          },
+          {
+            title: '6. Strategic Advantages',
+            paragraphs: [
+              'Institutions that integrate ML, RAG, and Data Science gain earlier and more equitable interventions, higher student retention and completion, more consistent instruction and feedback, better resource allocation, improved transparency and trust, reduced administrative burden, and a governed explainable AI layer.',
+              'This architecture does not replace educators-it amplifies them by turning fragmented educational data into actionable transparent and student-centered intelligence.'
+            ]
+          },
+          {
+            title: 'FULL EDUCATION SECTOR INTELLIGENCE REFERENCE MANUAL',
+            paragraphs: [
+              'ML + RAG + Data Science for Modern Education Systems',
+              'Core Edition - Enterprise Grade, Retrieval Optimized, Sector Specific'
+            ]
+          },
+          {
+            title: '1. Purpose & Scope',
+            paragraphs: [
+              'This manual defines the architecture, use cases, governance, and operational patterns for deploying Machine Learning (ML), Retrieval Augmented Generation (RAG), and Data Science across the Education sector.',
+              'The goal is to create a student-centered, equity-aligned intelligence layer that supports teaching, advising, administration, and institutional strategy.'
+            ],
+            bullets: [
+              { title: 'K-12 districts' },
+              { title: 'Higher education institutions' },
+              { title: 'Workforce development programs' },
+              { title: 'EdTech platforms' },
+              { title: 'State education agencies' },
+              { title: 'Learning and development organizations' }
+            ]
+          },
+          {
+            title: '2. Sector Context: Why Education Needs Intelligence Architecture',
+            paragraphs: [
+              'Education is uniquely complex and requires systems that can predict risk, retrieve curriculum, reason with policy, explain decisions, and support equitable outcomes.',
+              'ML, RAG, and Data Science together form the foundation for this transformation.'
+            ],
+            bullets: [
+              { title: 'Highly heterogeneous learners' },
+              { title: 'Fragmented data systems (SIS, LMS, CRM, assessment platforms)' },
+              { title: 'High-stakes equity considerations' },
+              { title: 'Policy-driven constraints' },
+              { title: 'Human-centered workflows' },
+              { title: 'Increasing expectations for personalization' }
+            ]
+          },
+          {
+            title: '3. Core Concepts',
+            bullets: [
+              {
+                title: '3.1 Machine Learning (ML)',
+                description: 'ML identifies patterns in student, course, and institutional data to forecast outcomes and guide interventions. Strengths: early warning systems, mastery estimation, enrollment forecasting, equity gap detection, and resource optimization. Limitations: requires labeled data, needs fairness monitoring, and does not inherently explain why.'
+              },
+              {
+                title: '3.2 Retrieval Augmented Generation (RAG)',
+                description: 'RAG grounds LLM outputs in curriculum, policy, and instructional materials. Strengths: standards-aligned explanations, rubric-aligned feedback, policy-grounded advising, transparent reasoning, and reduced hallucination. Limitations: requires high-quality corpora, and retrieval quality determines output quality.'
+              },
+              {
+                title: '3.3 Data Science',
+                description: 'Data Science integrates SIS, LMS, assessment, advising, and policy data into a coherent ecosystem. Strengths: data pipelines, corpus engineering, learning analytics, governance frameworks, and equity monitoring. Limitations: requires domain expertise and high data quality.'
+              }
+            ]
+          },
+          {
+            title: '4. Unified Education Intelligence Architecture',
+            bullets: [
+              { title: '4.1 Experience Layer', description: 'Students, Teachers, Advisors, Administrators, Families.' },
+              { title: '4.2 Application Layer', description: 'Student Success Assistant, Teacher Instructional Assistant, Advisor Guidance Assistant, Curriculum Alignment Assistant, Institutional Planning Assistant.' },
+              { title: '4.3 Intelligence Layer (ML + RAG)', description: 'ML: risk prediction, mastery estimation, course demand forecasting, equity gap detection. RAG: standards retrieval, syllabus and rubric retrieval, grounded feedback, policy-aligned advising.' },
+              { title: '4.4 Data Science & Governance Layer', description: 'SIS/LMS pipelines, corpus engineering, ML and RAG evaluation, bias/fairness/privacy controls, institutional governance.' },
+              { title: '4.5 Data & Knowledge Layer', description: 'SIS, LMS, CRM, assessments and rubrics, curriculum standards, syllabi and instructional materials, advising notes, institutional policies.' }
+            ]
+          },
+          {
+            title: '5. Domain Specific Use Cases',
+            bullets: [
+              { title: '5.1 Student Success', description: 'ML: dropout prediction, persistence modeling, mastery estimation, intervention prioritization. RAG: personalized study plans, standards-aligned explanations, progress summaries. Data Science: cohort analytics, equity dashboards.' },
+              { title: '5.2 Teaching & Instruction', description: 'ML: assignment difficulty prediction, engagement modeling, learning style clustering. RAG: rubric-aligned feedback, lesson scaffolds, standards alignment. Data Science: course redesign insights, instructor effectiveness analytics.' },
+              { title: '5.3 Advising & Student Services', description: 'ML: degree progress risk, course recommendation modeling, financial hardship prediction. RAG: policy-aligned advising, degree requirement summaries, transfer evaluation. Data Science: advising analytics, student support dashboards.' },
+              { title: '5.4 Administration & Leadership', description: 'ML: enrollment forecasting, budget modeling, resource optimization. RAG: policy interpretation, accreditation documentation, regulatory summaries. Data Science: program evaluation, institutional research.' }
+            ]
+          },
+          {
+            title: '6. Corpus Engineering for Education RAG',
+            bullets: [
+              { title: '6.1 Corpus Types', description: 'Standards (state, national, competency-based), syllabi, rubrics, textbooks and instructional materials, policies and handbooks, advising notes, accreditation requirements.' },
+              { title: '6.2 Chunking Strategy', description: 'Chunk by learning objective, rubric criterion, and policy section; preserve metadata (grade level, subject, course, institution).' },
+              { title: '6.3 Retrieval Strategy', description: 'Hybrid search, role-based access, version control, and FERPA sensitivity tagging.' }
+            ]
+          },
+          {
+            title: '7. ML Engineering for Education',
+            bullets: [
+              { title: '7.1 Data Types', description: 'SIS records, LMS logs, assessment data, attendance, advising interactions, demographic and contextual data.' },
+              { title: '7.2 Model Types', description: 'Classification (risk, mastery), regression (grades, persistence), clustering (learning profiles), time-series forecasting (enrollment).' },
+              { title: '7.3 Evaluation Metrics', description: 'Precision/recall, fairness metrics, drift detection, and equity impact analysis.' }
+            ]
+          },
+          {
+            title: '8. Governance, Risk & Ethics',
+            bullets: [
+              { title: '8.1 Privacy', description: 'FERPA compliance, role-based access, and data minimization.' },
+              { title: '8.2 Fairness', description: 'Bias audits, equity impact monitoring, and transparent explanations.' },
+              { title: '8.3 Safety', description: 'Hallucination mitigation, retrieval quality scoring, and policy versioning.' }
+            ]
+          },
+          {
+            title: '9. Implementation Roadmap',
+            bullets: [
+              { title: 'Phase 1: Foundation', description: 'Data inventory, SIS/LMS integration, corpus ingestion, initial ML models, and RAG MVP.' },
+              { title: 'Phase 2: Expansion', description: 'Instructional assistant, advising assistant, equity analytics, and curriculum alignment.' },
+              { title: 'Phase 3: Enterprise Scale', description: 'Multi-assistant orchestration, cross-institution knowledge graph, continuous learning loops, and governance automation.' }
+            ]
+          },
+          {
+            title: '10. KPIs',
+            bullets: [
+              { title: 'ML KPIs', description: 'Prediction accuracy, intervention effectiveness, equity improvements.' },
+              { title: 'RAG KPIs', description: 'Retrieval precision, standards alignment accuracy, feedback quality.' },
+              { title: 'Data Science KPIs', description: 'Data quality, corpus coverage, institutional performance insights.' }
+            ]
+          }
+        ]
+      },
       rag: {
         knowledgeBaseId: 'kb-education',
         modelId: 'anthropic.claude-3-5-sonnet',

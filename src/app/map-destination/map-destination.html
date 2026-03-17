@@ -322,7 +322,7 @@
         <div class="feature-story__sections">
           @for (section of featureContent.sections; track section.title) {
             <article class="feature-story__panel" [class.feature-story__panel--with-image]="!!section.imageSrc">
-              @if (section.cardLayout !== 'ai-stack') {
+              @if (section.cardLayout !== 'ai-stack' && section.cardLayout !== 'insurance-architecture' && section.cardLayout !== 'education-architecture' && section.cardLayout !== 'education-sector-architecture') {
                 <h2>{{ section.title }}</h2>
 
                 @if (section.subtitle) {
@@ -401,6 +401,346 @@
                       </tbody>
                     </table>
                   </div>
+                </section>
+              }
+
+              @if (section.cardLayout === 'insurance-architecture') {
+                <section class="grid-architecture" aria-labelledby="ins-arch-title">
+                  <header class="grid-architecture__header">
+                    <h1 id="ins-arch-title">Insurance ML + RAG + Data Science Architecture</h1>
+                    <p class="grid-architecture__subtitle">
+                      Unified intelligence stack for underwriting, claims, fraud, and customer experience.
+                    </p>
+                  </header>
+
+                  <section class="grid-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="grid-layer experience">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Underwriters</li>
+                        <li>Claims Adjusters</li>
+                        <li>SIU / Fraud Teams</li>
+                        <li>Customer Experience</li>
+                        <li>Compliance &amp; Risk</li>
+                      </ul>
+                    </div>
+
+                    <div class="grid-layer application">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Underwriting Assistant</li>
+                        <li>Claims Reasoning Assistant</li>
+                        <li>Fraud Investigation Assistant</li>
+                        <li>Regulatory Compliance Assistant</li>
+                        <li>Customer Experience Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="grid-layer intelligence">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Risk scoring &amp; pricing models</li>
+                            <li>Claims severity &amp; litigation risk</li>
+                            <li>Fraud detection &amp; anomaly models</li>
+                            <li>Churn &amp; lifetime value models</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Hybrid retrieval (vector + keyword)</li>
+                            <li>Policy &amp; guideline chunk store</li>
+                            <li>Grounded LLM generation</li>
+                            <li>Citation &amp; rationale templates</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="grid-layer governance">
+                      <h3>Data Science, Analytics &amp; Governance</h3>
+                      <ul>
+                        <li>Feature pipelines &amp; data quality</li>
+                        <li>Corpus engineering (policies, manuals, regs)</li>
+                        <li>ML &amp; RAG evaluation and monitoring</li>
+                        <li>Bias, drift, and fairness checks</li>
+                        <li>Regulatory &amp; model governance</li>
+                      </ul>
+                    </div>
+
+                    <div class="grid-layer data-knowledge">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>Policy admin &amp; product systems</li>
+                        <li>Claims systems &amp; adjuster notes</li>
+                        <li>CRM &amp; interaction logs</li>
+                        <li>Telematics / IoT / external risk data</li>
+                        <li>Regulatory &amp; DOI feeds</li>
+                        <li>Document repositories (policies, manuals, guidelines)</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="grid-section">
+                    <h2>Intelligence Layer Detail (ML + RAG)</h2>
+                    <div class="intel-grid__row">
+                      <div class="intel-card">
+                        <h3>ML Subsystem</h3>
+                        <p>Predictive and statistical inference engine.</p>
+                        <ul>
+                          <li>Classification: fraud, claim type, severity bands</li>
+                          <li>Regression: loss cost, reserve estimates, duration</li>
+                          <li>Clustering: risk segments, fraud rings, customer cohorts</li>
+                          <li>Ranking: claim triage, investigation priority</li>
+                        </ul>
+                      </div>
+                      <div class="intel-card">
+                        <h3>RAG Subsystem</h3>
+                        <p>Policy-aligned reasoning and grounded generation.</p>
+                        <ul>
+                          <li>Retrieve policy clauses, endorsements, exclusions</li>
+                          <li>Retrieve claims manuals &amp; regulatory guidance</li>
+                          <li>Generate grounded coverage explanations</li>
+                          <li>Produce adjuster &amp; customer-facing rationales</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="grid-section">
+                    <h2>RAG Flow for Insurance Decisions</h2>
+                    <div class="rag-grid">
+                      <div class="rag-step">
+                        <h3>1. User Question / Event</h3>
+                        <p>Underwriter, adjuster, or CX agent initiates a question or workflow event.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>2. Orchestration &amp; ML Signals</h3>
+                        <p>API gateway routes request; optional ML models provide risk, severity, or fraud scores.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>3. Retrieval</h3>
+                        <p>Hybrid search over policies, guidelines, manuals, and regulations using embeddings + filters.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>4. Grounded Generation</h3>
+                        <p>LLM generates coverage decisions, rationales, and explanations anchored to retrieved text.</p>
+                      </div>
+                      <div class="rag-step">
+                        <h3>5. Application Response</h3>
+                        <p>Structured response returned to underwriting, claims, fraud, or CX application.</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="grid-section">
+                    <h2>Data Science &amp; Governance Swimlane</h2>
+                    <div class="gov-row">
+                      <div class="gov-card">
+                        <h3>Data Engineering</h3>
+                        <ul>
+                          <li>Ingest policy, claims, CRM, telematics, regulatory data</li>
+                          <li>Normalize, deduplicate, standardize entities</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Feature &amp; Corpus Engineering</h3>
+                        <ul>
+                          <li>Underwriting &amp; claims features</li>
+                          <li>Policy clause chunking &amp; tagging</li>
+                          <li>Regulatory text indexing</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Evaluation &amp; Monitoring</h3>
+                        <ul>
+                          <li>ML: AUC, F1, MAE, drift, fairness</li>
+                          <li>RAG: retrieval precision/recall, citation accuracy, hallucination rate</li>
+                        </ul>
+                      </div>
+                      <div class="gov-card">
+                        <h3>Governance</h3>
+                        <ul>
+                          <li>Model approval workflows</li>
+                          <li>Policy versioning &amp; lineage</li>
+                          <li>Access control &amp; audit trails</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'education-architecture') {
+                <section class="edu-architecture" aria-labelledby="edu-arch-title">
+                  <header class="edu-header">
+                    <h1 id="edu-arch-title">Education ML + RAG + Data Science Architecture</h1>
+                    <p class="edu-subtitle">
+                      Unified intelligence for student success, teaching, advising, and institutional strategy.
+                    </p>
+                  </header>
+
+                  <section class="edu-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="edu-layer experience">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Students</li>
+                        <li>Teachers</li>
+                        <li>Advisors</li>
+                        <li>Administrators</li>
+                        <li>Families</li>
+                      </ul>
+                    </div>
+
+                    <div class="edu-layer application">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Student Success Assistant</li>
+                        <li>Teacher Instructional Assistant</li>
+                        <li>Advisor Guidance Assistant</li>
+                        <li>Curriculum Alignment Assistant</li>
+                        <li>Institutional Planning Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="edu-layer intelligence">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Risk prediction</li>
+                            <li>Mastery estimation</li>
+                            <li>Course demand forecasting</li>
+                            <li>Equity gap detection</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Standards &amp; syllabus retrieval</li>
+                            <li>Rubric-aligned feedback</li>
+                            <li>Grounded explanations</li>
+                            <li>Policy-aligned advising</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="edu-layer governance">
+                      <h3>Data Science, Analytics &amp; Governance</h3>
+                      <ul>
+                        <li>SIS/LMS pipelines</li>
+                        <li>Corpus engineering</li>
+                        <li>ML &amp; RAG evaluation</li>
+                        <li>Bias, fairness, privacy</li>
+                        <li>Institutional governance</li>
+                      </ul>
+                    </div>
+
+                    <div class="edu-layer data-knowledge">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>SIS, LMS, CRM</li>
+                        <li>Assessments &amp; rubrics</li>
+                        <li>Curriculum standards</li>
+                        <li>Syllabi &amp; instructional materials</li>
+                        <li>Advising notes</li>
+                        <li>Institutional policies</li>
+                      </ul>
+                    </div>
+                  </section>
+                </section>
+              }
+
+              @if (section.cardLayout === 'education-sector-architecture') {
+                <section class="sector-architecture" aria-labelledby="edu-arch-title-2">
+                  <header class="sector-header">
+                    <h1 id="edu-arch-title-2">Education ML + RAG + Data Science Architecture</h1>
+                    <p class="sector-subtitle">
+                      Unified intelligence for student success, teaching, advising, and institutional strategy.
+                    </p>
+                  </header>
+
+                  <section class="sector-section">
+                    <h2>Layered Architecture View</h2>
+
+                    <div class="sector-layer">
+                      <h3>Experience Layer</h3>
+                      <ul>
+                        <li>Students</li>
+                        <li>Teachers</li>
+                        <li>Advisors</li>
+                        <li>Administrators</li>
+                        <li>Families</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Application Layer</h3>
+                      <ul>
+                        <li>Student Success Assistant</li>
+                        <li>Teacher Instructional Assistant</li>
+                        <li>Advisor Guidance Assistant</li>
+                        <li>Curriculum Alignment Assistant</li>
+                        <li>Institutional Planning Assistant</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer sector-layer--highlight">
+                      <h3>Intelligence Layer (ML + RAG)</h3>
+                      <div class="sector-two-col">
+                        <div>
+                          <h4>ML Subsystem</h4>
+                          <ul>
+                            <li>Risk prediction</li>
+                            <li>Mastery estimation</li>
+                            <li>Course demand forecasting</li>
+                            <li>Equity gap detection</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4>RAG Subsystem</h4>
+                          <ul>
+                            <li>Standards &amp; syllabus retrieval</li>
+                            <li>Rubric-aligned feedback</li>
+                            <li>Grounded explanations</li>
+                            <li>Policy-aligned advising</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data Science, Analytics &amp; Governance</h3>
+                      <ul>
+                        <li>SIS/LMS pipelines</li>
+                        <li>Corpus engineering</li>
+                        <li>ML &amp; RAG evaluation</li>
+                        <li>Bias, fairness, privacy</li>
+                        <li>Institutional governance</li>
+                      </ul>
+                    </div>
+
+                    <div class="sector-layer">
+                      <h3>Data &amp; Knowledge Layer</h3>
+                      <ul>
+                        <li>SIS, LMS, CRM</li>
+                        <li>Assessments &amp; rubrics</li>
+                        <li>Curriculum standards</li>
+                        <li>Syllabi &amp; instructional materials</li>
+                        <li>Advising notes</li>
+                        <li>Institutional policies</li>
+                      </ul>
+                    </div>
+                  </section>
                 </section>
               }
 
