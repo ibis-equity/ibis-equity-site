@@ -359,6 +359,11 @@ button {
 	flex-direction: column;
 }
 
+.page .about-modal__content {
+	display: grid;
+	gap: 0.2rem;
+}
+
 .page .about-modal__close {
 	float: none;
 	order: 99;
@@ -403,6 +408,56 @@ button {
 	position: absolute;
 	left: 0;
 	color: #1d63b1;
+}
+
+.page .about-modal__listen {
+	margin-top: 1rem;
+	padding-top: 0.85rem;
+	border-top: 1px solid rgba(16, 40, 68, 0.16);
+	display: grid;
+	gap: 0.55rem;
+}
+
+.page .about-modal__listen-button {
+	justify-self: start;
+	border: 0;
+	border-radius: 999px;
+	padding: 0.5rem 1rem;
+	font-size: 0.86rem;
+	font-weight: 700;
+	color: #fff;
+	background: #103f7f;
+	cursor: pointer;
+	transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.page .about-modal__listen-button:hover {
+	transform: translateY(-1px);
+	background: #0a2f61;
+}
+
+.page .about-modal__listen-button:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+	transform: none;
+	background: #4f6c8f;
+}
+
+.page .about-modal__listen-button:focus-visible {
+	outline: 3px solid rgba(27, 96, 171, 0.28);
+	outline-offset: 1px;
+}
+
+.page .about-modal__audio {
+	width: 100%;
+	height: 1.95rem;
+}
+
+.page .about-modal__listen-error {
+	margin: 0;
+	font-size: 0.86rem;
+	font-weight: 600;
+	color: #9f172a;
 }
 
 .page .contact-form {

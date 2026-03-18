@@ -36,6 +36,7 @@
               i
             </button>
             <div class="main-chatbot__info-popover" role="tooltip">
+              <div id="assistant-info-content" class="main-chatbot__info-popover-content">
               <section class="platform-narrative" aria-labelledby="opensearch-bedrock-title-home">
                 <div class="narrative-container">
                   <header class="narrative-header">
@@ -203,6 +204,21 @@
                   </article>
                 </div>
               </section>
+              </div>
+              <section class="main-chatbot__info-popover-listen" aria-label="Assistant info popup listen control">
+                <button
+                  class="main-chatbot__info-popover-listen-button"
+                  type="button"
+                  (click)="listenToPopup('assistant')"
+                  [disabled]="popupAudioLoadingFor('assistant')"
+                >
+                  {{ popupAudioLoadingFor('assistant') ? 'Generating audio...' : 'Listen' }}
+                </button>
+                <audio class="main-chatbot__audio" controls preload="none" [src]="popupAudioSrcFor('assistant')"></audio>
+                @if (popupAudioErrorFor('assistant')) {
+                  <p class="main-chatbot__error">{{ popupAudioErrorFor('assistant') }}</p>
+                }
+              </section>
             </div>
           </div>
 
@@ -323,6 +339,7 @@
         <div class="about-modal__backdrop" (click)="closeContactModal()"></div>
         <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
           <button class="about-modal__close" type="button" aria-label="Close Contact Us popup" (click)="closeContactModal()">Close</button>
+          <div id="contact-modal-content" class="about-modal__content">
           <header class="brand-header brand-header--modal" aria-label="Ibis Equity brand">
             <img
               class="brand-header__logo brand-header__logo--modal"
@@ -375,6 +392,21 @@
               <p class="contact-form__success">Thanks for reaching out. We will follow up shortly.</p>
             }
           </form>
+          </div>
+          <section class="about-modal__listen" aria-label="Contact popup listen control">
+            <button
+              class="about-modal__listen-button"
+              type="button"
+              (click)="listenToPopup('contact')"
+              [disabled]="popupAudioLoadingFor('contact')"
+            >
+              {{ popupAudioLoadingFor('contact') ? 'Generating audio...' : 'Listen' }}
+            </button>
+            <audio class="about-modal__audio" controls preload="none" [src]="popupAudioSrcFor('contact')"></audio>
+            @if (popupAudioErrorFor('contact')) {
+              <p class="about-modal__listen-error">{{ popupAudioErrorFor('contact') }}</p>
+            }
+          </section>
         </section>
       </div>
       <div
@@ -385,6 +417,7 @@
         <div class="about-modal__backdrop" (click)="closeResponsibleModal()"></div>
         <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="responsible-modal-title">
           <button class="about-modal__close" type="button" aria-label="Close Responsible AI popup" (click)="closeResponsibleModal()">Close</button>
+          <div id="responsible-modal-content" class="about-modal__content">
           <header class="brand-header brand-header--modal" aria-label="Ibis Equity brand">
             <img
               class="brand-header__logo brand-header__logo--modal"
@@ -426,6 +459,21 @@
           <p>It is the discipline that turns AI from a fragile experiment into a trusted organizational capability.</p>
           <p>It is the difference between faster mistakes and better decisions.</p>
           <p>It is the path toward intelligent systems that are worthy of the institutions they serve.</p>
+          </div>
+          <section class="about-modal__listen" aria-label="Responsible AI popup listen control">
+            <button
+              class="about-modal__listen-button"
+              type="button"
+              (click)="listenToPopup('responsible')"
+              [disabled]="popupAudioLoadingFor('responsible')"
+            >
+              {{ popupAudioLoadingFor('responsible') ? 'Generating audio...' : 'Listen' }}
+            </button>
+            <audio class="about-modal__audio" controls preload="none" [src]="popupAudioSrcFor('responsible')"></audio>
+            @if (popupAudioErrorFor('responsible')) {
+              <p class="about-modal__listen-error">{{ popupAudioErrorFor('responsible') }}</p>
+            }
+          </section>
         </section>
       </div>
       <div
@@ -436,6 +484,7 @@
         <div class="about-modal__backdrop" (click)="closeAboutModal()"></div>
         <section class="about-modal__panel" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
           <button class="about-modal__close" type="button" aria-label="Close About popup" (click)="closeAboutModal()">Close</button>
+          <div id="about-modal-content" class="about-modal__content">
           <header class="brand-header brand-header--modal" aria-label="Ibis Equity brand">
             <img
               class="brand-header__logo brand-header__logo--modal"
@@ -467,6 +516,21 @@
           <p>
             At Ibis Equity, we build AI that strengthens institutional intelligence, reduces operational risk, and supports better decisions across the enterprise
           </p>
+          </div>
+          <section class="about-modal__listen" aria-label="About popup listen control">
+            <button
+              class="about-modal__listen-button"
+              type="button"
+              (click)="listenToPopup('about')"
+              [disabled]="popupAudioLoadingFor('about')"
+            >
+              {{ popupAudioLoadingFor('about') ? 'Generating audio...' : 'Listen' }}
+            </button>
+            <audio class="about-modal__audio" controls preload="none" [src]="popupAudioSrcFor('about')"></audio>
+            @if (popupAudioErrorFor('about')) {
+              <p class="about-modal__listen-error">{{ popupAudioErrorFor('about') }}</p>
+            }
+          </section>
         </section>
       </div>
       <section class="lead">

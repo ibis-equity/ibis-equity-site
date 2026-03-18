@@ -26,6 +26,17 @@ interface ContactSubmissionResponse {
   smsSent: boolean;
 }
 
+type HomePopupKey = 'contact' | 'responsible' | 'about' | 'assistant';
+
+interface PopupSpeechSynthesisResponse {
+  format: string;
+  voiceId: string;
+  engine: string;
+  languageCode: string;
+  audioBase64: string;
+  audioMimeType: string;
+}
+
 const BEDROCK_CLAUDE_PROMPT = `Human: This is a friendly conversation between a human and an AI.
 The AI is talkative and provides specific details from its context but limits it to 240 tokens.
 If the AI does not know the answer to a question, it truthfully says it does not know.
@@ -62,6 +73,7 @@ export class HomeComponent implements OnDestroy {
   private readonly http = inject(HttpClient);
   private readonly ragService = inject(BedrockRagService);
   private generatedAudioObjectUrl: string | null = null;
+  private readonly popupGeneratedAudioObjectUrls: Partial<Record<HomePopupKey, string>> = {};
 
   protected readonly title = signal('ibis-equity-site');
   protected readonly aboutModalOpen = signal(false);
@@ -116,6 +128,24 @@ export class HomeComponent implements OnDestroy {
   protected readonly languageOptions = Object.keys(LANGUAGE_PREFERENCES);
   protected preferredLanguage = 'English';
   protected selectedSource = '';
+  protected readonly popupAudioSrc = signal<Record<HomePopupKey, string>>({
+    contact: '',
+    responsible: '',
+    about: '',
+    assistant: ''
+  });
+  protected readonly popupAudioError = signal<Record<HomePopupKey, string>>({
+    contact: '',
+    responsible: '',
+    about: '',
+    assistant: ''
+  });
+  protected readonly popupAudioLoading = signal<Record<HomePopupKey, boolean>>({
+    contact: false,
+    responsible: false,
+    about: false,
+    assistant: false
+  });
 
   protected openAboutModal(event: Event): void {
     event.preventDefault();
@@ -124,6 +154,7 @@ export class HomeComponent implements OnDestroy {
 
   protected closeAboutModal(): void {
     this.aboutModalOpen.set(false);
+    this.clearPopupAudio('about');
   }
 
   protected openResponsibleModal(event: Event): void {
@@ -133,6 +164,7 @@ export class HomeComponent implements OnDestroy {
 
   protected closeResponsibleModal(): void {
     this.responsibleModalOpen.set(false);
+    this.clearPopupAudio('responsible');
   }
 
   protected openContactModal(event: Event): void {
@@ -144,6 +176,54 @@ export class HomeComponent implements OnDestroy {
 
   protected closeContactModal(): void {
     this.contactModalOpen.set(false);
+    this.clearPopupAudio('contact');
+  }
+
+  protected listenToPopup(popup: HomePopupKey): void {
+    if (this.popupAudioLoading()[popup]) {
+      return;
+    }
+
+    const text = this.getPopupTextForSpeech(popup);
+    if (!text) {
+      this.setPopupAudioError(popup, 'Popup content could not be read for Polly synthesis.');
+      return;
+    }
+
+    const languageConfig = this.getLanguageConfig();
+    this.releasePopupAudioUrl(popup);
+    this.setPopupAudioSrc(popup, '');
+    this.setPopupAudioError(popup, '');
+    this.setPopupAudioLoading(popup, true);
+
+    this.http
+      .post<PopupSpeechSynthesisResponse>('/api/speech/synthesize', {
+        text,
+        voiceId: languageConfig.voiceId,
+        languageCode: languageConfig.languageCode
+      })
+      .subscribe({
+        next: (response) => {
+          this.applyPopupAudio(popup, response);
+          this.setPopupAudioLoading(popup, false);
+        },
+        error: () => {
+          this.setPopupAudioError(popup, 'Unable to synthesize popup audio with Polly right now.');
+          this.setPopupAudioLoading(popup, false);
+        }
+      });
+  }
+
+  protected popupAudioSrcFor(popup: HomePopupKey): string {
+    return this.popupAudioSrc()[popup];
+  }
+
+  protected popupAudioErrorFor(popup: HomePopupKey): string {
+    return this.popupAudioError()[popup];
+  }
+
+  protected popupAudioLoadingFor(popup: HomePopupKey): boolean {
+    return this.popupAudioLoading()[popup];
   }
 
   protected submitContactForm(): void {
@@ -268,6 +348,10 @@ export class HomeComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.releaseGeneratedAudioUrl();
+    this.releasePopupAudioUrl('contact');
+    this.releasePopupAudioUrl('responsible');
+    this.releasePopupAudioUrl('about');
+    this.releasePopupAudioUrl('assistant');
   }
 
   private applyPollyAudio(response: BedrockRagResponse): void {
@@ -327,6 +411,83 @@ export class HomeComponent implements OnDestroy {
 
   private getLanguageConfig(): LanguagePreference {
     return LANGUAGE_PREFERENCES[this.preferredLanguage] || LANGUAGE_PREFERENCES['English'];
+  }
+
+  private applyPopupAudio(popup: HomePopupKey, response: PopupSpeechSynthesisResponse): void {
+    this.releasePopupAudioUrl(popup);
+
+    if (!response.audioBase64?.trim()) {
+      this.setPopupAudioSrc(popup, '');
+      this.setPopupAudioError(popup, 'Polly returned an empty audio response.');
+      return;
+    }
+
+    try {
+      const mimeType = response.audioMimeType || 'audio/mpeg';
+      const binary = atob(response.audioBase64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i += 1) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      const blob = new Blob([bytes], { type: mimeType });
+      const objectUrl = URL.createObjectURL(blob);
+      this.popupGeneratedAudioObjectUrls[popup] = objectUrl;
+      this.setPopupAudioSrc(popup, objectUrl);
+      this.setPopupAudioError(popup, '');
+    } catch {
+      this.setPopupAudioSrc(popup, '');
+      this.setPopupAudioError(popup, 'Polly audio was returned in an unsupported format.');
+    }
+  }
+
+  private releasePopupAudioUrl(popup: HomePopupKey): void {
+    const objectUrl = this.popupGeneratedAudioObjectUrls[popup];
+    if (!objectUrl) {
+      return;
+    }
+    URL.revokeObjectURL(objectUrl);
+    delete this.popupGeneratedAudioObjectUrls[popup];
+  }
+
+  private clearPopupAudio(popup: HomePopupKey): void {
+    this.releasePopupAudioUrl(popup);
+    this.setPopupAudioSrc(popup, '');
+    this.setPopupAudioError(popup, '');
+    this.setPopupAudioLoading(popup, false);
+  }
+
+  private setPopupAudioSrc(popup: HomePopupKey, src: string): void {
+    this.popupAudioSrc.update((state) => ({ ...state, [popup]: src }));
+  }
+
+  private setPopupAudioError(popup: HomePopupKey, errorMessage: string): void {
+    this.popupAudioError.update((state) => ({ ...state, [popup]: errorMessage }));
+  }
+
+  private setPopupAudioLoading(popup: HomePopupKey, isLoading: boolean): void {
+    this.popupAudioLoading.update((state) => ({ ...state, [popup]: isLoading }));
+  }
+
+  private getPopupTextForSpeech(popup: HomePopupKey): string {
+    if (typeof document === 'undefined') {
+      return '';
+    }
+
+    const popupContentIds: Record<HomePopupKey, string> = {
+      contact: 'contact-modal-content',
+      responsible: 'responsible-modal-content',
+      about: 'about-modal-content',
+      assistant: 'assistant-info-content'
+    };
+
+    const contentElement = document.getElementById(popupContentIds[popup]);
+    if (!contentElement) {
+      return '';
+    }
+
+    return (contentElement.textContent || '')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   private getMatchedSources(answer: string | undefined, sources: BedrockRagSource[] | undefined): BedrockRagSource[] {

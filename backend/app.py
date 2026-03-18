@@ -85,6 +85,22 @@ class ContactSubmissionResponse(BaseModel):
     errors: List[str] = Field(default_factory=list)
 
 
+class SpeechSynthesisRequest(BaseModel):
+    text: str = Field(min_length=1)
+    voiceId: Optional[str] = None
+    engine: Optional[str] = None
+    languageCode: Optional[str] = None
+
+
+class SpeechSynthesisResponse(BaseModel):
+    format: str = "mp3"
+    voiceId: str
+    engine: str
+    languageCode: str
+    audioMimeType: str = "audio/mpeg"
+    audioBase64: str
+
+
 app = FastAPI(title="Ibis Equity RAG Backend", version="1.0.0")
 allowed_origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:4200").split(",")
 app.add_middleware(
@@ -586,6 +602,36 @@ def submit_contact(request: ContactSubmissionRequest) -> ContactSubmissionRespon
     except Exception as exc:
         LOGGER.exception("Unhandled error in submit_contact")
         detail = str(exc).strip() or "Internal server error"
+        raise HTTPException(status_code=500, detail=detail) from exc
+
+
+@app.post("/api/speech/synthesize", response_model=SpeechSynthesisResponse)
+def synthesize_speech(request: SpeechSynthesisRequest) -> SpeechSynthesisResponse:
+    try:
+        text = request.text.strip()
+        if not text:
+            raise HTTPException(status_code=400, detail="text is required")
+
+        region = _resolve_aws_region()
+        voice_id = (request.voiceId or DEFAULT_POLLY_VOICE_ID).strip() or DEFAULT_POLLY_VOICE_ID
+        engine = (request.engine or DEFAULT_POLLY_ENGINE).strip() or DEFAULT_POLLY_ENGINE
+        language_code = (request.languageCode or DEFAULT_POLLY_LANGUAGE_CODE).strip() or DEFAULT_POLLY_LANGUAGE_CODE
+
+        audio_base64 = _synthesize_speech(text, region, voice_id, engine, language_code)
+        if not audio_base64:
+            raise HTTPException(status_code=502, detail="Polly returned no audio stream")
+
+        return SpeechSynthesisResponse(
+            voiceId=voice_id,
+            engine=engine,
+            languageCode=language_code,
+            audioBase64=audio_base64,
+        )
+    except HTTPException:
+        raise
+    except Exception as exc:
+        LOGGER.exception("Unhandled error in synthesize_speech")
+        detail = str(exc).strip() or "Unable to synthesize speech"
         raise HTTPException(status_code=500, detail=detail) from exc
 
 
