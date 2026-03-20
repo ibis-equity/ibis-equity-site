@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 :root {
 	--ink: #0d1118;
 	--muted: #4a5568;

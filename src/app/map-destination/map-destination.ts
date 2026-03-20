@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, inject, signal } from '@angular/core';
+import { Component, HostListener, OnDestroy, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BedrockRagConfig, BedrockRagResponse, BedrockRagService } from './bedrock-rag.service';
@@ -109,6 +109,7 @@ export class MapDestinationComponent implements OnDestroy {
   protected readonly capabilities = (this.route.snapshot.data['capabilities'] as string[]) || [];
   protected readonly useCases = (this.route.snapshot.data['useCases'] as string[]) || [];
   protected readonly featureContent = (this.route.snapshot.data['featureContent'] as DestinationFeatureContent | undefined) || null;
+  protected readonly destinationId = (this.route.snapshot.data['destinationId'] as string | undefined) || null;
   protected readonly ragConfig: BedrockRagConfig = {
     knowledgeBaseId: (this.route.snapshot.data['knowledgeBaseId'] as string) || 'kb-data-sciences',
     modelId: 'amazon.nova-micro-v1:0',
@@ -141,6 +142,7 @@ export class MapDestinationComponent implements OnDestroy {
   protected readonly ragError = signal('');
   protected readonly isAskingRag = signal(false);
   protected readonly chatbotOpen = signal(false);
+  protected readonly assistantInfoOpen = signal(false);
   protected readonly speechEnabled = signal(true);
   protected readonly ragAudioSrc = signal('');
   protected readonly ragAudioError = signal('');
@@ -209,6 +211,70 @@ export class MapDestinationComponent implements OnDestroy {
     this.chatbotOpen.update((isOpen) => !isOpen);
   }
 
+  protected toggleAssistantInfo(): void {
+    this.assistantInfoOpen.update((isOpen) => !isOpen);
+  }
+
+  protected closeAssistantInfo(): void {
+    this.assistantInfoOpen.set(false);
+
+    if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  protected onDocumentClick(event: MouseEvent): void {
+    if (!this.assistantInfoOpen()) {
+      return;
+    }
+
+    const { target } = event;
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    if (target.closest('.main-chatbot__assistant-info')) {
+      return;
+    }
+
+    this.closeAssistantInfo();
+  }
+
+  @HostListener('document:keydown.escape')
+  protected onEscapeKey(): void {
+    if (!this.assistantInfoOpen()) {
+      return;
+    }
+
+    this.closeAssistantInfo();
+  }
+
+  protected listenToAnswer(): void {
+    const audioSource = this.ragAudioSrc().trim();
+    if (!audioSource) {
+      this.ragAudioError.set('No generated audio yet. Submit a question first, then tap Listen.');
+      return;
+    }
+
+    this.ragAudioError.set('');
+    if (typeof document === 'undefined') {
+      return;
+    }
+
+    const audioElement = document.getElementById('destination-rag-audio') as HTMLAudioElement | null;
+    if (!audioElement) {
+      return;
+    }
+
+    const playback = audioElement.play();
+    if (playback && typeof playback.catch === 'function') {
+      playback.catch(() => {
+        this.ragAudioError.set('Tap the audio player controls below to start playback on this device.');
+      });
+    }
+  }
+
   protected toggleSpeech(): void {
     this.speechEnabled.update((enabled) => !enabled);
     if (!this.speechEnabled()) {
@@ -216,6 +282,19 @@ export class MapDestinationComponent implements OnDestroy {
       this.ragAudioSrc.set('');
       this.ragAudioError.set('');
     }
+  }
+
+  protected toggleCodeBlock(event: Event): void {
+    if (typeof window === 'undefined' || window.innerWidth > 560) {
+      return;
+    }
+
+    const pre = event.currentTarget as HTMLElement | null;
+    if (!pre) {
+      return;
+    }
+
+    pre.classList.toggle('is-expanded');
   }
 
   ngOnDestroy(): void {

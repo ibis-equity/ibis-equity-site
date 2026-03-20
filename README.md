@@ -10,7 +10,7 @@ To start a local development server, run:
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once the server is running, open your browser and navigate to `http://localhost:4202/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
 
@@ -94,11 +94,11 @@ npm run start:full
 
 This runs:
 
-- `npm run start:frontend` (Angular on `http://localhost:4200`)
+- `npm run start:frontend` (Angular on `http://localhost:4202`)
 - `npm run start:backend` (FastAPI on `http://localhost:8010`)
 
 The backend automatically loads environment values from `backend/.env` (and root `.env` as a fallback).
-`npm run start:backend` uses the active `python` on your PATH, so install backend dependencies in that Python environment.
+`npm run start:backend` always targets port `8010` and prefers `.venv/Scripts/python.exe` when present (falls back to `python` on PATH).
 
 ### One-command local startup with AWS credential export
 

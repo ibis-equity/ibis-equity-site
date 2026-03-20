@@ -97,7 +97,8 @@ export const routes: Routes = [
         'Demand forecasting and risk prediction for planning decisions',
         'Anomaly detection across operations, security, and quality workflows',
         'Personalization and recommendation systems at enterprise scale'
-      ]
+      ],
+      destinationId: 'machine-learning'
     }
   },
   {
@@ -324,7 +325,7 @@ export const routes: Routes = [
         title: 'Deep Learning',
         subtitle: 'The architecture of modern intelligence—pattern recognition at scale, engineered for high-stakes environments.',
         intro: [
-          'Deep Learning represents the most powerful class of machine learning systems ever developed. Built on layered neural architectures capable of modeling complex, nonlinear relationships, deep learning systems can perceive, classify, predict, and generate with a level of fidelity that rivals human cognition in specific domains.',
+          'Deep Learning is the engine behind modern AI—neural networks that learn complex patterns directly from data. It powers breakthroughs in vision, language, and perception, enabling systems to interpret the world with unprecedented accuracy and scale.',
           'At Ibis Equity, we treat Deep Learning not as a black box, but as strategic infrastructure—a disciplined, interpretable, and mission-aligned intelligence layer that supports clinical, legal, operational, and analytical decision making.'
         ],
         sections: [
@@ -653,6 +654,76 @@ export const routes: Routes = [
         'Natural language intelligence for summarization, extraction, and decision support',
         'Sequence and time-series modeling for forecasting, anomaly detection, and risk analytics'
       ]
+    }
+  },
+  {
+    path: 'home/agentic-ai',
+    component: MapDestinationComponent,
+    data: {
+      icon: '🤖',
+      iconTone: 'accent',
+      title: 'Agentic AI',
+      description: 'Agentic AI systems that plan, execute, and adapt across multi-step enterprise workflows with governed autonomy.',
+      headerImageSrc: '/images/Generative AI.jpg',
+      headerImageAlt: 'Agentic AI service',
+      featureContent: {
+        title: 'Agentic AI',
+        subtitle: 'From answers to action: autonomous, tool-using systems designed for enterprise reliability.',
+        intro: [
+          'Agentic AI marks a fundamental shift in how organizations think about intelligence, automation, and digital work. Instead of systems that wait to be asked a question, Agentic AI is built to perceive, decide, and act - carrying out multi-step workflows with clarity, context, and purpose. These agents do not just generate responses; they coordinate tools, retrieve knowledge, enforce policy, and complete tasks end-to-end, all while adapting to real-time conditions.',
+          'At its core, Agentic AI is the evolution from static automation to governed autonomy. It understands intent, breaks work into steps, and executes those steps across systems, APIs, and data sources. It reasons through ambiguity, resolves conflicts, and escalates only when human judgment is required. Every action is grounded in organizational rules, safety constraints, and equity principles - ensuring that autonomy never comes at the expense of accountability.',
+          'This new class of digital operators transforms the enterprise. In HR, agents screen candidates and coordinate interviews. In IT, they troubleshoot issues and resolve tickets. In finance, they reconcile transactions and detect anomalies. In healthcare, they triage referrals and draft prior authorization packets. Across every sector, Agentic AI becomes a reliable, policy-aligned partner that handles the operational load so humans can focus on strategy, creativity, and care.',
+          'Agentic AI is not a chatbot. It is not a script. It is not a single model.',
+          'It is an orchestrated system of intelligence - predictive through machine learning, grounded through retrieval, disciplined through data science, and made operational through autonomous reasoning loops.',
+          'This is the next era of enterprise capability: intelligence that works alongside you, scales with you, and strengthens the institutions you serve.'
+        ],
+        sections: [
+          {
+            title: 'Agentic AI at Ibis Equity Consulting',
+            paragraphs: [
+              'Agentic AI is not simply a new interface layer - it is a new computational architecture for how organizations think, decide, and act. These systems operate as autonomous reasoning engines: interpreting intent, decomposing tasks, retrieving knowledge, invoking tools, and executing multi step workflows with precision. They are built on orchestration loops, policy aware decision graphs, and retrieval grounded reasoning pipelines that ensure every action is explainable, traceable, and aligned with institutional constraints.',
+              'At Ibis Equity, we engineer agentic systems as first class infrastructure, not as add on features. Our agents integrate Machine Learning for prediction, Retrieval Augmented Generation for grounding, and Data Science for operational discipline. They maintain state, manage context, and coordinate across APIs, databases, and enterprise systems. They triage cases, draft documents, monitor risk, and orchestrate operations - all while enforcing policy, safety, and equity at every step of the reasoning loop.',
+              'But beneath the engineering lies a deeper philosophy.',
+              'We believe intelligence must be intentional.',
+              'It must be accountable.',
+              'It must be aligned with human values.',
+              'Agentic AI is not built to replace judgment, but to elevate it. It is designed to carry the operational weight so people can focus on strategy, creativity, and care. It transforms fragmented workflows into coherent, governed processes. It brings clarity to complexity, structure to ambiguity, and discipline to decision making.',
+              'This is not automation.',
+              'Automation repeats what it has been told.',
+              'This is governed autonomy - intelligence that understands what it is doing, why it is doing it, and how it must behave. It is autonomy with guardrails, foresight with grounding, and action with ethical spine. It is the architecture of a future where organizations move faster without losing rigor, scale without losing oversight, and innovate without compromising equity.',
+              'Agentic AI is the next evolution of enterprise capability - and at Ibis Equity, we build it with the precision of engineers and the conviction of a manifesto.'
+            ]
+          },
+          {
+            title: 'Real World Examples of Agentic AI in the Enterprise',
+            paragraphs: [
+              'Agentic AI is reshaping the enterprise by moving beyond passive chatbots and static automation. These systems perceive, decide, act, and adapt, executing multi step workflows with autonomy bounded by governance. Across industries, agentic systems are emerging as digital operators - coordinating tasks, retrieving knowledge, enforcing policy, and completing work that once required human intermediaries.',
+              'In HR, agents screen candidates, schedule interviews, draft job descriptions, and ensure compliance with hiring policies. In IT, they troubleshoot issues, reset credentials, orchestrate workflows across systems, and escalate only when necessary. Sales and retail teams use agents to qualify leads, personalize recommendations, manage inventory, and trigger purchase orders. Finance relies on agents to reconcile transactions, detect anomalies, generate reports, and validate compliance.',
+              'In engineering, agents analyze logs, retrieve documentation, propose fixes, and automate testing pipelines. Customer service teams deploy agents that triage tickets, retrieve policies, draft responses, and resolve issues end to end. Legal departments use agents to review contracts, compare clauses, retrieve statutes, and generate redlines. Facilities teams use agents to monitor sensors, schedule maintenance, and coordinate vendors.',
+              'Marketing teams use agents to generate campaigns, analyze performance, and orchestrate multi channel execution. Productivity agents act as personal operators - scheduling meetings, drafting summaries, retrieving documents, and coordinating tasks. In healthcare, agents triage referrals, draft prior authorization packets, retrieve guidelines, and support clinical decision making. Education uses agents to personalize learning, automate grading, and support student services.',
+              'Government agencies deploy agents to triage cases, interpret policy, determine eligibility, and draft citizen friendly explanations. Insurance uses agents to process claims, detect fraud, and generate policy documents. Manufacturing relies on agents to monitor sensors, detect anomalies, retrieve SOPs, and optimize yield. Transportation uses agents to optimize routing, monitor fleets, and coordinate logistics.',
+              'Across all sectors, the pattern is the same: agentic AI becomes a governed digital workforce, augmenting human expertise, accelerating operations, and ensuring decisions remain grounded in policy, safety, and equity.'
+            ]
+          }
+        ]
+      },
+      rag: {
+        knowledgeBaseId: 'kb-agentic-ai',
+        modelId: 'anthropic.claude-3-5-sonnet',
+        topK: 5,
+        systemPrompt: 'Answer with practical guidance for designing, governing, and deploying agentic AI systems in enterprise environments.'
+      },
+      capabilities: [
+        'Agent planning and orchestration design for multi-step enterprise workflows',
+        'Tool integration patterns with safety, rollback, and observability controls',
+        'Governance frameworks for approvals, auditability, and policy-aligned autonomy'
+      ],
+      useCases: [
+        'Automated intake-to-resolution workflows across operations and support teams',
+        'Case management copilots that retrieve, decide, draft, and escalate with traceability',
+        'Cross-system process automation with human checkpoints for high-risk actions'
+      ],
+      destinationId: 'agentic-ai'
     }
   },
   {

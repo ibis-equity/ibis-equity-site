@@ -27,15 +27,22 @@
           <p class="main-chatbot__info">Ask a question below. Answers are grounded by the configured knowledge base.</p>
         </header>
         <div class="main-chatbot__header-actions">
-          <div class="main-chatbot__assistant-info">
+          <div class="main-chatbot__assistant-info" [class.is-open]="assistantInfoOpen()">
             <button
               class="main-chatbot__assistant-info-button"
               type="button"
+              (click)="toggleAssistantInfo()"
+              [attr.aria-expanded]="assistantInfoOpen()"
+              aria-controls="main-assistant-info-popover"
               aria-label="Architecture information"
             >
               i
             </button>
-            <div class="main-chatbot__info-popover" role="tooltip">
+            <div id="main-assistant-info-popover" class="main-chatbot__info-popover" role="tooltip">
+              <div class="main-chatbot__info-popover-header">
+                <p class="main-chatbot__info-popover-title">Assistant Architecture</p>
+                <button class="main-chatbot__info-popover-close" type="button" (click)="closeAssistantInfo()" aria-label="Close architecture information">Close</button>
+              </div>
               <div id="assistant-info-content" class="main-chatbot__info-popover-content">
               <section class="platform-narrative" aria-labelledby="opensearch-bedrock-title-home">
                 <div class="narrative-container">
@@ -328,7 +335,7 @@
         <a class="main-menu__item" [routerLink]="'/home/data-sciences'">Data Sciences</a>
         <a class="main-menu__item" [routerLink]="'/home/generative-ai'">Generative AI</a>
         <a class="main-menu__item" href="#" (click)="openResponsibleModal($event)">Responsible AI</a>
-        <a class="main-menu__item" href="#">Insights</a>
+        <a class="main-menu__item" [routerLink]="'/home/agentic-ai'">Agentic AI</a>
         <a class="main-menu__item" href="#" (click)="openContactModal($event)">Contact Us</a>
       </nav>
       <div
@@ -378,11 +385,15 @@
                 <input type="text" name="contactOrganization" [(ngModel)]="contactOrganization" required />
               </label>
               <label class="contact-form__field contact-form__field--full">
+                <span>Position</span>
+                <input type="text" name="contactPosition" [(ngModel)]="contactPosition" required />
+              </label>
+              <label class="contact-form__field contact-form__field--full">
                 <span>Request</span>
                 <textarea name="contactRequest" [(ngModel)]="contactRequest" rows="5" required></textarea>
               </label>
             </div>
-            <button class="contact-form__submit" type="submit" [disabled]="contactSubmitting()">
+            <button class="contact-form__submit" type="submit" [disabled]="contactSubmitting() || isContactFormInvalid()">
               {{ contactSubmitting() ? 'Processing...' : 'Submit' }}
             </button>
             @if (contactSubmitError()) {
@@ -393,20 +404,6 @@
             }
           </form>
           </div>
-          <section class="about-modal__listen" aria-label="Contact popup listen control">
-            <button
-              class="about-modal__listen-button"
-              type="button"
-              (click)="listenToPopup('contact')"
-              [disabled]="popupAudioLoadingFor('contact')"
-            >
-              {{ popupAudioLoadingFor('contact') ? 'Generating audio...' : 'Listen' }}
-            </button>
-            <audio class="about-modal__audio" controls preload="none" [src]="popupAudioSrcFor('contact')"></audio>
-            @if (popupAudioErrorFor('contact')) {
-              <p class="about-modal__listen-error">{{ popupAudioErrorFor('contact') }}</p>
-            }
-          </section>
         </section>
       </div>
       <div
@@ -692,6 +689,13 @@
       <p class="eyebrow">Interactive map</p>
       <h2 id="interactive-map-title">Explore Ibis Equity focus areas</h2>
       <p class="lead">Hover each region to see the area name, then select it to open its page.</p>
+      <article class="card home-featured-destination" aria-label="Featured destination">
+        <h2>Featured Destination: Agentic AI</h2>
+        <p>
+          Explore how autonomous, tool-using AI systems can plan, execute, and adapt across multi-step enterprise workflows.
+        </p>
+        <a class="main-menu__item home-featured-destination__link" [routerLink]="'/home/agentic-ai'">Open Agentic AI</a>
+      </article>
     </div>
     <div class="image-map-wrapper">
       <img

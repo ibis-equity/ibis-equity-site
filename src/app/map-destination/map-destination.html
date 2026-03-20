@@ -1,5 +1,5 @@
-<main class="destination-page">
-  <section class="destination-card">
+﻿<main class="destination-page">
+  <section class="destination-card" [class.destination-card--ml]="destinationId === 'machine-learning'">
     <header class="brand-header brand-header--compact" aria-label="Ibis Equity brand">
       <img
         class="brand-header__logo"
@@ -15,6 +15,1362 @@
       </div>
     </header>
 
+    @if (destinationId === '__machine-learning-legacy') {
+      <section class="ml-subheader" aria-label="Machine Learning subheader">
+        <img
+          class="ml-subheader__image"
+          src="/images/mach-learning.jpg"
+          alt="Machine learning"
+          width="1200"
+          height="420"
+        >
+        <p class="ml-subheader__text">
+          Machine learning (ML) is a branch of artificial intelligence (AI) focused on building systems that can learn from data, identify patterns, and make decisions with minimal human intervention. Rather than being explicitly programmed for a specific task, ML models use statistical algorithms to find mathematical relationships within data and generalize those findings to perform on new, unseen information.
+        </p>
+        <section class="ml-subheader__section" aria-label="Machine Learning as an Enterprise Advantage">
+          <h2 class="ml-subheader__title">Machine Learning as an Enterprise Advantage</h2>
+          <p>
+            Machine Learning (ML) is the discipline of enabling systems to learn patterns from data and make predictions, decisions, or recommendations without being explicitly programmed for every scenario. But at the executive level, ML is not a story about algorithms. It is a story about organizational leverage.
+          </p>
+          <p>
+            ML represents a structural shift in how enterprises operate. Instead of relying on static rules, manual analysis, or backward looking reports, ML introduces a continuously learning intelligence layer that adapts to new information, scales decision making, and reveals patterns that humans cannot detect at operational speed.
+          </p>
+          <p>
+            In this sense, ML is not merely a technology investment. It is a capability transformation, one that reshapes how an organization anticipates change, allocates resources, engages customers, and manages risk.
+          </p>
+          <p class="ml-subheader__lead">Organizations that adopt ML effectively gain the ability to:</p>
+
+          <article class="ml-subheader__block">
+            <h3>Predict what will happen before it happens</h3>
+            <p>
+              ML models analyze historical and real time signals to forecast demand, risk, churn, operational load, and emerging trends. This predictive capability allows leaders to shift from reactive firefighting to proactive planning. Instead of asking "What happened?", ML enables organizations to ask and answer, "What will happen next, and what should we do about it?"
+            </p>
+            <p>
+              This foresight becomes a competitive differentiator in markets where timing, precision, and agility determine outcomes.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Personalize experiences at scale</h3>
+            <p>
+              ML enables individualized experiences for millions of customers simultaneously, something no human team could ever achieve. It powers dynamic recommendations, tailored messaging, adaptive interfaces, and context aware interactions.
+            </p>
+            <p>Personalization becomes a living system:</p>
+            <ul>
+              <li>Every click refines the next recommendation</li>
+              <li>Every purchase improves the next prediction</li>
+              <li>Every interaction strengthens the customer relationship</li>
+            </ul>
+            <p>
+              This creates a flywheel where engagement, loyalty, and revenue reinforce one another.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Automate complex decisions with consistency</h3>
+            <p>
+              Many enterprise decisions involve evaluating thousands of variables, edge cases, and historical patterns. ML systems excel at this complexity, delivering decisions that are:
+            </p>
+            <ul>
+              <li>Faster</li>
+              <li>More consistent</li>
+              <li>More objective</li>
+              <li>More scalable</li>
+            </ul>
+            <p>
+              From fraud detection to credit scoring to operational routing, ML automates decisions that once required specialized human judgment, freeing teams to focus on strategy, creativity, and exception handling.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Optimize operations in real time</h3>
+            <p>
+              ML transforms operations from static workflows into adaptive systems. It continuously adjusts supply chains, staffing levels, pricing, routing, inventory, and resource allocation based on live data.
+            </p>
+            <p>This creates a self optimizing enterprise where:</p>
+            <ul>
+              <li>Inefficiencies are corrected automatically</li>
+              <li>Bottlenecks are predicted before they occur</li>
+              <li>Resources flow to where they create the most value</li>
+            </ul>
+            <p>
+              Operational excellence becomes a dynamic capability, not a quarterly initiative.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Detect anomalies, risks, and opportunities early</h3>
+            <p>
+              ML is exceptionally good at identifying subtle deviations, the early signals of fraud, equipment failure, safety risks, or emerging customer needs. These signals often appear long before they are visible in dashboards or reports.
+            </p>
+            <p>
+              Early detection reduces losses, improves safety, and accelerates innovation. It gives organizations the ability to intervene before problems escalate, or capitalize on opportunities before competitors notice them.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block ml-subheader__block--final">
+            <h3>ML as the Engine of Modern Digital Operations</h3>
+            <p>
+              ML transforms raw data into a strategic asset. Instead of being trapped in reports, logs, and databases, data becomes a living intelligence layer that powers every part of the enterprise.
+            </p>
+            <p>This shift is profound:</p>
+            <ul>
+              <li>Data becomes predictive, not descriptive</li>
+              <li>Operations become adaptive, not static</li>
+              <li>Customer engagement becomes individualized, not generic</li>
+              <li>Risk management becomes proactive, not reactive</li>
+              <li>Innovation becomes continuous, not episodic</li>
+            </ul>
+            <p>
+              ML becomes the engine behind modern digital operations, powering everything from forecasting demand to detecting fraud to tailoring customer experiences. It is the connective tissue that links data, decisions, and outcomes across the enterprise.
+            </p>
+            <p>
+              Organizations that master ML do not just improve existing processes. They redefine what is operationally possible.
+            </p>
+          </article>
+        </section>
+      </section>
+
+      <!-- =========================================================
+           PART 12A - MACHINE LEARNING DESTINATION
+           ========================================================= -->
+
+      <!-- NAVIGATION -->
+      <nav class="nav-container">
+        <div class="nav-logo">Enterprise Intelligence</div>
+        <div class="nav-links">
+          <a [routerLink]="['/home/machine-learning']" fragment="manual">Manual</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="diagrams">Diagrams</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="angular-components">Components</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="diagram-index">Index</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-retail">Retail</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-healthcare">Healthcare</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-energy">Energy</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-legal">Legal</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-education">Education</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-manufacturing">Manufacturing</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-public">Public Sector</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="about">About</a>
+        </div>
+      </nav>
+
+      <div class="ml-nav-spacer"></div>
+
+      <!-- HOMEPAGE -->
+      <section class="ml-hero" id="home">
+        <div class="ml-hero-content">
+          <h1 class="ml-hero-title">Enterprise Intelligence</h1>
+          <p class="ml-hero-subtitle">
+            Unified Machine Learning, Retrieval&#8209;Augmented Generation, and Data Science for modern organizations.
+          </p>
+          <p class="ml-hero-body">
+            Build predictive, grounded, and transparent intelligence systems that scale across sectors, workflows,
+            and operational environments. Designed for clarity, reliability, and enterprise&#8209;grade governance.
+          </p>
+          <div class="ml-hero-cta-group">
+            <a [routerLink]="['/home/machine-learning']" fragment="architecture" class="ml-hero-cta">Explore Architecture</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="manual" class="ml-hero-cta-secondary">View Documentation</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- VALUE PROPOSITIONS -->
+      <section class="ml-page-section" id="value">
+        <h2>Why Enterprise Intelligence</h2>
+        <p>
+          A unified approach to prediction, retrieval, and analytics enables organizations to operate with clarity,
+          precision, and grounded decision support.
+        </p>
+        <div class="ml-value-grid">
+          <div>
+            <h3>Predictive</h3>
+            <p>Machine Learning models forecast demand, risk, performance, and operational signals.</p>
+          </div>
+          <div>
+            <h3>Grounded</h3>
+            <p>RAG systems ensure every answer is tied to enterprise documents, policies, and knowledge.</p>
+          </div>
+          <div>
+            <h3>Transparent</h3>
+            <p>Data Science provides metrics, governance, lineage, and evaluation frameworks.</p>
+          </div>
+          <div>
+            <h3>Scalable</h3>
+            <p>Modular architecture supports batch, real&#8209;time, streaming, and edge deployments.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARCHITECTURE OVERVIEW -->
+      <section class="ml-page-section" id="architecture">
+        <h2>Architecture Overview</h2>
+        <p>
+          Enterprise Intelligence integrates ML, RAG, and Data Science into a single operational stack.
+        </p>
+        <div class="ml-diagram">
+          <h3>Unified Architecture (Preview)</h3>
+          <pre (click)="toggleCodeBlock($event)">
++---------------------------------------------------------------+
+|                         APPLICATIONS                          |
+|  * Forecasting APIs   * Recommendation Engines                |
+|  * Risk Scoring       * Optimization Services                 |
+|  * Assistants (ML + RAG)                                      |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|                                                               |
+|  MACHINE LEARNING                 RAG SYSTEMS                 |
+|  * Prediction models              * Retrieval pipelines        |
+|  * Classification models          * Chunking &amp; embeddings     |
+|  * Optimization models            * Grounded generation        |
+|  * Reinforcement learning         * Citation enforcement       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  * Feature engineering          * Corpus engineering          |
+|  * Experimentation              * Evaluation &amp; monitoring     |
+|  * Dashboards &amp; analytics       * Governance &amp; fairness       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  * ETL/ELT pipelines            * Data quality                |
+|  * Real-time streaming          * Metadata &amp; lineage          |
+|  * Feature stores               * Schema management           |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW DATA SOURCES                      |
+|  * Logs * Sensors * Transactions * Documents * APIs           |
++---------------------------------------------------------------+
+          </pre>
+        </div>
+        <div class="ml-hero-cta-group" style="margin-top: 2rem;">
+          <a [routerLink]="['/home/machine-learning']" fragment="diagrams" class="ml-hero-cta">View All Diagrams</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="manual" class="ml-hero-cta-secondary">Read Full Manual</a>
+        </div>
+      </section>
+
+      <!-- DIAGRAM HIGHLIGHTS -->
+      <section class="ml-page-section" id="highlights">
+        <h2>Diagram Highlights</h2>
+        <p>
+          Explore a curated set of blueprint diagrams that illustrate core ML and RAG concepts.
+        </p>
+        <div class="ml-highlights-grid">
+          <div class="ml-diagram">
+            <h3>Learning Loop</h3>
+            <pre (click)="toggleCodeBlock($event)">Input -> Model -> Error -> Gradient Descent -> Updated Model -> Repeat</pre>
+          </div>
+          <div class="ml-diagram">
+            <h3>Decision Tree</h3>
+            <pre (click)="toggleCodeBlock($event)">
+[Feature A?]
+ /        \
+Yes        No
+            </pre>
+          </div>
+          <div class="ml-diagram">
+            <h3>Transformer Self-Attention</h3>
+            <pre (click)="toggleCodeBlock($event)">
+Token1 ----\
+Token2 -----&gt; [ Self-Attention ] -> Output
+Token3 ----/
+            </pre>
+          </div>
+        </div>
+        <div class="ml-hero-cta-group" style="margin-top: 2rem;">
+          <a [routerLink]="['/home/machine-learning']" fragment="diagram-index" class="ml-hero-cta">Open Diagram Index</a>
+        </div>
+      </section>
+
+      <!-- GET STARTED -->
+      <section class="ml-page-section" id="cta">
+        <h2>Get Started</h2>
+        <p>Explore the full documentation, diagrams, and sector deep dives.</p>
+        <div class="ml-hero-cta-group" style="margin-top: 1.5rem;">
+          <a [routerLink]="['/home/machine-learning']" fragment="manual" class="ml-hero-cta">Documentation</a>
+          <a [routerLink]="['/home/machine-learning']" fragment="sector-retail" class="ml-hero-cta-secondary">Sector Deep Dives</a>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PART 12B - UNIFIED MANUAL
+           ========================================================= -->
+      <section class="ml-page-section" id="manual">
+        <h2>Unified Intelligence Manual</h2>
+        <p>
+          This manual provides a consolidated view of Machine Learning (ML), Retrieval&#8209;Augmented Generation (RAG),
+          and Data Science as a single enterprise intelligence architecture. It is designed for organizations
+          seeking clarity, reliability, and operational excellence in predictive and generative systems.
+        </p>
+
+        <h3>1. Overview</h3>
+        <p>Modern enterprise intelligence is built on three complementary capabilities:</p>
+        <ul>
+          <li><strong>Machine Learning (ML)</strong> - learns patterns from data to make predictions and decisions.</li>
+          <li><strong>Retrieval&#8209;Augmented Generation (RAG)</strong> - grounds generative models in enterprise documents and knowledge.</li>
+          <li><strong>Data Science</strong> - builds features, corpora, experiments, and governance frameworks.</li>
+        </ul>
+        <p>
+          Together, these form a unified system that supports forecasting, optimization, classification,
+          grounded reasoning, and transparent decision support.
+        </p>
+
+        <h3>2. Machine Learning</h3>
+        <p>
+          Machine Learning enables systems to learn patterns from historical data and generalize them to new,
+          unseen scenarios. ML is the predictive engine of the enterprise.
+        </p>
+        <h4>2.1 ML Capabilities</h4>
+        <ul>
+          <li>Forecasting (demand, risk, volume, performance)</li>
+          <li>Classification (fraud, churn, segmentation)</li>
+          <li>Ranking (recommendations, search results)</li>
+          <li>Optimization (pricing, routing, resource allocation)</li>
+          <li>Anomaly detection (quality, security, operations)</li>
+        </ul>
+        <h4>2.2 ML Types</h4>
+        <ul>
+          <li><strong>Supervised Learning</strong> - learns from labeled examples.</li>
+          <li><strong>Unsupervised Learning</strong> - discovers structure in unlabeled data.</li>
+          <li><strong>Reinforcement Learning</strong> - learns through interaction and reward.</li>
+        </ul>
+        <h4>2.3 ML Pipeline</h4>
+        <p>The ML lifecycle includes:</p>
+        <ol>
+          <li>Data ingestion and validation</li>
+          <li>Feature engineering and transformation</li>
+          <li>Model training and tuning</li>
+          <li>Evaluation and validation</li>
+          <li>Deployment (batch, real&#8209;time, streaming, edge)</li>
+          <li>Monitoring (drift, performance, fairness)</li>
+        </ol>
+
+        <h3>3. Retrieval&#8209;Augmented Generation (RAG)</h3>
+        <p>
+          RAG enhances generative models by grounding them in enterprise&#8209;specific knowledge. This ensures
+          accuracy, transparency, and alignment with organizational policies.
+        </p>
+        <h4>3.1 RAG Capabilities</h4>
+        <ul>
+          <li>Document&#8209;grounded question answering</li>
+          <li>Policy&#8209;aligned reasoning</li>
+          <li>Knowledge retrieval and summarization</li>
+          <li>Context&#8209;aware generation</li>
+          <li>Source citation and traceability</li>
+        </ul>
+        <h4>3.2 RAG Pipeline</h4>
+        <ol>
+          <li>Document ingestion and parsing</li>
+          <li>Chunking and metadata tagging</li>
+          <li>Embedding generation</li>
+          <li>Hybrid retrieval (vector + keyword)</li>
+          <li>Grounded generation with citations</li>
+        </ol>
+        <h4>3.3 RAG Governance</h4>
+        <ul>
+          <li>Document versioning and lineage</li>
+          <li>Access control and sensitivity tagging</li>
+          <li>Hallucination monitoring</li>
+          <li>Grounding rate evaluation</li>
+        </ul>
+
+        <h3>4. Data Science</h3>
+        <p>
+          Data Science provides the analytical foundation for ML and RAG. It ensures that data, features,
+          corpora, and metrics are reliable and aligned with business goals.
+        </p>
+        <h4>4.1 Data Science Responsibilities</h4>
+        <ul>
+          <li>Feature engineering and feature stores</li>
+          <li>Corpus engineering for RAG</li>
+          <li>Experimentation and A/B testing</li>
+          <li>Metric design and evaluation</li>
+          <li>Data quality and governance</li>
+        </ul>
+        <h4>4.2 Analytics Spectrum</h4>
+        <ul>
+          <li><strong>Descriptive</strong> - what happenedo</li>
+          <li><strong>Diagnostic</strong> - why did it happeno</li>
+          <li><strong>Predictive</strong> - what will happeno</li>
+          <li><strong>Prescriptive</strong> - what should we doo</li>
+        </ul>
+
+        <h3>5. Unified Architecture</h3>
+        <p>
+          ML, RAG, and Data Science operate as a single intelligence layer. ML provides predictions,
+          RAG provides grounded reasoning, and Data Science ensures quality, governance, and alignment.
+        </p>
+        <h4>5.1 Interaction Patterns</h4>
+        <ul>
+          <li><strong>ML &#8594; RAG</strong>: ML scores (intent, risk, value) condition retrieval and generation.</li>
+          <li><strong>RAG &#8594; ML</strong>: RAG extracts structured data that feeds downstream ML models.</li>
+          <li><strong>Data Science &#8596; Both</strong>: Defines features, corpora, metrics, and evaluation frameworks.</li>
+        </ul>
+        <h4>5.2 Deployment Patterns</h4>
+        <ul>
+          <li>Batch inference for large&#8209;scale predictions</li>
+          <li>Real&#8209;time APIs for interactive applications</li>
+          <li>Streaming inference for continuous signals</li>
+          <li>Edge deployment for low&#8209;latency environments</li>
+        </ul>
+        <h4>5.3 Monitoring and Governance</h4>
+        <ul>
+          <li>Model drift detection</li>
+          <li>Retrieval quality monitoring</li>
+          <li>Latency and throughput tracking</li>
+          <li>Fairness and compliance checks</li>
+        </ul>
+        <p>
+          This unified approach ensures that enterprise intelligence remains accurate, transparent,
+          and aligned with organizational objectives.
+        </p>
+      </section>
+
+      <!-- =========================================================
+           PART 12B - BLUEPRINT DIAGRAM ATLAS
+           ========================================================= -->
+      <section class="ml-page-section" id="diagrams">
+        <h2>Blueprint Diagram Atlas</h2>
+        <p>
+          The following diagrams provide a visual reference for Machine Learning, Retrieval&#8209;Augmented Generation,
+          and Data Science system architecture. Each diagram uses a consistent blueprint theme for clarity and
+          technical readability.
+        </p>
+
+        <div class="ml-diagram-atlas">
+          <section class="ml-diagram">
+            <h3>ML System Stack</h3>
+            <pre (click)="toggleCodeBlock($event)">
++-----------------------------------------------------------+
+|                     APPLICATION LAYER                     |
++-------------------------------^---------------------------+
+|                     MODEL LAYER (ML)                      |
++-------------------------------^---------------------------+
+|                 FEATURE &amp; TRAINING PIPELINES              |
++-------------------------------^---------------------------+
+|                   DATA ENGINEERING LAYER                  |
++-------------------------------^---------------------------+
+|                     RAW DATA SOURCES                      |
++-----------------------------------------------------------+
+            </pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Learning Loop</h3>
+            <pre (click)="toggleCodeBlock($event)">Input -> Model -> Error -> Gradient Descent -> Updated Model -> Repeat</pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Model Taxonomy</h3>
+            <pre (click)="toggleCodeBlock($event)">
+ML Models
+|-- Linear Models
+|-- Tree-Based Models
+|-- Neural Networks
+`-- Unsupervised Models
+            </pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Linear Model</h3>
+            <pre (click)="toggleCodeBlock($event)">
+y = w1x1 + w2x2 + ... + b
+
+   y
+   |       /
+   |     /
+   |   /
+   | /
+   +---------------- x
+            </pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Decision Tree</h3>
+            <pre (click)="toggleCodeBlock($event)">
+                [Feature A?]
+                 /        \
+              Yes          No
+             /              \
+      [Feature Bo]        [Leaf]
+         /    \
+      Leaf   Leaf
+            </pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Random Forest</h3>
+            <pre (click)="toggleCodeBlock($event)">
+   Tree1     Tree2     Tree3
+     \         |         /
+      \        |        /
+       +----------------+
+       |   Averaging    |
+       +----------------+
+              |
+           Output
+            </pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Gradient Boosting</h3>
+            <pre (click)="toggleCodeBlock($event)">Model_1 -> Residuals -> Model_2 -> Residuals -> Model_3 -> Final Prediction</pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Neural Network</h3>
+            <pre (click)="toggleCodeBlock($event)">Input -> [o� o� o�] -> [o� o� o� o�] -> [o� o�] -> Output</pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Convolutional Neural Network</h3>
+            <pre (click)="toggleCodeBlock($event)">[Image] -> [Convolution] -> [Feature Maps] -> [Classifier]</pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>RNN / LSTM</h3>
+            <pre (click)="toggleCodeBlock($event)">x1 -> [h1] -> [h2] -> [h3] -> Output</pre>
+          </section>
+
+          <section class="ml-diagram">
+            <h3>Transformer Self-Attention</h3>
+            <pre (click)="toggleCodeBlock($event)">
+Token1 ----\
+Token2 -----&gt; [ Self-Attention ] -> Contextual Outputs
+Token3 ----/
+            </pre>
+          </section>
+
+          <section class="ml-diagram ml-diagram--wide">
+            <h3>ML + RAG + Data Science Unified Architecture</h3>
+            <pre (click)="toggleCodeBlock($event)">
++---------------------------------------------------------------+
+|                         APPLICATIONS                          |
+|  * Forecasting APIs   * Recommendation Engines                |
+|  * Risk Scoring       * Optimization Services                 |
+|  * Assistants (ML + RAG)                                      |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|                                                               |
+|  MACHINE LEARNING                 RAG SYSTEMS                 |
+|  * Prediction models              * Retrieval pipelines        |
+|  * Classification models          * Chunking &amp; embeddings     |
+|  * Optimization models            * Grounded generation        |
+|  * Reinforcement learning         * Citation enforcement       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  * Feature engineering          * Corpus engineering          |
+|  * Experimentation              * Evaluation &amp; monitoring     |
+|  * Dashboards &amp; analytics       * Governance &amp; fairness       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  * ETL/ELT pipelines            * Data quality                |
+|  * Real-time streaming          * Metadata &amp; lineage          |
+|  * Feature stores               * Schema management           |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW DATA SOURCES                      |
+|  * Logs * Sensors * Transactions * Documents * APIs           |
++---------------------------------------------------------------+
+            </pre>
+          </section>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PART 12C - COMPONENTS
+           ========================================================= -->
+      <section class="ml-page-section" id="angular-components">
+        <h2>Angular Components</h2>
+        <p>
+          The following Angular components provide a reusable, modular structure for rendering blueprint diagrams,
+          dashboards, and index pages within an enterprise intelligence application.
+        </p>
+
+        <h3>1. MlDiagramComponent</h3>
+
+        <h4>ml-diagram.component.ts</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+import &#123; Component, ChangeDetectionStrategy, Input &#125; from '&#64;angular/core';
+
+&#64;Component(&#123;
+  selector: 'app-ml-diagram',
+  templateUrl: './ml-diagram.component.html',
+  styleUrls: ['./ml-diagram.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+&#125;)
+export class MlDiagramComponent &#123;
+  &#64;Input() title = '';
+  &#64;Input() variant: string | null = null;
+  &#64;Input() ascii = '';
+&#125;
+        </code></pre>
+
+        <h4>ml-diagram.component.html</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+&lt;section class="ml-diagram" [ngClass]="variant o 'ml-diagram--' + variant : null"&gt;
+  &lt;h3&gt;&#123;&#123; title &#125;&#125;&lt;/h3&gt;
+  &lt;pre&gt;&#123;&#123; ascii &#125;&#125;&lt;/pre&gt;
+&lt;/section&gt;
+        </code></pre>
+
+        <h4>ml-diagram.component.css</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+/* Uses global blueprint theme */
+        </code></pre>
+
+        <h3>2. MlDiagramIndexComponent</h3>
+
+        <h4>ml-diagram-index.component.ts</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+import &#123; Component, ChangeDetectionStrategy &#125; from '&#64;angular/core';
+
+interface DiagramDef &#123;
+  title: string;
+  variant: string;
+  ascii: string;
+&#125;
+
+&#64;Component(&#123;
+  selector: 'app-ml-diagram-index',
+  templateUrl: './ml-diagram-index.component.html',
+  styleUrls: ['./ml-diagram-index.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+&#125;)
+export class MlDiagramIndexComponent &#123;
+  diagrams: DiagramDef[] = [
+    &#123;
+      title: 'ML System Stack',
+      variant: 'stack',
+      ascii: `
++-----------------------------------------------------------+
+|                     APPLICATION LAYER                     |
++-------------------------------^---------------------------+
+|                     MODEL LAYER (ML)                     |
++-------------------------------^---------------------------+
+|                 FEATURE & TRAINING PIPELINES             |
++-------------------------------^---------------------------+
+|                   DATA ENGINEERING LAYER                 |
++-------------------------------^---------------------------+
+|                     RAW DATA SOURCES                     |
++-----------------------------------------------------------+`,
+    &#125;,
+    &#123;
+      title: 'Learning Loop',
+      variant: 'loop',
+      ascii: `Input -> Model -> Error -> Gradient Descent -> Updated Model -> Repeat`,
+    &#125;,
+    &#123;
+      title: 'Model Taxonomy',
+      variant: 'taxonomy',
+      ascii: `
+ML Models
+|-- Linear Models
+|-- Tree-Based Models
+|-- Neural Networks
+`-- Unsupervised Models`,
+    &#125;,
+    &#123;
+      title: 'Linear Model',
+      variant: 'linear',
+      ascii: `
+y = w1x1 + w2x2 + ... + b
+
+   y
+   |       /
+   |     /
+   |   /
+   | /
+   +---------------- x`,
+    &#125;,
+    &#123;
+      title: 'Decision Tree',
+      variant: 'tree',
+      ascii: `
+                [Feature A?]
+                 /        \\
+              Yes          No
+             /              \\
+      [Feature Bo]        [Leaf]
+         /    \\
+      Leaf   Leaf`,
+    &#125;,
+    &#123;
+      title: 'Random Forest',
+      variant: 'forest',
+      ascii: `
+   Tree1     Tree2     Tree3
+     \\         |         /
+      \\        |        /
+       +----------------+
+       |   Averaging   |
+       +----------------+
+              |
+           Output`,
+    &#125;,
+    &#123;
+      title: 'Gradient Boosting',
+      variant: 'boosting',
+      ascii: `Model_1 -> Residuals -> Model_2 -> Residuals -> Model_3 -> Final Prediction`,
+    &#125;,
+    &#123;
+      title: 'Neural Network',
+      variant: 'nn',
+      ascii: `Input -> [o� o� o�] -> [o� o� o� o�] -> [o� o�] -> Output`,
+    &#125;,
+    &#123;
+      title: 'Convolutional Neural Network',
+      variant: 'cnn',
+      ascii: `[Image] -> [Convolution] -> [Feature Maps] -> [Classifier]`,
+    &#125;,
+    &#123;
+      title: 'RNN / LSTM',
+      variant: 'rnn',
+      ascii: `x1 -> [h1] -> [h2] -> [h3] -> Output`,
+    &#125;,
+    &#123;
+      title: 'Transformer Self-Attention',
+      variant: 'transformer',
+      ascii: `
+Token1 ----\\
+Token2 ------&gt; [ Self-Attention ] -> Contextual Outputs
+Token3 ----/`,
+    &#125;,
+    &#123;
+      title: 'Unified ML + RAG + Data Science Architecture',
+      variant: 'unified',
+      ascii: `
++---------------------------------------------------------------+
+|                         APPLICATIONS                          |
+|  * Forecasting APIs   * Recommendation Engines                |
+|  * Risk Scoring       * Optimization Services                 |
+|  * Assistants (ML + RAG)                                      |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|                                                               |
+|  MACHINE LEARNING                 RAG SYSTEMS                 |
+|  * Prediction models              * Retrieval pipelines        |
+|  * Classification models          * Chunking & embeddings     |
+|  * Optimization models            * Grounded generation        |
+|  * Reinforcement learning         * Citation enforcement       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE & ANALYTICS LAYER                 |
+|  * Feature engineering          * Corpus engineering          |
+|  * Experimentation              * Evaluation & monitoring     |
+|  * Dashboards & analytics       * Governance & fairness       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  * ETL/ELT pipelines            * Data quality                |
+|  * Real-time streaming          * Metadata & lineage          |
+|  * Feature stores               * Schema management           |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW DATA SOURCES                      |
+|  * Logs * Sensors * Transactions * Documents * APIs           |
++---------------------------------------------------------------+`,
+    &#125;,
+  ];
+&#125;
+        </code></pre>
+
+        <h4>ml-diagram-index.component.html</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+&lt;section class="ml-diagram-index"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Diagram Index&lt;/h2&gt;
+    &lt;p&gt;All blueprint diagrams in a unified gallery.&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;div class="ml-diagram-index__grid"&gt;
+    &lt;app-ml-diagram
+      *ngFor="let d of diagrams"
+      [title]="d.title"
+      [variant]="d.variant"
+      [ascii]="d.ascii"&gt;
+    &lt;/app-ml-diagram&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+        </code></pre>
+
+        <h4>ml-diagram-index.component.css</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+.ml-diagram-index__grid &#123;
+  display: grid;
+  gap: 1.5rem;
+&#125;
+        </code></pre>
+
+        <h3>3. MlDashboardComponent</h3>
+
+        <h4>ml-dashboard.component.ts</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+import &#123; Component, ChangeDetectionStrategy &#125; from '&#64;angular/core';
+
+&#64;Component(&#123;
+  selector: 'app-ml-dashboard',
+  templateUrl: './ml-dashboard.component.html',
+  styleUrls: ['./ml-dashboard.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+&#125;)
+export class MlDashboardComponent &#123;
+  models = [
+    &#123; name: 'Demand Forecasting', type: 'Time-series', status: 'Healthy' &#125;,
+    &#123; name: 'Recommendation Engine', type: 'Ranking', status: 'Monitoring' &#125;,
+  ];
+
+  pipelines = [
+    &#123; name: 'Daily Training', mode: 'Batch', health: 'OK' &#125;,
+    &#123; name: 'Real-time Inference', mode: 'Streaming', health: 'OK' &#125;,
+  ];
+
+  metrics = [
+    &#123; label: 'Overall Accuracy', value: '93.2%' &#125;,
+    &#123; label: 'Latency (p95)', value: '120 ms' &#125;,
+  ];
+
+  alerts = [
+    &#123; severity: 'Warning', message: 'Slight data drift detected in segment B.' &#125;,
+  ];
+&#125;
+        </code></pre>
+
+        <h4>ml-dashboard.component.html</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+&lt;section class="ml-dashboard"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;ML Dashboard&lt;/h2&gt;
+    &lt;p&gt;Overview of models, pipelines, and monitoring signals.&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;div class="ml-dashboard__grid"&gt;
+    &lt;section class="ml-card"&gt;
+      &lt;h3&gt;Model Inventory&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li *ngFor="let model of models"&gt;
+          &lt;strong&gt;&#123;&#123; model.name &#125;&#125;&lt;/strong&gt; - &#123;&#123; model.type &#125;&#125; (&#123;&#123; model.status &#125;&#125;)
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section class="ml-card"&gt;
+      &lt;h3&gt;Pipelines&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li *ngFor="let pipe of pipelines"&gt;
+          &lt;strong&gt;&#123;&#123; pipe.name &#125;&#125;&lt;/strong&gt; - &#123;&#123; pipe.mode &#125;&#125; - &#123;&#123; pipe.health &#125;&#125;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section class="ml-card"&gt;
+      &lt;h3&gt;Key Metrics&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li *ngFor="let metric of metrics"&gt;
+          &lt;strong&gt;&#123;&#123; metric.label &#125;&#125;&lt;/strong&gt;: &#123;&#123; metric.value &#125;&#125;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section class="ml-card"&gt;
+      &lt;h3&gt;Alerts &amp; Drift&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li *ngFor="let alert of alerts"&gt;
+          &lt;strong&gt;&#123;&#123; alert.severity &#125;&#125;&lt;/strong&gt; - &#123;&#123; alert.message &#125;&#125;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+        </code></pre>
+
+        <h4>ml-dashboard.component.css</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+.ml-dashboard__grid &#123;
+  display: grid;
+  gap: 1.5rem;
+&#125;
+
+.ml-card &#123;
+  background: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+&#125;
+        </code></pre>
+
+        <h3>4. MlDiagramModule</h3>
+
+        <h4>ml-diagram.module.ts</h4>
+        <pre (click)="toggleCodeBlock($event)"><code ngNonBindable>
+import &#123; NgModule &#125; from '&#64;angular/core';
+import &#123; CommonModule &#125; from '&#64;angular/common';
+
+import &#123; MlDiagramComponent &#125; from './ml-diagram.component';
+import &#123; MlDiagramIndexComponent &#125; from './ml-diagram-index.component';
+import &#123; MlDashboardComponent &#125; from './ml-dashboard.component';
+
+&#64;NgModule(&#123;
+  declarations: [
+    MlDiagramComponent,
+    MlDiagramIndexComponent,
+    MlDashboardComponent
+  ],
+  imports: [CommonModule],
+  exports: [
+    MlDiagramComponent,
+    MlDiagramIndexComponent,
+    MlDashboardComponent
+  ],
+&#125;)
+export class MlDiagramModule &#123;&#125;
+        </code></pre>
+      </section>
+
+      <section class="ml-page-section" id="diagram-index">
+        <h2>Diagram Index</h2>
+        <p>
+          This section provides a consolidated view of all blueprint&#8209;style diagrams used throughout the
+          Machine Learning, Retrieval&#8209;Augmented Generation, and Data Science architecture.
+        </p>
+
+        <div class="ml-diagram-index__grid">
+          <section class="ml-diagram-index__card">
+            <h3>Component Integration Note</h3>
+            <p>
+              The diagram index component shown above is a reusable Angular building block example.
+              In this page, blueprint diagrams are rendered directly in the Diagram Atlas section.
+            </p>
+            <a [routerLink]="['/home/machine-learning']" fragment="diagrams" class="ml-hero-cta">Jump to Diagram Atlas</a>
+          </section>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PART 12D - SECTORS START
+           ========================================================= -->
+
+      <section class="ml-page-section" id="sector-retail">
+        <h2>Sector Deep Dive: Retail &amp; E&#8209;Commerce</h2>
+        <p>
+          Retail and e&#8209;commerce environments generate dense behavioral, transactional, and operational data.
+          Machine Learning, Retrieval&#8209;Augmented Generation, and Data Science together form a unified intelligence
+          layer that supports personalization, forecasting, pricing, fraud detection, and customer experience.
+        </p>
+
+        <h3>1. ML Use Cases</h3>
+        <ul>
+          <li>Personalized recommendations</li>
+          <li>Search ranking optimization</li>
+          <li>Demand forecasting</li>
+          <li>Dynamic pricing</li>
+          <li>Fraud detection</li>
+          <li>Customer lifetime value prediction</li>
+        </ul>
+
+        <h3>2. RAG Use Cases</h3>
+        <ul>
+          <li>Product knowledge retrieval</li>
+          <li>Customer support automation</li>
+          <li>Policy&#8209;aligned reasoning</li>
+          <li>Catalog&#8209;grounded recommendations</li>
+        </ul>
+
+        <h3>3. Data Science Responsibilities</h3>
+        <ul>
+          <li>Feature engineering for customer, product, and operational signals</li>
+          <li>Corpus engineering for product catalogs and policies</li>
+          <li>Experimentation and uplift modeling</li>
+          <li>Metric design (conversion, retention, engagement)</li>
+        </ul>
+
+        <h3>4. Unified Architecture Patterns</h3>
+        <ul>
+          <li>ML predictions guide RAG recommendations</li>
+          <li>RAG extracts structured product data for ML models</li>
+          <li>Data Science ensures quality, governance, and fairness</li>
+        </ul>
+      </section>
+
+      <section class="ml-page-section" id="sector-healthcare">
+        <h2>Sector Deep Dive: Healthcare</h2>
+        <p>
+          Healthcare organizations operate in highly regulated environments with complex clinical, operational,
+          and administrative workflows. ML, RAG, and Data Science support clinical decision-making, operational
+          efficiency, and patient experience while maintaining safety, privacy, and compliance.
+        </p>
+
+        <h3>1. ML Use Cases</h3>
+        <ul>
+          <li>Risk prediction (readmission, deterioration)</li>
+          <li>Clinical triage</li>
+          <li>Medical imaging classification</li>
+          <li>Operational forecasting</li>
+          <li>Claims fraud detection</li>
+        </ul>
+
+        <h3>2. RAG Use Cases</h3>
+        <ul>
+          <li>Clinical guideline retrieval</li>
+          <li>Coverage and policy reasoning</li>
+          <li>Patient education</li>
+          <li>Provider documentation support</li>
+        </ul>
+
+        <h3>3. Data Science Responsibilities</h3>
+        <ul>
+          <li>Feature engineering from EHR and claims data</li>
+          <li>Corpus engineering for clinical guidelines</li>
+          <li>Bias and fairness evaluation</li>
+          <li>Outcome metric design</li>
+        </ul>
+
+        <h3>4. Unified Architecture Patterns</h3>
+        <ul>
+          <li>ML risk scores condition RAG clinical reasoning</li>
+          <li>RAG extracts structured clinical entities for ML</li>
+          <li>Data Science ensures compliance and auditability</li>
+        </ul>
+      </section>
+
+      <section class="ml-page-section" id="sector-energy">
+        <h2>Sector Deep Dive: Energy &amp; Utilities</h2>
+        <p>
+          Energy organizations manage large-scale infrastructure, real-time sensor networks, and complex
+          regulatory requirements. ML and RAG support reliability, forecasting, safety, and operational efficiency.
+        </p>
+
+        <h3>1. ML Use Cases</h3>
+        <ul>
+          <li>Load forecasting</li>
+          <li>Grid stability prediction</li>
+          <li>Predictive maintenance</li>
+          <li>Outage prediction</li>
+          <li>Renewable generation forecasting</li>
+        </ul>
+
+        <h3>2. RAG Use Cases</h3>
+        <ul>
+          <li>Safety procedure retrieval</li>
+          <li>Regulatory compliance reasoning</li>
+          <li>Field technician support</li>
+          <li>Asset documentation lookup</li>
+        </ul>
+
+        <h3>3. Data Science Responsibilities</h3>
+        <ul>
+          <li>Feature engineering from SCADA and sensor data</li>
+          <li>Corpus engineering for safety manuals</li>
+          <li>Operational metric design</li>
+          <li>Scenario modeling</li>
+        </ul>
+
+        <h3>4. Unified Architecture Patterns</h3>
+        <ul>
+          <li>ML forecasts drive RAG operational recommendations</li>
+          <li>RAG extracts structured asset data for ML</li>
+          <li>Data Science ensures reliability and compliance</li>
+        </ul>
+      </section>
+
+      <section class="ml-page-section" id="sector-legal">
+        <h2>Sector Deep Dive: Legal &amp; Compliance</h2>
+        <p>
+          Legal organizations manage dense, text-heavy corpora including statutes, contracts, case law, and
+          regulatory guidance. ML and RAG support research, review, compliance, and risk mitigation.
+        </p>
+
+        <h3>1. ML Use Cases</h3>
+        <ul>
+          <li>Contract classification</li>
+          <li>Clause risk scoring</li>
+          <li>Litigation outcome prediction</li>
+          <li>Entity extraction</li>
+        </ul>
+
+        <h3>2. RAG Use Cases</h3>
+        <ul>
+          <li>Statute and case law retrieval</li>
+          <li>Contract clause comparison</li>
+          <li>Compliance reasoning</li>
+          <li>Legal research acceleration</li>
+        </ul>
+
+        <h3>3. Data Science Responsibilities</h3>
+        <ul>
+          <li>Corpus engineering for statutes and contracts</li>
+          <li>Metadata and sensitivity tagging</li>
+          <li>Grounding and citation evaluation</li>
+          <li>Risk metric design</li>
+        </ul>
+
+        <h3>4. Unified Architecture Patterns</h3>
+        <ul>
+          <li>ML risk scores condition RAG legal reasoning</li>
+          <li>RAG extracts structured obligations for ML</li>
+          <li>Data Science ensures auditability</li>
+        </ul>
+      </section>
+
+      <section class="ml-page-section" id="sector-education">
+        <h2>Sector Deep Dive: Education</h2>
+        <p>
+          Education systems manage student performance data, curriculum materials, and institutional policies.
+          ML and RAG support personalized learning, administrative efficiency, and student success.
+        </p>
+
+        <h3>1. ML Use Cases</h3>
+        <ul>
+          <li>Student performance prediction</li>
+          <li>Early warning systems</li>
+          <li>Enrollment forecasting</li>
+          <li>Resource allocation optimization</li>
+        </ul>
+
+        <h3>2. RAG Use Cases</h3>
+        <ul>
+          <li>Curriculum retrieval</li>
+          <li>Student support guidance</li>
+          <li>Administrative automation</li>
+          <li>Faculty knowledge access</li>
+        </ul>
+
+        <h3>3. Data Science Responsibilities</h3>
+        <ul>
+          <li>Feature engineering from LMS and SIS data</li>
+          <li>Corpus engineering for curriculum and policy</li>
+          <li>Outcome metric design</li>
+          <li>Equity evaluation</li>
+        </ul>
+
+        <h3>4. Unified Architecture Patterns</h3>
+        <ul>
+          <li>ML predictions guide RAG student support</li>
+          <li>RAG extracts structured academic data for ML</li>
+          <li>Data Science ensures transparency</li>
+        </ul>
+      </section>
+
+      <section class="ml-page-section" id="sector-manufacturing">
+        <h2>Sector Deep Dive: Manufacturing</h2>
+        <p>
+          Manufacturing environments rely on sensor networks, production lines, and supply chain operations.
+          ML and RAG support quality, efficiency, and predictive maintenance.
+        </p>
+
+        <h3>1. ML Use Cases</h3>
+        <ul>
+          <li>Predictive maintenance</li>
+          <li>Quality defect detection</li>
+          <li>Yield optimization</li>
+          <li>Supply chain forecasting</li>
+          <li>Production scheduling</li>
+        </ul>
+
+        <h3>2. RAG Use Cases</h3>
+        <ul>
+          <li>Equipment manual retrieval</li>
+          <li>Safety procedure guidance</li>
+          <li>Root-cause analysis support</li>
+          <li>Operational SOP lookup</li>
+        </ul>
+
+        <h3>3. Data Science Responsibilities</h3>
+        <ul>
+          <li>Feature engineering from IoT and sensor data</li>
+          <li>Corpus engineering for manuals and SOPs</li>
+          <li>Quality and throughput metric design</li>
+          <li>Simulation modeling</li>
+        </ul>
+
+        <h3>4. Unified Architecture Patterns</h3>
+        <ul>
+          <li>ML predictions drive RAG recommendations</li>
+          <li>RAG extracts structured equipment data for ML</li>
+          <li>Data Science ensures reliability</li>
+        </ul>
+      </section>
+
+      <section class="ml-page-section" id="sector-public">
+        <h2>Sector Deep Dive: Public Sector</h2>
+        <p>
+          Public sector organizations manage citizen services, regulatory compliance, and large-scale
+          administrative processes. ML and RAG support service delivery, transparency, and operational efficiency.
+        </p>
+
+        <h3>1. ML Use Cases</h3>
+        <ul>
+          <li>Resource allocation forecasting</li>
+          <li>Fraud, waste, and abuse detection</li>
+          <li>Case prioritization</li>
+          <li>Demand forecasting for public services</li>
+        </ul>
+
+        <h3>2. RAG Use Cases</h3>
+        <ul>
+          <li>Policy and regulation retrieval</li>
+          <li>Citizen support automation</li>
+          <li>Internal knowledge access</li>
+          <li>Compliance reasoning</li>
+        </ul>
+
+        <h3>3. Data Science Responsibilities</h3>
+        <ul>
+          <li>Feature engineering from administrative data</li>
+          <li>Corpus engineering for policies and regulations</li>
+          <li>Outcome metric design</li>
+          <li>Equity evaluation</li>
+        </ul>
+
+        <h3>4. Unified Architecture Patterns</h3>
+        <ul>
+          <li>ML predictions guide RAG policy reasoning</li>
+          <li>RAG extracts structured regulatory data for ML</li>
+          <li>Data Science ensures transparency</li>
+        </ul>
+      </section>
+
+      <section class="ml-page-section" id="about">
+        <h2>About Enterprise Intelligence</h2>
+        <p>
+          Enterprise Intelligence provides a unified framework for Machine Learning, Retrieval&#8209;Augmented
+          Generation, and Data Science. Our mission is to help organizations build predictive, grounded,
+          and transparent intelligence systems that scale across sectors, workflows, and operational environments.
+        </p>
+      </section>
+
+      <section class="ml-page-section" id="mission">
+        <h3>Mission</h3>
+        <p>
+          To empower organizations with reliable, interpretable, and operationally aligned intelligence systems
+          that enhance decision-making, improve efficiency, and support equitable outcomes.
+        </p>
+      </section>
+
+      <section class="ml-page-section" id="vision">
+        <h3>Vision</h3>
+        <p>
+          A world where predictive and generative systems work together seamlessly - grounded in data, aligned
+          with policy, and designed for transparency.
+        </p>
+      </section>
+
+      <section class="ml-page-section" id="values">
+        <h3>Values</h3>
+
+        <div class="ml-values-grid">
+          <div>
+            <h4>Clarity</h4>
+            <p>We design systems that are understandable and aligned with real-world workflows.</p>
+          </div>
+          <div>
+            <h4>Grounding</h4>
+            <p>Every answer and prediction is tied to trusted data and documented knowledge.</p>
+          </div>
+          <div>
+            <h4>Reliability</h4>
+            <p>We prioritize accuracy, consistency, and operational stability.</p>
+          </div>
+          <div>
+            <h4>Equity</h4>
+            <p>We build systems that support fair and accountable decision-making.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ml-page-section" id="approach">
+        <h3>Approach</h3>
+        <p>
+          Our approach integrates Machine Learning, Retrieval&#8209;Augmented Generation, and Data Science into a
+          single operational stack. This ensures that predictions are accurate, reasoning is grounded, and
+          analytics are transparent.
+        </p>
+      </section>
+
+      <section class="ml-page-section" id="contact">
+        <h3>Contact</h3>
+        <p>
+          For inquiries or collaboration opportunities, please reach out through your organization's preferred
+          communication channels.
+        </p>
+      </section>
+
+      <section class="ml-page-section" id="privacy">
+        <h3>Privacy</h3>
+        <p>
+          Enterprise Intelligence adheres to strict privacy, security, and compliance standards.
+        </p>
+      </section>
+
+      <section class="ml-page-section" id="terms">
+        <h3>Terms</h3>
+        <p>
+          Use of this system is governed by your organization's terms of service and regulatory frameworks.
+        </p>
+      </section>
+
+      <footer class="ml-footer">
+        <div class="ml-footer-grid">
+          <div>
+            <h4>Navigation</h4>
+            <a [routerLink]="['/home/machine-learning']" fragment="manual">Unified Manual</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="diagrams">Blueprint Diagrams</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="angular-components">Components</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="diagram-index">Diagram Index</a>
+          </div>
+
+          <div>
+            <h4>Sectors</h4>
+            <a [routerLink]="['/home/machine-learning']" fragment="sector-retail">Retail</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="sector-healthcare">Healthcare</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="sector-energy">Energy</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="sector-legal">Legal</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="sector-education">Education</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="sector-manufacturing">Manufacturing</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="sector-public">Public Sector</a>
+          </div>
+
+          <div>
+            <h4>Company</h4>
+            <a [routerLink]="['/home/machine-learning']" fragment="about">About</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="contact">Contact</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="privacy">Privacy</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="terms">Terms</a>
+          </div>
+
+          <div>
+            <h4>Resources</h4>
+            <a [routerLink]="['/home/machine-learning']" fragment="architecture">Architecture Overview</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="manual">Unified Manual</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="diagrams">Blueprint Diagrams</a>
+            <a [routerLink]="['/home/machine-learning']" fragment="approach">Approach</a>
+          </div>
+        </div>
+
+        <div class="ml-footer-bottom">
+          &copy; 2026 Enterprise Intelligence. All rights reserved.
+        </div>
+      </footer>
+
+      <a routerLink="/home" class="back-link">Back to home</a>
+    } @else {
+
     <section class="main-chatbot" [class.main-chatbot--collapsed]="!chatbotOpen()" aria-label="Ibis Equity Assistant - AWS OpenSearch + Amazon Bedrock (Claude)">
       <div class="main-chatbot__header-row">
         <header class="main-chatbot__title-block">
@@ -22,15 +1378,22 @@
           <p class="main-chatbot__info">Ask a question below. Answers are grounded by the configured knowledge base.</p>
         </header>
         <div class="main-chatbot__header-actions">
-          <div class="main-chatbot__assistant-info">
+          <div class="main-chatbot__assistant-info" [class.is-open]="assistantInfoOpen()">
             <button
               class="main-chatbot__assistant-info-button"
               type="button"
+              (click)="toggleAssistantInfo()"
+              [attr.aria-expanded]="assistantInfoOpen()"
+              aria-controls="destination-assistant-info-popover"
               aria-label="Architecture information"
             >
               i
             </button>
-            <div class="main-chatbot__info-popover" role="tooltip">
+            <div id="destination-assistant-info-popover" class="main-chatbot__info-popover" role="tooltip">
+              <div class="main-chatbot__info-popover-header">
+                <p class="main-chatbot__info-popover-title">Assistant Architecture</p>
+                <button class="main-chatbot__info-popover-close" type="button" (click)="closeAssistantInfo()" aria-label="Close architecture information">Close</button>
+              </div>
               <section class="platform-narrative" aria-labelledby="opensearch-bedrock-title-destination">
                 <div class="narrative-container">
                   <header class="narrative-header">
@@ -220,6 +1583,9 @@
             <button class="main-chatbot__sound-toggle" type="button" (click)="toggleSpeech()" [attr.aria-pressed]="speechEnabled()">
               {{ speechEnabled() ? 'Sound: ON' : 'Sound: OFF' }}
             </button>
+            <button class="main-chatbot__listen-action" type="button" (click)="listenToAnswer()" [disabled]="!ragAudioSrc()">
+              Listen
+            </button>
 
             <span class="main-chatbot__control-label">Language</span>
             <label class="main-chatbot__label" for="destination-rag-language">Language</label>
@@ -273,7 +1639,7 @@
 
           <section class="main-chatbot__box main-chatbot__box--listen" aria-label="Listen widget">
             <h3>Listen</h3>
-            <audio class="main-chatbot__audio" controls preload="none" [src]="ragAudioSrc()"></audio>
+            <audio id="destination-rag-audio" class="main-chatbot__audio" controls preload="none" [src]="ragAudioSrc()"></audio>
             @if (ragAudioError()) {
               <p class="main-chatbot__error">{{ ragAudioError() }}</p>
             }
@@ -282,7 +1648,531 @@
       }
     </section>
 
-    @if (featureContent) {
+    @if (destinationId === 'machine-learning') {
+      <section class="ml-subheader" aria-label="Machine Learning subheader">
+        <img
+          class="ml-subheader__image"
+          src="/images/mach-learning.jpg"
+          alt="Machine learning"
+          width="1200"
+          height="420"
+        >
+        <p class="ml-subheader__text">
+          Machine learning (ML) is a subset of artificial intelligence (AI) that enables systems to learn from data, identify patterns, and make decisions without explicit programming. Using algorithms and statistics, computers analyze vast datasets to forecast outcomes, adaptively improving performance as more data becomes available
+        </p>
+
+        <section class="ml-subheader__section" aria-label="Machine Learning Executive Narrative">
+          <h2 class="ml-subheader__title">Machine Learning: An Executive Narrative on Modern Intelligence</h2>
+
+          <p>
+            Machine Learning (ML) represents one of the most consequential shifts in the history of organizational decision making. It is the discipline of enabling systems to learn patterns from data and make predictions, decisions, or recommendations without being explicitly programmed for every scenario. But at the executive level, ML is not simply a technical capability - it is a strategic inflection point that redefines how institutions perceive risk, allocate resources, engage customers, and shape their futures.
+          </p>
+          <p>
+            For decades, organizations have relied on static rules, retrospective reporting, and human intuition to guide decisions. These approaches, while valuable, are limited by scale, speed, and cognitive bandwidth. ML breaks these constraints. It introduces a continuously learning intelligence layer that adapts to new information, reveals hidden patterns, and acts with a level of precision and foresight that traditional systems cannot match.
+          </p>
+          <p>
+            In this sense, ML is not a tool - it is infrastructure. It becomes the connective tissue between data, operations, and outcomes. It transforms raw information into forward looking intelligence, enabling organizations to operate with clarity, agility, and intentionality.
+          </p>
+
+          <p class="ml-subheader__lead">Organizations that adopt ML effectively gain the ability to:</p>
+
+          <article class="ml-subheader__block">
+            <h3>Predict what will happen before it happens</h3>
+            <p>
+              ML models analyze historical and real time signals to forecast demand, risk, operational load, and customer behavior. This predictive capability shifts organizations from reactive firefighting to proactive orchestration. Leaders no longer ask, "What happened?" - they ask, "What will happen next, and how should we respond?"
+            </p>
+            <p>
+              This foresight becomes a competitive differentiator in markets where timing, precision, and adaptability determine success.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Personalize experiences at scale</h3>
+            <p>
+              ML enables individualized experiences for millions of customers simultaneously - something no human team could ever achieve. It powers dynamic recommendations, tailored messaging, adaptive interfaces, and context aware interactions.
+            </p>
+            <p>
+              Every click, purchase, and interaction becomes a signal that refines the next experience. Personalization becomes a living system - one that deepens engagement, strengthens loyalty, and compounds value over time.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Automate complex decisions with consistency</h3>
+            <p>
+              Many enterprise decisions involve evaluating thousands of variables, edge cases, and historical patterns. ML systems excel at this complexity. They deliver decisions that are faster, more consistent, and more data driven than manual processes.
+            </p>
+            <p>
+              From fraud detection to clinical triage to operational routing, ML automates decisions that once required specialized human judgment - freeing teams to focus on strategy, creativity, and exception handling.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Optimize operations in real time</h3>
+            <p>
+              ML transforms operations from static workflows into adaptive systems. It continuously adjusts supply chains, staffing levels, pricing, routing, inventory, and resource allocation based on live data.
+            </p>
+            <p>
+              This creates a self optimizing enterprise where inefficiencies are corrected automatically, bottlenecks are predicted before they occur, and resources flow to where they create the most value.
+            </p>
+            <p>
+              Operational excellence becomes a dynamic capability, not a quarterly initiative.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>Detect anomalies, risks, and opportunities early</h3>
+            <p>
+              ML is exceptionally good at identifying subtle deviations - the early signals of fraud, equipment failure, safety risks, or emerging customer needs. These signals often appear long before they are visible in dashboards or reports.
+            </p>
+            <p>
+              Early detection reduces losses, improves safety, and accelerates innovation. It gives organizations the ability to intervene before problems escalate - or capitalize on opportunities before competitors notice them.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>ML as the Engine of Modern Digital Operations</h3>
+            <p>
+              Machine Learning transforms raw data into a strategic asset. Instead of being trapped in reports, logs, and databases, data becomes a living intelligence layer that powers every part of the enterprise.
+            </p>
+            <p>This shift is profound:</p>
+            <ul>
+              <li>Data becomes predictive, not descriptive</li>
+              <li>Operations become adaptive, not static</li>
+              <li>Customer engagement becomes individualized, not generic</li>
+              <li>Risk management becomes proactive, not reactive</li>
+              <li>Innovation becomes continuous, not episodic</li>
+            </ul>
+            <p>
+              ML becomes the engine behind modern digital operations - powering everything from forecasting demand to detecting fraud to tailoring customer experiences. It is the architectural backbone of organizations that want to operate with clarity, precision, and foresight.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>The Organizational Impact: ML as Structural Advantage</h3>
+            <p>
+              When ML is integrated deeply - not as a project, but as infrastructure - organizations experience a structural shift:
+            </p>
+            <ol>
+              <li>Decision velocity increases. Decisions that once took days or weeks become instantaneous.</li>
+              <li>Operational friction decreases. Bottlenecks are predicted and resolved before they materialize.</li>
+              <li>Institutional knowledge compounds. Every interaction becomes a training signal that improves the system.</li>
+              <li>Risk exposure decreases. Anomalies and threats are detected early, not after the fact.</li>
+              <li>Customer value increases. Personalization becomes a differentiator, not a novelty.</li>
+              <li>Innovation accelerates. Teams build on a foundation of intelligence rather than starting from scratch.</li>
+            </ol>
+            <p>
+              ML becomes a force multiplier - amplifying the capabilities of every team, system, and process it touches.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block">
+            <h3>The Executive Mandate: Build Intelligence as Infrastructure</h3>
+            <p>
+              For leaders, the mandate is clear: Machine Learning must be treated as core infrastructure, not a collection of isolated experiments.
+            </p>
+            <p>This requires:</p>
+            <ul>
+              <li>A unified intelligence architecture</li>
+              <li>Strong data foundations</li>
+              <li>Governance, safety, and equity frameworks</li>
+              <li>Cross functional alignment</li>
+              <li>Continuous monitoring and improvement</li>
+              <li>Integration with RAG and Data Science</li>
+            </ul>
+            <p>Organizations that embrace this approach build intelligence that is:</p>
+            <ul>
+              <li>Predictive</li>
+              <li>Grounded</li>
+              <li>Transparent</li>
+              <li>Equitable</li>
+              <li>Scalable</li>
+              <li>Resilient</li>
+            </ul>
+            <p>
+              Organizations that do not will find themselves constrained by legacy processes, unable to keep pace with competitors who operate with real time intelligence.
+            </p>
+          </article>
+
+          <article class="ml-subheader__block ml-subheader__block--final">
+            <h3>The Future: ML as a Living System</h3>
+            <p>
+              Machine Learning is not static. It evolves. It learns. It adapts.
+            </p>
+            <p>
+              It becomes a living system - one that grows with the organization, responds to new data, and aligns with changing priorities.
+            </p>
+            <p>In this future:</p>
+            <ul>
+              <li>Every decision is informed by intelligence</li>
+              <li>Every workflow is adaptive</li>
+              <li>Every customer interaction is personalized</li>
+              <li>Every risk is monitored continuously</li>
+              <li>Every opportunity is surfaced early</li>
+            </ul>
+            <p>
+              ML becomes the quiet, powerful infrastructure that enables organizations to operate with clarity, confidence, and intentionality.
+            </p>
+            <p>
+              This is the promise of Machine Learning - not as a technology, but as a strategic capability that reshapes the very architecture of modern institutions.
+            </p>
+          </article>
+        </section>
+
+        <div class="manual-container" aria-label="Ibis Equity sector intelligence architecture manual">
+          <header class="manual-header">
+            <h1 class="manual-title">IBIS EQUITY - Sector Intelligence Architecture Manual</h1>
+            <p class="manual-subtitle">
+              Machine Learning - Retrieval-Augmented Generation - Data Science<br>
+              Designed for regulated, high-stakes, operationally complex domains.
+            </p>
+          </header>
+
+          <section id="healthcare" class="sector-section sector-healthcare">
+            <h2 class="sector-title">Healthcare Intelligence Architecture</h2>
+
+            <h3 class="section-heading">Executive Narrative</h3>
+            <p class="body-text">
+              Healthcare is one of the most data-rich and decision-dense environments in the world.
+              Machine Learning augments clinical judgment, stabilizes operations, and reveals patterns
+              that clinicians cannot see at scale. RAG grounds every recommendation in guidelines,
+              policies, and evidence. Data Science ensures fairness, safety, and interpretability.
+            </p>
+
+            <h3 class="section-heading">Architecture Diagram</h3>
+            <div class="diagram-wrapper">
+              <pre class="diagram">
++---------------------------------------------------------------+
+|                     CLINICAL &amp; OPERATIONAL LAYER              |
+|  - Clinical decision support  - Triage tools  - Care pathways |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|  MACHINE LEARNING                RAG SYSTEMS                  |
+|  - Risk prediction               - Guideline retrieval        |
+|  - Imaging models                - Policy-grounded reasoning  |
+|  - Operational forecasting       - Documentation assistance   |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  - Feature engineering (EHR, claims)                          |
+|  - Corpus engineering (guidelines, SOPs)                      |
+|  - Fairness &amp; bias evaluation                                 |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  - HL7/FHIR ingestion  - Claims ETL  - Real-time vitals       |
+|  - Data quality  - Metadata &amp; lineage                          |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW CLINICAL DATA                     |
+|  - EHR - Imaging - Labs - Claims - Devices                    |
++---------------------------------------------------------------+
+              </pre>
+            </div>
+
+            <h3 class="section-heading">ML + RAG + Data Science Integration</h3>
+            <ul class="bullet-list">
+              <li>ML predicts deterioration, readmission, sepsis, and operational load.</li>
+              <li>RAG retrieves guidelines, payer policies, and clinical pathways.</li>
+              <li>Data Science ensures fairness across demographic groups.</li>
+            </ul>
+
+            <h3 class="section-heading">Governance, Safety, Equity</h3>
+            <ul class="bullet-list">
+              <li>Explainability is mandatory.</li>
+              <li>PHI must be protected at every layer.</li>
+              <li>Bias must be measured and mitigated.</li>
+              <li>Human-in-the-loop is required for high-stakes decisions.</li>
+            </ul>
+
+            <h3 class="section-heading">High-Value Use Cases</h3>
+            <ul class="bullet-list">
+              <li>Early warning systems</li>
+              <li>Imaging triage</li>
+              <li>Bed and staffing forecasting</li>
+              <li>Claims fraud detection</li>
+              <li>Personalized care pathways</li>
+            </ul>
+
+            <h3 class="section-heading">KPIs</h3>
+            <ul class="bullet-list">
+              <li>Reduction in readmissions</li>
+              <li>Time-to-intervention</li>
+              <li>Diagnostic accuracy</li>
+              <li>Operational throughput</li>
+            </ul>
+          </section>
+
+          <section id="energy" class="sector-section sector-energy">
+            <h2 class="sector-title">Energy &amp; Utilities Intelligence Architecture</h2>
+
+            <h3 class="section-heading">Executive Narrative</h3>
+            <p class="body-text">
+              Energy systems must be reliable, resilient, and increasingly sustainable.
+              ML provides foresight; RAG provides grounded operational knowledge; Data Science
+              ensures safety and regulatory alignment.
+            </p>
+
+            <h3 class="section-heading">Architecture Diagram</h3>
+            <div class="diagram-wrapper">
+              <pre class="diagram">
++---------------------------------------------------------------+
+|                     GRID &amp; OPERATIONS LAYER                   |
+|  - Outage mgmt  - Dispatch  - Field ops  - Load balancing     |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|  MACHINE LEARNING                RAG SYSTEMS                  |
+|  - Load forecasting              - Safety procedure retrieval |
+|  - Outage prediction             - Asset documentation lookup |
+|  - Predictive maintenance        - Regulatory reasoning       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  - SCADA feature engineering                                   |
+|  - Corpus engineering (manuals, NERC/FERC regs)               |
+|  - Reliability metrics (SAIDI, SAIFI)                         |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  - Sensor ingestion  - AMI streams  - Grid telemetry          |
+|  - Data quality  - Time-series pipelines                      |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW GRID DATA                         |
+|  - SCADA - AMI - Weather - Asset data                         |
++---------------------------------------------------------------+
+              </pre>
+            </div>
+
+            <h3 class="section-heading">High-Value Use Cases</h3>
+            <ul class="bullet-list">
+              <li>Load forecasting</li>
+              <li>Predictive maintenance</li>
+              <li>Outage prediction</li>
+              <li>Renewable integration</li>
+            </ul>
+
+            <h3 class="section-heading">KPIs</h3>
+            <ul class="bullet-list">
+              <li>SAIDI, SAIFI, CAIDI</li>
+              <li>Outage reduction</li>
+              <li>Maintenance cost reduction</li>
+            </ul>
+          </section>
+
+          <section id="retail" class="sector-section sector-retail">
+            <h2 class="sector-title">Retail &amp; E-Commerce Intelligence Architecture</h2>
+
+            <h3 class="section-heading">Executive Narrative</h3>
+            <p class="body-text">
+              Retail is a battlefield of attention, personalization, and operational precision.
+              ML predicts intent; RAG grounds recommendations in product knowledge; Data Science
+              ensures fairness and transparency.
+            </p>
+
+            <h3 class="section-heading">Architecture Diagram</h3>
+            <div class="diagram-wrapper">
+              <pre class="diagram">
++---------------------------------------------------------------+
+|                     CUSTOMER EXPERIENCE LAYER                 |
+|  - Recommendations  - Search  - Personalization               |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|  MACHINE LEARNING                RAG SYSTEMS                  |
+|  - Demand forecasting            - Product knowledge retrieval|
+|  - Dynamic pricing               - Policy-grounded reasoning  |
+|  - Fraud detection               - Catalog summarization      |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  - Behavioral feature engineering                             |
+|  - Catalog corpus engineering                                 |
+|  - Experimentation &amp; uplift modeling                          |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  - Clickstream ingestion  - POS ETL  - Inventory pipelines    |
+|  - Data quality  - Metadata                                    |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW RETAIL DATA                       |
+|  - Transactions - Browsing - Catalog - Reviews                |
++---------------------------------------------------------------+
+              </pre>
+            </div>
+          </section>
+
+          <section id="legal" class="sector-section sector-legal">
+            <h2 class="sector-title">Legal &amp; Compliance Intelligence Architecture</h2>
+
+            <h3 class="section-heading">Executive Narrative</h3>
+            <p class="body-text">
+              Legal work is dense, textual, and high-stakes. ML accelerates classification and risk scoring;
+              RAG grounds reasoning in statutes and case law; Data Science ensures auditability and fairness.
+            </p>
+
+            <h3 class="section-heading">Architecture Diagram</h3>
+            <div class="diagram-wrapper">
+              <pre class="diagram">
++---------------------------------------------------------------+
+|                     LEGAL WORKFLOWS LAYER                     |
+|  - Contract review  - Research  - Compliance checks           |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|  MACHINE LEARNING                RAG SYSTEMS                  |
+|  - Clause classification         - Statute retrieval          |
+|  - Risk scoring                  - Policy-grounded reasoning |
+|  - Entity extraction             - Contract comparison        |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  - Corpus engineering (statutes, case law)                    |
+|  - Sensitivity tagging                                         |
+|  - Fairness &amp; audit metrics                                   |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  - Document ingestion  - OCR  - Metadata pipelines            |
+|  - Versioning  - Lineage                                      |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW LEGAL DATA                        |
+|  - Contracts - Statutes - Case law - Policies                 |
++---------------------------------------------------------------+
+              </pre>
+            </div>
+          </section>
+
+          <section id="manufacturing" class="sector-section sector-manufacturing">
+            <h2 class="sector-title">Manufacturing Intelligence Architecture</h2>
+
+            <h3 class="section-heading">Executive Narrative</h3>
+            <p class="body-text">
+              Manufacturing is a world of sensors, cycles, tolerances, and throughput.
+              ML predicts failures; RAG retrieves procedures; Data Science optimizes yield.
+            </p>
+
+            <h3 class="section-heading">Architecture Diagram</h3>
+            <div class="diagram-wrapper">
+              <pre class="diagram">
++---------------------------------------------------------------+
+|                     PRODUCTION &amp; QUALITY LAYER                |
+|  - Line monitoring  - Quality checks  - Scheduling            |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|  MACHINE LEARNING                RAG SYSTEMS                  |
+|  - Predictive maintenance        - SOP retrieval              |
+|  - Defect detection              - Root-cause reasoning       |
+|  - Yield optimization            - Equipment documentation    |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  - IoT feature engineering                                     |
+|  - Corpus engineering (manuals, SOPs)                         |
+|  - Throughput &amp; quality metrics                               |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  - Sensor ingestion  - PLC data  - MES integration            |
+|  - Time-series pipelines                                       |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW MANUFACTURING DATA                |
+|  - Sensors - PLCs - MES - QC logs                             |
++---------------------------------------------------------------+
+              </pre>
+            </div>
+          </section>
+
+          <section id="public-sector" class="sector-section sector-public">
+            <h2 class="sector-title">Public Sector Intelligence Architecture</h2>
+
+            <h3 class="section-heading">Executive Narrative</h3>
+            <p class="body-text">
+              Public institutions operate under constraints of transparency, fairness, and accountability.
+              ML predicts demand and prioritizes cases; RAG grounds reasoning in policy; Data Science ensures equity.
+            </p>
+
+            <h3 class="section-heading">Architecture Diagram</h3>
+            <div class="diagram-wrapper">
+              <pre class="diagram">
++---------------------------------------------------------------+
+|                     SERVICE DELIVERY LAYER                    |
+|  - Case mgmt  - Benefits  - Citizen services                  |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                     INTELLIGENCE LAYER                        |
+|  MACHINE LEARNING                RAG SYSTEMS                  |
+|  - Case prioritization           - Policy retrieval           |
+|  - Demand forecasting            - Regulation-grounded answers|
+|  - Fraud detection               - Procedural guidance        |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|               DATA SCIENCE &amp; ANALYTICS LAYER                 |
+|  - Administrative feature engineering                          |
+|  - Corpus engineering (policies, regulations)                 |
+|  - Equity metrics                                              |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                   DATA ENGINEERING LAYER                      |
+|  - Case system ETL  - Document ingestion  - Metadata          |
+|  - Quality &amp; lineage                                         |
++-------------------------------^-------------------------------+
+                                |
++-------------------------------|-------------------------------+
+|                         RAW PUBLIC DATA                       |
+|  - Cases - Policies - Regulations - Forms                     |
++---------------------------------------------------------------+
+              </pre>
+            </div>
+          </section>
+
+          <section class="ml-summary" aria-label="Machine Learning Summary">
+            <h2 class="ml-summary__title">Machine Learning at Ibis Equity Consulting - Summary</h2>
+            <p>
+              Machine Learning at Ibis Equity is treated not as a feature, but as core organizational infrastructure. It transforms raw data into foresight, turning every workflow into an adaptive, intelligence driven system. Our approach blends predictive modeling, grounded reasoning, and rigorous data science to help institutions operate with clarity, precision, and equity.
+            </p>
+            <p>
+              ML becomes the engine behind modern decision making: forecasting demand, identifying risk, optimizing operations, and personalizing experiences at scale. Every model is governed, explainable, and aligned with sector specific constraints - from clinical safety to regulatory compliance to fairness in public services.
+            </p>
+            <p>
+              At Ibis Equity, ML is designed to be predictive, grounded, and equitable. It learns continuously, adapts responsibly, and supports decisions that honor both operational complexity and human impact.
+            </p>
+          </section>
+
+          <a routerLink="/home" class="back-link">Back to home</a>
+        </div>
+      </section>
+    }
+
+    @if (featureContent && destinationId !== 'machine-learning') {
       <section class="feature-story" aria-label="Destination details">
         <header class="feature-story__header">
           @if (headerImageSrc) {
@@ -1608,6 +3498,250 @@
       </section>
     }
 
+    @if (destinationId === 'agentic-ai') {
+      <div class="enterprise-container">
+        <section class="industry-section industry-hr">
+          <h2 class="industry-title">AI for HR</h2>
+          <p class="industry-body">
+            HR is the nervous system of the enterprise - the place where talent, culture, and operational readiness converge.
+            Agentic AI transforms HR from a reactive administrative function into a proactive intelligence layer. Agents screen
+            candidates, evaluate resumes, coordinate interviews, and generate onboarding packets aligned with policy.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Candidate Screening</div><div class="matrix-cell">Agent evaluates resumes and ranks candidates</div><div class="matrix-cell">Faster, more consistent filtering</div><div class="matrix-cell">Reduced recruiter workload</div>
+            <div class="matrix-cell">Interview Scheduling</div><div class="matrix-cell">Agent coordinates calendars and resolves conflicts</div><div class="matrix-cell">Streamlined scheduling</div><div class="matrix-cell">Improved candidate experience</div>
+            <div class="matrix-cell">Onboarding Automation</div><div class="matrix-cell">Agent generates packets and assigns tasks</div><div class="matrix-cell">Faster onboarding cycles</div><div class="matrix-cell">Higher HR operational efficiency</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-it">
+          <h2 class="industry-title">AI for IT</h2>
+          <p class="industry-body">
+            IT is the backbone of enterprise stability. Agentic AI becomes a first-line responder, diagnosing issues, retrieving
+            SOPs, executing fixes, and escalating only when necessary.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Troubleshooting</div><div class="matrix-cell">Agent diagnoses issues and retrieves SOPs</div><div class="matrix-cell">Faster resolution</div><div class="matrix-cell">Reduced IT workload</div>
+            <div class="matrix-cell">Credential Reset</div><div class="matrix-cell">Agent verifies identity and resets access</div><div class="matrix-cell">Instant recovery</div><div class="matrix-cell">Improved uptime</div>
+            <div class="matrix-cell">System Monitoring</div><div class="matrix-cell">Agent detects anomalies in logs</div><div class="matrix-cell">Early issue detection</div><div class="matrix-cell">Lower operational risk</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-sales">
+          <h2 class="industry-title">AI for Sales &amp; Retail</h2>
+          <p class="industry-body">
+            Sales and retail operate at the speed of attention. Agentic AI analyzes customer behavior, predicts intent, qualifies
+            leads, and personalizes recommendations in real time.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Lead Qualification</div><div class="matrix-cell">Agent predicts intent and scores leads</div><div class="matrix-cell">Higher conversion</div><div class="matrix-cell">Increased revenue</div>
+            <div class="matrix-cell">Inventory Optimization</div><div class="matrix-cell">Agent forecasts demand and triggers POs</div><div class="matrix-cell">Balanced stock levels</div><div class="matrix-cell">Reduced waste</div>
+            <div class="matrix-cell">Personalized Offers</div><div class="matrix-cell">Agent analyzes behavior and recommends products</div><div class="matrix-cell">More relevant engagement</div><div class="matrix-cell">Higher customer satisfaction</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-finance">
+          <h2 class="industry-title">AI in Finance</h2>
+          <p class="industry-body">
+            Finance demands precision, compliance, and speed. Agentic AI reconciles transactions, detects anomalies, validates
+            compliance rules, and generates financial reports.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Reconciliation</div><div class="matrix-cell">Agent matches transactions and flags mismatches</div><div class="matrix-cell">Accurate books</div><div class="matrix-cell">Reduced financial risk</div>
+            <div class="matrix-cell">Fraud Detection</div><div class="matrix-cell">Agent identifies anomalies in patterns</div><div class="matrix-cell">Early fraud detection</div><div class="matrix-cell">Lower losses</div>
+            <div class="matrix-cell">Compliance Checks</div><div class="matrix-cell">Agent validates rules and policies</div><div class="matrix-cell">Consistent compliance</div><div class="matrix-cell">Audit-ready operations</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-engineering">
+          <h2 class="industry-title">AI for Engineering</h2>
+          <p class="industry-body">
+            Engineering teams thrive on clarity and velocity. Agentic AI parses logs, identifies errors, retrieves documentation,
+            and proposes fixes.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Log Analysis</div><div class="matrix-cell">Agent parses logs and identifies root causes</div><div class="matrix-cell">Faster debugging</div><div class="matrix-cell">Higher developer velocity</div>
+            <div class="matrix-cell">Documentation Retrieval</div><div class="matrix-cell">Agent fetches relevant technical docs</div><div class="matrix-cell">Reduced search time</div><div class="matrix-cell">Improved productivity</div>
+            <div class="matrix-cell">Test Automation</div><div class="matrix-cell">Agent runs tests and analyzes failures</div><div class="matrix-cell">More stable releases</div><div class="matrix-cell">Higher code quality</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-customer">
+          <h2 class="industry-title">AI for Customer Service</h2>
+          <p class="industry-body">
+            Customer service is where brand trust is earned or lost. Agentic AI triages tickets, retrieves policies, drafts
+            responses, and resolves issues end-to-end.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Ticket Triage</div><div class="matrix-cell">Agent classifies and routes tickets</div><div class="matrix-cell">Faster response</div><div class="matrix-cell">Higher satisfaction</div>
+            <div class="matrix-cell">Response Drafting</div><div class="matrix-cell">Agent retrieves policies and drafts replies</div><div class="matrix-cell">Consistent messaging</div><div class="matrix-cell">Reduced agent workload</div>
+            <div class="matrix-cell">Self-Service Automation</div><div class="matrix-cell">Agent resolves common issues autonomously</div><div class="matrix-cell">Lower ticket volume</div><div class="matrix-cell">Operational efficiency</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-legal">
+          <h2 class="industry-title">AI for Legal &amp; Law</h2>
+          <p class="industry-body">
+            Legal work is dense, textual, and high-stakes. Agentic AI reviews contracts, compares clauses, retrieves statutes,
+            and generates redlines.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Contract Review</div><div class="matrix-cell">Agent scores clauses and flags risks</div><div class="matrix-cell">Faster review cycles</div><div class="matrix-cell">Reduced legal burden</div>
+            <div class="matrix-cell">Compliance Validation</div><div class="matrix-cell">Agent retrieves statutes and checks alignment</div><div class="matrix-cell">Defensible decisions</div><div class="matrix-cell">Lower compliance risk</div>
+            <div class="matrix-cell">Document Drafting</div><div class="matrix-cell">Agent drafts memos and redlines</div><div class="matrix-cell">Accelerated workflows</div><div class="matrix-cell">Higher legal throughput</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-facilities">
+          <h2 class="industry-title">AI for Facilities</h2>
+          <p class="industry-body">
+            Facilities management is the silent engine of operational continuity. Agentic AI monitors sensors, detects anomalies,
+            schedules maintenance, and coordinates vendors.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Sensor Monitoring</div><div class="matrix-cell">Agent detects anomalies in equipment</div><div class="matrix-cell">Early issue detection</div><div class="matrix-cell">Reduced downtime</div>
+            <div class="matrix-cell">Maintenance Scheduling</div><div class="matrix-cell">Agent coordinates vendor availability</div><div class="matrix-cell">Faster repairs</div><div class="matrix-cell">Lower maintenance cost</div>
+            <div class="matrix-cell">Energy Optimization</div><div class="matrix-cell">Agent analyzes usage patterns</div><div class="matrix-cell">Reduced waste</div><div class="matrix-cell">Lower energy spend</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-marketing">
+          <h2 class="industry-title">AI for Marketing</h2>
+          <p class="industry-body">
+            Marketing thrives on creativity, timing, and data. Agentic AI generates campaigns, drafts content, analyzes performance,
+            and orchestrates multi-channel execution.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Campaign Generation</div><div class="matrix-cell">Agent drafts multi-channel content</div><div class="matrix-cell">Faster campaign cycles</div><div class="matrix-cell">Higher output</div>
+            <div class="matrix-cell">Audience Segmentation</div><div class="matrix-cell">Agent identifies behavioral clusters</div><div class="matrix-cell">More precise targeting</div><div class="matrix-cell">Higher ROI</div>
+            <div class="matrix-cell">Performance Analysis</div><div class="matrix-cell">Agent analyzes metrics and optimizes spend</div><div class="matrix-cell">Better decisions</div><div class="matrix-cell">Reduced waste</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-productivity">
+          <h2 class="industry-title">AI for Productivity</h2>
+          <p class="industry-body">
+            Productivity agents act as personal operators for every employee. They schedule meetings, summarize documents,
+            retrieve files, and coordinate tasks across systems.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Meeting Scheduling</div><div class="matrix-cell">Agent resolves conflicts and books rooms</div><div class="matrix-cell">Faster coordination</div><div class="matrix-cell">Reduced admin load</div>
+            <div class="matrix-cell">Document Summaries</div><div class="matrix-cell">Agent extracts key insights</div><div class="matrix-cell">Faster comprehension</div><div class="matrix-cell">Better decision-making</div>
+            <div class="matrix-cell">Task Automation</div><div class="matrix-cell">Agent orchestrates workflows</div><div class="matrix-cell">Streamlined operations</div><div class="matrix-cell">Higher productivity</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-healthcare">
+          <h2 class="industry-title">AI for Healthcare</h2>
+          <p class="industry-body">
+            Healthcare is one of the most complex, data-rich environments in the world. Agentic AI triages referrals, drafts
+            prior authorization packets, retrieves guidelines, and supports clinical decision-making.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Referral Triage</div><div class="matrix-cell">Agent classifies urgency and routes cases</div><div class="matrix-cell">Faster care access</div><div class="matrix-cell">Improved throughput</div>
+            <div class="matrix-cell">Prior Authorization</div><div class="matrix-cell">Agent retrieves guidelines and drafts packets</div><div class="matrix-cell">Reduced delays</div><div class="matrix-cell">Higher clinician efficiency</div>
+            <div class="matrix-cell">Clinical Summaries</div><div class="matrix-cell">Agent synthesizes patient history</div><div class="matrix-cell">Better clinical decisions</div><div class="matrix-cell">Improved outcomes</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-education">
+          <h2 class="industry-title">AI for Education</h2>
+          <p class="industry-body">
+            Education is fundamentally about personalization and support. Agentic AI adapts learning materials to each student,
+            automates grading, and provides real-time feedback. It assists educators with lesson planning, student monitoring,
+            and administrative tasks.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Personalized Learning</div><div class="matrix-cell">Agent adapts content to student needs</div><div class="matrix-cell">Better engagement</div><div class="matrix-cell">Improved learning outcomes</div>
+            <div class="matrix-cell">Grading Automation</div><div class="matrix-cell">Agent evaluates submissions</div><div class="matrix-cell">Faster grading</div><div class="matrix-cell">Reduced educator workload</div>
+            <div class="matrix-cell">Student Support</div><div class="matrix-cell">Agent answers questions and provides guidance</div><div class="matrix-cell">More responsive support</div><div class="matrix-cell">Higher student success</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-government">
+          <h2 class="industry-title">AI for Government</h2>
+          <p class="industry-body">
+            Government services must be transparent, equitable, and efficient. Agentic AI triages cases, interprets policy,
+            determines eligibility, and drafts citizen-friendly explanations. It ensures decisions are consistent, documented,
+            and aligned with regulation.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Case Triage</div><div class="matrix-cell">Agent classifies cases and routes them</div><div class="matrix-cell">Faster processing</div><div class="matrix-cell">Reduced backlog</div>
+            <div class="matrix-cell">Eligibility Determination</div><div class="matrix-cell">Agent retrieves policy and evaluates criteria</div><div class="matrix-cell">Consistent decisions</div><div class="matrix-cell">Improved fairness</div>
+            <div class="matrix-cell">Citizen Communication</div><div class="matrix-cell">Agent drafts clear, accessible explanations</div><div class="matrix-cell">Better public understanding</div><div class="matrix-cell">Higher trust</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-insurance">
+          <h2 class="industry-title">AI for Insurance</h2>
+          <p class="industry-body">
+            Insurance is built on risk assessment and claims processing. Agentic AI extracts data from claims, checks policy
+            rules, detects fraud, and drafts decisions. It can analyze risk profiles, generate quotes, and support underwriting.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Claims Processing</div><div class="matrix-cell">Agent extracts data and validates rules</div><div class="matrix-cell">Faster claims cycles</div><div class="matrix-cell">Improved customer satisfaction</div>
+            <div class="matrix-cell">Fraud Detection</div><div class="matrix-cell">Agent identifies anomalies in patterns</div><div class="matrix-cell">Early fraud detection</div><div class="matrix-cell">Reduced loss</div>
+            <div class="matrix-cell">Underwriting Support</div><div class="matrix-cell">Agent analyzes risk profiles</div><div class="matrix-cell">More accurate assessments</div><div class="matrix-cell">Better pricing decisions</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-manufacturing">
+          <h2 class="industry-title">AI for Manufacturing</h2>
+          <p class="industry-body">
+            Manufacturing depends on precision, uptime, and throughput. Agentic AI monitors sensors, detects anomalies, retrieves
+            SOPs, and schedules maintenance. It can optimize production lines, reduce defects, and improve yield.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Predictive Maintenance</div><div class="matrix-cell">Agent monitors sensors and detects anomalies</div><div class="matrix-cell">Reduced downtime</div><div class="matrix-cell">Lower maintenance cost</div>
+            <div class="matrix-cell">SOP Retrieval</div><div class="matrix-cell">Agent fetches repair and safety procedures</div><div class="matrix-cell">Faster repairs</div><div class="matrix-cell">Improved safety</div>
+            <div class="matrix-cell">Production Optimization</div><div class="matrix-cell">Agent analyzes throughput and bottlenecks</div><div class="matrix-cell">Higher yield</div><div class="matrix-cell">Increased efficiency</div>
+          </div>
+        </section>
+
+        <section class="industry-section industry-transportation">
+          <h2 class="industry-title">AI for Transportation</h2>
+          <p class="industry-body">
+            Transportation is a world of logistics, timing, and constraints. Agentic AI optimizes routing, monitors fleets,
+            predicts delays, and coordinates deliveries. It can balance load, reduce fuel consumption, and improve on-time
+            performance.
+          </p>
+          <div class="matrix-grid">
+            <div class="matrix-header">Use Case</div><div class="matrix-header">Power of AI</div><div class="matrix-header">Outcome</div><div class="matrix-header">Benefit</div>
+            <div class="matrix-cell">Fleet Routing</div><div class="matrix-cell">Agent analyzes traffic, load, and constraints</div><div class="matrix-cell">Optimized routes</div><div class="matrix-cell">Lower fuel cost</div>
+            <div class="matrix-cell">Delay Prediction</div><div class="matrix-cell">Agent forecasts disruptions</div><div class="matrix-cell">Proactive adjustments</div><div class="matrix-cell">Improved reliability</div>
+            <div class="matrix-cell">Load Balancing</div><div class="matrix-cell">Agent distributes cargo efficiently</div><div class="matrix-cell">Better utilization</div><div class="matrix-cell">Reduced operational cost</div>
+          </div>
+        </section>
+
+        <footer class="enterprise-closing">
+          <p class="enterprise-closing__eyebrow">Ibis Equity Consulting — Agentic AI</p>
+          <p class="enterprise-closing__body">Agentic AI at Ibis Equity transforms intelligence from a passive capability into an active operational force. We design systems that don't just answer questions — they execute work. Our agents interpret intent, retrieve the right knowledge, enforce policy, and carry out multi-step workflows with precision, transparency, and accountability.</p>
+          <p class="enterprise-closing__body">Built as architectural infrastructure, not surface-level features, Ibis Equity's agentic systems integrate prediction, retrieval, and data-driven reasoning into a governed autonomy framework. They triage cases, draft documents, orchestrate operations, monitor risk, and support high-skill professionals across every sector — always aligned with safety, compliance, and equity.</p>
+          <ul class="enterprise-closing__statements">
+            <li>This is intelligence that acts with purpose.</li>
+            <li>This is autonomy with guardrails.</li>
+            <li>This is the new architecture of enterprise performance.</li>
+          </ul>
+          <p class="enterprise-closing__tagline">Ibis Equity builds agentic systems that strengthen institutions, elevate human judgment, and turn organizational complexity into coordinated, accountable action.</p>
+        </footer>
+      </div>
+    }
+
     @if (!featureContent) {
       @if (headerImageSrc) {
         <section class="destination-hero">
@@ -1654,6 +3788,17 @@
       }
     }
 
-    <a routerLink="/home" class="back-link">Back to home</a>
+    @if (destinationId !== 'machine-learning') {
+      <a routerLink="/home" class="back-link">Back to home</a>
+    }
+    } <!-- end @else (non-machine-learning destinations) -->
   </section>
 </main>
+
+
+
+
+
+
+
+

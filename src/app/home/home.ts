@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject, signal } from '@angular/core';
+import { Component, HostListener, OnDestroy, inject, signal } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -16,6 +16,7 @@ interface ContactSubmissionRequest {
   emailAddress: string;
   phoneNumber: string;
   organization: string;
+  position: string;
   request: string;
 }
 
@@ -87,6 +88,7 @@ export class HomeComponent implements OnDestroy {
   protected contactEmailAddress = '';
   protected contactPhoneNumber = '';
   protected contactOrganization = '';
+  protected contactPosition = '';
   protected contactRequest = '';
   protected readonly ragConfig: BedrockRagConfig = {
     knowledgeBaseId: 'kb-data-sciences',
@@ -122,6 +124,7 @@ export class HomeComponent implements OnDestroy {
   protected readonly ragSources = signal<BedrockRagSource[]>([]);
   protected readonly isAskingRag = signal(false);
   protected readonly chatbotOpen = signal(true);
+  protected readonly assistantInfoOpen = signal(false);
   protected readonly speechEnabled = signal(true);
   protected readonly ragAudioSrc = signal('');
   protected readonly ragAudioError = signal('');
@@ -207,8 +210,8 @@ export class HomeComponent implements OnDestroy {
           this.applyPopupAudio(popup, response);
           this.setPopupAudioLoading(popup, false);
         },
-        error: () => {
-          this.setPopupAudioError(popup, 'Unable to synthesize popup audio with Polly right now.');
+        error: (error: unknown) => {
+          this.setPopupAudioError(popup, this.formatPopupAudioErrorMessage(error));
           this.setPopupAudioLoading(popup, false);
         }
       });
@@ -231,17 +234,32 @@ export class HomeComponent implements OnDestroy {
       return;
     }
 
+    const firstName = this.contactFirstName.trim();
+    const lastName = this.contactLastName.trim();
+    const emailAddress = this.contactEmailAddress.trim();
+    const phoneNumber = this.contactPhoneNumber.trim();
+    const organization = this.contactOrganization.trim();
+    const position = this.contactPosition.trim();
+    const request = this.contactRequest.trim();
+
+    if (!firstName || !lastName || !emailAddress || !phoneNumber || !organization || !position || !request) {
+      this.contactSubmitError.set('All fields are required.');
+      this.contactSubmitted.set(false);
+      return;
+    }
+
     this.contactSubmitting.set(true);
     this.contactSubmitted.set(false);
     this.contactSubmitError.set('');
 
     const payload: ContactSubmissionRequest = {
-      firstName: this.contactFirstName.trim(),
-      lastName: this.contactLastName.trim(),
-      emailAddress: this.contactEmailAddress.trim(),
-      phoneNumber: this.contactPhoneNumber.trim(),
-      organization: this.contactOrganization.trim(),
-      request: this.contactRequest.trim(),
+      firstName,
+      lastName,
+      emailAddress,
+      phoneNumber,
+      organization,
+      position,
+      request,
     };
 
     this.http.post<ContactSubmissionResponse>('/api/contact/submit', payload).subscribe({
@@ -254,6 +272,16 @@ export class HomeComponent implements OnDestroy {
         this.contactSubmitting.set(false);
       }
     });
+  }
+
+  protected isContactFormInvalid(): boolean {
+    return !this.contactFirstName.trim()
+      || !this.contactLastName.trim()
+      || !this.contactEmailAddress.trim()
+      || !this.contactPhoneNumber.trim()
+      || !this.contactOrganization.trim()
+      || !this.contactPosition.trim()
+      || !this.contactRequest.trim();
   }
 
   protected askRagFromHome(): void {
@@ -335,6 +363,45 @@ export class HomeComponent implements OnDestroy {
 
   protected toggleChatbot(): void {
     this.chatbotOpen.update((isOpen) => !isOpen);
+  }
+
+  protected toggleAssistantInfo(): void {
+    this.assistantInfoOpen.update((isOpen) => !isOpen);
+  }
+
+  protected closeAssistantInfo(): void {
+    this.assistantInfoOpen.set(false);
+
+    if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  protected onDocumentClick(event: MouseEvent): void {
+    if (!this.assistantInfoOpen()) {
+      return;
+    }
+
+    const { target } = event;
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    if (target.closest('.main-chatbot__assistant-info')) {
+      return;
+    }
+
+    this.closeAssistantInfo();
+  }
+
+  @HostListener('document:keydown.escape')
+  protected onEscapeKey(): void {
+    if (!this.assistantInfoOpen()) {
+      return;
+    }
+
+    this.closeAssistantInfo();
   }
 
   protected toggleSpeech(): void {
@@ -601,5 +668,30 @@ export class HomeComponent implements OnDestroy {
       error.message;
 
     return detail?.trim() || fallbackMessage;
+  }
+
+  private formatPopupAudioErrorMessage(error: unknown): string {
+    const fallbackMessage = 'Unable to synthesize popup audio with Polly right now.';
+
+    if (!(error instanceof HttpErrorResponse)) {
+      return fallbackMessage;
+    }
+
+    if (error.status === 0) {
+      return 'Popup audio request could not reach the backend on /api/speech/synthesize. Verify backend is running on http://localhost:8010.';
+    }
+
+    if (error.status === 404) {
+      return 'Popup speech endpoint /api/speech/synthesize is not available on the running backend. Restart backend from the latest dev code.';
+    }
+
+    const detail =
+      (typeof error.error === 'object' && error.error && 'detail' in error.error && typeof error.error.detail === 'string'
+        ? error.error.detail
+        : undefined) ||
+      (typeof error.error === 'string' ? error.error : undefined) ||
+      error.message;
+
+    return detail?.trim() ? `Popup audio error (${error.status}): ${detail.trim()}` : fallbackMessage;
   }
 }
