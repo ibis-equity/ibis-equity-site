@@ -657,6 +657,97 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'home/prompt-engineering',
+    component: MapDestinationComponent,
+    data: {
+      icon: '✍️',
+      iconTone: 'accent',
+      title: 'Prompt Engineering',
+      description: 'Prompt engineering services for reliable AI behavior, grounded outputs, and enterprise-grade interaction design.',
+      headerImageSrc: '/images/openart-image_m4qtJzx2_1756330593321_raw.jpg',
+      headerImageAlt: 'Prompt Engineering service',
+      featureContent: {
+        title: 'Prompt Engineering',
+        subtitle: 'Designing the instruction layer that turns model capability into consistent, governed enterprise performance.',
+        intro: [
+          'Prompt engineering is the operational discipline of shaping how AI systems interpret intent, reason through context, and produce outputs that are useful, grounded, and reliable. It is not simply about writing clever commands. It is about designing instruction systems that align model behavior with organizational goals, domain constraints, and the realities of production use.',
+          'At Ibis Equity, we treat prompts as architecture. A well-designed prompt defines role, scope, tone, evidence boundaries, output structure, escalation conditions, and safety constraints. It determines how a model retrieves context, how it prioritizes information, when it should defer, and how it should communicate uncertainty. In enterprise settings, that instruction layer often matters as much as the model itself.',
+          'Prompt engineering becomes especially important in high-stakes environments where clarity, traceability, and policy alignment are essential. In healthcare, legal, education, insurance, and government workflows, prompts must do more than elicit fluent language. They must support grounded reasoning, structured decisions, and outputs that remain consistent under variation in user input.',
+          'Done well, prompt engineering transforms a general-purpose model into a disciplined operational component. It reduces ambiguity, improves output quality, strengthens user trust, and creates a reusable foundation for copilots, retrieval systems, agentic workflows, and enterprise knowledge interfaces.'
+        ],
+        sections: [
+          {
+            title: 'What Prompt Engineering Actually Controls',
+            paragraphs: [
+              'Prompt engineering shapes the behavioral envelope of an AI system. It governs how the system frames a task, uses context, structures responses, and handles uncertainty.'
+            ],
+            bullets: [
+              'Role definition and domain framing',
+              'Context prioritization and retrieval use',
+              'Output formatting and decision structure',
+              'Evidence boundaries and citation behavior',
+              'Escalation rules, refusals, and safety constraints'
+            ]
+          },
+          {
+            title: 'The Ibis Equity Approach',
+            paragraphs: [
+              'We design prompt systems as governed instruction layers that can be tested, versioned, and improved over time. That means prompts are not isolated strings buried in code. They are part of a broader architecture that includes retrieval, evaluation, fallback logic, and operational safeguards.',
+              'Our work includes prompt templates for structured workflows, system prompts for domain-specific behavior, retrieval-grounded prompting for knowledge-intensive tasks, and evaluation frameworks that measure consistency, factuality, and policy adherence. The goal is to make AI systems repeatable, interpretable, and production-ready.'
+            ]
+          },
+          {
+            title: 'Where Prompt Engineering Delivers Value',
+            paragraphs: [
+              'Prompt engineering creates leverage wherever organizations need AI systems to behave consistently across many users, workflows, and edge cases.'
+            ],
+            steps: [
+              {
+                title: 'Enterprise Copilots',
+                description: 'Guide assistants to answer with the right tone, evidence, structure, and constraints for internal teams and external users.'
+              },
+              {
+                title: 'RAG Systems',
+                description: 'Ensure retrieved context is used correctly, transparently, and within the boundaries of institutional knowledge.'
+              },
+              {
+                title: 'Agentic Workflows',
+                description: 'Coordinate multi-step reasoning, tool use, approval points, and safe execution logic across operational tasks.'
+              },
+              {
+                title: 'Domain-Specific Automation',
+                description: 'Standardize how models draft summaries, explanations, decisions, and recommendations in regulated environments.'
+              }
+            ]
+          }
+        ],
+        closingTitle: 'The Strategic Role of Prompt Design',
+        closingParagraphs: [
+          'In enterprise AI, prompt engineering is not cosmetic. It is the control surface for reliability, governance, and user trust.',
+          'Organizations that invest in prompt design gain more than better wording. They gain systems that behave with greater discipline, align more closely with policy, and scale more effectively across teams and workflows.'
+        ],
+        closingHighlight: 'Ibis Equity builds prompt engineering systems that turn model capability into operational clarity: structured, testable, and aligned with the institutions they serve.'
+      },
+      rag: {
+        knowledgeBaseId: 'kb-prompt-engineering',
+        modelId: 'anthropic.claude-3-5-sonnet',
+        topK: 5,
+        systemPrompt: 'Answer with practical prompt-engineering guidance covering instruction design, grounding, evaluation, and enterprise reliability.'
+      },
+      capabilities: [
+        'System prompt and template design for governed AI behavior',
+        'Prompt evaluation frameworks for consistency, factuality, and policy alignment',
+        'Instruction architectures for RAG, copilots, and agentic workflow orchestration'
+      ],
+      useCases: [
+        'Enterprise assistants that require structured, reliable, and domain-aware responses',
+        'Retrieval-grounded systems that must use context accurately and transparently',
+        'Operational AI workflows that need safe escalation, formatting, and decision controls'
+      ],
+      destinationId: 'prompt-engineering'
+    }
+  },
+  {
     path: 'home/agentic-ai',
     component: MapDestinationComponent,
     data: {
