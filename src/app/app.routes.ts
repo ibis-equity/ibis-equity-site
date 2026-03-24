@@ -2905,9 +2905,11 @@ export const routes: Routes = [
     data: {
       icon: '📊',
       iconTone: 'accent',
+      destinationId: 'data-sciences',
+      hideFeatureStory: true,
       title: 'Data Sciences',
       description: 'Data science strategy and delivery spanning analytics, experimentation, and productionized AI capabilities.',
-      headerImageSrc: '/images/Data Science service.png',
+      headerImageSrc: '/images/Professional_Data_Sciences.png',
       headerImageAlt: 'Data Science service',
       featureContent: {
         title: 'The Discipline of Data Science at Ibis Equity',

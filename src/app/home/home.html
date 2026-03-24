@@ -328,7 +328,7 @@
   <header class="hero">
     <div class="hero__content">
       <nav class="main-menu" aria-label="Primary">
-        <a class="main-menu__item" href="#">Home</a>
+        <a class="main-menu__item" [routerLink]="'/home'">Home</a>
         <a class="main-menu__item" href="#" (click)="openAboutModal($event)">About</a>
         <a class="main-menu__item" [routerLink]="'/home/machine-learning'">Machine Learning</a>
         <a class="main-menu__item" [routerLink]="'/home/deep-learning'">Deep Learning</a>
@@ -337,7 +337,7 @@
         <a class="main-menu__item" [routerLink]="'/home/prompt-engineering'">Prompt Engineering</a>
         <a class="main-menu__item" href="#" (click)="openResponsibleModal($event)">Responsible AI</a>
         <a class="main-menu__item" [routerLink]="'/home/agentic-ai'">Agentic AI</a>
-        <a class="main-menu__item" href="#" (click)="openContactModal($event)">Contact Us</a>
+        <button class="main-menu__item main-menu__action" type="button" (click)="openContactModal($event)">Contact Us</button>
       </nav>
       <div
         class="about-modal"

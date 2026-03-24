@@ -110,6 +110,7 @@ export class MapDestinationComponent implements OnDestroy {
   protected readonly useCases = (this.route.snapshot.data['useCases'] as string[]) || [];
   protected readonly featureContent = (this.route.snapshot.data['featureContent'] as DestinationFeatureContent | undefined) || null;
   protected readonly destinationId = (this.route.snapshot.data['destinationId'] as string | undefined) || null;
+  protected readonly hideFeatureStory = (this.route.snapshot.data['hideFeatureStory'] as boolean | undefined) ?? false;
   protected readonly ragConfig: BedrockRagConfig = {
     knowledgeBaseId: (this.route.snapshot.data['knowledgeBaseId'] as string) || 'kb-data-sciences',
     modelId: 'amazon.nova-micro-v1:0',

@@ -2172,7 +2172,7 @@ export class MlDiagramModule &#123;&#125;
       </section>
     }
 
-    @if (featureContent && destinationId !== 'machine-learning') {
+    @if (featureContent && destinationId !== 'machine-learning' && !hideFeatureStory) {
       <section class="feature-story" aria-label="Destination details">
         <header class="feature-story__header">
           @if (headerImageSrc) {
@@ -3495,6 +3495,291 @@ export class MlDiagramModule &#123;&#125;
             }
           </section>
         }
+      </section>
+    }
+
+    @if (destinationId === 'data-sciences') {
+      <section class="data-sciences-image-block" aria-label="Data Sciences image">
+        <img
+          class="data-sciences-image-block__image"
+          src="/images/Professional_Data_Sciences.png"
+          [alt]="headerImageAlt"
+          width="1200"
+          height="420"
+        >
+        <p class="data-sciences-image-block__caption">
+          <strong>Data Science is a strategic discipline that unifies advanced analytics, statistical reasoning, and domain expertise to transform raw information into actionable intelligence.</strong>
+        </p>
+
+        <section class="data-sciences-copy" aria-label="What Is Data Science">
+          <h2 class="data-sciences-copy__title">What Is Data Science?</h2>
+
+          <p>
+            Data Science is the discipline of transforming raw information into clarity, foresight, and actionable intelligence. It is the modern evolution of humanity's oldest instinct: to observe the world, detect patterns, and make decisions that shape the future. What has changed is not the impulse, but the scale. Today's organizations generate more data in a single afternoon than entire industries once produced in a decade. The volume, velocity, and variety of these signals demand a new kind of analytical craft.
+          </p>
+          <p>
+            Modern Data Science blends advanced computing, statistical reasoning, and deep domain expertise into a unified practice. It begins with the messy reality of raw data - fragmented, inconsistent, unstructured - and turns it into something coherent and trustworthy. Data scientists clean, structure, and integrate information from across systems, sensors, documents, and human interactions, creating the analytical substrate on which all higher order intelligence depends.
+          </p>
+          <p>
+            Once the data is prepared, Data Science moves into interpretation and prediction. Through exploratory analysis, statistical modeling, and machine learning, data scientists uncover the patterns that explain what is happening, why it is happening, and what is likely to happen next. These models do more than describe the world - they simulate it, forecast it, and reveal the levers that matter most.
+          </p>
+          <p>
+            But Data Science is not an academic exercise. Its purpose is decision intelligence. The insights it produces guide product strategy, operational efficiency, risk mitigation, customer experience, and organizational planning. In high stakes environments, Data Science becomes the connective tissue between information and action - the discipline that ensures leaders are not navigating complexity by instinct alone.
+          </p>
+
+          <p class="data-sciences-copy__short-label">In short:</p>
+          <ul class="data-sciences-copy__short-list">
+            <li>Data Science is the architecture of modern understanding.</li>
+            <li>It turns noise into signal, signal into insight, and insight into decisions that move organizations forward.</li>
+          </ul>
+        </section>
+
+        <section class="data-sciences-stack" aria-label="The Intelligence Stack">
+          <h2 class="data-sciences-stack__title">THE INTELLIGENCE STACK</h2>
+          <p class="data-sciences-stack__subtitle">The Architecture of Modern Decision Making</p>
+
+          <p>
+            We live in a world shaped by signals - human, digital, mechanical, environmental. Every organization is surrounded by more information than it can interpret, more complexity than it can hold, and more change than it can predict. The question is no longer whether intelligence exists in the system. The question is whether that intelligence is structured, aligned, and actionable.
+          </p>
+          <p>
+            The Intelligence Stack is our answer. It is the architecture that turns raw data into clarity, clarity into intelligence, and intelligence into action. It is a continuum - foundational, cognitive, grounded, and operational - where each layer strengthens the next.
+          </p>
+          <p>
+            Data Science reveals the patterns. It gives shape to the noise, transforming unstructured signals into structured understanding.
+          </p>
+          <p>
+            Artificial Intelligence interprets and expands those patterns. It learns, reasons, and generates meaning at a scale no human system can match.
+          </p>
+          <p>
+            RAG Systems anchor intelligence in truth. They retrieve, verify, and synthesize knowledge from the sources that define your institution - ensuring that intelligence is not only powerful, but correct.
+          </p>
+          <p>
+            Agentic Systems act. They plan, coordinate, and execute multi-step workflows, turning insight into outcomes with autonomy, governance, and precision.
+          </p>
+          <p>
+            Together, these layers form a living ecosystem - adaptive, interpretable, and aligned with mission critical decisions. This is not automation. This is not analytics. This is intelligence as infrastructure.
+          </p>
+          <p>
+            At Ibis Equity, we design these systems with intention. We build architectures that are resilient, transparent, and equitable - systems that elevate human judgment rather than replace it. Systems that scale with your ambition. Systems that endure.
+          </p>
+          <p class="data-sciences-stack__closing">
+            This is the Intelligence Stack. The blueprint for organizations that want to see further, decide faster, and act with purpose.
+          </p>
+        </section>
+
+        <section class="data-sciences-grid-system" aria-label="Essential tools and techniques in data science">
+          <section class="section-ds-tools-intro">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="section-header">Essential Tools and Techniques in Data Science</h2>
+                <p class="section-subtext">
+                  Modern Data Science is powered by an integrated analytical infrastructure - a stack of tools and methods
+                  that transform raw information into clarity, foresight, and operational intelligence.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-ds-tools-grid">
+            <div class="row">
+              <div class="col-12">
+                <h3 class="subsection-header">Core Tools We Use</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="tool-card">
+                  <h4 class="tool-title">Programming &amp; Analytical Languages</h4>
+                  <p class="tool-microcopy"><strong>Python • SQL • R</strong><br>The backbone of modeling, transformation, and statistical reasoning.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="tool-card">
+                  <h4 class="tool-title">Visualization Platforms</h4>
+                  <p class="tool-microcopy"><strong>Power BI • Tableau</strong><br>Turn analytical outputs into decision-ready narratives.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="tool-card">
+                  <h4 class="tool-title">Big Data &amp; Distributed Compute</h4>
+                  <p class="tool-microcopy"><strong>Spark • Hadoop</strong><br>Process large-scale, high-velocity data across cloud ecosystems.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="tool-card">
+                  <h4 class="tool-title">Machine Learning Frameworks</h4>
+                  <p class="tool-microcopy"><strong>Scikit-learn • TensorFlow • PyTorch • XGBoost</strong><br>Build predictive, prescriptive, and generative intelligence.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="tool-card">
+                  <h4 class="tool-title">Data Management &amp; Real-Time Systems</h4>
+                  <p class="tool-microcopy"><strong>Kafka • Snowflake • BigQuery • Redshift</strong><br>Stream, store, and orchestrate data across the enterprise.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="tool-card">
+                  <h4 class="tool-title">Statistical &amp; Scientific Computing</h4>
+                  <p class="tool-microcopy"><strong>SAS • MATLAB • Python Sci-Stack</strong><br>Support rigorous quantitative modeling and simulation.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-ds-techniques">
+            <div class="row">
+              <div class="col-12">
+                <h3 class="subsection-header">Key Techniques We Apply</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="technique-item">
+                  <h4 class="technique-title">Machine Learning</h4>
+                  <p class="technique-microcopy">Predict, classify, cluster, and optimize.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="technique-item">
+                  <h4 class="technique-title">Predictive Analytics</h4>
+                  <p class="technique-microcopy">Forecast demand, risk, and operational outcomes.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="technique-item">
+                  <h4 class="technique-title">Natural Language Processing (NLP)</h4>
+                  <p class="technique-microcopy">Extract meaning from documents, transcripts, and unstructured text.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="technique-item">
+                  <h4 class="technique-title">Data Mining</h4>
+                  <p class="technique-microcopy">Discover hidden patterns and relationships.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="technique-item">
+                  <h4 class="technique-title">Data Wrangling</h4>
+                  <p class="technique-microcopy">Clean, structure, and harmonize complex datasets.</p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="technique-item">
+                  <h4 class="technique-title">A/B &amp; Multivariate Testing</h4>
+                  <p class="technique-microcopy">Evaluate interventions and optimize decisions.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-ds-industries">
+            <div class="row">
+              <div class="col-12">
+                <h3 class="subsection-header">Data Science Across Industries</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Retail &amp; E-Commerce</h4>
+                  <p class="industry-microcopy">Predict preferences, personalize experiences, optimize pricing.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Healthcare &amp; Life Sciences</h4>
+                  <p class="industry-microcopy">Support clinical decisions, integrate wearables, model patient risk.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Financial Services &amp; Insurance</h4>
+                  <p class="industry-microcopy">Detect fraud, assess risk, personalize financial products.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Transportation &amp; Logistics</h4>
+                  <p class="industry-microcopy">Optimize routes, predict delays, improve fleet efficiency.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Manufacturing &amp; Natural Resources</h4>
+                  <p class="industry-microcopy">Monitor equipment, streamline supply chains, optimize resources.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Education</h4>
+                  <p class="industry-microcopy">Track progress, identify intervention needs, personalize learning.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Energy &amp; Utilities</h4>
+                  <p class="industry-microcopy">Forecast consumption, detect anomalies, improve grid reliability.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Media &amp; Entertainment</h4>
+                  <p class="industry-microcopy">Personalize recommendations, analyze audience behavior.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Government &amp; Public Services</h4>
+                  <p class="industry-microcopy">Detect fraud, allocate resources, support disaster planning.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Communications &amp; Technology</h4>
+                  <p class="industry-microcopy">Predict outages, optimize networks, enhance service delivery.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Agriculture</h4>
+                  <p class="industry-microcopy">Monitor crop health, forecast weather impacts, optimize inputs.</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="industry-card">
+                  <h4 class="industry-title">Hospitality &amp; Tourism</h4>
+                  <p class="industry-microcopy">Analyze guest behavior, optimize pricing, personalize experiences.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-ds-outro">
+            <div class="row">
+              <div class="col-12">
+                <p class="outro-text">
+                  Data Science is a cross-industry intelligence engine - powered by modern tools, advanced techniques,
+                  and domain-specific insight. Across every sector, it transforms raw information into clarity, foresight,
+                  and operational advantage.
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+
       </section>
     }
 
