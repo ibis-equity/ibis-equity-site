@@ -1,5 +1,10 @@
 ﻿<main class="destination-page">
-  <section class="destination-card" [class.destination-card--ml]="destinationId === 'machine-learning'">
+  <section
+    class="destination-card"
+    [class.destination-card--ml]="destinationId === 'machine-learning'"
+    [class.destination-card--law]="destinationId === 'law-legal-services'"
+    [class.destination-card--healthcare]="destinationId === 'healthcare'"
+  >
     <header class="brand-header brand-header--compact" aria-label="Ibis Equity brand">
       <img
         class="brand-header__logo"
@@ -1624,7 +1629,7 @@ export class MlDiagramModule &#123;&#125;
               <h3>Answer</h3>
               <button class="main-chatbot__clear-button" type="button" (click)="clearAnswerBox()">Clear</button>
             </div>
-            <div class="main-chatbot__answer-text">
+            <div class="main-chatbot__answer-text" (click)="onAnswerLinkClick($event)">
               @if (ragError()) {
                 {{ ragError() }}
               } @else if (ragAnswer()) {
@@ -2173,7 +2178,12 @@ export class MlDiagramModule &#123;&#125;
     }
 
     @if (featureContent && destinationId !== 'machine-learning' && !hideFeatureStory) {
-      <section class="feature-story" aria-label="Destination details">
+      <section
+        class="feature-story"
+        [class.feature-story--law]="destinationId === 'law-legal-services'"
+        [class.feature-story--healthcare]="destinationId === 'healthcare'"
+        aria-label="Destination details"
+      >
         <header class="feature-story__header">
           @if (headerImageSrc) {
             <div class="destination-hero destination-hero--feature">
@@ -2211,7 +2221,11 @@ export class MlDiagramModule &#123;&#125;
 
         <div class="feature-story__sections">
           @for (section of featureContent.sections; track section.title) {
-            <article class="feature-story__panel" [class.feature-story__panel--with-image]="!!section.imageSrc">
+            <article
+              class="feature-story__panel"
+              [class.feature-story__panel--with-image]="!!section.imageSrc"
+              [class.feature-story__panel--chapter]="section.title.startsWith('I.') || section.title.startsWith('II.') || section.title.startsWith('III.')"
+            >
               @if (section.cardLayout !== 'ai-stack' && section.cardLayout !== 'insurance-architecture' && section.cardLayout !== 'education-architecture' && section.cardLayout !== 'education-sector-architecture' && section.cardLayout !== 'realestate-sector-architecture' && section.cardLayout !== 'government-sector-architecture' && section.cardLayout !== 'retail-sector-architecture' && section.cardLayout !== 'manufacturing-sector-architecture' && section.cardLayout !== 'hospitality-sector-architecture' && section.cardLayout !== 'transportation-sector-architecture') {
                 <h2>{{ section.title }}</h2>
 
@@ -2268,7 +2282,11 @@ export class MlDiagramModule &#123;&#125;
               }
 
               @if (section.cardLayout === 'ml-rag-ds-comparison' && section.comparisonRows?.length) {
-                <section class="ml-rag-ds-comparison" aria-label="Healthcare ML RAG Data Science comparison">
+                <section
+                  class="ml-rag-ds-comparison"
+                  [class.ml-rag-ds-comparison--force-mobile]="destinationId === 'law-legal-services'"
+                  aria-label="Healthcare ML RAG Data Science comparison"
+                >
                   <div class="table-wrapper">
                     <table>
                       <thead>
@@ -2282,10 +2300,41 @@ export class MlDiagramModule &#123;&#125;
                       <tbody>
                         @for (row of section.comparisonRows; track row.dimension) {
                           <tr>
-                            <td>{{ row.dimension }}</td>
-                            <td>{{ row.ml }}</td>
-                            <td>{{ row.rag }}</td>
-                            <td>{{ row.dataScience }}</td>
+                            <td data-label="Dimension">{{ row.dimension }}</td>
+                            <td data-label="Machine Learning (ML)">{{ row.ml }}</td>
+                            <td data-label="Retrieval-Augmented Generation (RAG)">{{ row.rag }}</td>
+                            <td data-label="Data Science">{{ row.dataScience }}</td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              }
+
+              @if (section.cardLayout === 'multi-cloud-matrix' && section.comparisonRows?.length) {
+                <section class="multi-cloud-matrix" aria-label="Multi-cloud personality matrix">
+                  <h3 class="multi-cloud-matrix__title">Multi-Cloud Personality Matrix</h3>
+                  <p class="multi-cloud-matrix__subtitle">
+                    Comparative posture of AWS, Azure, and GCP across key architectural dimensions.
+                  </p>
+                  <div class="multi-cloud-matrix__table-wrapper">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Dimension</th>
+                          <th>AWS</th>
+                          <th>Azure</th>
+                          <th>GCP</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for (row of section.comparisonRows; track row.dimension) {
+                          <tr>
+                            <td data-label="Dimension">{{ row.dimension }}</td>
+                            <td data-label="AWS">{{ row.aws || '-' }}</td>
+                            <td data-label="Azure">{{ row.azure || '-' }}</td>
+                            <td data-label="GCP">{{ row.gcp || '-' }}</td>
                           </tr>
                         }
                       </tbody>
@@ -3498,6 +3547,231 @@ export class MlDiagramModule &#123;&#125;
       </section>
     }
 
+    @if (destinationId === 'prompt-engineering') {
+      <section class="prompt-engineering-image-block" aria-label="Prompt Engineering image">
+        <img
+          class="prompt-engineering-image-block__image"
+          src="/images/prompt-eng.png"
+          [alt]="headerImageAlt"
+          width="1200"
+          height="420"
+        >
+      </section>
+
+      <section class="prompt-ai-services" aria-label="Prompt AI Services">
+        <header class="prompt-ai-services__header">
+          <p class="prompt-ai-services__brand">IBIS EQUITY CONSULTING</p>
+          <h2 class="prompt-ai-services__title">Prompt AI Services</h2>
+          <p class="prompt-ai-services__subtitle">Architecting the interface between human intent and machine intelligence.</p>
+        </header>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>The Intelligence Layer That Governs AI Behavior</h3>
+          <p>
+            Prompt AI is the discipline that determines how intelligent systems interpret instructions, apply domain knowledge, and generate outputs that are accurate, safe, and aligned with organizational goals. As AI becomes embedded in operations, governance, and decision making, Prompt AI becomes the control layer for enterprise intelligence.
+          </p>
+          <p>
+            At Ibis Equity, Prompt AI is not a set of tricks or templates. It is a strategic architecture - a governed, modular, testable system that shapes how AI reasons, retrieves, and acts.
+          </p>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>Why Prompt AI Matters</h3>
+          <p>
+            AI does not run on code alone. It runs on instructions, constraints, and context - all expressed through Prompt AI.
+          </p>
+          <p>Prompt AI ensures that intelligent systems:</p>
+          <ul>
+            <li>behave consistently across teams</li>
+            <li>follow organizational rules and risk posture</li>
+            <li>produce grounded, interpretable, compliant outputs</li>
+            <li>integrate with RAG and agentic workflows</li>
+            <li>scale safely across departments and use cases</li>
+            <li>reflect the organization's values, voice, and domain expertise</li>
+          </ul>
+          <p>Prompt AI is how organizations encode their intelligence and govern their AI systems.</p>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>The Prompt AI Stack&trade;</h3>
+          <p class="prompt-ai-services__eyebrow">A 7 layer architecture for enterprise aligned intelligence.</p>
+          <p>
+            Ibis Equity's Prompt AI Stack&trade; transforms prompts from ad hoc instructions into governed, reusable, enterprise grade assets.
+          </p>
+          <ol>
+            <li><strong>Identity Layer</strong><br>Defines persona, domain alignment, and operational posture.</li>
+            <li><strong>Instruction Layer</strong><br>Specifies objectives, constraints, and allowed actions.</li>
+            <li><strong>Context Layer</strong><br>Injects domain rules, business logic, retrieved documents, and user specific information.</li>
+            <li><strong>Constraint Layer</strong><br>Enforces compliance, safety, formatting, and output structure.</li>
+            <li><strong>Reasoning Layer</strong><br>Guides stepwise logic, decomposition, planning, and verification.</li>
+            <li><strong>Memory Layer</strong><br>Controls session context, preferences, and long term constraints.</li>
+            <li><strong>Output Layer</strong><br>Defines tone, structure, detail, and narrative style.</li>
+          </ol>
+          <p>This architecture ensures clarity, consistency, and operational reliability.</p>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>The Prompt AI Governance Loop&trade;</h3>
+          <p class="prompt-ai-services__eyebrow">A closed loop system for safety, quality, and alignment.</p>
+          <p>Prompt AI requires governance - not as bureaucracy, but as a safety engine.</p>
+          <ol>
+            <li><strong>Design</strong><br>Define roles, constraints, domain logic, and risk posture.</li>
+            <li><strong>Prototype</strong><br>Draft prompt variants and structural patterns.</li>
+            <li><strong>Test</strong><br>Evaluate accuracy, safety, bias, consistency, and grounding.</li>
+            <li><strong>Validate</strong><br>Review with SMEs, compliance, legal, and risk teams.</li>
+            <li><strong>Approve</strong><br>Formal governance sign off with versioning.</li>
+            <li><strong>Deploy</strong><br>Integrate into workflows, RAG systems, or agentic pipelines.</li>
+            <li><strong>Monitor</strong><br>Track drift, hallucinations, edge cases, and operational failures.</li>
+            <li><strong>Refine</strong><br>Update prompts, constraints, and reasoning patterns as the system evolves.</li>
+          </ol>
+          <p>
+            This loop ensures that Prompt AI remains aligned with policy, regulation, and operational reality.
+          </p>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>Prompt AI Reasoning Layers&trade;</h3>
+          <p class="prompt-ai-services__eyebrow">How AI thinks - intentionally, safely, and with domain alignment.</p>
+          <ul>
+            <li><strong>Retrieval Reasoning</strong><br>Grounding in documents and data.</li>
+            <li><strong>Analytical Reasoning</strong><br>Structured logic, comparison, evaluation.</li>
+            <li><strong>Procedural Reasoning</strong><br>Multi step workflows and agentic plans.</li>
+            <li><strong>Reflective Reasoning</strong><br>Self checking, verification, correction.</li>
+            <li><strong>Domain Bound Reasoning</strong><br>Sector specific rules, terminology, and constraints.</li>
+          </ul>
+          <p>These layers ensure that AI systems reason with clarity and discipline.</p>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>Sector Specific Prompt AI</h3>
+          <p class="prompt-ai-services__eyebrow">Tailored architectures for regulated and high stakes environments.</p>
+          <p>
+            Ibis Equity builds domain specific Prompt AI systems that reflect the vocabulary, risk posture, and operational logic of each sector.
+          </p>
+
+          <div class="prompt-ai-services__sector">
+            <h4>Healthcare - Clinical and Operational Intelligence</h4>
+            <p>Prompt AI encodes clinical terminology, care pathways, HIPAA aligned safety rules, and evidence based grounding.</p>
+            <p><strong>Use Cases:</strong></p>
+            <ul>
+              <li>Clinical documentation</li>
+              <li>Patient friendly explanations</li>
+              <li>Wearable data interpretation</li>
+              <li>Prior authorization automation</li>
+              <li>Care pathway summarization</li>
+            </ul>
+          </div>
+
+          <div class="prompt-ai-services__sector">
+            <h4>Legal - Compliance, Interpretation and Precedent</h4>
+            <p>Prompt AI enforces citation discipline, jurisdictional boundaries, legal definitions, and defensible reasoning.</p>
+            <p><strong>Use Cases:</strong></p>
+            <ul>
+              <li>Contract summarization</li>
+              <li>Discovery triage</li>
+              <li>Case law retrieval</li>
+              <li>Compliance rule extraction</li>
+              <li>Policy drafting</li>
+            </ul>
+          </div>
+
+          <div class="prompt-ai-services__sector">
+            <h4>Energy - Grid Intelligence and Operational Safety</h4>
+            <p>Prompt AI encodes outage protocols, asset hierarchies, environmental constraints, and engineering documentation.</p>
+            <p><strong>Use Cases:</strong></p>
+            <ul>
+              <li>Maintenance log summarization</li>
+              <li>Outage pattern detection</li>
+              <li>Grid asset documentation</li>
+              <li>Environmental compliance reporting</li>
+              <li>SCADA adjacent interpretation</li>
+            </ul>
+          </div>
+
+          <div class="prompt-ai-services__sector">
+            <h4>Retail - Personalization and Demand Intelligence</h4>
+            <p>Prompt AI shapes how AI interprets customer behavior, product metadata, and pricing logic.</p>
+            <p><strong>Use Cases:</strong></p>
+            <ul>
+              <li>Product recommendations</li>
+              <li>Dynamic pricing explanations</li>
+              <li>Customer service automation</li>
+              <li>Merchandising insights</li>
+              <li>Demand forecasting narratives</li>
+            </ul>
+          </div>
+
+          <div class="prompt-ai-services__sector">
+            <h4>Education - Learning, Assessment and Student Support</h4>
+            <p>Prompt AI enforces curriculum standards, accessibility requirements, age appropriate content, and equity centered reasoning.</p>
+            <p><strong>Use Cases:</strong></p>
+            <ul>
+              <li>Adaptive tutoring</li>
+              <li>Lesson plan generation</li>
+              <li>Student progress summaries</li>
+              <li>Accessibility transformations</li>
+              <li>Feedback generation</li>
+            </ul>
+          </div>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>What Ibis Equity Delivers</h3>
+          <p class="prompt-ai-services__eyebrow">A complete Prompt AI capability for the enterprise.</p>
+          <ol>
+            <li><strong>Enterprise Prompt AI Architecture</strong><br>A full prompt system tailored to your workflows, data, and risk posture.</li>
+            <li><strong>Prompt Libraries and Templates</strong><br>Reusable, version controlled prompt assets for teams across the organization.</li>
+            <li><strong>RAG Aligned Prompt Systems</strong><br>Prompts designed to enforce grounding, citation, and retrieval discipline.</li>
+            <li><strong>Agentic Prompt Frameworks</strong><br>Planning, tool use, and safety prompts for autonomous workflows.</li>
+            <li><strong>Prompt QA and Testing Harness</strong><br>Evaluation frameworks for accuracy, bias, safety, and consistency.</li>
+            <li><strong>Governance and Compliance Integration</strong><br>Policies, controls, and lifecycle management for enterprise oversight.</li>
+            <li><strong>Training and Enablement</strong><br>Workshops, playbooks, and hands on training for teams adopting AI.</li>
+          </ol>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block">
+          <h3>The Ibis Equity Advantage</h3>
+          <p class="prompt-ai-services__eyebrow">Where engineering, governance, and narrative clarity converge.</p>
+          <p>We bring a rare combination of:</p>
+          <ul>
+            <li>Deep technical expertise in LLMs, RAG, and agentic systems</li>
+            <li>Domain fluency across healthcare, legal, energy, retail, and education</li>
+            <li>Governance rigor grounded in safety, compliance, and enterprise risk</li>
+            <li>Architectural clarity that transforms prompts into scalable systems</li>
+            <li>Narrative precision that ensures outputs are clear, structured, and on brand</li>
+          </ul>
+          <p>
+            Prompt AI is not about coaxing better answers. It is about designing intelligence intentionally - with structure, safety, and purpose.
+          </p>
+        </section>
+
+        <div class="prompt-ai-services__divider" aria-hidden="true"></div>
+
+        <section class="prompt-ai-services__block prompt-ai-services__block--cta">
+          <h3>Call to Action</h3>
+          <p>
+            If your organization is ready to move from experimentation to governed, enterprise grade AI, Ibis Equity is ready to architect your intelligence layer.
+          </p>
+        </section>
+      </section>
+    }
+
     @if (destinationId === 'data-sciences') {
       <section class="data-sciences-image-block" aria-label="Data Sciences image">
         <img
@@ -4078,6 +4352,29 @@ export class MlDiagramModule &#123;&#125;
     }
     } <!-- end @else (non-machine-learning destinations) -->
   </section>
+
+  @if (imagePreviewVisible()) {
+    <div class="image-preview" aria-hidden="false" [class.image-preview--closing]="imagePreviewClosing()">
+      <div class="image-preview__backdrop" (click)="closeImagePreview()"></div>
+      <section class="image-preview__dialog" role="dialog" aria-modal="true" [attr.aria-label]="imagePreviewAlt() || 'Image preview'" [class.image-preview__dialog--closing]="imagePreviewClosing()">
+        <header class="image-preview__header">
+          <div class="image-preview__text">
+            <p class="image-preview__eyebrow">Bedrock Image Preview</p>
+            <p class="image-preview__caption">{{ imagePreviewAlt() || 'Image preview' }}</p>
+          </div>
+          <button class="image-preview__close" type="button" aria-label="Close image preview" (click)="closeImagePreview()">
+            Close
+          </button>
+        </header>
+        <div class="image-preview__body">
+          <img class="image-preview__image" [src]="imagePreviewSrc()" [alt]="imagePreviewAlt() || 'Expanded image preview'">
+        </div>
+        <div class="image-preview__meta">
+          <a class="image-preview__link" [href]="imagePreviewSrc()" target="_blank" rel="noopener noreferrer">Open full image</a>
+        </div>
+      </section>
+    </div>
+  }
 </main>
 
 

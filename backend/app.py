@@ -1,9 +1,10 @@
 import base64
 import logging
 import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 from uuid import uuid4
 
 from dotenv import dotenv_values, load_dotenv
@@ -51,6 +52,8 @@ class RagSource(BaseModel):
     title: str
     uri: str
     excerpt: str
+    imageUri: Optional[str] = None
+    imageUrl: Optional[str] = None
 
 
 class RagSpeech(BaseModel):
@@ -74,7 +77,8 @@ class ContactSubmissionRequest(BaseModel):
     emailAddress: str = Field(min_length=1)
     phoneNumber: str = Field(min_length=1)
     organization: str = Field(min_length=1)
-    request: str = Field(min_length=1)
+    position: str = Field(min_length=1)
+    request: str = Field(min_length=1, max_length=2000)
 
 
 class ContactSubmissionResponse(BaseModel):
@@ -117,6 +121,26 @@ def _required_env(name: str) -> str:
     if not value:
         raise RuntimeError(f"{name} environment variable is required")
     return value
+
+
+def _is_expired_aws_token_error(exc: Exception) -> bool:
+    current: Optional[BaseException] = exc
+    visited: Set[int] = set()
+
+    while current and id(current) not in visited:
+        visited.add(id(current))
+        message = str(current).lower()
+        if (
+            "expiredtokenexception" in message
+            or "expired token" in message
+            or "security token included in the request is expired" in message
+            or "token has expired" in message
+        ):
+            return True
+
+        current = getattr(current, "__cause__", None) or getattr(current, "__context__", None)
+
+    return False
 
 
 def _aws_session():
@@ -234,6 +258,7 @@ def _send_contact_email(submission_id: str, created_at: str, payload: ContactSub
         f"Email Address: {payload.emailAddress.strip()}\n"
         f"Phone Number: {payload.phoneNumber.strip()}\n"
         f"Organization: {payload.organization.strip()}\n"
+        f"Position: {payload.position.strip()}\n"
         f"Request: {payload.request.strip()}\n"
     )
 
@@ -259,7 +284,7 @@ def _send_contact_sms(submission_id: str, payload: ContactSubmissionRequest) -> 
     message = (
         "Ibis Equity Contact processed. "
         f"ID: {submission_id}. "
-        f"From: {payload.firstName.strip()} {payload.lastName.strip()} ({payload.organization.strip()})."
+        f"From: {payload.firstName.strip()} {payload.lastName.strip()} ({payload.organization.strip()}, {payload.position.strip()})."
     )
 
     sns.publish(PhoneNumber=sms_to, Message=message)
@@ -292,6 +317,64 @@ def _configured_kb_alias_mappings() -> Dict[str, str]:
             alias = f"kb-{key[3:-3].lower().replace('_', '-')}"
             mappings[alias] = value.strip()
     return dict(sorted(mappings.items(), key=lambda item: item[0]))
+
+
+def _frontend_kb_aliases() -> Set[str]:
+    routes_file = PROJECT_ROOT / "src" / "app" / "app.routes.ts"
+    if not routes_file.exists():
+        return set()
+
+    try:
+        content = routes_file.read_text(encoding="utf-8")
+    except Exception:
+        LOGGER.exception("Unable to read frontend routes for KB alias validation")
+        return set()
+
+    aliases = {
+        match.group(1).strip()
+        for match in re.finditer(r"knowledgeBaseId\s*:\s*['\"]([^'\"]+)['\"]", content)
+        if match.group(1).strip().startswith("kb-")
+    }
+    return aliases
+
+
+def _log_missing_kb_alias_mappings() -> None:
+    aliases = _frontend_kb_aliases()
+    if not aliases:
+        return
+
+    mapped_aliases = set(_configured_kb_alias_mappings().keys())
+    fallback = (os.environ.get("BEDROCK_KNOWLEDGE_BASE_ID") or "").strip()
+    missing = sorted(alias for alias in aliases if alias not in mapped_aliases and not fallback)
+
+    if missing:
+        env_names = [f"KB_{alias[3:].replace('-', '_').upper()}_ID" for alias in missing]
+        LOGGER.warning(
+            "Missing KB alias mappings for route aliases: %s. Set %s or BEDROCK_KNOWLEDGE_BASE_ID.",
+            ", ".join(missing),
+            ", ".join(env_names),
+        )
+
+
+def _kb_alias_mapping_health() -> Dict[str, Any]:
+    route_aliases = sorted(_frontend_kb_aliases())
+    configured_mappings = _configured_kb_alias_mappings()
+    fallback = (os.environ.get("BEDROCK_KNOWLEDGE_BASE_ID") or "").strip()
+    missing_aliases = [alias for alias in route_aliases if alias not in configured_mappings and not fallback]
+    missing_env_vars = [f"KB_{alias[3:].replace('-', '_').upper()}_ID" for alias in missing_aliases]
+
+    return {
+        "routeAliasesDetected": route_aliases,
+        "missingRouteAliases": missing_aliases,
+        "missingAliasEnvVars": missing_env_vars,
+        "fallbackKnowledgeBaseIdConfigured": bool(fallback),
+        "allRouteAliasesResolvable": len(missing_aliases) == 0,
+    }
+
+
+@app.on_event("startup")
+def _startup_validate_kb_alias_mappings() -> None:
+    _log_missing_kb_alias_mappings()
 
 
 def _synthesize_speech(answer: str, region: str, voice_id: str, engine: str, language_code: str) -> str:
@@ -550,14 +633,16 @@ def health_kb(knowledgeBaseId: Optional[str] = None) -> Dict[str, Any]:
     requested = (knowledgeBaseId or "").strip()
     fallback_kb_id = (os.environ.get("BEDROCK_KNOWLEDGE_BASE_ID") or "").strip()
     resolved = _resolve_knowledge_base_id(requested) if requested else ""
+    alias_health = _kb_alias_mapping_health()
 
     return {
-        "status": "ok",
+        "status": "ok" if alias_health["allRouteAliasesResolvable"] else "degraded",
         "requestedKnowledgeBaseId": requested,
         "resolvedKnowledgeBaseId": resolved,
         "usedFallbackKnowledgeBaseId": bool(requested and fallback_kb_id and resolved == fallback_kb_id and requested != fallback_kb_id),
         "defaultKnowledgeBaseIdConfigured": bool(fallback_kb_id),
         "configuredAliasMappings": _configured_kb_alias_mappings(),
+        "aliasMappingHealth": alias_health,
         "hint": "Provide ?knowledgeBaseId=kb-data-sciences (or AWS KB ID) to validate runtime resolution.",
     }
 
@@ -657,53 +742,43 @@ def rag_query(request: RagRequest) -> RagResponse:
         index_name = _required_env("AOSS_INDEX_NAME")
         host = f"{aoss_id}.{aoss_region}.{AOSS_SVC_NAME}.amazonaws.com:443"
 
-        if knowledge_base_id:
-            try:
-                kb_result = _query_bedrock_knowledge_base(
-                    question=question,
-                    knowledge_base_id=knowledge_base_id,
-                    region=aoss_region,
-                    model_id=model_id,
-                    top_k=top_k,
-                    system_prompt=system_prompt,
-                )
-                answer = str(kb_result.get("answer", ""))
-                sources = list(kb_result.get("sources", []))
-            except Exception:
-                LOGGER.exception("Knowledge base retrieval failed for %s; falling back to OpenSearch", knowledge_base_id)
-                chain = _build_chain(host, index_name, aoss_region, model_id, top_k, system_prompt)
+        def _run_rag_once(query_text: str, effective_top_k: int) -> Tuple[str, List[RagSource]]:
+            if knowledge_base_id:
                 try:
-                    result = chain({"question": question, "chat_history": []})
-                except Exception as model_exc:
-                    # If caller supplied an invalid model id, retry with backend default model.
-                    invalid_model = "provided model identifier is invalid" in str(model_exc).lower()
-                    fallback_model = DEFAULT_MODEL_ID.strip()
-                    if invalid_model and fallback_model and fallback_model != model_id:
-                        LOGGER.warning("Model '%s' is invalid; retrying with fallback '%s'", model_id, fallback_model)
-                        fallback_chain = _build_chain(host, index_name, aoss_region, fallback_model, top_k, system_prompt)
-                        result = fallback_chain({"question": question, "chat_history": []})
-                    else:
-                        raise
-                answer = str(result.get("answer", ""))
-                source_documents = list(result.get("source_documents", []))
-                sources = _extract_sources(source_documents)
-        else:
-            chain = _build_chain(host, index_name, aoss_region, model_id, top_k, system_prompt)
+                    kb_result = _query_bedrock_knowledge_base(
+                        question=query_text,
+                        knowledge_base_id=knowledge_base_id,
+                        region=aoss_region,
+                        model_id=model_id,
+                        top_k=effective_top_k,
+                        system_prompt=system_prompt,
+                    )
+                    resolved_answer = str(kb_result.get("answer", ""))
+                    resolved_sources = list(kb_result.get("sources", []))
+                    return resolved_answer, resolved_sources
+                except Exception:
+                    LOGGER.exception("Knowledge base retrieval failed for %s; falling back to OpenSearch", knowledge_base_id)
+
+            chain = _build_chain(host, index_name, aoss_region, model_id, effective_top_k, system_prompt)
             try:
-                result = chain({"question": question, "chat_history": []})
+                result = chain({"question": query_text, "chat_history": []})
             except Exception as model_exc:
                 # If caller supplied an invalid model id, retry with backend default model.
                 invalid_model = "provided model identifier is invalid" in str(model_exc).lower()
                 fallback_model = DEFAULT_MODEL_ID.strip()
                 if invalid_model and fallback_model and fallback_model != model_id:
                     LOGGER.warning("Model '%s' is invalid; retrying with fallback '%s'", model_id, fallback_model)
-                    fallback_chain = _build_chain(host, index_name, aoss_region, fallback_model, top_k, system_prompt)
-                    result = fallback_chain({"question": question, "chat_history": []})
+                    fallback_chain = _build_chain(host, index_name, aoss_region, fallback_model, effective_top_k, system_prompt)
+                    result = fallback_chain({"question": query_text, "chat_history": []})
                 else:
                     raise
-            answer = str(result.get("answer", ""))
+
+            resolved_answer = str(result.get("answer", ""))
             source_documents = list(result.get("source_documents", []))
-            sources = _extract_sources(source_documents)
+            resolved_sources = _extract_sources(source_documents)
+            return resolved_answer, resolved_sources
+
+        answer, sources = _run_rag_once(question, top_k)
 
         speech = RagSpeech(
             enabled=speech_enabled,
@@ -721,8 +796,20 @@ def rag_query(request: RagRequest) -> RagResponse:
     except HTTPException:
         raise
     except RuntimeError as exc:
+        if _is_expired_aws_token_error(exc):
+            raise HTTPException(
+                status_code=401,
+                detail="AWS session expired. Run 'aws login' and restart the backend with 'npm run start:backend:aws'.",
+            ) from exc
+
         raise HTTPException(status_code=500, detail=str(exc)) from exc
     except Exception as exc:
+        if _is_expired_aws_token_error(exc):
+            raise HTTPException(
+                status_code=401,
+                detail="AWS session expired. Run 'aws login' and restart the backend with 'npm run start:backend:aws'.",
+            ) from exc
+
         LOGGER.exception("Unhandled error in rag_query")
         detail = str(exc).strip() or "Internal server error"
         raise HTTPException(status_code=500, detail=detail) from exc

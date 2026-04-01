@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, HostListener, OnDestroy, inject, signal } from '@angular/core';
+import { Component, HostListener, OnDestroy, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BedrockRagConfig, BedrockRagResponse, BedrockRagService } from './bedrock-rag.service';
@@ -30,9 +30,12 @@ interface DestinationFeatureCard {
 
 interface DestinationFeatureComparisonRow {
   dimension: string;
-  ml: string;
-  rag: string;
-  dataScience: string;
+  ml?: string;
+  rag?: string;
+  dataScience?: string;
+  aws?: string;
+  azure?: string;
+  gcp?: string;
 }
 
 interface DestinationFeatureSection {
@@ -46,7 +49,7 @@ interface DestinationFeatureSection {
   imageWidthPercent?: number;
   cardGridTitle?: string;
   cardGridSubtitle?: string;
-  cardLayout?: 'default' | 'ai-stack' | 'ai-compare' | 'healthcare-pillars' | 'ml-rag-ds-comparison' | 'insurance-architecture' | 'education-architecture' | 'education-sector-architecture' | 'realestate-sector-architecture' | 'government-sector-architecture' | 'retail-sector-architecture' | 'manufacturing-sector-architecture' | 'hospitality-sector-architecture' | 'transportation-sector-architecture';
+  cardLayout?: 'default' | 'ai-stack' | 'ai-compare' | 'healthcare-pillars' | 'ml-rag-ds-comparison' | 'multi-cloud-matrix' | 'insurance-architecture' | 'education-architecture' | 'education-sector-architecture' | 'realestate-sector-architecture' | 'government-sector-architecture' | 'retail-sector-architecture' | 'manufacturing-sector-architecture' | 'hospitality-sector-architecture' | 'transportation-sector-architecture';
   cards?: DestinationFeatureCard[];
   comparisonRows?: DestinationFeatureComparisonRow[];
 }
@@ -96,6 +99,7 @@ export class MapDestinationComponent implements OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly ragService = inject(BedrockRagService);
   private generatedAudioObjectUrl: string | null = null;
+  private imagePreviewCloseTimeoutId: number | null = null;
 
   protected readonly icon = (this.route.snapshot.data['icon'] as string) || '◆';
   protected readonly iconTone = (this.route.snapshot.data['iconTone'] as string) || 'accent';
@@ -119,6 +123,7 @@ export class MapDestinationComponent implements OnDestroy {
   };
   protected ragQuestion = '';
   protected readonly ragAnswer = signal('');
+  protected readonly ragSources = signal<BedrockRagResponse['sources']>([]);
   // Returns HTML string with simple markdown formatting (bullets, numbers, bold, italics)
   protected formatAnswerMarkdown(answer: string): string {
     if (!answer) return '';
@@ -138,6 +143,22 @@ export class MapDestinationComponent implements OnDestroy {
     // Merge adjacent <ul> or <ol>
     html = html.replace(/<\/ul>\s*<ul>/g, '');
     html = html.replace(/<\/ol>\s*<ol>/g, '');
+
+    // Convert URLs into links. Image URLs are marked for in-app preview popup handling.
+    html = html.replace(/(https?:\/\/[^\s<]+)/g, (rawUrl: string) => {
+      const trailingPunctuationMatch = rawUrl.match(/[),.;:!?]+$/);
+      const trailingPunctuation = trailingPunctuationMatch ? trailingPunctuationMatch[0] : '';
+      const cleanUrl = trailingPunctuation ? rawUrl.slice(0, -trailingPunctuation.length) : rawUrl;
+      const href = cleanUrl.replace(/"/g, '&quot;');
+      const isImageUrl = /\.(?:png|jpe?g|webp|gif)(?:$|[?#&])/i.test(cleanUrl);
+
+      if (isImageUrl) {
+        return `<a class="main-chatbot__answer-link main-chatbot__answer-link--image" href="${href}" target="_blank" rel="noopener noreferrer">Image URL</a>${trailingPunctuation}`;
+      }
+
+      return `<a class="main-chatbot__answer-link" href="${href}" target="_blank" rel="noopener noreferrer">${cleanUrl}</a>${trailingPunctuation}`;
+    });
+
     return html;
   }
   protected readonly ragError = signal('');
@@ -147,6 +168,11 @@ export class MapDestinationComponent implements OnDestroy {
   protected readonly speechEnabled = signal(true);
   protected readonly ragAudioSrc = signal('');
   protected readonly ragAudioError = signal('');
+  protected readonly imagePreviewSrc = signal('');
+  protected readonly imagePreviewAlt = signal('');
+  protected readonly imagePreviewClosing = signal(false);
+  protected readonly imagePreviewOpen = computed(() => !!this.imagePreviewSrc());
+  protected readonly imagePreviewVisible = computed(() => this.imagePreviewOpen() || this.imagePreviewClosing());
   protected readonly languageOptions = Object.keys(LANGUAGE_PREFERENCES);
   protected preferredLanguage = 'English';
 
@@ -161,6 +187,7 @@ export class MapDestinationComponent implements OnDestroy {
 
     this.isAskingRag.set(true);
     this.ragError.set('');
+    this.ragSources.set([]);
 
     this.ragService
       .query({
@@ -176,6 +203,7 @@ export class MapDestinationComponent implements OnDestroy {
       .subscribe({
         next: (response: BedrockRagResponse) => {
           this.ragAnswer.set(response.answer || 'No response returned from the Bedrock backend.');
+          this.ragSources.set(response.sources || []);
           this.applyPollyAudio(response);
           this.isAskingRag.set(false);
         },
@@ -202,6 +230,7 @@ export class MapDestinationComponent implements OnDestroy {
 
   protected clearAnswerBox(): void {
     this.ragAnswer.set('');
+    this.ragSources.set([]);
     this.ragError.set('');
     this.releaseGeneratedAudioUrl();
     this.ragAudioSrc.set('');
@@ -244,6 +273,11 @@ export class MapDestinationComponent implements OnDestroy {
 
   @HostListener('document:keydown.escape')
   protected onEscapeKey(): void {
+    if (this.imagePreviewVisible()) {
+      this.closeImagePreview();
+      return;
+    }
+
     if (!this.assistantInfoOpen()) {
       return;
     }
@@ -298,8 +332,85 @@ export class MapDestinationComponent implements OnDestroy {
     pre.classList.toggle('is-expanded');
   }
 
+  protected openImagePreview(event: Event, imageSrc: string, imageAlt: string): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const normalizedSrc = imageSrc.trim();
+    if (!normalizedSrc) {
+      return;
+    }
+
+    this.clearImagePreviewCloseTimeout();
+    this.imagePreviewClosing.set(false);
+    this.imagePreviewSrc.set(normalizedSrc);
+    this.imagePreviewAlt.set(imageAlt.trim() || 'Expanded image preview');
+  }
+
+  protected onAnswerLinkClick(event: Event): void {
+    const target = event.target as HTMLElement | null;
+    const link = target?.closest('a') as HTMLAnchorElement | null;
+    if (!link) {
+      return;
+    }
+
+    const href = (link.getAttribute('href') || '').trim();
+    const isImageLink =
+      link.classList.contains('main-chatbot__answer-link--image') ||
+      /\.(?:png|jpe?g|webp|gif)(?:$|[?#&])/i.test(href) ||
+      (link.textContent || '').trim().toLowerCase() === 'image url';
+
+    if (!isImageLink) {
+      return;
+    }
+
+    const imageSrc = href;
+    if (!imageSrc) {
+      return;
+    }
+
+    const imageAlt = (link.textContent || 'Image preview').trim();
+    this.openImagePreview(event, imageSrc, imageAlt);
+  }
+
+  protected getSourceImagePreviewUrl(source: { imageUrl?: string; uri?: string } | null | undefined): string {
+    const imageUrl = source?.imageUrl?.trim() || '';
+    if (imageUrl) {
+      return imageUrl;
+    }
+
+    const uri = source?.uri?.trim() || '';
+    const isHttpImage = /^https?:\/\//i.test(uri) && /\.(?:png|jpe?g|webp|gif)(?:$|[?#])/i.test(uri);
+    return isHttpImage ? uri : '';
+  }
+
+  protected closeImagePreview(): void {
+    if (!this.imagePreviewVisible()) {
+      return;
+    }
+
+    this.clearImagePreviewCloseTimeout();
+    this.imagePreviewClosing.set(true);
+    this.imagePreviewCloseTimeoutId = window.setTimeout(() => {
+      this.imagePreviewSrc.set('');
+      this.imagePreviewAlt.set('');
+      this.imagePreviewClosing.set(false);
+      this.imagePreviewCloseTimeoutId = null;
+    }, 220);
+  }
+
   ngOnDestroy(): void {
+    this.clearImagePreviewCloseTimeout();
     this.releaseGeneratedAudioUrl();
+  }
+
+  private clearImagePreviewCloseTimeout(): void {
+    if (this.imagePreviewCloseTimeoutId === null) {
+      return;
+    }
+
+    clearTimeout(this.imagePreviewCloseTimeoutId);
+    this.imagePreviewCloseTimeoutId = null;
   }
 
   private applyPollyAudio(response: BedrockRagResponse): void {
@@ -378,6 +489,10 @@ export class MapDestinationComponent implements OnDestroy {
         : undefined) ||
       (typeof error.error === 'string' ? error.error : undefined) ||
       error.message;
+
+    if (error.status === 401 && detail && /expiredtokenexception|expired token|aws session expired/i.test(detail)) {
+      return 'ibis-equity-back-end authentication error: AWS session expired. Run aws login, then restart backend with npm run start:backend:aws.';
+    }
 
     if (!detail?.trim()) {
       return fallbackMessage;

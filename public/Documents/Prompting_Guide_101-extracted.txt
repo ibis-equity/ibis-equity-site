@@ -1,0 +1,564 @@
+ 
+ 
+ 
+             
+ 
+ 
+ 
+ 
+ 
+Thank you for downloading this Google Gemini Public Sector Promoting Guide. Carahsoft is 
+the distributer for Google AI/ML solutions available via GSA 2GITITES-SW2, NASA SEWP V, 
+and other contract vehicles. 
+ 
+To learn how to take the next step toward acquiring Google’s solutions, please check out 
+the following resources and information: 
+ 
+For additional resources:  
+carah.io/googlecloud 
+ 
+ 
+For additional Google solutions:  
+carah.io/googlecloud.solutions 
+ 
+ 
+To set up a meeting:  
+Google-Sales@carahsoft.com  
+888-662-2724 
+ 
+ 
+ 
+ 
+ 
+For upcoming events:  
+carah.io/googlecloud.events 
+ 
+ 
+For additional AI/ML solutions:  
+carah.io/AI-ML 
+ 
+ 
+To purchase, check out the contract 
+vehicles available for procurement:  
+carah.io/googlecloud.contracts 
+ 
+ 
+ 
+ 
+For more information, contact Carahsoft or our reseller partners: 
+Prompting guide 101 
+ 
+A quick-start handbook for 
+effective prompts to increase 
+efficiency and productivity   
+in the public sector 
+ 
+ 
+For more information, contact Carahsoft or our reseller partners: 
+Google-Sales@carahsoft.com | 888-662-2724 
+ 
+
+G o o g l e  W o r k s p a c e  
+w i t h  
+M a r c h  2 0 2 5  e d i t i o n
+A  q u i c k - s t a r t  h a n d b o o k  f o r  
+e f f e c t i v e  p r o m p t s  t o  i n c r e a s e  
+e f f i c i e n c y  a n d  p r o d u c t i v i t y   
+i n  t h e  p u b l i c  s e c t o r 
+P r o m p t i n g  
+g u i d e  1 0 1
+
+W ri t in g E f f e c t iv e Pr o mp t s f o r G emini in G oogl e W o r k s pa c e	
+In tr odu c t i o n	
+G o v ernmen t: P o li cy An aly s t
+G o v ernmen t: G r an t C oo r din a t o r	
+G o v ernmen t: P ub li c A f f air s Of f i c er	
+G o v ernmen t: E mer g ency R e s po n s e C oo r din a t o r	
+D epar t men t o f D e f en s e: Oper a t i o n s In t elli g enc e An aly s t	
+Hi gher E du c a t i o n: A c a d emi c Pr ogr am C oo r din a t o r
+S t a y up t o d a t e	
+2
+T a b l e  o f  
+c o n t e n t s
+0 7
+1 2
+13
+1 5
+1 6
+18
+19
+23
+0 1
+
+P ub li c s e c t o r o r g aniz a t i o n s r ely o n G oogl e 
+W o r k s pa c e t o d eliv er e ss en t i al s er vi c e s  
+t o ci t iz en s, enh anc e p r odu c t ivi t y and 
+c o ll abo r a t i o n a c r o ss s choo l sy s t em s, a g enci e s 
+and c o mmuni t i e s, and s e cur ely m an a g e  
+c ri t i c al in f o rm a t i o n. 
+N o w , wi t h G oogl e W o r k s pa c e wi t h G emini 
+a chi e vin g  F e dRAMP Hi gh c er t if i c a t i o n, t e am s 
+a c r o ss p ub li c s e c t o r a g enci e s, hi gher e du c a t i o n  
+and K- 1 2 in s t i tu t i o n s and r e s e ar ch o r g aniz a t i o n s 
+c an u s e AI-po w er e d t oo l s t o c o ll abo r a t e mo r e 
+e f f e c t iv ely , inc r e a s e e f f i ci ency , and imp r o v e 
+d e cis i o n-m akin g,—all whil e m ain t ainin g r o b u s t 
+s e curi t y and c o mp li anc e s t and ar d s.
+E mbe d d e d g ener a t iv e AI-po w er e d f e a tur e s  
+c an help p ub li c s e c t o r l e a d er s dr a f t d ocumen t s, 
+summ ariz e l en g t h y r epo r t s, o r g aniz e d a t a, 
+g ener a t e im a g e s, a c c el er a t e w o r kfl o ws, and 
+f a cili t a t e ri cher vir tu al me e t in g s. 
+W r i t i n g  e f f e c t i v e  p r o m p t s  u s i n g  
+G o o g l e  W o r k s p a c e  w i t h  G e m i n i
+Whe t her w o r kin g in Gm ail, G oogl e D ocs, D riv e, 
+She e t s, M e e t, Sli d e s, o r G emini A p p 
+( ), G emini p r o vi d e s s e aml e ss 
+AI-po w er e d a ss is t anc e dir e c t ly wi t hin y o ur 
+e xis t in g w o r kfl o ws. W i t h a c c e ss t o in s t i tu t i o n al 
+kno wl e d g e s t o r e d in D riv e, D ocs, Gm ail, and 
+mo r e, t e am s c an au t o m a t e r o u t ine t a sk s  
+and f ocu s o n miss i o n-c ri t i c al w o r k wi t h l e ss 
+m anu al e f f o r t.
+This g ui d e, cu s t o miz e d f o r u s e c a s e s wi t hin  
+t he p ub li c s e c t o r , will e quip y o u wi t h t he 
+f o und a t i o n al skill s t o wri t e e f f e c t iv e p r o mp t s 
+when u s in g G oogl e W o r k s pa c e wi t h G emini.  
+A p r o mp t s er v e s a s a s t ar t in g po in t f o r y o ur  
+AI-po w er e d a ss is t an t, g ui din g i t t o g ener a t e 
+u s e f ul r e s po n s e s. 
+g emini.g oogl e.c o m
+3
+
+As y o u in t er a c t wi t h G emini, r e f inin g y o ur p r o mp t s c an help y o u g e t mo r e p r e cis e and a c t i o n ab l e 
+r e sul t s. Whil e t he u s e c a s e s ar e v a s t, ap p lyin g c o n s is t en t be s t p r a c t i c e s will help y o u m a ximiz e  
+t he bene f i t s o f AI in y o ur p ub li c s e c t o r w o r k.
+  T he f o ur m ain ar e a s t o c o n s i d er when wri t in g an e f f e c t iv e p r o mp t ar e:   
+•P er s o n a        • T a sk         •C o n t e xt         • F o rm a t 
+H er e is an e x amp l e o f a p r o mp t u s in g all f o ur ar e a s t h a t c o ul d w o r k w ell in Gm ail and G oogl e D ocs:
+Y o u ar e a p r ogr am m an a g er in [b r anch o f g o v ernmen t]. 
+ D r a f t an e x e cu t iv e summ ar y t o [per s o n a] ba s e d o n 
+ [d e t ail s abo u t r el e v an t p r ogr am d ocs]. 
+ Limi t t o b ull e t po in t s. 
+  H er e ar e qui ck t ip s t o g e t y o u s t ar t e d wi t h G oogl e W o r k s pa c e wi t h G emini: 
+Us e n a tur al l an g u a g e.  
+W ri t e a s if y o u’ r e s pe akin g  
+t o ano t her per s o n. E xp r e ss c o mp l e t e 
+t ho u gh t s in f ull s en t enc e s.
+Be s pe cif i c and i t er a t e.  
+T ell G emini wh a t y o u ne e d i t t o d o 
+(summ ariz e, wri t e, ch an g e t he t o ne, 
+c r e a t e). Pr o vi d e a s mu ch c o n t e xt  
+a s po ss ib l e. 
+Be c o ncis e and a v o i d c o mp l e xi t y .  
+S t a t e y o ur r e qu e s t in b ri e f — b u t 
+s pe cif i c — l an g u a g e. A v o i d j ar g o n.
+M ak e i t a c o n v er s a t i o n.  
+F ine-tune y o ur p r o mp t s if t he r e sul t s 
+d o n ’ t me e t y o ur e xpe c t a t i o n s o r if y o u 
+beli e v e t her e’ s r oo m f o r imp r o v emen t.  
+Us e f o ll o w-up p r o mp t s and an i t er a t iv e 
+p r oc e ss o f r e vi e w and r e f inemen t  
+t o yi el d be t t er r e sul t s
+Us e y o ur d ocumen t s.  
+P er s o n aliz e G emini’ s o u t p u t wi t h 
+in f o rm a t i o n fr o m y o ur o wn f il e s  
+in G oogl e D riv e
+M ak e G emini y o ur p r o mp t e di t o r . 
+When u s in g G emini A p p, s t ar t y o ur 
+p r o mp t s wi t h: “M ak e t his a po w er 
+p r o mp t: [o ri gin al p r o mp t t e xt her e].” 
+G emini will m ak e su g g e s t i o n s o n ho w 
+t o imp r o v e y o ur p r o mp t. E n sur e i t s a y s 
+wh a t y o u ne e d, and t hen pa s t e i t ba ck 
+in t o G emini A dv anc e d t o g e t an o u t p u t.
+4
+
+Pr o mp t in g is a skill w e c an all l e arn. Y o u 
+d o n ’ t h a v e t o be a p r o mp t en gine er t o 
+u s e g ener a t iv e AI. Ho w e v er , y o u will lik ely 
+ne e d t o tr y a f e w dif f er en t ap p r oa che s 
+f o r y o ur p r o mp t if y o u d o n ’ t g e t y o ur 
+d e s ir e d o u t c o me t he f ir s t t ime. Ba s e d o n 
+wh a t w e’ v e l e arne d fr o m o ur u s er s s o f ar , 
+t he mo s t frui t f ul p r o mp t s inclu d e per s o n, 
+t a sk, c o n t e xt and f o rm a t.
+
+G ener a t iv e AI and all o f i t s po ss ib ili t i e s 
+ar e e x ci t in g, b u t i t’ s s t ill ne w . E v en 
+t ho u gh o ur mod el s ar e g e t t in g be t t er 
+e v er y d a y , p r o mp t s c an  s o me t ime s h a v e 
+unp r e di c t ab l e r e s po n s e s.
+5
+
+
+6
+Introduction
+
+G oogl e W o r k s pa c e wi t h G emini is y o ur  
+AI-po w er e d a ss is t an t, s e aml e ssly in t e gr a t e d 
+in t o t he ap p s p ub li c s e c t o r a g enci e s r ely o n 
+d aily—Gm ail, G oogl e D ocs, G oogl e She e t s, 
+G oogl e M e e t, G oogl e Sli d e s, and t he G emini 
+A p p  
+(t he s t and al o ne ch a t e xperi enc e a v ail ab l e  
+a t g emini.g oogl e.c o m). Whe t her y o u w o r k in 
+g o v ernmen t, e du c a t i o n, o r a p ub li c in s t i tu t i o n, 
+G emini enh anc e s y o ur w o r kfl o ws, help in g  
+y o u an alyz e d a t a, dr a f t r epo r t s, summ ariz e 
+po li ci e s, and m an a g e c o mmuni c a t i o n s mo r e 
+e f f i ci en t ly—all whil e m ain t ainin g s tri c t 
+s e curi t y and c o mp li anc e s t and ar d s.
+Y o u c an a c c e ss G oogl e W o r k s pa c e wi t h 
+G emini in mul t ip l e w a y s t o r e du c e 
+in t errup t i o n s and enh anc e p r odu c t ivi t y .  
+The s i d e panel wi t hin y o ur W o r k s pa c e ap p s 
+all o ws y o u t o g ener a t e hi ghly per s o n aliz e d  
+AI-po w er e d o u t p u t s ba s e d o n f il e s wi t hin  
+y o ur G oogl e D riv e (Of f i c e, PDF , e t c). 
+This me an s y o u c an in s t an t ly dr a f t po li cy 
+memo s, g ener a t e d a t a-driv en r epo r t s in G oogl e 
+She e t s, c r e a t e b ri e f in g s in Sli d e s ba s e d o n 
+a g ency d ocumen t s, and c o mpo s e s tru c tur e d 
+em ail s t h a t r e f er enc e k e y d e t ail s fr o m  
+e xis t in g r epo r t s.
+Und er s t andin g ho w t o c r a f t e f f e c t iv e p r o mp t s 
+will help y o u m a ximiz e G emini’ s c apab ili t i e s, 
+all o win g y o u t o enh anc e c o ll abo r a t i o n, and m ak e 
+d a t a-driv en d e cis i o n s mo r e e f f i ci en t ly . This g ui d e 
+will p r o vi d e be s t p r a c t i c e s f o r wri t in g p r o mp t s 
+t h a t g ener a t e a c cur a t e, r el e v an t, and a c t i o n ab l e 
+AI-po w er e d r e s po n s e s—help in g p ub li c s e c t o r 
+t e am s w o r k s m ar t er .
+G o o g l e  W o r k s p a c e   
+w i t h  G e m i n i :  P r o m p t i n g  1 0 1
+
+8
+F o r 25 y e ar s, G oogl e h a s b uil t help f ul, s e cur e p r odu c t s t h a t giv e u s er s 
+cho i c e and c o n tr o l o v er t heir d a t a. I t’ s a be dr ock p rincip l e f o r u s.  
+This w a s t he c a s e ba ck when w e f ir s t l aunche d Gm ail in 2004, and i t 
+r em ain s tru e in t he er a o f g ener a t iv e AI. This me an s y o ur d a t a is y o ur 
+d a t a and d oe s no t bel o n g t o G oogl e. Y o ur d a t a s t a y s in y o ur W o r k s pa c e 
+en vir o nmen t. Y o ur p riv a cy is p r o t e c t e d. Y o ur c o n t en t is ne v er u s e d f o r 
+t ar g e t in g a d s o r t o tr ain G emini.
+Imp r o v e y o ur wri t in g
+S umm ariz e in f o rm a t i o n 
+and surf a c e in s i gh t s
+Or g aniz e d a t a
+H a v e be t t er me e t in g s wi t h 
+au t o m a t i c no t e t akin g
+Spo t tr end s, syn t he s iz e in f o rm a t i o n, and i d en t ify o p po r tuni t i e s
+C r e a t e o ri gin al 
+im a g e s
+R e s e ar ch un f amili ar 
+t o p i cs e a s ily
+G o o g l e  W o r k s p a c e  w i t h  G e m i n i  
+c a n  h e l p  y o u :
+
+9
+This g ui d e in tr odu c e s y o u t o p r o mp t in g wi t h 
+G oogl e W o r k s pa c e wi t h G emini. I t inclu d e s 
+s tr o n g p r o mp t d e s i gn e x amp l e s t o help y o u  
+g e t s t ar t e d. A d di t i o n ally , i t c o v er s s c en ari o s  
+f o r dif f er en t per s o n a s, u s e c a s e s,  
+and po t en t i al p r o mp t s.
+Y o u will no t i c e a v ari e t y o f p r o mp t s t y l e s.  
+So me p r o mp t s h a v e b r a ck e t s, whi ch indi c a t e 
+wher e y o u w o ul d f ill in s pe cif i c d e t ail s o r t a g 
+y o ur o wn per s o n al f il e s b y t yp in g @f il e n ame. 
+O t her p r o mp t s ar e p r e s en t e d wi t ho u t v ari ab l e s 
+hi ghli gh t e d t o sho w y o u wh a t a f ull p r o mp t  
+c o ul d l oo k lik e. All o f t he p r o mp t s in t his g ui d e 
+ar e me an t t o in s p ir e y o u, b u t ul t im a t ely t he y  
+will ne e d t o be cu s t o miz e d t o help y o u wi t h  
+y o ur s pe cif i c w o r k.
+T o g e t s t ar t e d, u s e t he r o l e-s pe cif i c su g g e s t e d 
+p r o mp t s a s in s p ir a t i o n t o help y o u unl ock a ne w 
+and po w erf ul w a yx s o f w o r kin g.
+N e xt, l e arn ho w y o u c an g e t s t ar t e d wi t h dif f er en t 
+f e a tur e s b y vis i t in g g.c o / g emini/ f e a tur e s.
+H o w  t o  u s e  t h i s  p r o m p t  g u i d e
+
+G e t t i n g  
+s t a r t e d
+
+F ir s t, r e vi e w t he g ener al p r o mp t-wri t in g t ip s o n pa g e 3 and  
+t he Pr o mp t in g 10 1 s e c t i o n a t t he be ginnin g o f t his g ui d e.
+E a ch p r o mp t bel o w is p r e s en t e d wi t h an a c c o mpan yin g s c en ari o t o 
+s er v e a s in s p ir a t i o n f o r ho w y o u c an c o ll abo r a t e wi t h W o r k s pa c e 
+wi t h G emini. The p r o mp t i t er a t i o n e x amp l e sho ws ho w y o u c o ul d 
+wri t e f o ll o w-up p r o mp t s t o b uil d o n t he ini t i al g ener a t e d r e s po n s e.
+10
+
+G o v e r n m e n t :  
+As a P o li cy An aly s t, y o u e v alu a t e l e gisl a t iv e p r o po s al s  
+and r e g ul a t i o n s t o p r o vi d e d a t a-driv en r e c o mmend a t i o n s  
+t o g o v ernmen t o f f i ci al s. Y o u f a c e ch all en g e s in e f f i ci en t ly 
+summ ariz in g c o mp l e x l e g al d ocumen t s, i d en t ifyin g k e y 
+l e gisl a t iv e tr end s, and c o ll abo r a t in g a c r o ss mul t ip l e a g enci e s 
+wi t h v ar yin g p ri o ri t i e s. G oogl e W o r k s pa c e wi t h G emini c an help 
+y o u s tr e amline y o ur w o r kfl o w b y p r o vi din g AI-po w er e d t oo l s t h a t 
+enh anc e d ocumen t an aly s is, c o ll abo r a t i o n, and d e cis i o n m akin g. 
+T his s e c t i o n p r o vi d e s y o u wi t h s imp l e w a y s t o in t e gr a t e 
+p r o mp t s in y o ur d aily t a sk s.
+P o l i c y  A n a l y s t
+11
+
+1 2
+Pr o mp t i t er a t i o n e x amp l e
+G ener a t e s a o ne-pa g e summ ar y o f a 50-pa g e  
+he al t hc ar e r epo r t
+Y o u ar e a P o li cy An aly s t r e vi e win g a ne w 50-pa g e l e gisl a t iv e p r o po s al o n he al t hc ar e r e g ul a t i o n s. 
+Y o u ne e d t o summ ariz e t he k e y t ak e a w a y s in a s tru c tur e d o ne-pa g e po li cy b ri e f , hi ghli gh t in g  
+t he mo s t impa c t f ul ch an g e s, t heir imp li c a t i o n s, and an y k e y d e a dline s.
+
+
+Us e C a s e: 
+I’ m a P o li cy An aly s t. I ne e d t o summ ariz e t he k e y t ak e a w a y s 
+o f t he @[H e al t hc ar e R epo r t] in t o a o ne-pa g e b ri e f .   
+(G emini G oogl e D riv e Si d e-P anel)
+No t e: G emini o nly r e tri e v e s r el e v an t c o n t en t in W o r k s pa c e t h a t t he u s er h a s a c c e ss t o.  
+In t his e x amp l e, o nly t he r epo r t sh ar e d wi t h t he P o li cy An aly s t will f a c t o r in t o t he an aly s is.
+A f t er y o u h a v e t he b ri e f , y o u ne e d t o 
+a d d i t t o a G oogl e D oc f o r r e vi e w . 
+C o p y t he r e s po n s e b y cli ckin g t he 
+c o p y i c o n        in t he bo t t o m ri gh t 
+c o rner and pa s t e i t in t o a G oogl e 
+D ocumen t.
+• P er s o n a  • T a sk  • C o n t e xt  • F o rm a t
+
+13
+G o v e r n m e n t :   
+G r a n t  C o o r d i n a t o r
+As a G r an t C oo r din a t o r , y o u m an a g e g o v ernmen t f undin g 
+ap p li c a t i o n s and en sur e c o mp li anc e wi t h gr an t r e g ul a t i o n s. 
+Y o u s pend e x c e ss iv e amo un t s o f t ime dr a f t in g p r o po s al s, 
+tr a ckin g c o mp l e x r epo r t in g r e quir emen t s, and e xtr a c t in g k e y 
+f in anci al in s i gh t s fr o m mul t ip l e f undin g s o ur c e s. G oogl e 
+W o r k s pa c e wi t h G emini c an help y o u wri t e f o ll o w-up 
+p r o mp t s t o b uil d o n t he ini t i al g ener a t e d r e s po n s e.
+This s e c t i o n p r o vi d e s y o u wi t h s imp l e w a y s  
+t o in t e gr a t e p r o mp t s in y o ur d aily t a sk s.
+
+
+14
+Pr o mp t i t er a t i o n e x amp l e
+E xtr a c t k e y f undin g d e t ail s fr o m mul t ip l e gr an t ap p li c a t i o n s
+Y o u ar e a G r an t C oo r din a t o r r e vi e win g 10 gr an t ap p li c a t i o n s in G oogl e She e t s. Y o u’ v e be en a sk e d t o 
+i d en t ify whi ch gr an t s ne c e ss i t a t e qu ar t er ly r epo r t in g, and c al cul a t e t he t o t al amo un t f o r all gr an t s 
+t h a t h a v e be en sub mi t t e d.
+
+
+Us e C a s e: 
+C al cul a t e t he per c en t a g e o f gr an t s t h a t r e quir e qu ar t er ly
+r epo r t in g and t he t o t al f undin g amo un t f o r all gr an t s  
+and dis p l a y t hem in a c o ncis e t ab l e.
+N o t e:  G emini o nly r e tri e v e s r el e v an t c o n t en t in W o r k s pa c e t h a t t he u s er h a s a c c e ss t o. In t his 
+e x amp l e, o nly t he d a t a sh ar e d wi t h t he G r an t C oo r din a t o r will f a c t o r in t o t he an aly s is.
+• P er s o n a  • T a sk  • C o n t e xt  • F o rm a t
+The d a t a ne c e ss ar y t o r epo r t o n t he per c en t a g e o f gr an t s wi t h qu ar t er ly 
+r epo r t in g and t he t o t al f undin g amo un t s f o r all gr an t s is no w e a s ily and 
+r e a dily a v ail ab l e wi t ho u t t he ne e d f o r m anu al f o rmul ai c c al cul a t i o n s. The 
+in s er t b u t t o n                 is t hen cli ck e d t o en sur e t h a t t he c al cul a t e d d a t a is 
+a d d e d t o t he s p r e a d she e t.
+In s er t
+
+
+G o v e r n m e n t :   
+P u b l i c  A f f a i r s  O f f i c e r
+As a P ub li c A f f air s Of f i c er y o u h andl e g o v ernmen t 
+c o mmuni c a t i o n s, c r a f t in g p r e ss r el e a s e s and p ub li c s t a t emen t s 
+whil e m an a gin g in t ern al me ss a gin g. Y o u s tru g gl e wi t h 
+m ain t ainin g c o n s is t en t me ss a gin g, summ ariz in g k e y po in t s 
+fr o m l en g t h y r epo r t s, and r e s po ndin g r ap i dly t o me di a inquiri e s 
+und er t i gh t d e a dline s. G oogl e W o r k s pa c e wi t h G emini c an help 
+y o u enh anc e c o mmuni c a t i o n e f f i ci ency , s tr e amline me ss a gin g 
+c o n s is t ency , and imp r o v e r e s po n s iv ene ss. 
+This s e c t i o n p r o vi d e s y o u wi t h s imp l e w a y s t o in t e gr a t e 
+p r o mp t s in y o ur d aily t a sk s.
+1 5
+
+1 6
+I am a P ub li c A f f air s o f f i c er . D r a f t a Pr e ss R el e a s e
+summ ariz in g k e y d e t ail s o f y e ar 20 24 @[R epo r t N ame].
+Inclu d e t he p r o j e c t, ap p li c an t o r g aniz a t i o n, p r o po s e d
+a w ar d and p r o po s e d 117(d)(2)(a) Amo un t. 
+Pr o mp t i t er a t i o n e x amp l e
+ D r a f t a p r e ss r el e a s e ba s e d o n in t ern al g o v ernmen t r epo r t
+Y o u ar e a P ub li c A f f air s Of f i c er t a sk e d wi t h anno uncin g a ne w in fr a s tru c tur e ini t i a t iv e.  
+Y o u u s e t he                               p r o mp t t o c o mpo s e a p r e ss r el e a s e summ ariz in g k e y d e t ail s fr o m  
+t he y e ar 20 24.
+
+
+Us e C a s e: 
+N o t e: G emini o nly r e tri e v e s r el e v an t c o n t en t in W o r k s pa c e t h a t t he u s er h a s a c c e ss t o. In t his 
+e x amp l e, o nly t he r epo r t s sh ar e d wi t h t he P ub li c A f f air s Of f i c er will f a c t o r in t o t he an aly s is.
+• P er s o n a  • T a sk  • C o n t e xt  • F o rm a t
+c r e a t e a d ocumen t
+A p r e ss r el e a s e summ ariz in g t he r e qu e s t e d in f o rm a t i o n and k e y v ari ab l e s 
+f o r cu s t o miz a t i o n h a s be en p r epar e d. P l e a s e p r oc e e d wi t h t ail o rin g t he 
+c o n t en t t o y o ur s pe cif i c r e quir emen t s.
+
+
+1 6
+G o v e r n m e n t :   
+E m e r g e n c y  R e s p o n s e  C o o r d i n a t o r
+As an E mer g ency R e s po n s e C oo r din a t o r y o u m an a g e c ris is 
+c o mmuni c a t i o n s, r e s o ur c e c oo r din a t i o n, and r e al-t ime s i tu a t i o n upd a t e s 
+durin g emer g enci e s. Y o u ne e d t o r ap i dly summ ariz e e v o lvin g e v en t s, dr a f t 
+a c cur a t e s i tu a t i o n r epo r t s, and s tr e amline c r o ss-a g ency c o mmuni c a t i o n 
+und er e xtr eme t ime c o n s tr ain t s. G oogl e W o r k s pa c e wi t h G emini c an help 
+y o u o p t imiz e c ris is r e s po n s e, imp r o v e c o mmuni c a t i o n cl ari t y , and en ab l e 
+r e al-t ime s i tu a t i o n al a w ar ene ss. 
+This s e c t i o n p r o vi d e s y o u wi t h s imp l e w a y s t o in t e gr a t e p r o mp t s  
+in y o ur d aily t a sk s.
+
+17
+Pr o mp t i t er a t i o n e x amp l e
+C o mp il e a b ri e f in g o n a n a tur al dis a s t er
+b ri e f in g f o r ci t y o f f i ci al s o n t he curr en t wil d f ir e s i tu a t i o n. Y o u u t iliz e G emini t o g ener a t e a Sli d e  
+t h a t enc o mpa ss e s e ss en t i al upd a t e s, impa c t e d r e gi o n s, and r e s po n s e ini t i a t iv e s. 
+
+
+Us e C a s e: 
+I am an E mer g ency R e s po n s e C oo r din a t o r . C r e a t e a Sli d e
+t h a t summ ariz e s t he k e y upd a t e s, impa c t e d ar e a s and
+r e s po n s e e f f o r t s ba s e d o n t he @[R epo r t T i t l e]
+@[D ocumen t T i t l e].
+No t e:  G emini o nly r e tri e v e s r el e v an t c o n t en t in W o r k s pa c e t h a t t he u s er h a s a c c e ss t o.  
+In t his e x amp l e, o nly t he r epo r t s sh ar e d wi t h t he E mer g ency R e s po n s e C oo r din a t o r will 
+f a c t o r in t o t he an aly s is.
+• P er s o n a  • T a sk  • C o n t e xt  • F o rm a t
+A summ ar y sli d e is g ener a t e d ki ckin g o f f 
+t he c r e a t i o n o f y o ur b ri e f in g d e ck.  
+A summ ar y sli d e is g ener a t e d, ini t i a t in g 
+t he c r e a t i o n o f y o ur b ri e f in g d e ck.
+17
+
+18
+D epar t men t o f D e f en s e:  
+As an Oper a t i o n s In t elli g enc e An aly s t f o r t he D epar t men t  
+o f D e f en s e (D oD) y o u g a t her , an alyz e, and in t erp r e t cl a ss if i e d 
+in t elli g enc e d a t a t o sup po r t mili t ar y d e cis i o n-m akin g.  
+Y o u s tru g gl e wi t h syn t he s iz in g v a s t amo un t s o f in t elli g enc e 
+in t o a c t i o n ab l e in s i gh t s qui ckly whil e en surin g s e cur e 
+c o ll abo r a t i o n a c r o ss a g enci e s wi t ho u t c o mp r o mis in g 
+s en s i t iv e in f o rm a t i o n. G oogl e W o r k s pa c e wi t h G emini  
+c an help y o u t o r e f ine an aly s is, a c c el er a t e d e cis i o n m akin g, 
+and enh anc e in t er a g ency c o ll abo r a t i o n. 
+This s e c t i o n p r o vi d e s y o u wi t h s imp l e w a y s t o in t e gr a t e 
+p r o mp t s in y o ur d aily t a sk s.
+
+
+
+Oper a t i o n s In t elli g enc e An aly s t
+
+
+Pr o mp t i t er a t i o n e x amp l e
+An alyz e t he Mili t ar y In t elli g enc e Pr ogr am's ap p r o p ri a t e d f und s
+Y o u ar e an Oper a t i o n s In t elli g enc e An aly s t s e ar chin g G oogl e D riv e f o r p r e vi o u s US in t elli g enc e 
+b u d g e t r epo r t s o n ap p r o p ri a t e d Mili t ar y In t elli g enc e Pr ogr am f und s. Y o u ne e d t o an alyz e t he 
+ap p r o p ri a t e d Mili t ar y In t elli g enc e Pr ogr am o v er t he l a s t t hr e e y e ar s. 
+
+
+Us e C a s e:  
+I am an Oper a t i o n s In t elli g enc e An aly s t. An alyz e t he
+@[R epo r t N ame] c o mparin g t he MIP b u d g e t s
+ap p r o p ri a t e d o v er t he l a s t t hr e e y e ar s. Inclu d e  
+t he t o t al amo un t.
+No t e: G emini o nly r e tri e v e s r el e v an t c o n t en t in W o r k s pa c e t h a t t he u s er h a s a c c e ss t o.  
+In t his e x amp l e, o nly t he r epo r t s sh ar e d wi t h t he Oper a t i o n s In t elli g enc e An aly s t will f a c t o r 
+in t o t he an aly s is.
+• P er s o n a  • T a sk  • C o n t e xt  • F o rm a t
+A f t er y o u h a v e t he an aly s is, y o u ne e d t o 
+a d d i t t o a G oogl e D ocumen t f o r r e vi e w . 
+C o p y t he r e s po n s e b y cli ckin g t he c o p y 
+i c o n        in t he bo t t o m ri gh t c o rner and 
+pa s t e i t in t o a G oogl e D ocumen t.
+19
+
+19
+H i g h e r  E d u c a t i o n :   
+A c a d e m i c  P r o g r a m  C o o r d i n a t o r
+As an A c a d emi c Pr ogr am C oo r din a t o r y o u o v er s e e curri culum p l annin g, c o ur s e s che dulin g, and 
+p r ogr am e v alu a t i o n t o en sur e a c a d emi c p r ogr am s ali gn wi t h in s t i tu t i o n al g oal s.  
+Y o u f a c e ch all en g e s in syn t he s iz in g f e e dba ck fr o m f a cul t y and s tu d en t s, tr a ckin g a c c r e di t a t i o n 
+r e quir emen t s, and e f f i ci en t ly upd a t in g p r ogr am d ocumen t a t i o n a c r o ss mul t ip l e p l a t f o rm s. G oogl e 
+W o r k s pa c e wi t h G emini c an help y o u t o s tr e amline curri culum m an a g emen t, s imp lify 
+a c c r e di t a t i o n tr a ckin g, and enh anc e c o ll abo r a t i o n a c r o ss f a cul t y and a dminis tr a t i o n. 
+This s e c t i o n p r o vi d e s y o u wi t h s imp l e w a y s t o in t e gr a t e  
+p r o mp t s in y o ur d aily t a sk s.
+
+20
+Pr o mp t i t er a t i o n e x amp l e
+C o mmuni c a t e t he curri culum ch an g e s t o f a cul t y
+Y o u ar e an A c a d emi c Pr ogr am C oo r din a t o r dr a f t in g an em ail t o f a cul t y member s abo u t curri culum 
+upd a t e s f o r t he upc o min g s eme s t er . Y o u ne e d t o cl e ar ly o u t line t he ch an g e s, t he r a t i o n al e behind 
+t hem, and an y r e quir e d a c t i o n s, m ain t ainin g a p r o f e ss i o n al and sup po r t iv e t o ne.
+
+
+Us e C a s e: 
+I am an a c a d emi c p r ogr am c oo r din a t o r . W ri t e a
+p r o f e ss i o n al and sup po r t iv e em ail in f o rmin g f a cul t y t h a t
+t her e will be ch an g e s t o t he upc o min g s eme s t er's
+curri culum. T he ch an g e s ar e a s f o ll o ws t he in t e gr a t i o n o f
+di gi t al li t er a cy modul e s, upd a t e d a ss e ss men t c ri t eri a and
+ne w el e c t iv e o f f erin g s. W e ar e m ar kin g t he s e ch an g e s t o
+en sur e indu s tr y ali gnmen t, me e t a c c r e di t a t i o n
+c o mp li anc e and in t e gr a t e s tu d en t f e e dba ck. P l e a s e 
+a t t end ne xt w e ek's f a cul t y me e t in g f o r mo r e in f o rm a t i o n. 
+• P er s o n a  • T a sk  • C o n t e xt  • F o rm a t
+
+
+F o ll o w up 
+In y o ur c o n v er s a t i o n wi t h t he G emini A p p, inclu d e all t he r el e v an t d e t ail s, and t hen 
+d e s c ribe t he o u t p u t y o u w an t. C o n t inu e t he c o n v er s a t i o n b y a skin g qu e s t i o n s lik e, 
+“Wh a t qu e s t i o n s d o y o u h a v e f o r me t h a t w o ul d help y o u p r o vi d e t he be s t o u t p u t?”
+Sa y i t ano t her w a y . 
+F ine-tune y o ur p r o mp t s if t he r e sul t s d o n ’ t me e t y o ur e xpe c t a t i o n s o r if y o u beli e v e t her e’ s 
+r oo m f o r imp r o v emen t. An i t er a t iv e p r oc e ss o f r e vi e w and r e f inemen t o f t en yi el d s be t t er r e sul t s.
+Br e ak i t up
+I f y o u w an t W o r k s pa c e wi t h G emini t o perf o rm s e v er al r el a t e d t a sk s, 
+b r e ak t hem in t o s epar a t e p r o mp t s.
+Giv e c o n s tr ain t s
+T o g ener a t e s pe cif i c r e sul t s, inclu d e d e t ail s in y o ur p r o mp t su ch a s ch ar a c t er c o un t 
+limi t s o r t he number o f o p t i o n s y o u’ d lik e t o g ener a t e.
+Ass i gn a r o l e
+T o enc o ur a g e c r e a t ivi t y , a ss i gn a r o l e. Y o u c an d o t his b y s t ar t in g y o ur p r o mp t wi t h 
+l an g u a g e lik e: “Y o u ar e t he he a d o f a f e d er al a g ency  P ub li c A f f air s d epar t men t…”
+C o n s i d er t o ne
+T ail o r y o ur p r o mp t s t o sui t y o ur in t end e d au di enc e. Ask f o r o u t p u t s t o h a v e a s pe cif i c t o ne, 
+su ch a s f o rm al, in f o rm al, t e chni c al, c r e a t iv e, o r c a su al.
+L e v elin g up y o ur p r o mp t wri t in g
+This g ui d e is me an t t o s er v e a s in s p ir a t i o n, and t he po ss ib ili t i e s  
+ar e ne ar ly endl e ss wi t h G oogl e W o r k s pa c e wi t h G emini.  
+Buil d o n y o ur p r o mp t-wri t in g skill s u s in g t he s e t ip s.
+
+
+2 1
+
+G ener a t iv e AI and all o f i t s po ss ib ili t i e s ar e e x ci t in g, b u t i t’ s s t ill ne w .  
+E v en t ho u gh o ur mod el s ar e g e t t in g be t t er e v er y d a y , p r o mp t s c an 
+s o me t ime s h a v e unp r e di c t ab l e r e s po n s e s.
+
+Be f o r e p u t t in g an o u t p u t fr o m G oogl e W o r k s pa c e wi t h G emini in t o 
+a c t i o n, r e vi e w i t t o en sur e cl ari t y , r el e v anc e, and a c cur a cy . And o f c o ur s e, 
+k e ep t he mo s t impo r t an t t hin g in mind: G ener a t iv e AI is me an t t o help 
+hum an s, b u t t he f in al o u t p u t is y o ur s.
+
+The e x amp l e p r o mp t s in t his g ui d e ar e me an t f o r illu s tr a t iv e p urpo s e s.
+22
+G oogl e W o r k s pa c e f o r G o v ernmen t a t 
+G oogl e P ub li c Se c t o r b l og a t 
+G oogl e P ub li c Se c t o r Tho u gh t L e a d er ship hub a t 
+g oo.gl e/ G WS-G o v
+g oo.gl e/ G WS-Bl og
+p ub li cs e c t o r .g oogl e/ ai/
+S t a y  u p  t o  d a t e
+22
+
+5
+Happy 
+prompting!
+Google Workspace 
+with 

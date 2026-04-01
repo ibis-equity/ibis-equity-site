@@ -17,6 +17,8 @@ export interface BedrockRagSource {
   title?: string;
   uri?: string;
   excerpt?: string;
+  imageUri?: string;
+  imageUrl?: string;
 }
 
 export interface BedrockRagRequest {

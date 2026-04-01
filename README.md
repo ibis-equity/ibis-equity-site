@@ -70,6 +70,41 @@ AOSS_INDEX_NAME=<your-index-name>
 BEDROCK_CHAT_MODEL_ID=anthropic.claude-3-5-sonnet-v2:0
 ```
 
+### Enable Diagram Retrieval (Claude + PDF Diagrams)
+
+Uploading a PDF alone does not make diagrams retrievable. The retrieval index needs text that describes diagrams.
+
+Use the included utility to extract diagram/chart/table captions from PDF pages with Bedrock Claude and write the result as a `.txt` object to S3, so your existing ingestion/indexing flow can pick it up.
+
+1. Install backend dependencies (includes `PyMuPDF`):
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+2. Run diagram caption extraction against a local PDF:
+
+```bash
+python backend/ingest_diagram_captions.py \
+	--pdf-path C:\\path\\to\\document.pdf \
+	--output-s3-uri s3://<processed-text-bucket>/<prefix>/ \
+	--region us-east-1 \
+	--model-id anthropic.claude-3-5-sonnet-v2:0
+```
+
+Or use a PDF already in S3:
+
+```bash
+python backend/ingest_diagram_captions.py \
+	--pdf-s3-uri s3://<source-bucket>/<path>/document.pdf \
+	--output-s3-uri s3://<processed-text-bucket>/<prefix>/ \
+	--region us-east-1
+```
+
+3. Re-run your ingestion/indexing step if your pipeline is not auto-triggered.
+
+4. Query the chatbot again. Sources should include a `*-diagram-captions.txt` object when diagram content is retrieved.
+
 4. Run the backend:
 
 ```bash

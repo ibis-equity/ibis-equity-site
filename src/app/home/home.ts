@@ -274,6 +274,18 @@ export class HomeComponent implements OnDestroy {
     });
   }
 
+  protected clearContactForm(): void {
+    this.contactFirstName = '';
+    this.contactLastName = '';
+    this.contactEmailAddress = '';
+    this.contactPhoneNumber = '';
+    this.contactOrganization = '';
+    this.contactPosition = '';
+    this.contactRequest = '';
+    this.contactSubmitted.set(false);
+    this.contactSubmitError.set('');
+  }
+
   protected isContactFormInvalid(): boolean {
     return !this.contactFirstName.trim()
       || !this.contactLastName.trim()

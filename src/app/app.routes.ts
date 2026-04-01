@@ -7,6 +7,469 @@ export const routes: Routes = [
   { path: '', component: SplashComponent },
   { path: 'home', component: HomeComponent },
   {
+    path: 'home/cloud-computing',
+    component: MapDestinationComponent,
+    data: {
+      icon: '☁️',
+      iconTone: 'accent',
+      title: 'Cloud Computing',
+      description: 'Cloud computing solutions for scalable platforms, secure architecture, and cost-aware operations.',
+      headerImageSrc: '/images/mach-learning.jpg',
+      headerImageAlt: 'Cloud Computing service',
+      featureContent: {
+        title: 'What Is Cloud Computing?',
+        subtitle: 'A modern narrative for leaders, architects, and organizations building toward intelligence and equity',
+        intro: [
+          'Cloud computing is often described in technical shorthand as on-demand compute resources delivered over the internet. That definition is accurate, but incomplete. It captures the mechanics, not the meaning.',
+          'At its core, cloud computing is a reorganization of power: power over infrastructure, power over data, power over scale, and power over time. It transforms computing from a fixed asset into a fluid capability that expands, contracts, and evolves in response to human intention rather than hardware constraints.',
+          'Cloud computing is the moment when technology stopped being a room full of servers and became a global, programmable utility. It is the shift from owning machines to orchestrating possibilities.'
+        ],
+        sections: [
+          {
+            title: 'Cloud Computing as an Architectural Shift',
+            paragraphs: [
+              'Before the cloud, organizations built systems the way cities once built fortresses: heavy, immovable, expensive, and slow to change. Every new application required new hardware. Every scaling event required procurement. Every failure required physical intervention.',
+              'Cloud computing replaced this model with a radically different architecture and operating rhythm. This shift did not only change IT. It changed how organizations think, operate, and innovate.'
+            ],
+            bullets: [
+              'Elasticity instead of fixed capacity',
+              'Services instead of servers',
+              'APIs instead of hardware manuals',
+              'Global reach instead of local constraints',
+              'Continuous delivery instead of annual releases'
+            ]
+          },
+          {
+            title: 'Cloud Computing as an Economic Shift',
+            paragraphs: [
+              'Cloud computing converts infrastructure from a capital expense (CapEx) into an operational expense (OpEx). The deeper transformation is that it turns experimentation into a low-risk activity.',
+              'In the pre-cloud era, trying something new required buying hardware, waiting for installation, provisioning environments, and hoping demand justified investment. In the cloud era, experimentation costs pennies, takes minutes, and can be reversed with a single API call.',
+              'Cloud computing accelerates innovation because it removes the economic penalty for curiosity.'
+            ],
+            bullets: [
+              'Buying hardware',
+              'Waiting weeks for installation',
+              'Provisioning environments',
+              'Hoping demand justified the investment'
+            ]
+          },
+          {
+            title: 'Cloud Computing as a Governance Shift',
+            paragraphs: [
+              'Cloud computing introduces a new governance paradigm where identity becomes the perimeter, policies become code, compliance becomes continuous, and security becomes automated.',
+              'Instead of relying on physical boundaries like locked server rooms, cloud governance relies on controls that are codified, observable, and continuously enforced.',
+              'Cloud computing does not eliminate risk. It makes risk observable, measurable, and actionable.'
+            ],
+            bullets: [
+              'Zero-trust identity models',
+              'Encryption everywhere',
+              'Automated policy enforcement',
+              'Real-time monitoring and telemetry'
+            ]
+          },
+          {
+            title: 'Cloud Computing as a Data and Intelligence Shift',
+            paragraphs: [
+              'The cloud is the natural habitat for modern data systems: data lakes, lakehouses, real-time streaming, distributed analytics, machine learning pipelines, and generative AI models.',
+              'These systems require massive parallel compute, elastic storage, global distribution, high-bandwidth networking, and specialized accelerators.',
+              'Cloud computing is not just where data lives. It is where data becomes intelligence.'
+            ],
+            bullets: [
+              'Massive parallel compute',
+              'Elastic storage',
+              'Global distribution',
+              'High-bandwidth networking',
+              'Specialized accelerators'
+            ]
+          },
+          {
+            title: 'Cloud Computing as a Human Shift',
+            paragraphs: [
+              'Cloud computing changes the role of the technologist. Instead of racking servers, patching operating systems, and managing physical networks, architects and engineers focus on designing distributed systems, orchestrating services, governing identities, optimizing data flows, and building intelligent applications.',
+              'Cloud computing elevates human work from maintenance to architecture, from operations to intelligence, and from firefighting to design.'
+            ]
+          },
+          {
+            title: 'Cloud Computing as a Strategic Shift',
+            paragraphs: [
+              'For modern organizations, cloud computing is not merely a technology choice. It is a strategic posture that aligns technology with mission, values, and long-term resilience.',
+              'It is the foundation upon which modern digital organizations are built.'
+            ],
+            bullets: [
+              'Global scale',
+              'Rapid innovation',
+              'Cost efficiency',
+              'Regulatory alignment',
+              'AI-driven transformation',
+              'Multi-cloud resilience',
+              'Data sovereignty',
+              'Continuous modernization'
+            ]
+          },
+          {
+            title: 'Cloud Computing at Ibis Equity: The Full Manifesto',
+            subtitle: 'A declaration of principles for an equity-centered, intelligence-driven, multi-cloud future',
+            paragraphs: [
+              'Cloud computing at Ibis Equity Consulting is not a technology choice. It is a worldview: a disciplined, intentional way of designing systems that honor complexity, elevate human judgment, and ensure intelligence is distributed equitably across organizations and the communities they serve.',
+              'We reject the notion that the cloud is merely a collection of services. For us, the cloud is a strategic substrate, a governance engine, and a canvas for institutional transformation. It is the modern agora where data, identity, intelligence, and accountability converge.',
+              'This manifesto defines how we approach cloud computing, why it matters, and what it enables.'
+            ]
+          },
+          {
+            title: '1) The Cloud as a Strategic Equity Platform',
+            paragraphs: [
+              'At Ibis Equity, we believe the cloud is the most powerful mechanism ever created for scaling fairness, transparency, and access.',
+              'Equity is not an afterthought. It is the architectural north star. The cloud becomes the medium through which institutions express their values, not just their workloads.'
+            ],
+            bullets: [
+              'Democratize analytics and AI',
+              'Enforce fairness through policy as code',
+              'Reduce bias through transparent data flows',
+              'Protect vulnerable populations with strong identity governance',
+              'Ensure accountability through immutable audit trails',
+              'Deliver intelligence to the edges of organizations, not just the center'
+            ]
+          },
+          {
+            title: '2) The Cloud as a Living, Adaptive System',
+            paragraphs: [
+              'Traditional infrastructure is static. Cloud infrastructure is alive. It expands, contracts, heals, adapts, and evolves in response to demand, risk, regulation, mission, and intelligence.',
+              'We design cloud systems as living organisms: distributed, resilient, and capable of continuous learning. The cloud is not a place. It is a behavior.'
+            ],
+            bullets: [
+              'Multi-cloud architectures',
+              'Event-driven systems',
+              'Serverless execution',
+              'Federated data fabrics',
+              'Autonomous governance loops'
+            ]
+          },
+          {
+            title: '3) The Cloud as a Multi-Cloud Intelligence Fabric',
+            paragraphs: [
+              'No single hyperscaler can meet the full spectrum of modern institutional needs. Each cloud is a sovereign domain with distinct strengths.',
+              'At Ibis Equity, we do not choose between AWS, Azure, and GCP. We orchestrate them through shared identity, data, AI, governance, and networking fabrics.',
+              'Multi-cloud is not complexity. Multi-cloud is freedom.'
+            ],
+            bullets: [
+              'AWS for global scale, operational maturity, and service breadth',
+              'Azure for identity, compliance, and enterprise alignment',
+              'GCP for analytics, AI, and developer elegance'
+            ],
+            cardLayout: 'multi-cloud-matrix',
+            comparisonRows: [
+              { dimension: 'Identity', aws: 'Strong IAM', azure: 'Best (Entra)', gcp: 'Good' },
+              { dimension: 'Analytics', aws: 'Strong', azure: 'Good', gcp: 'Best' },
+              { dimension: 'AI / ML', aws: 'Strong', azure: 'Strong', gcp: 'Best' },
+              { dimension: 'Hybrid', aws: 'Good', azure: 'Best', gcp: 'Limited' },
+              { dimension: 'Global Scale', aws: 'Best', azure: 'Strong', gcp: 'Good' },
+              { dimension: 'Developer Experience', aws: 'Good', azure: 'Good', gcp: 'Best' },
+              { dimension: 'Regulated Sectors', aws: 'Strong', azure: 'Best', gcp: 'Moderate' }
+            ]
+          },
+          {
+            title: '4) The Cloud as an Engine of Institutional Intelligence',
+            paragraphs: [
+              'Cloud computing is the natural habitat for real-time analytics, machine learning, generative AI, decision support, digital twins, and autonomous workflows.',
+              'The cloud transforms data into insight, insight into action, and action into institutional memory. We design cloud systems that learn, adapt, and improve, not just compute.'
+            ],
+            bullets: [
+              'Elastic compute',
+              'Distributed storage',
+              'Global networks',
+              'Specialized accelerators',
+              'Continuous integration and deployment'
+            ]
+          },
+          {
+            title: '5) The Cloud as a Governance Machine',
+            paragraphs: [
+              'Governance is not documentation. Governance is execution. In the cloud, governance becomes identity-driven, policy-as-code, continuously enforced, observable, auditable, and automated.',
+              'We architect systems where compliance is continuous, risk is measurable, security is proactive, and accountability is built in. The cloud becomes a governance machine by design.'
+            ]
+          },
+          {
+            title: '6) The Cloud as a Narrative Technology',
+            paragraphs: [
+              'Every system tells a story about what an organization values, how it makes decisions, how it treats data, how it protects people, and how it responds to change.',
+              'At Ibis Equity, we design cloud architectures that are interpretable, explainable, narratively coherent, and aligned with mission and values. Technology without narrative is noise.'
+            ]
+          },
+          {
+            title: '7) The Cloud as a Catalyst for Human Judgment',
+            paragraphs: [
+              'We reject the myth that automation replaces human judgment. Cloud computing amplifies it.',
+              'By removing the burdens of hardware maintenance, manual scaling, patching, capacity planning, and infrastructure firefighting, the cloud frees humans to focus on architecture, strategy, ethics, design, intelligence, and governance.',
+              'The cloud elevates human work from maintenance to meaning.'
+            ]
+          },
+          {
+            title: '8) The Cloud as a Foundation for the Next Century',
+            paragraphs: [
+              'Cloud computing is not a trend. It is the operating system of modern civilization.',
+              'It underpins healthcare delivery, legal systems, energy grids, financial markets, education platforms, public sector infrastructure, global communication, and AI ecosystems.',
+              'At Ibis Equity, we architect cloud systems with a 100-year horizon: resilient, interpretable, equitable, adaptive, multi-cloud, and intelligence-driven. We build for the world that exists today and the world that must exist tomorrow.'
+            ]
+          },
+          {
+            title: 'I. The Ibis Equity Cloud Architecture Blueprint',
+            subtitle: 'A multi-cloud, equity-centered, intelligence-driven architectural system',
+            paragraphs: [
+              'Cloud architecture at Ibis Equity is not a diagram. It is a philosophy expressed through structure.',
+              'It embodies our belief that systems must be resilient, interpretable, equitable, and capable of evolving alongside the institutions they serve.',
+              'Below is the full architectural blueprint, expressed in narrative form.'
+            ]
+          },
+          {
+            title: '1) Identity Fabric (The Control Plane of Everything)',
+            paragraphs: [
+              'Identity is the perimeter. Identity is the policy engine. Identity is the trust boundary.',
+              'This fabric ensures that people, services, and machines operate within a unified trust model, regardless of cloud.'
+            ],
+            bullets: [
+              'Entra ID as the global identity authority',
+              'Federated IAM roles in AWS',
+              'Federated IAM bindings in GCP',
+              'Zero-trust posture across all clouds',
+              'Conditional access, continuous authentication, and least-privilege enforcement'
+            ]
+          },
+          {
+            title: '2) Data Fabric (The Circulatory System)',
+            paragraphs: [
+              'Data is not centralized. It is federated, classified, and governed.',
+              'Data lives where it needs to live. Intelligence flows where it needs to flow.'
+            ],
+            bullets: [
+              'S3, ADLS, and GCS as a tri-cloud object mesh',
+              'Metadata harmonization through Purview or Glue Catalog',
+              'Cross-cloud lineage and observability',
+              'Federated query capabilities (BigQuery Omni, Synapse Link, Athena)',
+              'Tiered storage policies aligned with sensitivity and sovereignty'
+            ]
+          },
+          {
+            title: '3) Compute Fabric (The Muscle Layer)',
+            paragraphs: [
+              'Workloads are placed based on fit, not vendor loyalty.',
+              'This fabric ensures that compute is elastic, resilient, and intelligently distributed.'
+            ],
+            bullets: [
+              'AWS for global scale, HPC, and specialized services',
+              'Azure for enterprise alignment, hybrid integration, and compliance',
+              'GCP for analytics, AI, and serverless elegance',
+              'Kubernetes clusters across clouds',
+              'Serverless functions (Lambda, Functions, Cloud Run)',
+              'Event-driven architectures',
+              'Multi-region failover patterns',
+              'Autoscaling and self-healing primitives'
+            ]
+          },
+          {
+            title: '4) AI/ML Fabric (The Intelligence Layer)',
+            paragraphs: [
+              'AI is not a single service. It is a distributed capability.',
+              'AI becomes a governed, explainable, multi-cloud intelligence engine.'
+            ],
+            bullets: [
+              'Vertex AI for experimentation and training',
+              'SageMaker for enterprise ML governance',
+              'Azure OpenAI for regulated LLM workloads',
+              'Cross-cloud model registry and feature store',
+              'Responsible AI guardrails embedded at every stage'
+            ]
+          },
+          {
+            title: '5) Governance Fabric (The Ethical Spine)',
+            paragraphs: [
+              'Governance is not documentation. It is execution.',
+              'This fabric ensures that systems are safe, fair, and accountable.'
+            ],
+            bullets: [
+              'Policy as code across clouds (Azure Policy, SCPs, OPA)',
+              'Unified logging and telemetry (OpenTelemetry)',
+              'Multi-cloud SIEM (Defender, Chronicle, Splunk)',
+              'Automated compliance scanning',
+              'Immutable audit trails'
+            ]
+          },
+          {
+            title: 'II. The Ibis Equity Multi-Cloud Operating Model',
+            subtitle: 'How the architecture behaves, evolves, and delivers value',
+            paragraphs: [
+              'The operating model defines how the cloud runs, not just how it is built.',
+              'It is the choreography of people, processes, and platforms.'
+            ]
+          },
+          {
+            title: '1) The Four Operating Domains',
+            bullets: [
+              {
+                title: 'A) Cloud Platform Operations',
+                description: 'Landing zones, network mesh, identity integration, baseline security, cost governance, and cross-cloud automation. This team ensures the cloud is stable, secure, and scalable.'
+              },
+              {
+                title: 'B) Data and Intelligence Operations',
+                description: 'Data ingestion, data quality, lineage, analytics, ML pipelines, and AI governance. This team ensures the cloud is intelligent and interpretable.'
+              },
+              {
+                title: 'C) Application and Product Operations',
+                description: 'Application modernization, microservices, serverless architectures, CI/CD pipelines, and SRE practices. This team ensures the cloud is productive and innovative.'
+              },
+              {
+                title: 'D) Governance and Risk Operations',
+                description: 'Compliance, privacy, responsible AI, audit readiness, policy enforcement, and incident response. This team ensures the cloud is ethical and accountable.'
+              }
+            ]
+          },
+          {
+            title: '2) The Multi-Cloud Lifecycle',
+            paragraphs: [
+              'This lifecycle is continuous: a living system, not a project.'
+            ],
+            steps: [
+              {
+                title: 'Discover',
+                description: 'Assess workloads, classify data, and map regulatory constraints.'
+              },
+              {
+                title: 'Design',
+                description: 'Architect identity, data, compute, and governance fabrics.'
+              },
+              {
+                title: 'Deploy',
+                description: 'Automate landing zones, pipelines, and cross-cloud integrations.'
+              },
+              {
+                title: 'Operate',
+                description: 'Monitor, optimize, govern, and continuously improve.'
+              },
+              {
+                title: 'Evolve',
+                description: 'Adopt new capabilities, refine policies, and expand intelligence.'
+              }
+            ]
+          },
+          {
+            title: 'III. The Ibis Equity Cloud Governance Doctrine',
+            subtitle: 'The ethical, operational, and architectural laws that govern the cloud',
+            paragraphs: [
+              'Governance at Ibis Equity is not a checklist.',
+              'It is a doctrine: a set of principles that keeps cloud systems aligned with mission, values, and societal impact.'
+            ]
+          },
+          {
+            title: '1) Identity Is the First Principle',
+            bullets: [
+              'Every action must be tied to a verifiable identity',
+              'No exceptions',
+              'No anonymous compute',
+              'No ungoverned access'
+            ]
+          },
+          {
+            title: '2) Data Must Be Classified, Not Assumed',
+            paragraphs: [
+              'Classification drives architecture, not the other way around.'
+            ],
+            bullets: [
+              'Sensitivity',
+              'Regulatory boundary',
+              'Lineage',
+              'Purpose',
+              'Retention'
+            ]
+          },
+          {
+            title: '3) Governance Must Be Executable',
+            paragraphs: [
+              'If a policy cannot be executed, it does not exist.'
+            ],
+            bullets: [
+              'Codified',
+              'Automated',
+              'Enforced',
+              'Observable',
+              'Auditable'
+            ]
+          },
+          {
+            title: '4) AI Must Be Explainable and Accountable',
+            paragraphs: [
+              'AI is a tool of judgment, not a replacement for it.'
+            ],
+            bullets: [
+              'Document inputs',
+              'Expose reasoning',
+              'Log decisions',
+              'Provide recourse',
+              'Operate within ethical boundaries'
+            ]
+          },
+          {
+            title: '5) Multi-Cloud Is a Right, Not a Risk',
+            paragraphs: [
+              'Vendor lock-in is a strategic vulnerability. Multi-cloud is a strategic asset.',
+              'The doctrine protects the freedom to choose the right cloud for the right workload.'
+            ],
+            bullets: [
+              'Portability',
+              'Interoperability',
+              'Resilience',
+              'Sovereignty',
+              'Continuity'
+            ]
+          },
+          {
+            title: '6) Security Is Continuous, Not Periodic',
+            paragraphs: [
+              'Threats evolve continuously. Security must evolve faster.',
+              'Security is a living process.'
+            ],
+            bullets: [
+              'Continuous scanning',
+              'Continuous monitoring',
+              'Continuous authentication',
+              'Continuous compliance'
+            ]
+          },
+          {
+            title: '7) Architecture Must Reflect Values',
+            paragraphs: [
+              'Every system expresses a worldview. Technology is never neutral. Architecture is a moral act.'
+            ],
+            bullets: [
+              'Equity',
+              'Transparency',
+              'Resilience',
+              'Accountability',
+              'Stewardship'
+            ]
+          }
+        ],
+        closingTitle: 'The Final Declaration',
+        closingHighlight: 'Cloud computing at Ibis Equity Consulting is a disciplined, equity-centered, multi-cloud architecture philosophy that transforms infrastructure into a living system, data into intelligence, governance into code, and organizations into adaptive, ethical, resilient institutions capable of shaping the future. This is our manifesto. This is our stance. This is our signature.'
+      },
+      rag: {
+        knowledgeBaseId: 'kb-cloud-computing',
+        modelId: 'anthropic.claude-3-5-sonnet',
+        topK: 5,
+        systemPrompt: 'Answer with practical cloud-computing guidance focused on architecture, security, reliability, and cost optimization.'
+      },
+      capabilities: [
+        'Cloud architecture strategy across networking, security, and governance',
+        'Migration planning for legacy workloads and data platforms',
+        'Performance and cost optimization for scalable cloud operations'
+      ],
+      useCases: [
+        'Application modernization and container-based platform design',
+        'Cloud data lake and analytics infrastructure implementation',
+        'Disaster recovery, backup strategy, and operational resilience'
+      ],
+      destinationId: 'cloud-computing'
+    }
+  },
+  {
     path: 'home/machine-learning',
     component: MapDestinationComponent,
     data: {
@@ -662,12 +1125,12 @@ export const routes: Routes = [
     data: {
       icon: '✍️',
       iconTone: 'accent',
-      title: 'Prompt Engineering',
+      title: 'Prompt AI',
       description: 'Prompt engineering services for reliable AI behavior, grounded outputs, and enterprise-grade interaction design.',
       headerImageSrc: '/images/openart-image_m4qtJzx2_1756330593321_raw.jpg',
       headerImageAlt: 'Prompt Engineering service',
       featureContent: {
-        title: 'Prompt Engineering',
+        title: 'Prompt AI',
         subtitle: 'Designing the instruction layer that turns model capability into consistent, governed enterprise performance.',
         intro: [
           'Prompt engineering is the operational discipline of shaping how AI systems interpret intent, reason through context, and produce outputs that are useful, grounded, and reliable. It is not simply about writing clever commands. It is about designing instruction systems that align model behavior with organizational goals, domain constraints, and the realities of production use.',
@@ -744,7 +1207,8 @@ export const routes: Routes = [
         'Retrieval-grounded systems that must use context accurately and transparently',
         'Operational AI workflows that need safe escalation, formatting, and decision controls'
       ],
-      destinationId: 'prompt-engineering'
+      destinationId: 'prompt-engineering',
+      hideFeatureStory: true
     }
   },
   {
@@ -823,6 +1287,7 @@ export const routes: Routes = [
     data: {
       icon: '⚕️',
       iconTone: 'positive',
+      destinationId: 'healthcare',
       title: 'Healthcare',
       description: 'Healthcare solutions and insights for patient outcomes, operations, and care delivery performance.',
       featureContent: {
@@ -1202,6 +1667,7 @@ export const routes: Routes = [
     data: {
       icon: '⚖️',
       iconTone: 'ink',
+      destinationId: 'law-legal-services',
       title: 'Law & Legal Services',
       description: 'Legal and advisory solutions to support case workflows, contract analysis, and compliance operations.',
       featureContent: {

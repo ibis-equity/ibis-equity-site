@@ -331,10 +331,11 @@
         <a class="main-menu__item" [routerLink]="'/home'">Home</a>
         <a class="main-menu__item" href="#" (click)="openAboutModal($event)">About</a>
         <a class="main-menu__item" [routerLink]="'/home/machine-learning'">Machine Learning</a>
+        <a class="main-menu__item" [routerLink]="'/home/cloud-computing'">Cloud Computing</a>
         <a class="main-menu__item" [routerLink]="'/home/deep-learning'">Deep Learning</a>
         <a class="main-menu__item" [routerLink]="'/home/data-sciences'">Data Sciences</a>
         <a class="main-menu__item" [routerLink]="'/home/generative-ai'">Generative AI</a>
-        <a class="main-menu__item" [routerLink]="'/home/prompt-engineering'">Prompt Engineering</a>
+        <a class="main-menu__item" [routerLink]="'/home/prompt-engineering'">Prompt AI</a>
         <a class="main-menu__item" href="#" (click)="openResponsibleModal($event)">Responsible AI</a>
         <a class="main-menu__item" [routerLink]="'/home/agentic-ai'">Agentic AI</a>
         <button class="main-menu__item main-menu__action" type="button" (click)="openContactModal($event)">Contact Us</button>
@@ -387,16 +388,79 @@
               </label>
               <label class="contact-form__field contact-form__field--full">
                 <span>Position</span>
-                <input type="text" name="contactPosition" [(ngModel)]="contactPosition" required />
+                <select name="contactPosition" [(ngModel)]="contactPosition" required>
+                  <option value="">-- Select your position --</option>
+                  <optgroup label="Executive / C-Suite">
+                    <option>Chief Executive Officer (CEO)</option>
+                    <option>Chief Technology Officer (CTO)</option>
+                    <option>Chief Information Officer (CIO)</option>
+                    <option>Chief Data Officer (CDO)</option>
+                    <option>Chief AI Officer (CAIO)</option>
+                    <option>Chief Operating Officer (COO)</option>
+                    <option>Chief Financial Officer (CFO)</option>
+                    <option>Chief Security Officer (CISO)</option>
+                  </optgroup>
+                  <optgroup label="VP / Director">
+                    <option>VP of Engineering</option>
+                    <option>VP of Technology</option>
+                    <option>VP of Product</option>
+                    <option>VP of Data &amp; Analytics</option>
+                    <option>Director of AI / ML</option>
+                    <option>Director of Data Science</option>
+                    <option>Director of Engineering</option>
+                    <option>Director of Information Technology</option>
+                    <option>Director of Strategy</option>
+                  </optgroup>
+                  <optgroup label="Management">
+                    <option>Engineering Manager</option>
+                    <option>Data Science Manager</option>
+                    <option>Product Manager</option>
+                    <option>Program Manager</option>
+                    <option>Project Manager</option>
+                  </optgroup>
+                  <optgroup label="Technical">
+                    <option>AI / ML Engineer</option>
+                    <option>Data Scientist</option>
+                    <option>Data Engineer</option>
+                    <option>Software Engineer</option>
+                    <option>Solutions Architect</option>
+                    <option>Cloud Architect</option>
+                    <option>Platform Engineer</option>
+                    <option>DevOps / MLOps Engineer</option>
+                    <option>Security Engineer</option>
+                    <option>Research Scientist</option>
+                  </optgroup>
+                  <optgroup label="Business / Strategy">
+                    <option>Business Analyst</option>
+                    <option>Strategy Consultant</option>
+                    <option>Management Consultant</option>
+                    <option>Enterprise Architect</option>
+                    <option>Operations Manager</option>
+                  </optgroup>
+                  <optgroup label="Academic / Research">
+                    <option>University Researcher / Professor</option>
+                    <option>Graduate / Doctoral Researcher</option>
+                    <option>Industry Analyst</option>
+                  </optgroup>
+                  <optgroup label="Other">
+                    <option>Other / Not Listed</option>
+                  </optgroup>
+                </select>
               </label>
               <label class="contact-form__field contact-form__field--full">
-                <span>Request</span>
-                <textarea name="contactRequest" [(ngModel)]="contactRequest" rows="5" required></textarea>
+                <span>Please describe the details of your request.</span>
+                <textarea name="contactRequest" [(ngModel)]="contactRequest" rows="5" maxlength="2000" required></textarea>
+                <small class="contact-form__hint">{{ contactRequest.length }} / 2000 characters</small>
               </label>
             </div>
-            <button class="contact-form__submit" type="submit" [disabled]="contactSubmitting() || isContactFormInvalid()">
-              {{ contactSubmitting() ? 'Processing...' : 'Submit' }}
-            </button>
+            <div class="contact-form__actions">
+              <button class="contact-form__submit" type="submit" [disabled]="contactSubmitting() || isContactFormInvalid()">
+                {{ contactSubmitting() ? 'Processing...' : 'Submit' }}
+              </button>
+              <button class="contact-form__clear" type="button" (click)="clearContactForm()" [disabled]="contactSubmitting()">
+                Clear
+              </button>
+            </div>
             @if (contactSubmitError()) {
               <p class="contact-form__error">{{ contactSubmitError() }}</p>
             }
@@ -533,157 +597,156 @@
       </div>
       <section class="lead">
         <p>
-          Ibis Equity Consulting partners with organizations to architect AI systems that are technically rigorous, operationally grounded, and aligned with the realities of enterprise scale decision making. We design solutions that respect the complexity of distributed systems, heterogeneous data environments, and high stakes workflows—systems that elevate expert judgment rather than obscure it, and that embed governance, transparency, and auditability into every layer of the stack.
+          Ibis Equity designs AI systems that are technically rigorous, operationally grounded, and aligned with the values and realities of enterprise scale decision making. We build intelligence that behaves predictably under load, integrates cleanly with distributed systems, and elevates human judgment rather than obscuring it.
         </p>
         <p>
-          We work with leaders who understand that AI is not a feature but an infrastructure capability. It requires intentional design across data pipelines, retrieval architectures, model governance, human in the loop pathways, and long term lifecycle management. It demands interpretability, traceability, and alignment with organizational values—not just accuracy benchmarks or model performance metrics.
+          We architect AI as an infrastructure capability - not a feature. That means designing for grounded retrieval, governed corpora, resilient pipelines, transparent reasoning, and lifecycle governance that stands up to real world pressure. Our systems are observable, testable, recoverable, and aligned with organizational risk posture.
         </p>
         <p>
-          Our approach transforms artificial intelligence from isolated pilots into durable, enterprise ready systems. We build architectures that advance equity through structured metadata and bias aware evaluation; strengthen transparency through grounded retrieval, lineage, and model documentation; and expand institutional intelligence through resilient pipelines, governed corpora, and responsible agentic workflows.
+          But we also believe intelligence must be intentional.
+          It must be interpretable, traceable, and accountable.
+          It must reflect the values of the institutions it serves.
         </p>
         <p>
-          The result is AI that integrates cleanly with existing systems, scales predictably, and operates safely under real world constraints. AI that reduces operational risk instead of amplifying it. AI that supports better decisions, not just faster outputs. AI that becomes a strategic asset—reliable, interpretable, and built to endure.
+          We build AI that reduces operational risk instead of amplifying it.
+          AI that strengthens expertise instead of replacing it.
+          AI that becomes a strategic asset - reliable, transparent, and built to endure.
+        </p>
+        <p>
+          <strong>Ibis Equity Consulting &mdash; Designing Intelligence That Endures</strong>
+        </p>
+        <p>
+          Ibis Equity Consulting partners with organizations to architect AI systems that are as technically rigorous as they are ethically grounded. We design intelligence infrastructures that honor the complexity of distributed systems, heterogeneous data environments, and high stakes institutional workflows - systems that elevate expert judgment, not obscure it, and that embed governance, transparency, and auditability into every layer of the stack.
+        </p>
+        <p>
+          We work with leaders who recognize that AI is not a feature. It is an infrastructure capability - one that demands intentional design across data pipelines, retrieval architectures, model governance frameworks, human in the loop pathways, and long term lifecycle management. Effective AI must be interpretable, traceable, and aligned with organizational values. It must explain itself, withstand scrutiny, and behave predictably under real world constraints.
+        </p>
+        <p>
+          Our engineering approach is grounded in the realities of production systems: partial failures, schema drift, stale caches, asynchronous pipelines, and the operational cost of maintaining distributed intelligence at scale. We architect AI that is observable, testable, recoverable, and governed - intelligence that integrates cleanly with existing systems and strengthens the institutional fabric rather than destabilizing it.
+        </p>
+        <p>
+          But we also believe intelligence must be designed with intention.
+          Not as a black box.
+          Not as a novelty.
+          But as a system of meaning - structured, governed, and aligned with human judgment.
+        </p>
+        <p>
+          We build architectures that advance equity through structured metadata and bias aware evaluation; that strengthen transparency through grounded retrieval, lineage tracking, and model documentation; and that expand institutional intelligence through resilient pipelines, governed corpora, and responsible agentic workflows. We design AI that is transparent in its reasoning, grounded in evidence, and humble in uncertainty.
+        </p>
+        <p>
+          The result is AI that reduces operational risk instead of amplifying it.
+          AI that supports better decisions - not just faster outputs.
+          AI that becomes a strategic asset: reliable, interpretable, and built to endure.
+          This is intelligence engineered for the real world - intentional, resilient, and aligned with the systems and values that matter.
         </p>
       </section>
-      <section class="ai-evolution-section">
-        <div class="container">
-          <header class="ai-evolution-header">
-            <h2 class="ai-evolution-title">The Evolution of AI Across Industries</h2>
-            <p class="ai-evolution-subtitle">
-              A unified arc—from rules to reasoning, from data to agency—expressed differently in every sector.
-            </p>
-          </header>
-
-          <div class="ai-evolution-grid ai-evolution-grid--header">
-            <div class="ai-evolution-cell ai-evolution-cell--corner">Sector</div>
-            <div class="ai-evolution-cell">Rule‑Based</div>
-            <div class="ai-evolution-cell">Data Science</div>
-            <div class="ai-evolution-cell">Machine Learning</div>
-            <div class="ai-evolution-cell">Deep Learning</div>
-            <div class="ai-evolution-cell">Generative AI</div>
-            <div class="ai-evolution-cell">Agentic Systems</div>
-          </div>
-
-          <div class="ai-evolution-grid">
-            <div class="ai-evolution-cell ai-evolution-cell--sector">Healthcare</div>
-            <div class="ai-evolution-cell">
-              CDS alerts, order sets, allergy checks
-            </div>
-            <div class="ai-evolution-cell">
-              Readmission risk, LOS forecasting, quality metrics
-            </div>
-            <div class="ai-evolution-cell">
-              Sepsis prediction, imaging triage, risk stratification
-            </div>
-            <div class="ai-evolution-cell">
-              Radiology (CNNs), pathology slides, clinical NLP
-            </div>
-            <div class="ai-evolution-cell">
-              Chart summarization, ambient documentation, patient education
-            </div>
-            <div class="ai-evolution-cell">
-              Multi‑step chart review, prior auth automation, care coordination agents
-            </div>
-          </div>
-
-          <div class="ai-evolution-grid">
-            <div class="ai-evolution-cell ai-evolution-cell--sector">Legal</div>
-            <div class="ai-evolution-cell">
-              Clause checkers, compliance engines, e‑discovery rules
-            </div>
-            <div class="ai-evolution-cell">
-              Case outcome analytics, judge behavior models, settlement forecasting
-            </div>
-            <div class="ai-evolution-cell">
-              Document classification, relevance ranking, entity extraction
-            </div>
-            <div class="ai-evolution-cell">
-              Contract analysis, semantic search, deposition NLP
-            </div>
-            <div class="ai-evolution-cell">
-              Memo drafting, discovery summarization, research synthesis
-            </div>
-            <div class="ai-evolution-cell">
-              Multi‑jurisdiction research agents, citation‑verified drafting, workflow orchestration
-            </div>
-          </div>
-
-          <div class="ai-evolution-grid">
-            <div class="ai-evolution-cell ai-evolution-cell--sector">Energy &amp; Utilities</div>
-            <div class="ai-evolution-cell">
-              SCADA rules, outage thresholds, equipment logic
-            </div>
-            <div class="ai-evolution-cell">
-              Load forecasting, reliability modeling, demand planning
-            </div>
-            <div class="ai-evolution-cell">
-              Predictive maintenance, anomaly detection, failure prediction
-            </div>
-            <div class="ai-evolution-cell">
-              Sensor fusion, drone inspection, grid optimization
-            </div>
-            <div class="ai-evolution-cell">
-              Procedure summarization, incident reporting, knowledge retrieval
-            </div>
-            <div class="ai-evolution-cell">
-              Field‑tech assistants, autonomous outage triage, diagnostic agents
-            </div>
-          </div>
-
-          <div class="ai-evolution-grid">
-            <div class="ai-evolution-cell ai-evolution-cell--sector">Education</div>
-            <div class="ai-evolution-cell">
-              Adaptive quizzes, LMS logic, rule‑based tutoring
-            </div>
-            <div class="ai-evolution-cell">
-              Retention analytics, enrollment forecasting, course performance
-            </div>
-            <div class="ai-evolution-cell">
-              Personalized learning paths, early‑warning systems, recommendations
-            </div>
-            <div class="ai-evolution-cell">
-              Automated grading, speech accessibility, NLP‑based tutoring
-            </div>
-            <div class="ai-evolution-cell">
-              Lesson planning, content creation, student feedback
-            </div>
-            <div class="ai-evolution-cell">
-              Policy‑aware tutoring agents, admin workflow automation, multi‑step advising
-            </div>
-          </div>
-
-          <div class="ai-evolution-grid">
-            <div class="ai-evolution-cell ai-evolution-cell--sector">Corporate &amp; Enterprise</div>
-            <div class="ai-evolution-cell">
-              Workflow automation, compliance rules, business logic engines
-            </div>
-            <div class="ai-evolution-cell">
-              KPI dashboards, forecasting, customer segmentation
-            </div>
-            <div class="ai-evolution-cell">
-              Churn prediction, fraud detection, recommendation systems
-            </div>
-            <div class="ai-evolution-cell">
-              NLP for support, vision for quality control, speech analytics
-            </div>
-            <div class="ai-evolution-cell">
-              Knowledge management, document summarization, code generation
-            </div>
-            <div class="ai-evolution-cell">
-              Enterprise copilots, cross‑system orchestration, automated reporting
-            </div>
-          </div>
-        </div>
-      </section>
-      <p class="paragraph">
-        
-        <strong>
-        From Rules to Reasoning, From Data to Agency</strong><br>
-        AI is no longer just a technology &mdash; it is an <strong>organizational capability.</strong>
-        The future belongs to institutions that can integrate AI into workflows, govern it responsibly, and combine human expertise with machine intelligence.
-      </p>
     </div>
   </header>
+
+  <section class="iax" aria-labelledby="iax-title">
+    <div class="iax__inner">
+      <div class="iax__hero">
+        <div class="iax__hero-copy">
+          <p class="iax__kicker">Multi-Sector AI Architecture</p>
+          <h2 id="iax-title" class="iax__title">Intelligence, Engineered With Intention</h2>
+          <p class="iax__subtitle">
+            We partner with organizations across healthcare, legal, energy, retail, education, insurance,
+            manufacturing, and public sector environments to design AI systems that are technically rigorous,
+            operationally grounded, and aligned with enterprise scale decision making.
+          </p>
+          <nav class="iax__chips" aria-label="Architecture sector quick links">
+            <a href="#iax-healthcare">Healthcare</a>
+            <a href="#iax-legal">Legal</a>
+            <a href="#iax-energy">Energy</a>
+            <a href="#iax-retail">Retail</a>
+            <a href="#iax-education">Education</a>
+            <a href="#iax-insurance">Insurance</a>
+            <a href="#iax-manufacturing">Manufacturing</a>
+            <a href="#iax-government">Government</a>
+          </nav>
+          <ul class="iax__bullets">
+            <li>Grounded retrieval, governed corpora, and resilient pipelines</li>
+            <li>Transparent reasoning, traceability, and operational readiness</li>
+            <li>Human-centered workflows that elevate expert judgment</li>
+          </ul>
+        </div>
+        <aside class="iax__panel" aria-label="AI Architecture Snapshot">
+          <h3>Architecture Snapshot</h3>
+          <p>
+            AI as infrastructure, not a feature: grounded retrieval, lifecycle governance, and domain-aware reasoning
+            across high-stakes sectors.
+          </p>
+          <p>
+            Designed for observability, recoverability, and transparent decision support under real-world constraints.
+          </p>
+        </aside>
+      </div>
+
+      <div class="iax__head">
+        <p class="iax__kicker">Sectors</p>
+        <h3 class="iax__section-title">Architecting Intelligence Across Industries</h3>
+        <p class="iax__section-subtitle">
+          Each sector carries unique risk, regulation, and operational complexity. Our approach stays constant:
+          grounded, governed, and production-ready.
+        </p>
+      </div>
+
+      <div class="iax__grid">
+        <article class="iax__card" id="iax-healthcare">
+          <h4>Healthcare</h4>
+          <p>Clinical-grade intelligence for safer, evidence-grounded decisions.</p>
+          <p>Built to reduce cognitive load while preserving oversight and accountability.</p>
+        </article>
+        <article class="iax__card" id="iax-legal">
+          <h4>Legal</h4>
+          <p>Reasoning systems that respect precedent, jurisdiction, and defensibility.</p>
+          <p>Structured retrieval and citation-aware workflows for high-trust legal outcomes.</p>
+        </article>
+        <article class="iax__card" id="iax-energy">
+          <h4>Energy &amp; Utilities</h4>
+          <p>Operational intelligence for grid reliability and critical infrastructure resilience.</p>
+          <p>Designed for real-time context, field constraints, and safety-centered operations.</p>
+        </article>
+        <article class="iax__card" id="iax-retail">
+          <h4>Retail &amp; E-Commerce</h4>
+          <p>Contextual intelligence for experience, merchandising, and trusted engagement.</p>
+          <p>Personalization that remains transparent, governed, and brand-aligned.</p>
+        </article>
+        <article class="iax__card" id="iax-education">
+          <h4>Education</h4>
+          <p>Equitable intelligence that supports educators and learner outcomes.</p>
+          <p>Built with interpretability, age-appropriate constraints, and instructional integrity.</p>
+        </article>
+        <article class="iax__card" id="iax-insurance">
+          <h4>Insurance</h4>
+          <p>Explainable intelligence for underwriting, claims, and fraud workflows.</p>
+          <p>Engineered for compliance scrutiny and high-trust decision environments.</p>
+        </article>
+        <article class="iax__card" id="iax-manufacturing">
+          <h4>Manufacturing</h4>
+          <p>Industrial-grade AI for production optimization and failure prevention.</p>
+          <p>Robust, interpretable systems tuned to plant-floor realities.</p>
+        </article>
+        <article class="iax__card" id="iax-government">
+          <h4>Government &amp; Public Sector</h4>
+          <p>Trustworthy intelligence for services, transparency, and accountable governance.</p>
+          <p>Aligned with statutory obligations, auditability, and public confidence.</p>
+        </article>
+      </div>
+
+      <div class="iax__cta">
+        <h3>Start Your AI Journey Today</h3>
+        <p>
+          We design architectures that are resilient under load, transparent in reasoning, and aligned with your
+          organizational values and risk posture.
+        </p>
+        <div class="iax__cta-actions">
+          <button type="button">Schedule an Architecture Conversation</button>
+          <button type="button" class="iax__cta-secondary">Request a Sector-Specific Blueprint</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="image-map-center" aria-labelledby="interactive-map-title">
     <div class="image-map-heading">
@@ -698,11 +761,11 @@
         <a class="main-menu__item home-featured-destination__link" [routerLink]="'/home/agentic-ai'">Open Agentic AI</a>
       </article>
       <article class="card home-featured-destination" aria-label="Featured destination">
-        <h2>Featured Destination: Prompt Engineering</h2>
+        <h2>Featured Destination: Data Sciences</h2>
         <p>
-          Explore how instruction design, grounding strategy, and evaluation frameworks turn model capability into reliable enterprise behavior.
+          Explore how modern data science transforms enterprise data into predictive insight, operational intelligence, and measurable business outcomes.
         </p>
-        <a class="main-menu__item home-featured-destination__link" [routerLink]="'/home/prompt-engineering'">Open Prompt Engineering</a>
+        <a class="main-menu__item home-featured-destination__link" [routerLink]="'/home/data-sciences'">Open Data Sciences</a>
       </article>
     </div>
     <div class="image-map-wrapper">
@@ -738,6 +801,28 @@
       My work focuses on building AI that is resilient, governed, and aligned with real&#8209;world workflows&mdash;not hype cycles. At Ibis Equity, we help organizations create systems that earn trust, reduce risk, and support better decisions across every layer of the enterprise.
     </p>
     <p>&mdash; Daryl E. Shackleford</p>
+  </section>
+
+  <section class="thoth-manifesto" aria-labelledby="thoth-manifesto-title">
+    <p class="thoth-manifesto__eyebrow">Brand Manifesto</p>
+    <h2 id="thoth-manifesto-title">Thoth Egyptian god of wisdom, writing, law, math, science, philosophy, medicine, magic, and the moon.</h2>
+    <p>
+      Our mark is a declaration that intelligence must be intentional. Inspired by Thoth - the ancient architect of
+      math, science, and written truth - it represents the belief that knowledge is not chaos but structure, not
+      spectacle but clarity.
+    </p>
+    <p>
+      The crescent arc, the ibis line, and the ledger glyph form a unified sigil of measured wisdom: insight that is
+      grounded, accountable, and aligned with a greater order.
+    </p>
+    <p>
+      This symbol stands for disciplined reasoning, transparent systems, and the courage to build intelligence that
+      can be interrogated, trusted, and understood.
+    </p>
+    <p>
+      It is a reminder that every decision, every model, every workflow must honor the same mandate Thoth carried
+      across millennia: to measure, to record, to understand, and to bring order to complexity.
+    </p>
   </section>
 
   <footer class="site-footer" aria-labelledby="site-footer-title">

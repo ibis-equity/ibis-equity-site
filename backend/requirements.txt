@@ -10,6 +10,7 @@ opensearch-py==3.1.0
 anthropic==0.84.0
 numpy==2.2.1
 pypdf
+PyMuPDF==1.26.4
 streamlit==1.54.0
 tiktoken>=0.12.0,<1.0.0
 toml==0.10.2
