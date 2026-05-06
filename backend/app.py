@@ -306,6 +306,8 @@ def _resolve_knowledge_base_id(requested_id: str) -> str:
         fallback = (os.environ.get("BEDROCK_KNOWLEDGE_BASE_ID") or "").strip()
         if fallback:
             return fallback
+        # No alias mapping configured: skip KB API lookup and use OpenSearch flow directly.
+        return ""
 
     return kb_id
 
@@ -423,7 +425,8 @@ def _generate_answer_from_context(question: str, context_chunks: List[str], regi
     prompt = (
         "You are a grounded enterprise AI assistant. "
         "Use only the provided context to answer the question. "
-        "If the answer is not in context, answer exactly: don't know.\n\n"
+        "If the answer is not explicitly stated, provide a cautious inference from the available context and clearly label it as an inference. "
+        "If there is no relevant evidence in context, answer: don't know.\n\n"
         f"Domain guidance: {system_prompt}\n\n"
         "Context:\n"
         f"{context_text}\n\n"
@@ -565,7 +568,8 @@ Human: Here are a few documents in <documents> tags:
 {{context}}
 </documents>
 Based on the above documents, provide a detailed answer for, {{question}}
-Answer \"don't know\" if not present in the document.
+If the answer is not explicitly present, provide a cautious inference grounded in the documents and label it as an inference.
+Answer \"don't know\" only when the documents contain no relevant evidence.
 
 Domain guidance: {system_prompt}
 

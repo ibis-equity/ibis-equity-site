@@ -1,13 +1,43 @@
 {
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Full stack: Angular + FastAPI debugger",
+      "configurations": ["Angular: frontend", "FastAPI: backend"]
+    }
+  ],
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "Angular: frontend",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "url": "http://localhost:4202/"
+    },
+    {
+      "name": "Angular + FastAPI",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start:full",
+      "url": "http://localhost:4202/"
+    },
+    {
+      "name": "FastAPI: backend",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "backend.app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8010"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/backend/.env"
     },
     {
       "name": "ng test",

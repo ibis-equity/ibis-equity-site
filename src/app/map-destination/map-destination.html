@@ -2184,24 +2184,90 @@ export class MlDiagramModule &#123;&#125;
         [class.feature-story--healthcare]="destinationId === 'healthcare'"
         aria-label="Destination details"
       >
-        <header class="feature-story__header">
+        <header
+          class="feature-story__header"
+          [class.feature-story__header--agentic]="destinationId === 'agentic-ai'"
+          [class.feature-story__header--cloud]="destinationId === 'cloud-computing'"
+          [class.feature-story__header--deep]="destinationId === 'deep-learning' || destinationId === 'generative-ai'"
+        >
           @if (headerImageSrc) {
-            <div class="destination-hero destination-hero--feature">
-              <img
-                class="destination-hero__image"
-                [src]="headerImageSrc"
-                [alt]="headerImageAlt"
-                width="320"
-                height="220"
-              >
-              <div class="destination-hero__copy">
-                <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
-                <h1 class="feature-story__title">{{ featureContent.title }}</h1>
-                @if (featureContent.subtitle) {
-                  <p class="feature-story__subtitle">{{ featureContent.subtitle }}</p>
-                }
+            @if (destinationId === 'agentic-ai') {
+              <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
+              <h1 class="feature-story__title feature-story__title--agentic">{{ featureContent.title }}</h1>
+              <div class="destination-hero destination-hero--feature destination-hero--agentic">
+                <img
+                  class="destination-hero__image"
+                  [src]="headerImageSrc"
+                  [alt]="headerImageAlt"
+                  width="320"
+                  height="220"
+                >
               </div>
-            </div>
+              @if (featureContent.subtitle) {
+                <p class="feature-story__subtitle">{{ featureContent.subtitle }}</p>
+              }
+            } @else if (destinationId === 'cloud-computing') {
+              <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
+              <h1 class="feature-story__title feature-story__title--cloud">{{ title }}</h1>
+              <div class="destination-hero destination-hero--feature destination-hero--cloud">
+                <img
+                  class="destination-hero__image"
+                  [src]="headerImageSrc"
+                  [alt]="headerImageAlt"
+                  width="320"
+                  height="220"
+                >
+              </div>
+              <p class="feature-story__subtitle feature-story__subtitle--cloud">A modern narrative for leaders, architects, and organizations building toward intelligence and equity.</p>
+              <p class="feature-story__subtitle feature-story__subtitle--cloud-emphasis">Elastic. Observable. Intelligent.<br>This is cloud computing, elevated to strategy.</p>
+            } @else if (destinationId === 'deep-learning') {
+              <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
+              <h1 class="feature-story__title">Deep Learning</h1>
+              <div class="destination-hero destination-hero--feature destination-hero--deep">
+                <img
+                  class="destination-hero__image"
+                  [src]="headerImageSrc"
+                  [alt]="headerImageAlt"
+                  width="320"
+                  height="220"
+                >
+              </div>
+              @if (featureContent.subtitle) {
+                <p class="feature-story__subtitle">{{ featureContent.subtitle }}</p>
+              }
+            } @else if (destinationId === 'generative-ai') {
+              <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
+              <h1 class="feature-story__title">Generative AI</h1>
+              <div class="destination-hero destination-hero--feature destination-hero--deep">
+                <img
+                  class="destination-hero__image"
+                  [src]="headerImageSrc"
+                  [alt]="headerImageAlt"
+                  width="320"
+                  height="220"
+                >
+              </div>
+              @if (featureContent.subtitle) {
+                <p class="feature-story__subtitle">{{ featureContent.subtitle }}</p>
+              }
+            } @else {
+              <div class="destination-hero destination-hero--feature">
+                <img
+                  class="destination-hero__image"
+                  [src]="headerImageSrc"
+                  [alt]="headerImageAlt"
+                  width="320"
+                  height="220"
+                >
+                <div class="destination-hero__copy">
+                  <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
+                  <h1 class="feature-story__title">{{ featureContent.title }}</h1>
+                  @if (featureContent.subtitle) {
+                    <p class="feature-story__subtitle">{{ featureContent.subtitle }}</p>
+                  }
+                </div>
+              </div>
+            }
           } @else {
             <p class="feature-story__eyebrow">Ibis Equity Perspective</p>
             <h1 class="feature-story__title">{{ featureContent.title }}</h1>

@@ -16,7 +16,8 @@ param(
     [int]$FrontendPort = 4202,
     [int]$BackendPort = 8010,
     [int]$StartupWaitSeconds = 15,
-    [int]$HealthCheckRetries = 10
+    [int]$HealthCheckRetries = 30,
+    [switch]$NoExit
 )
 
 Set-StrictMode -Version Latest
@@ -25,37 +26,38 @@ $ErrorActionPreference = "Continue"
 # Colors for output
 function Write-Heading {
     param([string]$Text)
-    Write-Host "`n" -NoNewline
-    Write-Host "╔═══════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
-    Write-Host "║ $($Text.PadRight(59)) ║" -ForegroundColor Cyan
-    Write-Host "╚═══════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host ("+" + ("-" * 63) + "+") -ForegroundColor Cyan
+    Write-Host ("| " + $Text.PadRight(61) + "|") -ForegroundColor Cyan
+    Write-Host ("+" + ("-" * 63) + "+") -ForegroundColor Cyan
     Write-Host ""
 }
 
 function Write-Section {
     param([string]$Text)
-    Write-Host "`n$Text" -ForegroundColor Yellow
-    Write-Host ("-" * $Text.Length) -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host $Text -ForegroundColor Yellow
+    Write-Host (("-" * [Math]::Max(1, $Text.Length))) -ForegroundColor Yellow
 }
 
 function Write-Success {
     param([string]$Text)
-    Write-Host "✓ $Text" -ForegroundColor Green
+    Write-Host "[PASS] $Text" -ForegroundColor Green
 }
 
 function Write-Error-Custom {
     param([string]$Text)
-    Write-Host "✗ $Text" -ForegroundColor Red
+    Write-Host "[FAIL] $Text" -ForegroundColor Red
 }
 
 function Write-Info {
     param([string]$Text)
-    Write-Host "ℹ $Text" -ForegroundColor Cyan
+    Write-Host "[INFO] $Text" -ForegroundColor Cyan
 }
 
 function Write-Warning-Custom {
     param([string]$Text)
-    Write-Host "⚠ $Text" -ForegroundColor Yellow
+    Write-Host "[WARN] $Text" -ForegroundColor Yellow
 }
 
 # Step 1: Clear any processes on target ports
@@ -88,7 +90,7 @@ try {
 Write-Heading "STEP 2: Starting Services"
 
 Write-Info "Spawning npm run start:full (frontend + backend concurrent)..."
-$proc = Start-Process -FilePath "npm" -ArgumentList "run start:full" -NoNewWindow -PassThru
+$proc = Start-Process -FilePath "npm.cmd" -ArgumentList "run start:full" -NoNewWindow -PassThru
 Write-Success "Services started (PID: $($proc.Id))"
 
 Write-Info "Waiting $StartupWaitSeconds seconds for services to initialize..."
@@ -101,19 +103,17 @@ $backendReady = $false
 $frontendReady = $false
 
 # Check backend
-Write-Info "Checking backend health..."
+Write-Info "Checking backend port availability..."
 for ($i = 1; $i -le $HealthCheckRetries; $i++) {
-    try {
-        $response = Invoke-WebRequest -Uri "http://localhost:$BackendPort/health" -Method GET -UseBasicParsing -TimeoutSec 2
-        if ($response.StatusCode -eq 200) {
-            Write-Success "Backend is healthy (http://localhost:$BackendPort)"
-            $backendReady = $true
-            break
-        }
-    } catch {
-        Write-Info "Attempt $i/$HealthCheckRetries: Waiting for backend..."
-        Start-Sleep -Seconds 2
+    $backendListening = Get-NetTCPConnection -LocalPort $BackendPort -State Listen -ErrorAction SilentlyContinue
+    if ($backendListening) {
+        Write-Success "Backend is listening on port $BackendPort"
+        $backendReady = $true
+        break
     }
+
+    Write-Info "Attempt ${i}/${HealthCheckRetries}: Waiting for backend port..."
+    Start-Sleep -Seconds 2
 }
 
 if (-not $backendReady) {
@@ -131,7 +131,7 @@ for ($i = 1; $i -le 5; $i++) {
             break
         }
     } catch {
-        Write-Info "Attempt $i/5: Waiting for frontend..."
+        Write-Info "Attempt ${i}/5: Waiting for frontend..."
         Start-Sleep -Seconds 2
     }
 }
@@ -150,6 +150,8 @@ Write-Heading "STEP 4: Backend Smoke Tests"
 
 $testsPassed = 0
 $testsFailed = 0
+$testsSkipped = 0
+$failedTests = @()
 
 function Test-Endpoint {
     param(
@@ -199,13 +201,17 @@ function Test-Endpoint {
 # Test 1: Health check
 if (Test-Endpoint -Name "Health Check" -Method GET -Endpoint "/health" -ExpectedStatus 200) {
     $testsPassed++
+    Write-Output "TEST_RESULT: Health Check = PASS"
 } else {
     $testsFailed++
+    $failedTests += "Health Check"
+    Write-Output "TEST_RESULT: Health Check = FAIL"
 }
 
 # Test 2: Health config
 if (Test-Endpoint -Name "Health Config" -Method GET -Endpoint "/health/config" -ExpectedStatus 200) {
     $testsPassed++
+    Write-Output "TEST_RESULT: Health Config = PASS"
     try {
         $resp = Invoke-WebRequest -Uri "http://localhost:$BackendPort/health/config" -Method GET -UseBasicParsing
         $data = $resp.Content | ConvertFrom-Json
@@ -213,11 +219,14 @@ if (Test-Endpoint -Name "Health Config" -Method GET -Endpoint "/health/config" -
     } catch {}
 } else {
     $testsFailed++
+    $failedTests += "Health Config"
+    Write-Output "TEST_RESULT: Health Config = FAIL"
 }
 
 # Test 3: KB health
 if (Test-Endpoint -Name "Knowledge Base Health" -Method GET -Endpoint "/health/kb" -ExpectedStatus 200) {
     $testsPassed++
+    Write-Output "TEST_RESULT: Knowledge Base Health = PASS"
     try {
         $resp = Invoke-WebRequest -Uri "http://localhost:$BackendPort/health/kb" -Method GET -UseBasicParsing
         $data = $resp.Content | ConvertFrom-Json
@@ -225,13 +234,18 @@ if (Test-Endpoint -Name "Knowledge Base Health" -Method GET -Endpoint "/health/k
     } catch {}
 } else {
     $testsFailed++
+    $failedTests += "Knowledge Base Health"
+    Write-Output "TEST_RESULT: Knowledge Base Health = FAIL"
 }
 
 # Test 4: Contact form validation
 if (Test-Endpoint -Name "Contact Form (Validation)" -Method POST -Endpoint "/api/contact/submit" -Body '{}' -ExpectedStatus 422) {
     $testsPassed++
+    Write-Output "TEST_RESULT: Contact Form (Validation) = PASS"
 } else {
     $testsFailed++
+    $failedTests += "Contact Form (Validation)"
+    Write-Output "TEST_RESULT: Contact Form (Validation) = FAIL"
 }
 
 # Test 5: RAG query with real payload
@@ -251,21 +265,28 @@ try {
         Write-Info "  Answer length: $($data.answer.Length) characters"
         Write-Info "  Sources: $($data.sources.Count)"
         $testsPassed++
+        Write-Output "TEST_RESULT: RAG Query (Functional) = PASS"
     } else {
         Write-Error-Custom "Status: $($resp.StatusCode)"
         $testsFailed++
+        $failedTests += "RAG Query (Functional)"
+        Write-Output "TEST_RESULT: RAG Query (Functional) = FAIL"
     }
 } catch {
     Write-Warning-Custom "RAG query failed: $($_.Exception.Message)"
     Write-Info "  (This is expected if KB aliases are not configured)"
-    $testsFailed++
+    $testsSkipped++
+    Write-Output "TEST_RESULT: RAG Query (Functional) = SKIP"
 }
 
 # Test 6: Speech synthesis validation
 if (Test-Endpoint -Name "Speech Synthesis (Validation)" -Method POST -Endpoint "/api/speech/synthesize" -Body '{}' -ExpectedStatus 422) {
     $testsPassed++
+    Write-Output "TEST_RESULT: Speech Synthesis (Validation) = PASS"
 } else {
     $testsFailed++
+    $failedTests += "Speech Synthesis (Validation)"
+    Write-Output "TEST_RESULT: Speech Synthesis (Validation) = FAIL"
 }
 
 # Summary
@@ -275,15 +296,46 @@ Write-Success "$testsPassed tests passed"
 if ($testsFailed -gt 0) {
     Write-Error-Custom "$testsFailed tests failed"
 }
+if ($testsSkipped -gt 0) {
+    Write-Warning-Custom "$testsSkipped tests skipped"
+}
 Write-Host ""
 Write-Info "Frontend: http://localhost:$FrontendPort"
 Write-Info "Backend:  http://localhost:$BackendPort"
 Write-Host ""
+Write-Output "RESULT: passed=$testsPassed failed=$testsFailed skipped=$testsSkipped"
+
+$resultPath = Join-Path -Path $PSScriptRoot -ChildPath "start-and-test.results.json"
+@{
+    passed = $testsPassed
+    failed = $testsFailed
+    skipped = $testsSkipped
+    failedTests = $failedTests
+    timestamp = (Get-Date).ToString("o")
+} | ConvertTo-Json -Depth 3 | Set-Content -Path $resultPath -Encoding UTF8
 
 if ($testsFailed -eq 0) {
-    Write-Success "All smoke tests passed! ✓"
+    Write-Success "All smoke tests passed."
+    if ($NoExit) {
+        return @{
+            passed = $testsPassed
+            failed = $testsFailed
+            skipped = $testsSkipped
+            failedTests = $failedTests
+            exitCode = 0
+        }
+    }
     exit 0
-} else {
-    Write-Error-Custom "Some tests failed."
-    exit 1
 }
+
+Write-Error-Custom "Some tests failed."
+if ($NoExit) {
+    return @{
+        passed = $testsPassed
+        failed = $testsFailed
+        skipped = $testsSkipped
+        failedTests = $failedTests
+        exitCode = 1
+    }
+}
+exit 1

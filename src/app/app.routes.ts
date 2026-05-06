@@ -14,7 +14,7 @@ export const routes: Routes = [
       iconTone: 'accent',
       title: 'Cloud Computing',
       description: 'Cloud computing solutions for scalable platforms, secure architecture, and cost-aware operations.',
-      headerImageSrc: '/images/mach-learning.jpg',
+      headerImageSrc: '/images/cloud_computing.jpg',
       headerImageAlt: 'Cloud Computing service',
       featureContent: {
         title: 'What Is Cloud Computing?',
@@ -453,8 +453,9 @@ export const routes: Routes = [
       rag: {
         knowledgeBaseId: 'kb-cloud-computing',
         modelId: 'anthropic.claude-3-5-sonnet',
-        topK: 5,
-        systemPrompt: 'Answer with practical cloud-computing guidance focused on architecture, security, reliability, and cost optimization.'
+        topK: 3,
+        speechEnabled: false,
+        systemPrompt: 'Answer with practical cloud-computing guidance focused on architecture, security, reliability, and cost optimization. Keep responses concise and action-oriented.'
       },
       capabilities: [
         'Cloud architecture strategy across networking, security, and governance',
@@ -572,7 +573,7 @@ export const routes: Routes = [
       iconTone: 'accent',
       title: 'Generative AI',
       description: 'Generative AI services for content intelligence, agentic workflows, and enterprise-ready copilots.',
-      headerImageSrc: '/images/Generative AI.jpg',
+      headerImageSrc: '/images/gener-ai.jpg',
       headerImageAlt: 'Generative AI service',
       featureContent: {
         title: 'Generative AI',
@@ -759,8 +760,9 @@ export const routes: Routes = [
       rag: {
         knowledgeBaseId: 'kb-generative-ai',
         modelId: 'anthropic.claude-3-5-sonnet',
-        topK: 5,
-        systemPrompt: 'Answer with practical generative-AI guidance focused on governance, quality, and measurable business outcomes.'
+        topK: 3,
+        speechEnabled: false,
+        systemPrompt: 'Answer with practical generative-AI guidance focused on governance, quality, and measurable business outcomes. Keep responses concise and action-oriented.'
       },
       capabilities: [
         'Enterprise use-case design for copilots, assistants, and automated content workflows',
@@ -771,7 +773,8 @@ export const routes: Routes = [
         'Knowledge assistants for policy, operations, and customer support teams',
         'Document summarization, transformation, and drafting with human-in-the-loop review',
         'Agentic automation across multi-step business processes and internal tools'
-      ]
+      ],
+      destinationId: 'generative-ai'
     }
   },
   {
@@ -782,7 +785,7 @@ export const routes: Routes = [
       iconTone: 'accent',
       title: 'Deep Learning',
       description: 'Deep learning solutions for representation learning, computer vision, language understanding, and high-impact predictive systems.',
-      headerImageSrc: '/images/deep learn.jpg',
+      headerImageSrc: '/images/deep_learn.jpg',
       headerImageAlt: 'Deep Learning service',
       featureContent: {
         title: 'Deep Learning',
@@ -1116,7 +1119,8 @@ export const routes: Routes = [
         'Computer vision pipelines for detection, classification, and quality automation',
         'Natural language intelligence for summarization, extraction, and decision support',
         'Sequence and time-series modeling for forecasting, anomaly detection, and risk analytics'
-      ]
+      ],
+      destinationId: 'deep-learning'
     }
   },
   {
@@ -1219,7 +1223,7 @@ export const routes: Routes = [
       iconTone: 'accent',
       title: 'Agentic AI',
       description: 'Agentic AI systems that plan, execute, and adapt across multi-step enterprise workflows with governed autonomy.',
-      headerImageSrc: '/images/Generative AI.jpg',
+      headerImageSrc: '/images/Agentic AI.jpg',
       headerImageAlt: 'Agentic AI service',
       featureContent: {
         title: 'Agentic AI',

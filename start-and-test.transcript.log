@@ -1,0 +1,41 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260401185535
+Username: LAPTOP-9NQE7RIR\desha
+RunAs User: LAPTOP-9NQE7RIR\desha
+Configuration Name: 
+Machine: LAPTOP-9NQE7RIR (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command Start-Transcript -Path .\start-and-test.transcript.log -Force; .\start-and-test.ps1; =1; Stop-Transcript; exit 
+Process ID: 21144
+PSVersion: 5.1.26100.7920
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7920
+BuildVersion: 10.0.26100.7920
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\start-and-test.transcript.log
+âœ— Some tests failed.
+=1 : The term '=1' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:86
++ ... tart-and-test.transcript.log -Force; .\start-and-test.ps1; =1; Stop-T ...
++                                                                ~~
+    + CategoryInfo          : ObjectNotFound: (=1:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+=1 : The term '=1' is not recognized as the name of a cmdlet, function, script
+file, or operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:1 char:86
++ ... tart-and-test.transcript.log -Force; .\start-and-test.ps1; =1; Stop-T ...
++                                                                ~~
+    + CategoryInfo          : ObjectNotFound: (=1:String) [], CommandNotFoundE
+   xception
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+**********************
+Windows PowerShell transcript end
+End time: 20260401185535
+**********************

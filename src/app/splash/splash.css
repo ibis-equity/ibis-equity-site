@@ -1,21 +1,21 @@
 :host {
   display: block;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100dvh;
 }
 
 .splash-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  height: 100vh;
-  overflow: hidden;
-  background: #000;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at top left, rgba(88, 128, 180, 0.26) 0%, transparent 34%),
+    radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 24%),
+    linear-gradient(135deg, #05111f 0%, #091a31 52%, #102338 100%);
   color: white;
-  text-align: center;
-  padding: 1rem;
+  padding: 1.25rem;
   cursor: pointer;
   animation: fadeIn 0.8s ease-out;
   opacity: 1;
@@ -27,6 +27,62 @@
   transform: scale(0.95);
 }
 
+.splash-stage {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+  margin: auto;
+}
+
+.splash-panel,
+.splash-media-frame {
+  border-radius: 28px;
+  border: 1px solid rgba(199, 219, 247, 0.16);
+  background: linear-gradient(180deg, rgba(9, 24, 42, 0.72) 0%, rgba(8, 20, 36, 0.54) 100%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.splash-panel {
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  display: grid;
+  gap: 0.85rem;
+  text-align: center;
+}
+
+.splash-media-frame {
+  padding: 1rem;
+  width: min(100%, 760px);
+  justify-self: center;
+  order: -1;
+}
+
+.splash-aurora {
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.splash-aurora--left {
+  left: -10rem;
+  top: -6rem;
+  background: radial-gradient(circle, rgba(114, 164, 221, 0.9) 0%, rgba(114, 164, 221, 0) 68%);
+}
+
+.splash-aurora--right {
+  right: -8rem;
+  bottom: -10rem;
+  background: radial-gradient(circle, rgba(217, 237, 255, 0.42) 0%, rgba(217, 237, 255, 0) 70%);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -36,29 +92,56 @@
   }
 }
 
-.splash-header {
-  font-size: clamp(1.5rem, 5vw, 3rem);
+.splash-eyebrow {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   font-weight: 700;
-  margin: 0 0 0.4rem;
+  color: #b3d3f8;
+  animation: fadeInDown 0.9s ease-out;
+}
+
+.splash-header {
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-weight: 700;
+  margin: 0;
+  line-height: 0.96;
   animation: fadeInDown 1s ease-out;
 }
 
 .splash-gif {
-  max-width: 90%;
-  width: 600px;
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 1rem 0;
-  border-radius: 8px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-height: 46dvh;
+  object-fit: contain;
+  margin: 0;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
   animation: fadeIn 1.5s ease-out;
 }
 
 .splash-text {
-  font-size: clamp(1rem, 3vw, 1.5rem);
-  font-weight: 300;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 350;
   margin: 0;
   letter-spacing: 0.05em;
   animation: fadeInUp 2s ease-out;
+  color: rgba(239, 246, 255, 0.94);
+}
+
+.splash-text--secondary {
+  color: rgba(213, 228, 247, 0.78);
+}
+
+.splash-instruction {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8eb9e5;
+  animation: fadeInUp 2.3s ease-out;
 }
 
 @keyframes fadeInDown {
@@ -89,5 +172,77 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 840px) {
+  .splash-container {
+    padding: 1rem;
+  }
+
+  .splash-stage {
+    width: min(100%, 640px);
+    gap: 1rem;
+  }
+
+  .splash-panel {
+    text-align: center;
+  }
+
+  .splash-media-frame {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .splash-panel,
+  .splash-media-frame {
+    border-radius: 20px;
+  }
+
+  .splash-panel {
+    padding: 1rem;
+    gap: 0.7rem;
+  }
+
+  .splash-header {
+    font-size: clamp(1.65rem, 9vw, 2.2rem);
+    line-height: 1.02;
+  }
+
+  .splash-text {
+    font-size: clamp(0.95rem, 4vw, 1.12rem);
+    letter-spacing: 0.03em;
+  }
+
+  .splash-instruction {
+    font-size: 0.76rem;
+    letter-spacing: 0.06em;
+  }
+
+  .splash-gif {
+    max-height: 36dvh;
+    border-radius: 14px;
+  }
+
+  .splash-aurora {
+    width: 20rem;
+    height: 20rem;
+    filter: blur(48px);
+  }
+}
+
+@media (max-width: 400px) {
+  .splash-container {
+    padding: 0.75rem;
+  }
+
+  .splash-panel {
+    padding: 0.85rem;
+  }
+
+  .splash-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
   }
 }

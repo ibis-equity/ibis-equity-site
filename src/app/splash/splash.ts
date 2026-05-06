@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -6,18 +6,19 @@ import { CommonModule } from '@angular/common';
   selector: 'app-splash',
   standalone: true,
   imports: [CommonModule],
+  host: {
+    '(document:keydown.enter)': 'onEnterKey()',
+    '(click)': 'onClick()'
+  },
   templateUrl: './splash.html',
   styleUrl: './splash.css'
 })
 export class SplashComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('videoPlayer') videoPlayer?: ElementRef<HTMLVideoElement>;
   private timerId?: number;
+  private readonly router = inject(Router);
   isExiting = false;
-  isMuted = true;
-  debugMessage = '';
   hasUnmuted = false;
-
-  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.timerId = window.setTimeout(() => {
@@ -34,20 +35,18 @@ export class SplashComponent implements OnInit, AfterViewInit, OnDestroy {
 
   tryPlayVideo(): void {
     if (!this.videoPlayer?.nativeElement) return;
-    
+
     const video = this.videoPlayer.nativeElement;
-    
+
     // Try unmuted first
     video.muted = false;
-    this.isMuted = false;
-    
+
     video.play().then(() => {
       console.log('Video playing with sound');
       this.hasUnmuted = true;
     }).catch(() => {
       // If unmuted fails, try muted
       video.muted = true;
-      this.isMuted = true;
       video.play().then(() => {
         console.log('Video playing muted - waiting for user interaction');
       }).catch(err => {
@@ -71,12 +70,10 @@ export class SplashComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  @HostListener('document:keydown.enter')
   onEnterKey(): void {
     this.unmuteAndNavigate();
   }
 
-  @HostListener('click')
   onClick(): void {
     this.unmuteAndNavigate();
   }
@@ -85,7 +82,6 @@ export class SplashComponent implements OnInit, AfterViewInit, OnDestroy {
     // Ensure video is unmuted (in case browser blocked it initially)
     if (this.videoPlayer?.nativeElement && !this.hasUnmuted) {
       this.videoPlayer.nativeElement.muted = false;
-      this.isMuted = false;
       this.hasUnmuted = true;
       this.videoPlayer.nativeElement.play().catch(() => {});
     }
@@ -94,7 +90,7 @@ export class SplashComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private navigateToMain(): void {
     if (this.isExiting) return;
-    
+
     this.isExiting = true;
     // Wait for fade-out animation to complete
     setTimeout(() => {

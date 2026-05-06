@@ -770,37 +770,145 @@
     </div>
     <div class="image-map-wrapper">
       <img
-        src="/images/ibis-image-map.jpg"
+        ngSrc="/images/ibis-image-map-1400.jpg"
         alt="Ibis Equity service image map"
-        width="3870"
-        height="2160"
+        width="1400"
+        height="781"
+        sizes="100vw"
+        priority
       >
       <div class="hotspot-layer">
-        <a class="hotspot-chip hotspot--healthcare" href="/home/healthcare" title="Healthcare" data-label="Healthcare" aria-label="Healthcare"></a>
-        <a class="hotspot-chip hotspot--law" href="/home/law-legal-services" title="Law &amp; Legal Services" data-label="Law &amp; Legal Services" aria-label="Law &amp; Legal Services"></a>
-        <a class="hotspot-chip hotspot--insurance" href="/home/insurance" title="Insurance" data-label="Insurance" aria-label="Insurance"></a>
-        <a class="hotspot-chip hotspot--education" href="/home/education" title="Education" data-label="Education" aria-label="Education"></a>
-        <a class="hotspot-chip hotspot--agriculture" href="/home/agriculture" title="Agriculture" data-label="Agriculture" aria-label="Agriculture"></a>
-        <a class="hotspot-chip hotspot--manufacturing" href="/home/manufacturing" title="Manufacturing" data-label="Manufacturing" aria-label="Manufacturing"></a>
-        <a class="hotspot-chip hotspot--energy" href="/home/energy-utilities" title="Energy &amp; Utilities" data-label="Energy &amp; Utilities" aria-label="Energy &amp; Utilities"></a>
-        <a class="hotspot-chip hotspot--transport" href="/home/transportation-logistics" title="Transportation &amp; Logistics" data-label="Transportation &amp; Logistics" aria-label="Transportation &amp; Logistics"></a>
-        <a class="hotspot-chip hotspot--hospitality" href="/home/hospitality-travel" title="Hospitality Travel" data-label="Hospitality Travel" aria-label="Hospitality Travel"></a>
-        <a class="hotspot-chip hotspot--retail" href="/home/retail-ecommerce" title="Retail &amp; E-Commerce" data-label="Retail &amp; E-Commerce" aria-label="Retail &amp; E-Commerce"></a>
-        <a class="hotspot-chip hotspot--government" href="/home/government-public-sector" title="Government &amp; Public Sector" data-label="Government &amp; Public Sector" aria-label="Government &amp; Public Sector"></a>
-        <a class="hotspot-chip hotspot--real-estate" href="/home/real-estate-construction" title="Real Estate &amp; Construction" data-label="Real Estate &amp; Construction" aria-label="Real Estate &amp; Construction"></a>
+        <a class="hotspot-chip hotspot--healthcare" [routerLink]="'/home/healthcare'" title="Healthcare" data-label="Healthcare" aria-label="Healthcare"></a>
+        <a class="hotspot-chip hotspot--law" [routerLink]="'/home/law-legal-services'" title="Law &amp; Legal Services" data-label="Law &amp; Legal Services" aria-label="Law &amp; Legal Services"></a>
+        <a class="hotspot-chip hotspot--insurance" [routerLink]="'/home/insurance'" title="Insurance" data-label="Insurance" aria-label="Insurance"></a>
+        <a class="hotspot-chip hotspot--education" [routerLink]="'/home/education'" title="Education" data-label="Education" aria-label="Education"></a>
+        <a class="hotspot-chip hotspot--agriculture" [routerLink]="'/home/agriculture'" title="Agriculture" data-label="Agriculture" aria-label="Agriculture"></a>
+        <a class="hotspot-chip hotspot--manufacturing" [routerLink]="'/home/manufacturing'" title="Manufacturing" data-label="Manufacturing" aria-label="Manufacturing"></a>
+        <a class="hotspot-chip hotspot--energy" [routerLink]="'/home/energy-utilities'" title="Energy &amp; Utilities" data-label="Energy &amp; Utilities" aria-label="Energy &amp; Utilities"></a>
+        <a class="hotspot-chip hotspot--transport" [routerLink]="'/home/transportation-logistics'" title="Transportation &amp; Logistics" data-label="Transportation &amp; Logistics" aria-label="Transportation &amp; Logistics"></a>
+        <a class="hotspot-chip hotspot--hospitality" [routerLink]="'/home/hospitality-travel'" title="Hospitality Travel" data-label="Hospitality Travel" aria-label="Hospitality Travel"></a>
+        <a class="hotspot-chip hotspot--retail" [routerLink]="'/home/retail-ecommerce'" title="Retail &amp; E-Commerce" data-label="Retail &amp; E-Commerce" aria-label="Retail &amp; E-Commerce"></a>
+        <a class="hotspot-chip hotspot--government" [routerLink]="'/home/government-public-sector'" title="Government &amp; Public Sector" data-label="Government &amp; Public Sector" aria-label="Government &amp; Public Sector"></a>
+        <a class="hotspot-chip hotspot--real-estate" [routerLink]="'/home/real-estate-construction'" title="Real Estate &amp; Construction" data-label="Real Estate &amp; Construction" aria-label="Real Estate &amp; Construction"></a>
       </div>
     </div>
   </section>
 
   <section class="founders-statement" aria-labelledby="founders-statement-title">
     <h2 id="founders-statement-title">A Message From Our Founder</h2>
-    <p>
-      I started Ibis Equity Consulting with a simple conviction: AI should strengthen institutions, not destabilize them. Intelligent systems must honor complexity, elevate expert judgment, and operate with transparency and care.
-    </p>
-    <p>
-      My work focuses on building AI that is resilient, governed, and aligned with real&#8209;world workflows&mdash;not hype cycles. At Ibis Equity, we help organizations create systems that earn trust, reduce risk, and support better decisions across every layer of the enterprise.
-    </p>
-    <p>&mdash; Daryl E. Shackleford</p>
+    <div class="founders-statement__founder-quote">
+      <p>
+        I started Ibis Equity Consulting with a simple conviction: AI should strengthen institutions, not destabilize them. Intelligent systems must honor complexity, elevate expert judgment, and operate with transparency and care.
+      </p>
+      <p>
+        My work focuses on building AI that is resilient, governed, and aligned with real&#8209;world workflows&mdash;not hype cycles. At Ibis Equity, we help organizations create systems that earn trust, reduce risk, and support better decisions across every layer of the enterprise.
+      </p>
+      <p class="founders-statement__attribution">&mdash; Daryl E. Shackleford</p>
+    </div>
+    <div class="founders-statement__intro">
+      <p class="founders-statement__eyebrow">About Our Consultancy</p>
+      <h3>Ibis Equity Consulting</h3>
+      <p>
+        Ibis Equity Consulting is a modern engineering, data, and AI consultancy for organizations that need more than advice. They need capability, clarity, and a partner that can help them build what comes next.
+      </p>
+      <p>
+        We combine deep technical expertise with systems thinking to help enterprises design, staff, and operationalize the architectures, teams, and intelligence layers that drive long-term resilience.
+      </p>
+      <p>
+        We work at the intersection of cloud engineering, data architecture, AI/ML, and organizational enablement, helping clients modernize their technology foundations while equipping teams to thrive in a rapidly evolving digital landscape.
+      </p>
+      <p>
+        Our philosophy is simple: durable intelligence is built, not bought. Every organization deserves the tools, structures, and knowledge to operate with confidence.
+      </p>
+    </div>
+
+    <div class="founders-statement__block">
+      <h3>What We Do</h3>
+      <p>We architect and deliver end to end solutions that accelerate transformation:</p>
+      <ul class="founders-statement__list founders-statement__list--services">
+        <li>
+          <span class="founders-statement__icon" aria-hidden="true">BLD</span>
+          <div>
+            <strong>Build</strong>
+            <span>
+            Full stack cloud, data, and AI systems from lakehouse and semantic layers to GenAI platforms, RAG pipelines, and enterprise automation frameworks.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="founders-statement__icon" aria-hidden="true">STF</span>
+          <div>
+            <strong>Staff</strong>
+            <span>
+            High performing engineering, data, and AI teams with the right blend of senior leadership, hands on builders, and domain specialists.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="founders-statement__icon" aria-hidden="true">TRN</span>
+          <div>
+            <strong>Train</strong>
+            <span>
+            Upskill organizations on modern engineering practices, AI literacy, data governance, and cloud native delivery so teams can sustain and evolve what we build together.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="founders-statement__icon" aria-hidden="true">MOD</span>
+          <div>
+            <strong>Modernize</strong>
+            <span>
+            Transform legacy systems into modular, API driven, scalable architectures that support analytics, AI, and operational excellence.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="founders-statement__icon" aria-hidden="true">GOV</span>
+          <div>
+            <strong>Govern</strong>
+            <span>
+            Implement data governance, metadata, lineage, and quality frameworks that make enterprise data trusted, discoverable, and ready for decision making.
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="founders-statement__block">
+      <h3>How We Work</h3>
+      <p>
+        Our approach blends technical rigor, strategic clarity, and equity-centered design. We partner closely with engineering, product, and executive teams to understand the full context organizational, technical, and human before designing solutions that scale.
+      </p>
+      <p>Every engagement is built on:</p>
+      <ul class="founders-statement__list founders-statement__list--principles">
+        <li>
+          <strong>Architecture first thinking</strong>
+          <span>Clear patterns, reference models, and durable foundations that reduce complexity and accelerate delivery.</span>
+        </li>
+        <li>
+          <strong>AI ready design</strong>
+          <span>Systems built for retrieval, reasoning, automation, and continuous learning.</span>
+        </li>
+        <li>
+          <strong>Operational empowerment</strong>
+          <span>Documentation, training, and enablement that ensure teams can own and evolve their systems.</span>
+        </li>
+        <li>
+          <strong>Mythic modern identity</strong>
+          <span>Inspired by the ibis and Thoth, symbols of knowledge, clarity, and intentional creation, our work reflects a commitment to wisdom, precision, and equitable progress.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="founders-statement__block founders-statement__block--mission">
+      <h3>Our Mission</h3>
+      <p>
+        To help organizations build intelligent, resilient, and ethically grounded systems, and to ensure the teams who operate them are empowered, capable, and future ready.
+      </p>
+      <p>
+        Ibis Equity Consulting exists to elevate engineering maturity, strengthen data foundations, and unlock the full potential of AI across every sector we serve.
+      </p>
+    </div>
   </section>
 
   <section class="thoth-manifesto" aria-labelledby="thoth-manifesto-title">
@@ -812,7 +920,12 @@
       spectacle but clarity.
     </p>
     <p>
-      The crescent arc, the ibis line, and the ledger glyph form a unified sigil of measured wisdom: insight that is
+      The <strong>Ibis</strong>, perhaps the most emblematic bird, not just for the pictures that were drawn but because of its
+      activity, was not purposeless. They noticed the <strong>Ibis</strong> was around often by the Nile, moving with deliberation and
+      control, and always with solitude. This image epitomized controlled meditation, inner analysis, and self-purity—qualities attributed to Thoth's identity.
+    </p>
+    <p>
+      The crescent arc, the <strong>Ibis</strong> line, and the ledger glyph form a unified sigil of measured wisdom: insight that is
       grounded, accountable, and aligned with a greater order.
     </p>
     <p>

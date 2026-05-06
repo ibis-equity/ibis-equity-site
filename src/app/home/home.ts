@@ -1,5 +1,6 @@
 import { Component, HostListener, OnDestroy, inject, signal } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { BedrockRagConfig, BedrockRagResponse, BedrockRagService, BedrockRagSource } from '../map-destination/bedrock-rag.service';
@@ -65,7 +66,7 @@ const LANGUAGE_PREFERENCES: Record<string, LanguagePreference> = {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, NgOptimizedImage],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

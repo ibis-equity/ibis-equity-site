@@ -93,10 +93,13 @@
 }
 
 .ml-subheader__image {
-  width: 100%;
+  width: min(100%, 620px);
+  max-width: 100%;
   height: auto;
+  display: block;
+  margin-inline: auto;
   border-radius: 14px;
-  object-fit: cover;
+  object-fit: contain;
   border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
 }
 
@@ -1100,6 +1103,21 @@
   border-bottom: 1px solid color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
+.feature-story__header--agentic {
+  justify-items: center;
+  text-align: center;
+}
+
+.feature-story__header--cloud {
+  justify-items: center;
+  text-align: center;
+}
+
+.feature-story__header--deep {
+  justify-items: center;
+  text-align: center;
+}
+
 .feature-story__eyebrow {
   margin: 0;
   font-size: 0.74rem;
@@ -1115,11 +1133,30 @@
   line-height: 1.1;
 }
 
+.feature-story__title--agentic {
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+}
+
+.feature-story__title--cloud {
+  font-size: clamp(2.1rem, 3.9vw, 3rem);
+}
+
 .feature-story__subtitle {
   margin: 0;
   font-size: 1rem;
   line-height: 1.55;
   color: var(--muted);
+}
+
+.feature-story__subtitle--cloud {
+  max-width: 62ch;
+}
+
+.feature-story__subtitle--cloud-emphasis {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 84%, var(--accent) 16%);
 }
 
 .feature-story__intro,
@@ -2776,6 +2813,42 @@
   border: 0;
   border-radius: 0;
   background: transparent;
+}
+
+.destination-hero--agentic {
+  grid-template-columns: 1fr;
+  width: 100%;
+  justify-items: center;
+}
+
+.destination-hero--cloud {
+  grid-template-columns: 1fr;
+  width: 100%;
+  justify-items: center;
+}
+
+.destination-hero--cloud .destination-hero__image {
+  width: min(100%, 360px);
+  height: auto;
+  justify-self: center;
+}
+
+.destination-hero--deep {
+  grid-template-columns: 1fr;
+  width: 100%;
+  justify-items: center;
+}
+
+.destination-hero--deep .destination-hero__image {
+  width: min(100%, 420px);
+  height: auto;
+  justify-self: center;
+}
+
+.destination-hero--agentic .destination-hero__image {
+  width: min(100%, 320px);
+  height: auto;
+  justify-self: center;
 }
 
 .eyebrow {

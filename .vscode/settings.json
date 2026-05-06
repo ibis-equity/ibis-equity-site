@@ -1,0 +1,32 @@
+{
+  "files.associations": {
+    "greenlet.h": "c",
+    "Python.h": "c",
+    "pyconfig.h": "c",
+    "pyport.h": "c",
+    "object.h": "c"
+  },
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/**",
+    "C:/Users/desha/AppData/Local/Programs/Python/Python313/Include",
+    "${workspaceFolder}/.venv/Include/site/python3.13",
+    "${workspaceFolder}/.venv/Include/site/python3.13/greenlet"
+  ],
+  "C_Cpp.default.defines": [
+    "MS_WINDOWS",
+    "MS_WIN64",
+    "Py_ENABLE_SHARED"
+  ],
+  "C_Cpp.files.exclude": {
+    "**/.venv/**": true
+  },
+  "C_Cpp.default.cStandard": "c17",
+  "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
+  "python.terminal.executeInFileDir": false,
+  "python.linting.enabled": false,
+  "chat.mcp.serverSampling": {
+    "Ibis_Equity_Site/.vscode/mcp.json: angular-cli": {
+      "allowedDuringChat": true
+    }
+  }
+}

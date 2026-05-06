@@ -115,11 +115,13 @@ export class MapDestinationComponent implements OnDestroy {
   protected readonly featureContent = (this.route.snapshot.data['featureContent'] as DestinationFeatureContent | undefined) || null;
   protected readonly destinationId = (this.route.snapshot.data['destinationId'] as string | undefined) || null;
   protected readonly hideFeatureStory = (this.route.snapshot.data['hideFeatureStory'] as boolean | undefined) ?? false;
+  protected readonly routeRagConfig =
+    (this.route.snapshot.data['rag'] as Partial<BedrockRagConfig> | undefined) || {};
   protected readonly ragConfig: BedrockRagConfig = {
-    knowledgeBaseId: (this.route.snapshot.data['knowledgeBaseId'] as string) || 'kb-data-sciences',
-    modelId: 'amazon.nova-micro-v1:0',
-    topK: 5,
-    systemPrompt: BEDROCK_CLAUDE_PROMPT
+    knowledgeBaseId: this.routeRagConfig.knowledgeBaseId || 'kb-data-sciences',
+    modelId: this.routeRagConfig.modelId || 'amazon.nova-micro-v1:0',
+    topK: this.routeRagConfig.topK || 5,
+    systemPrompt: this.routeRagConfig.systemPrompt || BEDROCK_CLAUDE_PROMPT
   };
   protected ragQuestion = '';
   protected readonly ragAnswer = signal('');
@@ -165,7 +167,7 @@ export class MapDestinationComponent implements OnDestroy {
   protected readonly isAskingRag = signal(false);
   protected readonly chatbotOpen = signal(false);
   protected readonly assistantInfoOpen = signal(false);
-  protected readonly speechEnabled = signal(true);
+  protected readonly speechEnabled = signal(this.routeRagConfig.speechEnabled ?? false);
   protected readonly ragAudioSrc = signal('');
   protected readonly ragAudioError = signal('');
   protected readonly imagePreviewSrc = signal('');
