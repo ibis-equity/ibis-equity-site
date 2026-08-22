@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibis Equity Site – Technology Stack</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid #2d3748;
+      padding-bottom: 1.5rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f7fafc;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      color: #a0aec0;
+      font-size: 0.95rem;
+    }
+
+    header a {
+      color: #63b3ed;
+      text-decoration: none;
+    }
+
+    header a:hover { text-decoration: underline; }
+
+    .github-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+      padding: 0.35rem 0.75rem;
+      background: #1a202c;
+      border: 1px solid #2d3748;
+      border-radius: 6px;
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: border-color 0.15s;
+    }
+
+    .github-badge:hover { border-color: #63b3ed; }
+
+    .github-badge svg { width: 18px; height: 18px; fill: #e2e8f0; }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #63b3ed;
+      margin-bottom: 1rem;
+    }
+
+    .arch-summary {
+      background: #1a202c;
+      border-left: 3px solid #63b3ed;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      color: #cbd5e0;
+      font-size: 0.9rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    thead tr {
+      background: #1a202c;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 0.6rem 0.85rem;
+      color: #a0aec0;
+      font-weight: 600;
+      border-bottom: 1px solid #2d3748;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #1e2535;
+      transition: background 0.1s;
+    }
+
+    tbody tr:hover { background: #1a202c; }
+
+    tbody td {
+      padding: 0.6rem 0.85rem;
+      vertical-align: top;
+    }
+
+    td:first-child {
+      font-weight: 600;
+      color: #f7fafc;
+      white-space: nowrap;
+    }
+
+    td.version {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      color: #68d391;
+      white-space: nowrap;
+    }
+
+    td.role { color: #cbd5e0; }
+
+    .tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .tag-aws    { background: #7b341e; color: #fbd38d; }
+    .tag-ai     { background: #322659; color: #b794f4; }
+    .tag-fe     { background: #1a365d; color: #90cdf4; }
+    .tag-be     { background: #1c4532; color: #9ae6b4; }
+    .tag-doc    { background: #2d3748; color: #e2e8f0; }
+
+    .narrative {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .narrative p {
+      color: #cbd5e0;
+      font-size: 0.925rem;
+      line-height: 1.8;
+    }
+
+    .narrative strong { color: #f7fafc; }
+
+    .narrative h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #a0aec0;
+      margin-top: 0.25rem;
+    }
+
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .route-chip {
+      background: #1a202c;
+      border: 1px solid #2d3748;
+      border-radius: 5px;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.78rem;
+      color: #a0aec0;
+    }
+
+    .route-chip span {
+      color: #68d391;
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 0.72rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Ibis Equity Site</h1>
+    <p>Full technology stack reference &mdash; generated 2026-08-21</p>
+    <a class="github-badge" href="https://github.com/ibis-equity/ibis-equity-site" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58
+          0-.28-.01-1.03-.01-2.02-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75
+          -1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48.99
+          .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22
+          -.14-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01
+          2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.26 2.88.13 3.18.77.84
+          1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6
+          -.01 2.9-.01 3.29 0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      ibis-equity/ibis-equity-site
+    </a>
+  </header>
+
+  <!-- PROJECT NARRATIVE -->
+  <section>
+    <h2>Project Narrative</h2>
+    <div class="narrative">
+
+      <h3>What is Ibis Equity?</h3>
+      <p>
+        <strong>Ibis Equity Consulting, LLC</strong> is an AI/ML advisory and engineering firm whose mission is
+        captured in its tagline: <em>"Where Intelligence Meets Equity."</em> The firm specializes in
+        <strong>Machine Learning, Generative AI, Data Science, Cloud Computing, and Agentic AI</strong> — fields
+        that are reshaping every major industry sector. Ibis Equity's thesis is that advanced AI capabilities
+        should not be the exclusive province of large enterprises with deep technical teams; they should be
+        accessible, explainable, and ethically deployed across organizations of all sizes.
+      </p>
+
+      <h3>What the Site Does</h3>
+      <p>
+        The site is a <strong>content-rich, AI-powered consulting portal</strong>. It opens with an animated
+        splash screen, transitions to a home page that houses an embedded <strong>RAG chatbot</strong>
+        (powered by AWS OpenSearch Serverless and Amazon Bedrock / Claude), and then branches into a
+        library of deep-content destination pages — one per technology discipline or industry vertical.
+        Each destination page delivers long-form, consultant-grade narrative on how AI and cloud
+        technologies apply to that domain, complete with comparison matrices, architecture cards, and
+        step-by-step breakdowns. A contact form lets prospective clients submit engagement requests
+        directly from the site.
+      </p>
+
+      <h3>The RAG Chatbot</h3>
+      <p>
+        The centrepiece of the home page is an <strong>AWS-native Retrieval-Augmented Generation (RAG)
+        assistant</strong>. When a visitor asks a question, the Angular frontend sends the query to the
+        FastAPI backend, which retrieves semantically similar document chunks from
+        <strong>Amazon OpenSearch Serverless</strong> using <strong>Amazon Titan Embeddings</strong>, then
+        passes those chunks along with the question to <strong>Amazon Bedrock</strong> (default model:
+        <code>amazon.nova-micro-v1:0</code>; configurable to Anthropic Claude). The grounded answer,
+        source citations, and an optional <strong>Amazon Polly</strong> text-to-speech audio clip are
+        returned to the user. Knowledge base document ingestion — including diagram-caption extraction
+        from PDFs via Claude — is handled by a companion Streamlit utility
+        (<code>ingest_diagram_captions.py</code>).
+      </p>
+
+      <h3>Technology Discipline Pages</h3>
+      <p>
+        The router serves dedicated deep-content pages for each of the firm's core practice areas:
+      </p>
+      <div class="route-grid">
+        <div class="route-chip"><span>/home/</span>cloud-computing</div>
+        <div class="route-chip"><span>/home/</span>machine-learning</div>
+        <div class="route-chip"><span>/home/</span>generative-ai</div>
+        <div class="route-chip"><span>/home/</span>deep-learning</div>
+        <div class="route-chip"><span>/home/</span>prompt-engineering</div>
+        <div class="route-chip"><span>/home/</span>agentic-ai</div>
+        <div class="route-chip"><span>/home/</span>data-sciences</div>
+      </div>
+
+      <h3>Industry Vertical Pages</h3>
+      <p>
+        The same content engine drives sector-specific pages, each positioning AI and cloud capabilities
+        within the language and constraints of that industry:
+      </p>
+      <div class="route-grid">
+        <div class="route-chip"><span>/home/</span>healthcare</div>
+        <div class="route-chip"><span>/home/</span>law-legal-services</div>
+        <div class="route-chip"><span>/home/</span>insurance</div>
+        <div class="route-chip"><span>/home/</span>education</div>
+        <div class="route-chip"><span>/home/</span>agriculture</div>
+        <div class="route-chip"><span>/home/</span>manufacturing</div>
+        <div class="route-chip"><span>/home/</span>energy-utilities</div>
+        <div class="route-chip"><span>/home/</span>transportation-logistics</div>
+        <div class="route-chip"><span>/home/</span>hospitality-travel</div>
+        <div class="route-chip"><span>/home/</span>retail-ecommerce</div>
+        <div class="route-chip"><span>/home/</span>government-public-sector</div>
+        <div class="route-chip"><span>/home/</span>real-estate-construction</div>
+      </div>
+
+      <h3>Contact &amp; Lead Capture</h3>
+      <p>
+        A contact form collects prospective client details (name, organization, role, and engagement
+        request). The FastAPI backend stores each submission in <strong>Amazon DynamoDB</strong>, sends
+        a formatted notification email via <strong>Amazon SES</strong>, and dispatches an SMS alert
+        via <strong>Amazon SNS</strong> — giving the Ibis Equity team immediate, multi-channel
+        awareness of every inbound request.
+      </p>
+
+      <h3>Developer Workflow</h3>
+      <p>
+        The repo is designed for a tight inner-loop experience. Running <code>npm run start:full</code>
+        launches both the Angular dev server (port 4202) and the Uvicorn FastAPI server (port 8010)
+        concurrently. A proxy configuration forwards <code>/api/*</code> requests from the frontend
+        to the backend so no CORS configuration is needed during local development. For AWS-authenticated
+        sessions, <code>npm run start:full:aws</code> exports live credentials from the configured
+        AWS CLI profile before starting the servers.
+      </p>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture Summary</h2>
+    <p class="arch-summary">
+      Angular 21 SPA proxies REST calls to a FastAPI backend. The backend implements a
+      <strong>RAG pipeline</strong>: user questions go to Amazon Bedrock (Nova / Claude models),
+      with document embeddings stored in Amazon OpenSearch Serverless. Contact form submissions
+      are persisted in DynamoDB and trigger SES email + SNS SMS notifications. Amazon Polly
+      provides optional text-to-speech audio on RAG responses.
+    </p>
+  </section>
+
+  <!-- FRONTEND -->
+  <section>
+    <h2><span class="tag tag-fe">Frontend</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Technology</th>
+          <th>Version</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Angular</td><td class="version">^21.1.0</td><td class="role">SPA framework – standalone components</td></tr>
+        <tr><td>TypeScript</td><td class="version">~5.9.2</td><td class="role">Application language</td></tr>
+        <tr><td>RxJS</td><td class="version">~7.8.0</td><td class="role">Reactive streams / HTTP observables</td></tr>
+        <tr><td>Angular Router</td><td class="version">^21.1.0</td><td class="role">Client-side routing with scroll restoration</td></tr>
+        <tr><td>Angular HttpClient</td><td class="version">^21.1.0</td><td class="role">REST API communication</td></tr>
+        <tr><td>Angular Forms</td><td class="version">^21.1.0</td><td class="role">Reactive &amp; template-driven forms</td></tr>
+        <tr><td>Vitest</td><td class="version">^4.0.8</td><td class="role">Unit testing</td></tr>
+        <tr><td>Angular CLI / Build</td><td class="version">^21.1.3</td><td class="role">Scaffolding, build tooling (<code>@angular/build</code>)</td></tr>
+        <tr><td>Prettier</td><td class="version">—</td><td class="role">Code formatting (100-char width, single quotes)</td></tr>
+        <tr><td>Concurrently</td><td class="version">^9.2.1</td><td class="role">Runs frontend + backend in parallel</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- BACKEND -->
+  <section>
+    <h2><span class="tag tag-be">Backend</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Technology</th>
+          <th>Version</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Python</td><td class="version">3.x</td><td class="role">Runtime language</td></tr>
+        <tr><td>FastAPI</td><td class="version">&gt;=0.116.0</td><td class="role">REST API framework</td></tr>
+        <tr><td>Uvicorn</td><td class="version">&gt;=0.30.0</td><td class="role">ASGI server (with --reload in dev)</td></tr>
+        <tr><td>Pydantic</td><td class="version">(via FastAPI)</td><td class="role">Request / response data validation</td></tr>
+        <tr><td>python-dotenv</td><td class="version">&gt;=1.0.1</td><td class="role">Environment variable management</td></tr>
+        <tr><td>toml</td><td class="version">0.10.2</td><td class="role">Config file parsing</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- AWS SERVICES -->
+  <section>
+    <h2><span class="tag tag-aws">AWS Services</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>SDK / Library</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Amazon Bedrock</td><td class="version">boto3 1.42.59 · langchain-aws</td><td class="role">LLM chat queries (default model: <code>amazon.nova-micro-v1:0</code>)</td></tr>
+        <tr><td>Amazon Bedrock Knowledge Bases</td><td class="version">langchain-aws 1.3.1</td><td class="role">Managed RAG – Retrieval-Augmented Generation</td></tr>
+        <tr><td>Amazon Titan Embeddings</td><td class="version">Bedrock</td><td class="role">Text-to-vector embeddings (<code>amazon.titan-embed-text-v1</code>)</td></tr>
+        <tr><td>Amazon OpenSearch Serverless (AOSS)</td><td class="version">opensearch-py 3.1.0</td><td class="role">Vector store for semantic document search</td></tr>
+        <tr><td>Amazon DynamoDB</td><td class="version">boto3</td><td class="role">Contact form submission persistence</td></tr>
+        <tr><td>Amazon SES</td><td class="version">boto3</td><td class="role">Transactional email notifications</td></tr>
+        <tr><td>Amazon SNS</td><td class="version">boto3</td><td class="role">SMS notifications for contact requests</td></tr>
+        <tr><td>Amazon Polly</td><td class="version">boto3</td><td class="role">Text-to-speech – MP3 audio on RAG responses</td></tr>
+        <tr><td>boto3 / botocore[crt]</td><td class="version">1.42.59 / &gt;=1.42.0</td><td class="role">AWS SDK; CRT backend for performance</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- AI / LLM -->
+  <section>
+    <h2><span class="tag tag-ai">AI / LLM Libraries</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Library</th>
+          <th>Version</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>LangChain</td><td class="version">1.2.10</td><td class="role">LLM orchestration framework</td></tr>
+        <tr><td>langchain-aws</td><td class="version">1.3.1</td><td class="role">Bedrock + Knowledge Base integrations</td></tr>
+        <tr><td>langchain-core</td><td class="version">1.2.17</td><td class="role">Core abstractions (chains, prompts, retrievers)</td></tr>
+        <tr><td>langchain-community</td><td class="version">0.4.1</td><td class="role">Community integrations</td></tr>
+        <tr><td>langchain-classic</td><td class="version">1.0.1</td><td class="role">Legacy LangChain compatibility shim</td></tr>
+        <tr><td>anthropic</td><td class="version">0.84.0</td><td class="role">Anthropic Claude SDK (alternative model support)</td></tr>
+        <tr><td>tiktoken</td><td class="version">&gt;=0.12.0</td><td class="role">Token counting for prompt management</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- DOCUMENT PROCESSING -->
+  <section>
+    <h2><span class="tag tag-doc">Document Processing</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Library</th>
+          <th>Version</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>PyMuPDF</td><td class="version">1.26.4</td><td class="role">High-performance PDF parsing &amp; rendering</td></tr>
+        <tr><td>pypdf</td><td class="version">latest</td><td class="role">PDF reading / metadata extraction</td></tr>
+        <tr><td>unstructured</td><td class="version">0.21.5</td><td class="role">General document ingestion (PDF, HTML, etc.)</td></tr>
+        <tr><td>numpy</td><td class="version">2.2.1</td><td class="role">Numerical operations for embedding pipelines</td></tr>
+        <tr><td>Streamlit</td><td class="version">1.54.0</td><td class="role">Admin / ingestion UI (<code>ingest_diagram_captions.py</code>)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer style="margin-top:3rem; padding-top:1rem; border-top:1px solid #2d3748; color:#4a5568; font-size:0.8rem;">
+    Ibis Equity Site &mdash;
+    <a href="https://github.com/ibis-equity/ibis-equity-site" style="color:#4a5568;" target="_blank" rel="noopener noreferrer">
+      github.com/ibis-equity/ibis-equity-site
+    </a>
+  </footer>
+
+</div>
+</body>
+</html>
